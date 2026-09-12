@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { ComponentType } from "./database";
+
 
 export const ComponentTypeSchema = z.enum([
   "frontend",

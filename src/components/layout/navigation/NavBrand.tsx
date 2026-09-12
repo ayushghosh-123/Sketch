@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useUser } from "@/hooks/useUser";
 
 interface NavBrandProps {
   className?: string;
@@ -8,46 +10,52 @@ interface NavBrandProps {
 }
 
 export function NavBrand({ className = "", showTag = false }: NavBrandProps) {
+  const pathname = usePathname();
+  const { isSignedIn, loading } = useUser();
+
+  const isAppRoute = (!loading && isSignedIn) || pathname.startsWith("/dashboard") || pathname.startsWith("/workspace") || pathname.startsWith("/projects");
+  const brandHref = isAppRoute ? "/dashboard" : "/";
+
   return (
     <Link
-      href="/"
-      className={`flex items-center gap-3 group select-none transition-opacity hover:opacity-90 ${className}`}
-      aria-label="AgentArchitect Home"
+      href={brandHref}
+      className={`flex items-center gap-2.5 group select-none transition-opacity hover:opacity-90 ${className}`}
+      aria-label="Sketch Platform"
     >
-      {/* Minimal Geometric Architecture Glyph */}
-      <div className="h-7 w-7 rounded-md bg-[#18181b] border border-neutral-800 flex items-center justify-center text-white group-hover:border-neutral-700 transition-colors">
+      {/* Minimal Architectural Compass & Pencil Glyph */}
+      <div className="h-8 w-8 rounded-md bg-[#18181b] border border-[#27272a] flex items-center justify-center text-white group-hover:border-[#0ea5e9]/60 transition-colors shadow-xs">
         <svg
-          width="16"
-          height="16"
+          width="18"
+          height="18"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-white"
+          className="text-[#0ea5e9]"
         >
-          <rect x="3" y="3" width="7" height="7" rx="1" />
-          <rect x="14" y="3" width="7" height="7" rx="1" />
-          <rect x="14" y="14" width="7" height="7" rx="1" />
-          <rect x="3" y="14" width="7" height="7" rx="1" />
-          <path d="M10 6.5h4" />
-          <path d="M6.5 10v4" />
-          <path d="M17.5 10v4" />
-          <path d="M10 17.5h4" />
+          {/* Conceptual Sketch pencil + geometry */}
+          <path d="m18 2 4 4-10 10H8v-4L18 2z" />
+          <path d="m14 6 4 4" />
+          <path d="M4 20h16" />
         </svg>
       </div>
 
       {/* Wordmark */}
-      <div className="flex items-baseline gap-2">
-        <span className="text-sm font-semibold tracking-tight text-white font-sans">
-          AgentArchitect
+      <div className="flex items-center gap-2">
+        <span className="text-base font-bold tracking-tight text-[#f4f4f5] font-sans uppercase tracking-wider">
+          SKETCH
         </span>
-        {showTag && (
-          <span className="text-[10px] font-mono text-neutral-500 font-normal">
-            v1.0
+        {isAppRoute ? (
+          <span className="text-[9px] font-mono tracking-wider uppercase text-[#a1a1aa] bg-[#18181b] border border-[#27272a] px-1.5 py-0.5 rounded">
+            Workspace
           </span>
-        )}
+        ) : showTag ? (
+          <span className="text-[10px] font-mono text-[#71717a] font-normal">
+            Beta
+          </span>
+        ) : null}
       </div>
     </Link>
   );

@@ -1,442 +1,355 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { NavBrand, NavLinks, NavActions } from "@/components/layout/navigation";
+import { HeroThinkingAnimation } from "@/components/home/HeroThinkingAnimation";
 import {
   ArrowRight,
-  Terminal,
+  Sparkles,
   Layers,
+  FileText,
   Database,
   Cpu,
   Shield,
+  Zap,
+  CheckCircle2,
+  ChevronRight,
   GitBranch,
   Network,
+  Lock,
+  ArrowUpRight,
   FileCode,
-  FileText,
-  Activity,
-  CheckCircle2,
-  AlertTriangle,
-  Play,
-  RotateCcw,
-  Boxes,
-  Server,
-  Zap,
-  Clock,
-  ChevronRight,
-  Radio,
   Sliders,
-  Code2
+  MoveRight
 } from "lucide-react";
 
 export default function LandingPage() {
-  // Hero interactive system simulation step
-  const [activeStep, setActiveStep] = useState<number>(0);
-  // Selected component in interactive canvas section
-  const [selectedCanvasNode, setSelectedCanvasNode] = useState<"api" | "db" | "worker" | "cache">("db");
-  // Impact analysis simulation state
-  const [simulatedChange, setSimulatedChange] = useState<"none" | "db" | "auth">("db");
+  const [activePath, setActivePath] = useState<"no-docs" | "has-docs">("has-docs");
 
-  // Step ticker for the Hero Living Architecture Map
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % 5);
-    }, 2400);
-    return () => clearInterval(timer);
-  }, []);
+  // Selected node in interactive system preview
+  const [selectedNode, setSelectedNode] = useState<"client" | "api" | "auth" | "backend" | "ai" | "db">("db");
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-[#0ea5e9]/30 selection:text-white">
+    <div className="flex flex-col min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-[#0ea5e9]/30 selection:text-white font-sans">
       {/* ====================================================================
-          SECTION 1: HERO SECTION & LIVING ARCHITECTURE VISUALIZATION
+          HERO SECTION
           ==================================================================== */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 max-w-6xl mx-auto px-4 sm:px-6 w-full">
-        {/* Top Status Header */}
+      <section className="relative pt-20 pb-20 md:pt-28 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        {/* Subtle Technical Label */}
         <div className="flex items-center gap-2 mb-6">
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#18181b] border border-[#27272a] text-[11px] font-mono text-[#a1a1aa]">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#18181b] border border-[#27272a] text-[11px] font-mono text-[#a1a1aa]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#0ea5e9]" />
-            SYSTEM SPECIFICATION ENGINE
+            AI SOFTWARE ARCHITECTURE WORKSPACE
           </span>
           <span className="text-[11px] font-mono text-[#71717a]">/</span>
-          <span className="text-[11px] font-mono text-[#71717a]">VERSION 1.4 COMPLIANT</span>
+          <span className="text-[11px] font-mono text-[#71717a]">DESCRIBE · RESEARCH · SKETCH</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Hero Left: Headline & Prompt Action */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Core Value Proposition */}
           <div className="lg:col-span-6 space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#f4f4f5] leading-[1.05] font-mono uppercase">
-              BUILD THE SYSTEM<br />
-              <span className="text-[#0ea5e9]">BEFORE THE CODE.</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#f4f4f5] leading-[1.08]">
+              Sketch your software <br />
+              <span className="text-[#0ea5e9]">before you build it.</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-[#a1a1aa] font-normal leading-relaxed">
-              Turn requirements into architecture, dependencies, decisions, and implementation paths. 
-              AgentArchitect helps developers transform product ideas into interactive, verified software architecture.
+            <p className="text-base sm:text-lg text-[#a1a1aa] leading-relaxed font-normal">
+              Start with an idea. Add your research if you have it.
+              Sketch researches the rest, decides the best approach,
+              and creates your software architecture.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
-              <Link href="/dashboard">
+              <Link href="/signup">
                 <Button
                   size="lg"
                   className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-mono font-medium text-xs h-11 px-5 rounded shadow-none transition-colors"
                 >
-                  Start Building
+                  Sign Up & Sketch
                   <ArrowRight className="h-3.5 w-3.5 ml-2" />
                 </Button>
               </Link>
-              <Link href="#interactive-map">
+              <Link href="#how-it-works">
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-[#27272a] bg-[#111113] text-[#f4f4f5] hover:bg-[#18181b] font-mono text-xs h-11 px-5 rounded shadow-none"
                 >
-                  Explore the System
+                  See How It Works
                 </Button>
               </Link>
             </div>
 
-            {/* Quick Architecture Indicators */}
-            <div className="pt-6 border-t border-[#27272a] grid grid-cols-3 gap-4 font-mono">
+            {/* Core Promise Indicators */}
+            <div className="pt-6 border-t border-[#27272a] grid grid-cols-3 gap-4 font-mono text-xs">
               <div>
-                <div className="text-xs text-[#71717a]">INPUT</div>
-                <div className="text-sm font-semibold text-[#f4f4f5] mt-0.5">Plain English / RFC</div>
+                <div className="text-[10px] text-[#71717a] uppercase">01 / INPUT</div>
+                <div className="text-xs font-semibold text-[#f4f4f5] mt-1">Idea or Documents</div>
               </div>
               <div>
-                <div className="text-xs text-[#71717a]">ENGINE</div>
-                <div className="text-sm font-semibold text-[#f4f4f5] mt-0.5">LangGraph State Graph</div>
+                <div className="text-[10px] text-[#71717a] uppercase">02 / INTELLIGENCE</div>
+                <div className="text-xs font-semibold text-[#0ea5e9] mt-1">Autonomous Research</div>
               </div>
               <div>
-                <div className="text-xs text-[#71717a]">VERIFICATION</div>
-                <div className="text-sm font-semibold text-[#10b981] mt-0.5">Zod Schema Pass</div>
+                <div className="text-[10px] text-[#71717a] uppercase">03 / OUTPUT</div>
+                <div className="text-xs font-semibold text-[#10b981] mt-1">Doodle Blueprint</div>
               </div>
             </div>
           </div>
 
-          {/* Hero Right: The Living Architecture Map */}
+          {/* Right Column: Interactive Step-by-Step Thinking & Doodle Sketch Canvas */}
           <div className="lg:col-span-6">
-            <div className="rounded-lg border border-[#27272a] bg-[#111113] p-5 shadow-2xl relative overflow-hidden font-mono">
-              {/* Panel Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#27272a] text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#0ea5e9] animate-ping" />
-                  <span className="text-[#f4f4f5] font-semibold">LIVING TOPOLOGY GRAPH</span>
-                </div>
-                <div className="text-[10px] text-[#71717a]">
-                  STATE: {activeStep === 0 && "INGESTING REQS"}
-                  {activeStep === 1 && "ANALYZING GRAPH"}
-                  {activeStep === 2 && "EXPANDING NODES"}
-                  {activeStep === 3 && "WIRING ADJACENCIES"}
-                  {activeStep === 4 && "TOPOLOGY STABLE"}
-                </div>
-              </div>
-
-              {/* Graphical Canvas Representation */}
-              <div className="py-6 flex flex-col items-center gap-4 text-xs">
-                {/* Node: USER */}
-                <div className={`px-4 py-2 rounded border transition-all duration-300 ${
-                  activeStep >= 0
-                    ? "bg-[#18181b] border-[#0ea5e9] text-[#f4f4f5] shadow-xs"
-                    : "bg-[#111113] border-[#27272a] text-[#71717a]"
-                }`}>
-                  <div className="text-[10px] text-[#71717a]">CLIENT INGRESS</div>
-                  <div className="font-semibold flex items-center gap-1.5">
-                    <span>◈</span> USER CLIENT
-                  </div>
-                </div>
-
-                <div className="text-[#71717a] text-[10px] leading-none">│ ▼</div>
-
-                {/* Node: FRONTEND */}
-                <div className={`px-4 py-2 rounded border transition-all duration-300 ${
-                  activeStep >= 1
-                    ? "bg-[#18181b] border-[#0ea5e9] text-[#f4f4f5]"
-                    : "bg-[#111113] border-[#27272a] text-[#71717a]"
-                }`}>
-                  <div className="text-[10px] text-[#71717a]">APPLICATION TIER</div>
-                  <div className="font-semibold flex items-center gap-1.5">
-                    <span>◈</span> FRONTEND (Next.js)
-                  </div>
-                </div>
-
-                <div className="text-[#71717a] text-[10px] leading-none">│ ▼</div>
-
-                {/* Node: API LAYER */}
-                <div className={`px-4 py-2 rounded border transition-all duration-300 ${
-                  activeStep >= 2
-                    ? "bg-[#18181b] border-[#0ea5e9] text-[#f4f4f5]"
-                    : "bg-[#111113] border-[#27272a] text-[#71717a]"
-                }`}>
-                  <div className="text-[10px] text-[#71717a]">ROUTER / GATEWAY</div>
-                  <div className="font-semibold flex items-center gap-1.5">
-                    <span>↔</span> API LAYER (Edge / REST)
-                  </div>
-                </div>
-
-                <div className="text-[#71717a] text-[10px] leading-none">/ &nbsp; \ ▼ &nbsp; ▼</div>
-
-                {/* Split Nodes: DATABASE & AI AGENT */}
-                <div className="grid grid-cols-2 gap-4 w-full">
-                  <div className={`p-3 rounded border text-center transition-all duration-300 ${
-                    activeStep >= 3
-                      ? "bg-[#18181b] border-[#0ea5e9] text-[#f4f4f5]"
-                      : "bg-[#111113] border-[#27272a] text-[#71717a]"
-                  }`}>
-                    <div className="text-[10px] text-[#71717a]">STORAGE TIER</div>
-                    <div className="font-semibold mt-0.5">◉ DATABASE</div>
-                    <div className="text-[10px] text-[#a1a1aa] mt-0.5">PostgreSQL</div>
-                  </div>
-
-                  <div className={`p-3 rounded border text-center transition-all duration-300 ${
-                    activeStep >= 3
-                      ? "bg-[#18181b] border-[#0ea5e9] text-[#f4f4f5]"
-                      : "bg-[#111113] border-[#27272a] text-[#71717a]"
-                  }`}>
-                    <div className="text-[10px] text-[#71717a]">COMPUTE TIER</div>
-                    <div className="font-semibold mt-0.5">◎ AI AGENT</div>
-                    <div className="text-[10px] text-[#a1a1aa] mt-0.5">LangGraph Exec</div>
-                  </div>
-                </div>
-
-                <div className="text-[#71717a] text-[10px] leading-none">└────┬────┘ ▼</div>
-
-                {/* Final Node: SYSTEM */}
-                <div className={`px-5 py-2.5 rounded border transition-all duration-300 w-full text-center ${
-                  activeStep === 4
-                    ? "bg-[#0ea5e9]/10 border-[#0ea5e9] text-[#0ea5e9] shadow-[0_0_15px_rgba(14,165,233,0.15)]"
-                    : "bg-[#111113] border-[#27272a] text-[#71717a]"
-                }`}>
-                  <div className="text-[10px] tracking-wider text-[#a1a1aa]">TOPOLOGY RESULT</div>
-                  <div className="font-bold text-sm text-[#f4f4f5] mt-0.5">
-                    ● ARCHITECTURE SYNTHESIZED (12 NODES, 18 EDGES)
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Simulation Status Bar */}
-              <div className="pt-3 border-t border-[#27272a] flex items-center justify-between text-[10px] text-[#71717a]">
-                <span>PULSE CYCLE: {(activeStep * 25)}%</span>
-                <span className="text-[#10b981] font-semibold">DETERMINISTIC BFS VERIFIED</span>
-              </div>
-            </div>
+            <HeroThinkingAnimation />
           </div>
         </div>
       </section>
 
       {/* ====================================================================
-          SECTION 2: HOW THE SYSTEM WORKS (5 STEP PIPELINE)
+          SECTION: CORE PRODUCT WORKFLOW (TWO PATHS)
           ==================================================================== */}
-      <section id="workflow" className="py-20 border-t border-[#27272a] bg-[#111113]">
+      <section id="how-it-works" className="py-20 border-t border-[#27272a] bg-[#111113]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mb-12">
+          <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono uppercase tracking-widest text-[#0ea5e9]">
-              Engineering Workflow
+              The Core Principle
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-2 font-mono uppercase">
-              See the system thinking.
+              You do not need to have research documents.
             </h2>
-            <p className="text-sm text-[#a1a1aa] mt-2 font-mono">
-              AI should not be a black box chatbot. AgentArchitect models requirements step by step into verifiable architecture.
+            <p className="text-sm text-[#a1a1aa] mt-2 font-normal">
+              If you only have an idea, Sketch researches the problem for you.
+              If you already have research, Sketch understands and incorporates it.
             </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 font-mono">
-            {/* Step 1 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="text-xs text-[#0ea5e9] font-bold">01 / REQS</div>
-              <h3 className="text-sm font-semibold text-[#f4f4f5]">Requirements</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Ingests RFC notes, PDFs, or plain descriptions into structured entities.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="text-xs text-[#0ea5e9] font-bold">02 / ANALYSIS</div>
-              <h3 className="text-sm font-semibold text-[#f4f4f5]">AI Analysis</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Multi-agent council evaluates throughput, security bounds, and latency budgets.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="text-xs text-[#0ea5e9] font-bold">03 / ARCH</div>
-              <h3 className="text-sm font-semibold text-[#f4f4f5]">Architecture</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Assigns microservices, databases, queues, and caches to discrete nodes.
-              </p>
-            </div>
-
-            {/* Step 4 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="text-xs text-[#0ea5e9] font-bold">04 / GRAPH</div>
-              <h3 className="text-sm font-semibold text-[#f4f4f5]">System Graph</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Renders a living interactive React Flow canvas with Dagre hierarchical layout.
-              </p>
-            </div>
-
-            {/* Step 5 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="text-xs text-[#0ea5e9] font-bold">05 / IMPACT</div>
-              <h3 className="text-sm font-semibold text-[#f4f4f5]">Impact Analysis</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Runs directed BFS to calculate downstream blast radius on component change.
-              </p>
+            {/* Path Switcher */}
+            <div className="flex items-center gap-2 mt-6">
+              <button
+                onClick={() => setActivePath("has-docs")}
+                className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
+                  activePath === "has-docs"
+                    ? "bg-[#18181b] text-[#0ea5e9] border border-[#0ea5e9]"
+                    : "bg-[#09090b] text-[#71717a] border border-[#27272a] hover:text-[#f4f4f5]"
+                }`}
+              >
+                Path 1: User Has Documents
+              </button>
+              <button
+                onClick={() => setActivePath("no-docs")}
+                className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${
+                  activePath === "no-docs"
+                    ? "bg-[#18181b] text-[#0ea5e9] border border-[#0ea5e9]"
+                    : "bg-[#09090b] text-[#71717a] border border-[#27272a] hover:text-[#f4f4f5]"
+                }`}
+              >
+                Path 2: User Has No Documents
+              </button>
             </div>
           </div>
+
+          {/* Dynamic Path Diagram */}
+          {activePath === "has-docs" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-6 gap-2 font-mono text-xs">
+              <div className="p-3.5 rounded border border-[#27272a] bg-[#18181b] space-y-1">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">01 / INPUT</div>
+                <div className="font-semibold text-[#f4f4f5]">Idea + Documents</div>
+                <p className="text-[10px] text-[#71717a]">PDF, DOCX, TXT, MD notes ingested.</p>
+              </div>
+              <div className="p-3.5 rounded border border-[#27272a] bg-[#18181b] space-y-1">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">02 / RAG AGENT</div>
+                <div className="font-semibold text-[#f4f4f5]">Project Context</div>
+                <p className="text-[10px] text-[#71717a]">Semantic extraction answers key specs.</p>
+              </div>
+              <div className="p-3.5 rounded border border-[#27272a] bg-[#18181b] space-y-1">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">03 / RESEARCH</div>
+                <div className="font-semibold text-[#f4f4f5]">Research Agent</div>
+                <p className="text-[10px] text-[#71717a]">Researches missing info & options.</p>
+              </div>
+              <div className="p-3.5 rounded border border-[#27272a] bg-[#18181b] space-y-1">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">04 / DECISION</div>
+                <div className="font-semibold text-[#f4f4f5]">Decision Agent</div>
+                <p className="text-[10px] text-[#71717a]">Decides architecture & tech stack.</p>
+              </div>
+              <div className="p-3.5 rounded border border-[#27272a] bg-[#18181b] space-y-1">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">05 / VALIDATE</div>
+                <div className="font-semibold text-[#f4f4f5]">Validation Step</div>
+                <p className="text-[10px] text-[#71717a]">Checks integrity before visual layout.</p>
+              </div>
+              <div className="p-3.5 rounded border border-[#10b981]/50 bg-[#18181b] space-y-1">
+                <div className="text-[10px] text-[#10b981] font-bold">06 / CANVAS</div>
+                <div className="font-semibold text-[#f4f4f5]">Editable Canvas</div>
+                <p className="text-[10px] text-[#10b981]">Interactive React Flow studio ready.</p>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 font-mono text-xs">
+              <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-1.5">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">01 / INPUT</div>
+                <div className="font-semibold text-[#f4f4f5]">Idea Only</div>
+                <p className="text-[10px] text-[#71717a]">Describe what you want to build in plain text.</p>
+              </div>
+              <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-1.5">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">02 / RESEARCH</div>
+                <div className="font-semibold text-[#f4f4f5]">Autonomous Research</div>
+                <p className="text-[10px] text-[#71717a]">Sketch researches best solutions from scratch.</p>
+              </div>
+              <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-1.5">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">03 / DECISION</div>
+                <div className="font-semibold text-[#f4f4f5]">Decision Agent</div>
+                <p className="text-[10px] text-[#71717a]">Selects tiers, components, and trade-offs.</p>
+              </div>
+              <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-1.5">
+                <div className="text-[10px] text-[#0ea5e9] font-bold">04 / VALIDATE</div>
+                <div className="font-semibold text-[#f4f4f5]">Validation Step</div>
+                <p className="text-[10px] text-[#71717a]">Enforces security and scalability rules.</p>
+              </div>
+              <div className="p-4 rounded border border-[#10b981]/50 bg-[#18181b] space-y-1.5">
+                <div className="text-[10px] text-[#10b981] font-bold">05 / CANVAS</div>
+                <div className="font-semibold text-[#f4f4f5]">Editable Canvas</div>
+                <p className="text-[10px] text-[#10b981]">Complete visual architecture generated.</p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
       {/* ====================================================================
-          SECTION 3: INTERACTIVE ARCHITECTURE VISUALIZATION & CANVAS PREVIEW
+          SECTION: INTERACTIVE SYSTEM MAP STUDIO PREVIEW
           ==================================================================== */}
-      <section id="system-map" className="py-20 border-t border-[#27272a]">
+      <section id="product" className="py-20 border-t border-[#27272a] bg-[#09090b]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-[#0ea5e9]">
-                Architecture Workspace
+                Interactive Architecture Editor
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1 font-mono uppercase">
-                Interactive System Map Studio
+                Explore the Sketch Workspace
               </h2>
-              <p className="text-xs sm:text-sm text-[#a1a1aa] font-mono mt-1">
-                Click nodes in the diagram below to inspect technical attributes and dependency linkages.
+              <p className="text-xs sm:text-sm text-[#a1a1aa] mt-1">
+                Click components in the visual canvas below to inspect technical details and connections.
               </p>
             </div>
             <Link href="/dashboard">
-              <Button variant="outline" size="sm" className="font-mono text-xs border-[#27272a] bg-[#111113] text-[#f4f4f5]">
-                Open Full Studio →
+              <Button size="sm" className="font-mono text-xs bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b]">
+                Open Workspace →
               </Button>
             </Link>
           </div>
 
-          {/* Interactive Workspace Studio Preview */}
-          <div className="rounded-lg border border-[#27272a] bg-[#111113] overflow-hidden font-mono shadow-2xl">
-            {/* Studio Header */}
+          {/* Interactive Workspace Studio */}
+          <div className="rounded-xl border border-[#27272a] bg-[#111113] overflow-hidden font-mono shadow-2xl">
+            {/* Top Workspace Bar */}
             <div className="flex items-center justify-between px-4 py-2.5 bg-[#18181b] border-b border-[#27272a] text-xs">
               <div className="flex items-center gap-2">
                 <span className="text-[#0ea5e9]">◈</span>
-                <span className="font-semibold text-[#f4f4f5]">PROJECT / DISTRIBUTED E-COMMERCE</span>
+                <span className="font-semibold text-[#f4f4f5]">AI Learning Platform · Architecture</span>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-[11px] text-[#10b981] flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" /> ● READY
+              <div className="flex items-center gap-3 text-[11px]">
+                <span className="text-[#10b981] flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" /> READY
                 </span>
-                <span className="text-[11px] text-[#71717a]">12 COMPONENTS • 18 EDGES</span>
+                <span className="text-[#71717a]">6 COMPONENTS · 7 EDGES</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px]">
-              {/* Left: Component Library Palette (3 cols) */}
+              {/* Left: Tools Palette (3 cols) */}
               <div className="lg:col-span-3 border-r border-[#27272a] bg-[#09090b] p-4 text-xs space-y-4">
                 <div className="text-[10px] uppercase tracking-wider text-[#71717a] font-semibold">
-                  Component Library
+                  Workspace Tools
                 </div>
-                <div className="space-y-1.5">
-                  <div className="text-[10px] text-[#a1a1aa] uppercase">Application</div>
-                  <div className="p-2 rounded bg-[#111113] border border-[#27272a] flex items-center justify-between text-[#f4f4f5]">
-                    <span>◈ Frontend</span>
-                    <span className="text-[10px] text-[#71717a]">Next.js</span>
+                <div className="space-y-1">
+                  <div className="p-1.5 rounded bg-[#18181b] border border-[#27272a] text-[#f4f4f5] flex items-center gap-2">
+                    <span className="text-[#0ea5e9]">↖</span> Select
                   </div>
-                  <div className="p-2 rounded bg-[#111113] border border-[#27272a] flex items-center justify-between text-[#f4f4f5]">
-                    <span>↔ API Gateway</span>
-                    <span className="text-[10px] text-[#71717a]">REST / Hono</span>
+                  <div className="p-1.5 rounded bg-[#111113] text-[#a1a1aa] flex items-center gap-2">
+                    <span>✋</span> Hand / Pan
                   </div>
-                </div>
-
-                <div className="space-y-1.5 pt-2 border-t border-[#27272a]">
-                  <div className="text-[10px] text-[#a1a1aa] uppercase">Data & Storage</div>
-                  <div className="p-2 rounded bg-[#111113] border border-[#27272a] flex items-center justify-between text-[#f4f4f5]">
-                    <span>◉ Database</span>
-                    <span className="text-[10px] text-[#71717a]">PostgreSQL</span>
+                  <div className="p-1.5 rounded bg-[#111113] text-[#a1a1aa] flex items-center gap-2">
+                    <span>□</span> Rectangle
                   </div>
-                  <div className="p-2 rounded bg-[#111113] border border-[#27272a] flex items-center justify-between text-[#f4f4f5]">
-                    <span>⚡ Cache</span>
-                    <span className="text-[10px] text-[#71717a]">Redis</span>
+                  <div className="p-1.5 rounded bg-[#111113] text-[#a1a1aa] flex items-center gap-2">
+                    <span>○</span> Circle
                   </div>
-                </div>
-
-                <div className="space-y-1.5 pt-2 border-t border-[#27272a]">
-                  <div className="text-[10px] text-[#a1a1aa] uppercase">AI & Compute</div>
-                  <div className="p-2 rounded bg-[#111113] border border-[#27272a] flex items-center justify-between text-[#f4f4f5]">
-                    <span>◎ AI Agent</span>
-                    <span className="text-[10px] text-[#71717a]">LangGraph</span>
+                  <div className="p-1.5 rounded bg-[#111113] text-[#a1a1aa] flex items-center gap-2">
+                    <span>T</span> Text Box
+                  </div>
+                  <div className="p-1.5 rounded bg-[#111113] text-[#a1a1aa] flex items-center gap-2">
+                    <span>→</span> Connector
                   </div>
                 </div>
               </div>
 
-              {/* Center: Interactive Canvas (6 cols) */}
+              {/* Center: Interactive Canvas Nodes (6 cols) */}
               <div className="lg:col-span-6 p-6 flex flex-col justify-center items-center relative bg-[radial-gradient(#27272a_1px,transparent_1px)] bg-[size:16px_16px]">
-                <div className="grid grid-cols-2 gap-6 w-full max-w-md">
-                  {/* Node 1: API Router */}
+                <div className="grid grid-cols-2 gap-5 w-full max-w-md">
+                  {/* Node 1: Web Application */}
                   <div
-                    onClick={() => setSelectedCanvasNode("api")}
+                    onClick={() => setSelectedNode("client")}
                     className={`p-3 rounded border cursor-pointer transition-all ${
-                      selectedCanvasNode === "api"
+                      selectedNode === "client"
                         ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
                         : "bg-[#111113] border-[#27272a] hover:border-[#3f3f46]"
                     }`}
                   >
                     <div className="text-[10px] text-[#0ea5e9] uppercase flex items-center justify-between">
-                      <span>↔ API ROUTER</span>
+                      <span>◈ FRONTEND</span>
                       <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
                     </div>
-                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">Ingress Gateway</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">Rate Limit: 10k req/s</div>
+                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">Web Application</div>
+                    <div className="text-[10px] text-[#71717a] mt-0.5">Next.js / TypeScript</div>
                   </div>
 
-                  {/* Node 2: Cache */}
+                  {/* Node 2: API Gateway */}
                   <div
-                    onClick={() => setSelectedCanvasNode("cache")}
+                    onClick={() => setSelectedNode("api")}
                     className={`p-3 rounded border cursor-pointer transition-all ${
-                      selectedCanvasNode === "cache"
+                      selectedNode === "api"
                         ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
                         : "bg-[#111113] border-[#27272a] hover:border-[#3f3f46]"
                     }`}
                   >
                     <div className="text-[10px] text-[#a1a1aa] uppercase flex items-center justify-between">
-                      <span>⚡ CACHE</span>
+                      <span>↔ API</span>
                       <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
                     </div>
-                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">Redis Cluster</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">TTL: 3600s</div>
+                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">API Router</div>
+                    <div className="text-[10px] text-[#71717a] mt-0.5">Route Handlers</div>
                   </div>
 
-                  {/* Node 3: Database */}
+                  {/* Node 3: AI Agent System */}
                   <div
-                    onClick={() => setSelectedCanvasNode("db")}
+                    onClick={() => setSelectedNode("ai")}
                     className={`p-3 rounded border cursor-pointer transition-all ${
-                      selectedCanvasNode === "db"
+                      selectedNode === "ai"
                         ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
                         : "bg-[#111113] border-[#27272a] hover:border-[#3f3f46]"
                     }`}
                   >
                     <div className="text-[10px] text-[#0ea5e9] uppercase flex items-center justify-between">
+                      <span>◎ AI AGENT</span>
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
+                    </div>
+                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">AI Tutor Engine</div>
+                    <div className="text-[10px] text-[#71717a] mt-0.5">LangGraph.js + Gemini</div>
+                  </div>
+
+                  {/* Node 4: Database */}
+                  <div
+                    onClick={() => setSelectedNode("db")}
+                    className={`p-3 rounded border cursor-pointer transition-all ${
+                      selectedNode === "db"
+                        ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
+                        : "bg-[#111113] border-[#27272a] hover:border-[#3f3f46]"
+                    }`}
+                  >
+                    <div className="text-[10px] text-[#10b981] uppercase flex items-center justify-between">
                       <span>◉ DATABASE</span>
                       <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
                     </div>
-                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">PostgreSQL Core</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">Supabase pgvector</div>
-                  </div>
-
-                  {/* Node 4: Worker */}
-                  <div
-                    onClick={() => setSelectedCanvasNode("worker")}
-                    className={`p-3 rounded border cursor-pointer transition-all ${
-                      selectedCanvasNode === "worker"
-                        ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
-                        : "bg-[#111113] border-[#27272a] hover:border-[#3f3f46]"
-                    }`}
-                  >
-                    <div className="text-[10px] text-[#a1a1aa] uppercase flex items-center justify-between">
-                      <span>◎ ASYNC WORKER</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
-                    </div>
-                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">Order Reconciler</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">Queue: Kafka / BullMQ</div>
+                    <div className="text-xs font-semibold text-[#f4f4f5] mt-1">Primary Database</div>
+                    <div className="text-[10px] text-[#71717a] mt-0.5">Supabase PostgreSQL</div>
                   </div>
                 </div>
               </div>
@@ -444,375 +357,191 @@ export default function LandingPage() {
               {/* Right: Component Inspector Panel (3 cols) */}
               <div className="lg:col-span-3 border-l border-[#27272a] bg-[#09090b] p-4 text-xs space-y-4">
                 <div className="text-[10px] uppercase tracking-wider text-[#71717a] font-semibold">
-                  Component Inspector
+                  Inspector
                 </div>
 
-                {selectedCanvasNode === "db" && (
+                {selectedNode === "db" && (
                   <div className="space-y-3">
                     <div>
-                      <div className="text-[10px] text-[#71717a]">COMPONENT</div>
-                      <div className="text-sm font-semibold text-[#f4f4f5]">PostgreSQL Core</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">TYPE</div>
-                      <div className="text-xs text-[#0ea5e9]">Relational Database</div>
+                      <div className="text-[10px] text-[#71717a]">NAME</div>
+                      <div className="text-sm font-semibold text-[#f4f4f5]">Primary Database</div>
                     </div>
                     <div>
                       <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
-                      <div className="text-xs text-[#f4f4f5]">Supabase PostgreSQL 16 + pgvector</div>
+                      <div className="text-xs text-[#0ea5e9]">Supabase PostgreSQL 16 + pgvector</div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">RESPONSIBILITIES</div>
+                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
                       <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
-                        Stores primary transactional entities, user profiles, and 768-dim embeddings.
+                        ACID relational database with Row-Level Security policies and vector embeddings for semantic search.
                       </div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">DEPENDENCIES</div>
-                      <div className="text-[11px] text-[#a1a1aa]">← Ingress Gateway, Order Reconciler</div>
+                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
+                      <div className="text-[11px] text-[#a1a1aa]">← API Router, AI Tutor Engine</div>
                     </div>
                   </div>
                 )}
 
-                {selectedCanvasNode === "api" && (
+                {selectedNode === "client" && (
                   <div className="space-y-3">
                     <div>
-                      <div className="text-[10px] text-[#71717a]">COMPONENT</div>
-                      <div className="text-sm font-semibold text-[#f4f4f5]">Ingress Gateway</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">TYPE</div>
-                      <div className="text-xs text-[#0ea5e9]">API Router</div>
+                      <div className="text-[10px] text-[#71717a]">NAME</div>
+                      <div className="text-sm font-semibold text-[#f4f4f5]">Web Application</div>
                     </div>
                     <div>
                       <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
-                      <div className="text-xs text-[#f4f4f5]">Edge HTTP / WebSocket proxy</div>
+                      <div className="text-xs text-[#0ea5e9]">Next.js / TypeScript & React</div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">DEPENDENCIES</div>
-                      <div className="text-[11px] text-[#a1a1aa]">→ PostgreSQL Core, Redis Cluster</div>
+                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
+                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
+                        User interface with server components, client state, and streaming real-time chat.
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
+                      <div className="text-[11px] text-[#a1a1aa]">→ API Router</div>
                     </div>
                   </div>
                 )}
 
-                {selectedCanvasNode === "cache" && (
+                {selectedNode === "api" && (
                   <div className="space-y-3">
                     <div>
-                      <div className="text-[10px] text-[#71717a]">COMPONENT</div>
-                      <div className="text-sm font-semibold text-[#f4f4f5]">Redis Cluster</div>
+                      <div className="text-[10px] text-[#71717a]">NAME</div>
+                      <div className="text-sm font-semibold text-[#f4f4f5]">API Router</div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">TYPE</div>
-                      <div className="text-xs text-[#0ea5e9]">In-Memory Cache</div>
+                      <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
+                      <div className="text-xs text-[#0ea5e9]">Next.js Route Handlers</div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">ROLE</div>
-                      <div className="text-[11px] text-[#a1a1aa]">Session locks & sub-millisecond query caches</div>
+                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
+                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
+                        Dispatches requests, validates session tokens, and executes business operations.
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
+                      <div className="text-[11px] text-[#a1a1aa]">→ Primary Database, AI Tutor Engine</div>
                     </div>
                   </div>
                 )}
 
-                {selectedCanvasNode === "worker" && (
+                {selectedNode === "ai" && (
                   <div className="space-y-3">
                     <div>
-                      <div className="text-[10px] text-[#71717a]">COMPONENT</div>
-                      <div className="text-sm font-semibold text-[#f4f4f5]">Order Reconciler</div>
+                      <div className="text-[10px] text-[#71717a]">NAME</div>
+                      <div className="text-sm font-semibold text-[#f4f4f5]">AI Tutor Engine</div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">TYPE</div>
-                      <div className="text-xs text-[#0ea5e9]">Background Worker</div>
+                      <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
+                      <div className="text-xs text-[#0ea5e9]">LangGraph.js + Gemini 1.5</div>
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#71717a]">ROLE</div>
-                      <div className="text-[11px] text-[#a1a1aa]">Asynchronous ledger verification and webhooks</div>
+                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
+                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
+                        Multi-agent system providing personalized student coding help and retrieval.
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
+                      <div className="text-[11px] text-[#a1a1aa]">→ Primary Database (vector similarity)</div>
                     </div>
                   </div>
                 )}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ====================================================================
-          SECTION 4: AI AGENT WORKFLOW VISUALIZATION
-          ==================================================================== */}
-      <section id="agent-workflow" className="py-20 border-t border-[#27272a] bg-[#111113]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0ea5e9]">
-              Agent Orchestration
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1 font-mono uppercase">
-              10-Node LangGraph State Graph
-            </h2>
-            <p className="text-xs sm:text-sm text-[#a1a1aa] font-mono mt-1">
-              Autonomous engineering agents execute sequentially with formal Zod schema validation at every step.
-            </p>
-          </div>
-
-          {/* Execution Pipeline Board */}
-          <div className="rounded-lg border border-[#27272a] bg-[#09090b] p-6 font-mono space-y-6">
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
-              <div className="p-3 rounded bg-[#111113] border border-[#27272a]">
-                <div className="text-[10px] text-[#10b981] font-semibold">✓ COMPLETED</div>
-                <div className="font-semibold text-[#f4f4f5] mt-1">1. Input Validation</div>
-                <div className="text-[10px] text-[#71717a]">Spec sanitized</div>
+            {/* Bottom AI Command Bar Preview */}
+            <div className="p-3 bg-[#18181b] border-t border-[#27272a] flex items-center justify-between text-xs text-[#a1a1aa]">
+              <div className="flex items-center gap-2">
+                <span className="text-[#0ea5e9]">✦</span>
+                <span className="text-[#71717a]">Try command:</span>
+                <span className="text-[#f4f4f5] bg-[#111113] px-2 py-0.5 rounded border border-[#27272a]">
+                  &ldquo;Add Redis caching&rdquo;
+                </span>
               </div>
-
-              <div className="p-3 rounded bg-[#111113] border border-[#27272a]">
-                <div className="text-[10px] text-[#10b981] font-semibold">✓ COMPLETED</div>
-                <div className="font-semibold text-[#f4f4f5] mt-1">2. Requirement Analyzer</div>
-                <div className="text-[10px] text-[#71717a]">Decomposed 14 reqs</div>
-              </div>
-
-              <div className="p-3 rounded bg-[#18181b] border border-[#0ea5e9]">
-                <div className="text-[10px] text-[#0ea5e9] font-semibold animate-pulse">◉ RUNNING</div>
-                <div className="font-semibold text-[#f4f4f5] mt-1">3. RAG Retriever</div>
-                <div className="text-[10px] text-[#0ea5e9]">768-dim pgvector</div>
-              </div>
-
-              <div className="p-3 rounded bg-[#111113] border border-[#27272a] opacity-60">
-                <div className="text-[10px] text-[#71717a]">○ QUEUED</div>
-                <div className="font-semibold text-[#f4f4f5] mt-1">4. Architect Designer</div>
-                <div className="text-[10px] text-[#71717a]">Component wiring</div>
-              </div>
-
-              <div className="p-3 rounded bg-[#111113] border border-[#27272a] opacity-60">
-                <div className="text-[10px] text-[#71717a]">○ QUEUED</div>
-                <div className="font-semibold text-[#f4f4f5] mt-1">5. Zod Validator</div>
-                <div className="text-[10px] text-[#71717a]">Schema check</div>
-              </div>
-            </div>
-
-            {/* Execution Telemetry Log Stream */}
-            <div className="p-4 rounded bg-[#111113] border border-[#27272a] text-xs font-mono text-[#a1a1aa] space-y-1.5">
-              <div className="flex items-center gap-3 text-[#71717a]">
-                <span>14:32:08</span>
-                <span className="text-[#f4f4f5]">[RequirementAnalyzer]</span>
-                <span>Identified high write-throughput requirement (&gt;8k orders/min).</span>
-              </div>
-              <div className="flex items-center gap-3 text-[#71717a]">
-                <span>14:32:10</span>
-                <span className="text-[#0ea5e9]">[RAGRetriever]</span>
-                <span>Searching project RFC documents via cosine similarity...</span>
-              </div>
-              <div className="flex items-center gap-3 text-[#10b981]">
-                <span>14:32:12</span>
-                <span className="text-[#10b981]">[RAGRetriever]</span>
-                <span>Retrieved 8 relevant chunks (confidence 0.914). Passing state to ArchitectureDesigner.</span>
-              </div>
+              <Link href="/dashboard" className="text-[#0ea5e9] hover:underline font-mono text-xs">
+                Try in Workspace →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* ====================================================================
-          SECTION 5: IMPACT ANALYSIS PREVIEW (Directed BFS Blast Radius)
-          ==================================================================== */}
-      <section id="impact-preview" className="py-20 border-t border-[#27272a]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#f59e0b]">
-              Predictive Safety
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1 font-mono uppercase">
-              Impact Radar: Directed Blast Radius
-            </h2>
-            <p className="text-xs sm:text-sm text-[#a1a1aa] font-mono mt-1">
-              Select a simulated component modification to observe downstream domino failure propagation.
-            </p>
-          </div>
-
-          <div className="rounded-lg border border-[#27272a] bg-[#111113] p-6 font-mono">
-            {/* Action Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-[#27272a]">
-              <div className="flex items-center gap-3">
-                <span className="text-xs text-[#71717a]">TRIGGER CHANGE:</span>
-                <button
-                  onClick={() => setSimulatedChange("db")}
-                  className={`px-3 py-1.5 rounded text-xs transition-colors ${
-                    simulatedChange === "db"
-                      ? "bg-[#ef4444]/20 border border-[#ef4444] text-[#f4f4f5]"
-                      : "bg-[#18181b] border border-[#27272a] text-[#a1a1aa]"
-                  }`}
-                >
-                  Swap Database: Postgres → MongoDB
-                </button>
-                <button
-                  onClick={() => setSimulatedChange("auth")}
-                  className={`px-3 py-1.5 rounded text-xs transition-colors ${
-                    simulatedChange === "auth"
-                      ? "bg-[#f59e0b]/20 border border-[#f59e0b] text-[#f4f4f5]"
-                      : "bg-[#18181b] border border-[#27272a] text-[#a1a1aa]"
-                  }`}
-                >
-                  Modify Auth: JWT → Session Cookie
-                </button>
-              </div>
-
-              <div className="text-xs">
-                <span className="text-[#71717a]">OVERALL RISK: </span>
-                <span className="text-[#ef4444] font-bold">HIGH (4 COMPONENTS)</span>
-              </div>
-            </div>
-
-            {/* Visual BFS Blast Tree */}
-            <div className="py-8 grid grid-cols-1 sm:grid-cols-4 gap-4">
-              {/* Component 1: Changed Source */}
-              <div className="p-4 rounded border border-[#ef4444] bg-[#ef4444]/10">
-                <div className="text-[10px] text-[#ef4444] font-bold">● CHANGED (SOURCE)</div>
-                <div className="text-sm font-semibold text-[#f4f4f5] mt-1">
-                  {simulatedChange === "db" ? "Primary Database" : "Auth Module"}
-                </div>
-                <div className="text-[10px] text-[#a1a1aa] mt-1">
-                  Origin of structural modification
-                </div>
-              </div>
-
-              {/* Component 2: Direct Impact d=1 */}
-              <div className="p-4 rounded border border-[#f59e0b] bg-[#f59e0b]/10">
-                <div className="text-[10px] text-[#f59e0b] font-bold">▲ DIRECT IMPACT (d=1)</div>
-                <div className="text-sm font-semibold text-[#f4f4f5] mt-1">Backend API Layer</div>
-                <div className="text-[10px] text-[#a1a1aa] mt-1">
-                  ORM & client drivers invalidated
-                </div>
-              </div>
-
-              {/* Component 3: Indirect Impact d=2 */}
-              <div className="p-4 rounded border border-[#27272a] bg-[#18181b]">
-                <div className="text-[10px] text-[#a1a1aa] font-medium">○ INDIRECT (d=2)</div>
-                <div className="text-sm font-semibold text-[#f4f4f5] mt-1">Analytics Consumer</div>
-                <div className="text-[10px] text-[#71717a] mt-1">
-                  Change-data-capture stream broken
-                </div>
-              </div>
-
-              {/* Component 4: Indirect Impact d=2 */}
-              <div className="p-4 rounded border border-[#27272a] bg-[#18181b]">
-                <div className="text-[10px] text-[#a1a1aa] font-medium">○ INDIRECT (d=2)</div>
-                <div className="text-sm font-semibold text-[#f4f4f5] mt-1">Frontend Client UI</div>
-                <div className="text-[10px] text-[#71717a] mt-1">
-                  Response model schema mismatch
-                </div>
-              </div>
-            </div>
-
-            {/* AI Recommendation Box */}
-            <div className="p-3.5 rounded bg-[#18181b] border border-[#27272a] text-xs text-[#a1a1aa] flex items-start gap-2.5">
-              <Zap className="h-4 w-4 text-[#0ea5e9] shrink-0 mt-0.5" />
-              <div>
-                <span className="text-[#f4f4f5] font-semibold">AI Mitigation Strategy: </span>
-                Implement a repository abstraction adapter with dual schema reads for 14 days before dropping PostgreSQL relational foreign keys.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ====================================================================
-          SECTION 6: FEATURE GRID (8 Structured Panels)
+          SECTION: 7-STEP PRODUCT STORY (FEATURES)
           ==================================================================== */}
       <section id="features" className="py-20 border-t border-[#27272a] bg-[#111113]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="max-w-2xl mb-12">
             <span className="text-xs font-mono uppercase tracking-widest text-[#0ea5e9]">
-              Technical Toolbox
+              The 7-Step Journey
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1 font-mono uppercase">
-              Architectural Capabilities
+              How Sketch Works
             </h2>
-            <p className="text-xs sm:text-sm text-[#a1a1aa] font-mono mt-1">
-              Engineered for principal architects, tech leads, and autonomous engineering teams.
+            <p className="text-xs sm:text-sm text-[#a1a1aa] mt-1">
+              Simple enough for a beginner to understand. Powerful enough for senior architects.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
-            {/* Feature 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
             <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <Cpu className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">Architecture Generation</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                LangGraph agents transform product descriptions into interconnected microservices and databases.
+              <div className="text-[10px] text-[#0ea5e9] font-bold">STEP 1</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">Tell Sketch what you want to build.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                Describe your software idea in simple words. No formal architecture degree required.
               </p>
             </div>
 
-            {/* Feature 2 */}
             <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <Layers className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">Interactive System Maps</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                React Flow canvas featuring Dagre auto-layout, custom component nodes, and drag-and-drop toolboxes.
+              <div className="text-[10px] text-[#0ea5e9] font-bold">STEP 2</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">Upload research if you have it.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                Add PDFs, technical RFCs, or notes. If you don&apos;t have any, Sketch handles it.
               </p>
             </div>
 
-            {/* Feature 3 */}
             <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <FileText className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">Document Intelligence</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                Automatic chunking and parsing for PDF, DOCX, TXT, and Markdown technical requirement files.
+              <div className="text-[10px] text-[#0ea5e9] font-bold">STEP 3</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">Sketch understands your information.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                RAG agent extracts requirements, existing decisions, and constraints from your documents.
               </p>
             </div>
 
-            {/* Feature 4 */}
             <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <Database className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">RAG-Powered Context</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                768-dimensional Gemini embeddings in Supabase pgvector strictly isolated by project tenancy.
+              <div className="text-[10px] text-[#0ea5e9] font-bold">STEP 4</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">Sketch researches anything missing.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                Research agent evaluates current technologies, frameworks, and architecture patterns.
               </p>
             </div>
 
-            {/* Feature 5 */}
             <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <Code2 className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">AI Agent Workflows</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                Real-time Server-Sent Events stream live multi-agent reasoning iterations directly to your screen.
+              <div className="text-[10px] text-[#0ea5e9] font-bold">STEP 5</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">Sketch decides how your system should work.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                Decision agent specifies layers, components, connections, and trade-offs.
               </p>
             </div>
 
-            {/* Feature 6 */}
             <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <Network className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">Dependency Analysis</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                Formal directed graph traversal identifies bidirectional communication links and bottlenecks.
+              <div className="text-[10px] text-[#0ea5e9] font-bold">STEP 6</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">Sketch creates your visual architecture.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                Canvas agent renders an organized React Flow diagram with automated Dagre layout.
               </p>
             </div>
 
-            {/* Feature 7 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <Shield className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">Impact Detection</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                Directed BFS calculates direct ($d=1$) and cascading ($d \ge 2$) failure blast radiuses on node updates.
-              </p>
-            </div>
-
-            {/* Feature 8 */}
-            <div className="p-4 rounded border border-[#27272a] bg-[#18181b] space-y-2">
-              <div className="h-7 w-7 rounded bg-[#111113] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
-                <GitBranch className="h-4 w-4" />
-              </div>
-              <h3 className="text-xs font-bold text-[#f4f4f5] uppercase">Architecture Versioning</h3>
-              <p className="text-[11px] text-[#71717a] leading-relaxed">
-                Git-like snapshot versions, immutable decision logs, and one-click rollback to previous baselines.
+            <div className="p-4 rounded border border-[#10b981]/50 bg-[#18181b] space-y-2 md:col-span-2">
+              <div className="text-[10px] text-[#10b981] font-bold">STEP 7 · FULL CONTROL</div>
+              <h3 className="text-sm font-semibold text-[#f4f4f5]">You can edit everything.</h3>
+              <p className="text-[#71717a] leading-relaxed">
+                Move nodes, change colors, rename services, add shapes, or ask AI to alter your system with natural language commands.
               </p>
             </div>
           </div>
@@ -820,84 +549,36 @@ export default function LandingPage() {
       </section>
 
       {/* ====================================================================
-          SECTION 6.5: ARCHITECTURE DOCUMENTATION & RFC REGISTRY
+          SECTION: CALL TO ACTION
           ==================================================================== */}
-      <section id="documentation" className="py-20 border-t border-[#27272a] bg-[#09090b]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mb-12">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0ea5e9]">
-              Documentation & Knowledge Base
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1 font-mono uppercase">
-              Architecture RFCs & Specifications
-            </h2>
-            <p className="text-xs sm:text-sm text-[#a1a1aa] font-mono mt-1">
-              Ingest, query, and verify technical requirements against deterministic system models with pgvector RAG.
-            </p>
+      <section className="py-24 border-t border-[#27272a] bg-[#09090b]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18181b] border border-[#27272a] text-xs font-mono text-[#0ea5e9]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#10b981] animate-pulse" />
+            <span>DESCRIBE IT · RESEARCH IT · SKETCH IT</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
-            <div className="p-5 rounded-lg border border-[#27272a] bg-[#111113] space-y-3">
-              <div className="text-[10px] text-[#0ea5e9] uppercase font-bold">RFC SPECIFICATION</div>
-              <h3 className="text-sm font-semibold text-white">Automated Architecture RFCs</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Generate production-ready markdown architectural RFCs complete with sequence flows, security boundaries, and scalability metrics.
-              </p>
-            </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#f4f4f5] uppercase font-mono">
+            You bring the idea.<br />
+            Sketch figures out the rest.
+          </h2>
 
-            <div className="p-5 rounded-lg border border-[#27272a] bg-[#111113] space-y-3">
-              <div className="text-[10px] text-[#10b981] uppercase font-bold">RAG CORPUS</div>
-              <h3 className="text-sm font-semibold text-white">Semantic Knowledge Grounding</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Connect your team&apos;s existing PRDs, OpenAPI specs, and compliance policies for real-time validation during AI generation.
-              </p>
-            </div>
+          <p className="text-sm sm:text-base text-[#a1a1aa] max-w-xl mx-auto leading-relaxed">
+            Turn your software idea into an intelligent, editable architecture canvas in seconds.
+          </p>
 
-            <div className="p-5 rounded-lg border border-[#27272a] bg-[#111113] space-y-3">
-              <div className="text-[10px] text-[#f59e0b] uppercase font-bold">ADR AUDITING</div>
-              <h3 className="text-sm font-semibold text-white">Architecture Decision Records</h3>
-              <p className="text-xs text-[#71717a] leading-relaxed">
-                Maintain immutable timestamped logs of every design tradeoff, alternative evaluated, and reasoning behind architectural choices.
-              </p>
-            </div>
+          <div className="pt-4 flex justify-center">
+            <Link href="/signup">
+              <Button
+                size="lg"
+                className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-mono font-medium text-xs h-11 px-6 rounded shadow-none"
+              >
+                Sign Up & Start Sketching →
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* ====================================================================
-          SECTION 7: CALL TO ACTION
-          ==================================================================== */}
-      <footer className="py-20 border-t border-[#27272a] bg-[#09090b]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18181b] border border-[#27272a] text-xs font-mono text-[#0ea5e9]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#10b981] animate-pulse" />
-              <span>SYSTEM OPERATIONAL</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#f4f4f5] uppercase font-mono">
-              BUILD WITH ARCHITECTURAL CERTAINTY.
-            </h2>
-
-            <p className="text-sm text-[#a1a1aa] max-w-lg mx-auto leading-relaxed">
-              Eliminate architectural blindspots. Model systems, dependencies, and blast radiuses before writing code.
-            </p>
-
-            <div className="pt-2 flex items-center justify-center gap-3">
-              <NavActions />
-            </div>
-          </div>
-
-          {/* Minimalist Tech Company Footer Navigation using modular navbar components */}
-          <div className="pt-8 border-t border-neutral-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
-            <NavBrand showTag />
-            <NavLinks className="gap-6 lg:gap-8 text-xs" />
-            <div className="text-[11px] text-neutral-500 font-mono">
-              © {new Date().getFullYear()} AgentArchitect. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

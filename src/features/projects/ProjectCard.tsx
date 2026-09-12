@@ -40,7 +40,7 @@ export function ProjectCard({ project, onDelete }: ProjectCardProps) {
         </div>
 
         {/* Project Name */}
-        <Link href={`/projects/${project.id}`}>
+        <Link href={`/workspace/${project.id}`}>
           <h3 className="text-sm font-bold text-[#f4f4f5] group-hover:text-[#0ea5e9] transition-colors mt-3 uppercase tracking-tight line-clamp-1">
             {project.name}
           </h3>
@@ -79,7 +79,7 @@ export function ProjectCard({ project, onDelete }: ProjectCardProps) {
           UPDATED <span className="text-[#a1a1aa]">{formatDate(project.updated_at)}</span>
         </div>
         <Link
-          href={`/projects/${project.id}`}
+          href={`/workspace/${project.id}`}
           className="text-[#0ea5e9] hover:text-[#38bdf8] flex items-center gap-1 font-semibold transition-colors"
         >
           OPEN <span>→</span>

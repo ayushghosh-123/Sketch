@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { ProjectService } from "@/services/projectService";
+import { DocumentService } from "@/services/documentService";
 import { runArchitectureWorkflow } from "@/lib/langgraph/workflow";
 
 export async function POST(
@@ -17,6 +18,15 @@ export async function POST(
   }
 
   const { project, requirements } = projectData;
+
+  // Check if documents exist
+  let hasDocs = false;
+  try {
+    const docs = await DocumentService.getDocuments(projectId);
+    hasDocs = docs.length > 0;
+  } catch {
+    hasDocs = false;
+  }
 
   // Setup Server-Sent Events stream
   const encoder = new TextEncoder();
@@ -36,7 +46,8 @@ export async function POST(
     try {
       await sendEvent({
         type: "init",
-        message: "Initiating LangGraph.js Agent Architecture workflow...",
+        hasDocuments: hasDocs,
+        message: "Sketch is designing your system...",
         timestamp: new Date().toISOString(),
       });
 
@@ -44,6 +55,7 @@ export async function POST(
         {
           projectId: project.id,
           userId: project.user_id,
+          hasDocuments: hasDocs,
           userInput: {
             name: project.name,
             description: project.description || "",
@@ -54,6 +66,7 @@ export async function POST(
         async (update) => {
           await sendEvent({
             type: "node_status",
+            hasDocuments: hasDocs,
             ...update,
           });
         }
@@ -61,7 +74,8 @@ export async function POST(
 
       await sendEvent({
         type: "complete",
-        message: "Architecture generation completed successfully!",
+        hasDocuments: hasDocs,
+        message: "Sketch created your visual system!",
         data: result.finalArchitecture,
         timestamp: new Date().toISOString(),
       });

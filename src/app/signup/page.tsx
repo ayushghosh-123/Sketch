@@ -15,8 +15,8 @@ import {
 // Minimal Geometric Architecture Glyph & Wordmark
 function BrandMark() {
   return (
-    <Link href="/" className="inline-flex flex-col items-center gap-3 group select-none">
-      <div className="h-9 w-9 rounded-lg bg-[#0D0D0D] flex items-center justify-center text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
+    <Link href="/" className="inline-flex flex-col items-center gap-2.5 group select-none">
+      <div className="h-9 w-9 rounded-lg bg-[#18181b] border border-[#27272a] flex items-center justify-center text-[#0ea5e9] shadow-sm transition-transform duration-200 group-hover:scale-105">
         <svg
           width="18"
           height="18"
@@ -26,20 +26,14 @@ function BrandMark() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-white"
         >
-          <rect x="3" y="3" width="7" height="7" rx="1" />
-          <rect x="14" y="3" width="7" height="7" rx="1" />
-          <rect x="14" y="14" width="7" height="7" rx="1" />
-          <rect x="3" y="14" width="7" height="7" rx="1" />
-          <path d="M10 6.5h4" />
-          <path d="M6.5 10v4" />
-          <path d="M17.5 10v4" />
-          <path d="M10 17.5h4" />
+          <path d="m18 2 4 4-10 10H8v-4L18 2z" />
+          <path d="m14 6 4 4" />
+          <path d="M4 20h16" />
         </svg>
       </div>
-      <span className="text-[11px] font-bold tracking-[0.22em] text-[#0D0D0D] uppercase font-mono">
-        AGENTARCHITECT
+      <span className="text-[12px] font-bold tracking-[0.22em] text-[#f4f4f5] uppercase font-mono">
+        SKETCH
       </span>
     </Link>
   );
@@ -289,6 +283,9 @@ function SignUpForm() {
         <div className="mb-6">
           <BrandMark />
         </div>
+
+        {/* Clerk Bot Protection / CAPTCHA Mount Point */}
+        <div id="clerk-captcha" className="w-full my-1 flex justify-center" />
 
         {verifying ? (
           /* OTP VERIFICATION VIEW */

@@ -12,8 +12,7 @@ import {
   Search,
   Filter,
   FolderKanban,
-  Radio,
-  Network
+
 } from "lucide-react";
 
 export default function ProjectsPage() {
@@ -178,7 +177,8 @@ export default function ProjectsPage() {
       <CreateProjectModal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
-        onProjectCreated={() => {
+        onProjectCreated={(newProject) => {
+          setIsCreateOpen(false);
           fetchProjects();
         }}
       />
