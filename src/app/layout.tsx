@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Anton } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -31,12 +31,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html
         lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+        className={`${manrope.variable} ${anton.variable} dark h-full antialiased`}
       >
-        <body className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-sky-500/30 selection:text-sky-200">
+        <body className="min-h-screen bg-black text-neutral-100 flex flex-col selection:bg-orange-500/30 selection:text-orange-200 font-sans">
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
-          <Footer/>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

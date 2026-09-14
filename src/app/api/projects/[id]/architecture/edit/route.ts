@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ArchitectureService } from "@/services/architectureService";
 import { ProjectService } from "@/services/projectService";
 import { runAIEditorAgent } from "@/agents/editing/aiEditorAgent";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 import type { ArchitectureGraphData, ComponentType } from "@/types/database";
 
 export async function POST(
@@ -20,6 +21,12 @@ export async function POST(
         { status: 400 }
       );
     }
+
+    AgentLogger.banner("API /architecture/edit TRIGGERED", {
+      projectId,
+      command,
+      applyMode: apply ? "APPLY_CHANGES" : "PREVIEW_ONLY",
+    });
 
     const projectData = await ProjectService.getProjectById(projectId);
     if (!projectData) {

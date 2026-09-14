@@ -1,4 +1,5 @@
 import type { UserPreferences } from "../types";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 
 export interface InputOrchestratorInput {
   projectId: string;
@@ -51,7 +52,7 @@ export async function runInputOrchestrator(
 
   const initialContext = `Project: ${projectName}\nUser Idea: ${sanitizedIdea}\nUploaded Documents: ${fileCount} files\nRoute: ${workflowRoute}`;
 
-  return {
+  const output: InputOrchestratorOutput = {
     projectId: input.projectId,
     userId: input.userId,
     sanitizedIdea,
@@ -62,4 +63,15 @@ export async function runInputOrchestrator(
     workflowRoute,
     initialContext,
   };
+
+  AgentLogger.agentAction("Input Orchestrator", "INPUT PARSED & ROUTED", {
+    projectName,
+    sanitizedIdeaLength: sanitizedIdea.length,
+    hasDocuments,
+    fileCount,
+    chosenRoute: workflowRoute,
+    preferences: input.userPreferences || "None specified",
+  });
+
+  return output;
 }

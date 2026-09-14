@@ -8,6 +8,7 @@ import { runValidationStep } from "@/agents/validation/validationStep";
 import { runCanvasAgent } from "@/agents/canvas/canvasAgent";
 import { ArchitectureService } from "@/services/architectureService";
 import { DocumentService } from "@/services/documentService";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 import type { GeneratedComponent, GeneratedDependency, ArchitectureOutput } from "@/types/architecture";
 
 export type StatusListener = (update: {
@@ -63,6 +64,20 @@ export function buildArchitectureWorkflow(listener?: StatusListener) {
     nodeFn: (state: ProjectStateType) => Promise<Partial<ProjectStateType>>
   ) => {
     return async (state: ProjectStateType) => {
+      const startTime = Date.now();
+      
+      // Log node start to console with active state inputs
+      AgentLogger.nodeStart(nodeName, {
+        projectId: state.projectId,
+        projectName: state.userInput?.name,
+        hasDocuments: state.hasDocuments,
+        analysisStatus: state.analysisStatus,
+        ragContextAvailable: Boolean(state.ragContext),
+        researchAvailable: Boolean(state.researchFindings),
+        architectureSpecAvailable: Boolean(state.architectureSpec),
+        validationRetryCount: state.validationRetryCount || 0,
+      });
+
       if (listener) {
         listener({
           nodeName,
@@ -75,6 +90,10 @@ export function buildArchitectureWorkflow(listener?: StatusListener) {
 
       try {
         const result = await nodeFn(state);
+        const duration = Date.now() - startTime;
+
+        // Log node completion and output state
+        AgentLogger.nodeEnd(nodeName, duration, result);
 
         if (listener) {
           listener({
@@ -89,6 +108,8 @@ export function buildArchitectureWorkflow(listener?: StatusListener) {
         return result;
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : "Node execution failed";
+        AgentLogger.agentAction(nodeName, "FAILED", { error: msg });
+
         if (listener) {
           listener({
             nodeName,
@@ -105,7 +126,6 @@ export function buildArchitectureWorkflow(listener?: StatusListener) {
 
   // 1. INPUT ORCHESTRATOR
   const inputOrchestratorNode = async (state: ProjectStateType): Promise<Partial<ProjectStateType>> => {
-    // Check if documents exist in project
     let hasDocs = state.hasDocuments;
     if (!hasDocs && state.projectId) {
       try {
@@ -285,7 +305,17 @@ export function buildArchitectureWorkflow(listener?: StatusListener) {
     // Conditional edge based on document presence
     .addConditionalEdges(
       "input_orchestrator",
-      (state) => (state.hasDocuments ? "rag_agent" : "research_agent")
+      (state) => {
+        const route = state.hasDocuments ? "rag_agent" : "research_agent";
+        AgentLogger.routing(
+          "Input Orchestrator",
+          route,
+          state.hasDocuments
+            ? "Documents found in project corpus -> Extracting RAG context first"
+            : "No documents uploaded -> Proceeding directly to first-principles research"
+        );
+        return route;
+      }
     )
     .addEdge("rag_agent", "research_agent")
     .addEdge("research_agent", "decision_agent")
@@ -298,9 +328,27 @@ export function buildArchitectureWorkflow(listener?: StatusListener) {
         const isValid = state.validationResult?.isValid ?? true;
         const retries = state.validationRetryCount ?? 0;
         if (isValid || retries >= 2) {
-          return "canvas_agent";
+          const next = "canvas_agent";
+          AgentLogger.routing(
+            "Validation Step",
+            next,
+            isValid
+              ? `Validation score: ${state.validationResult?.score ?? 100}/100 (PASSED) -> Generating canvas layout`
+              : `Max retries reached (${retries}) -> Proceeding to canvas generation with current specification`
+          );
+          return next;
         }
-        return "decision_agent";
+        const next = "decision_agent";
+        AgentLogger.routing(
+          "Validation Step",
+          next,
+          `Validation failed (Score: ${state.validationResult?.score}/100) -> Looping back to Decision Agent with feedback`,
+          {
+            missingComponents: state.validationResult?.missingComponents,
+            brokenRelationships: state.validationResult?.brokenRelationships,
+          }
+        );
+        return next;
       }
     )
     .addEdge("canvas_agent", "save_project")
@@ -316,7 +364,21 @@ export async function runArchitectureWorkflow(
   initialState: Partial<ProjectStateType>,
   listener?: StatusListener
 ) {
+  AgentLogger.banner("LangGraph Multi-Agent Workflow Launching", {
+    projectId: initialState.projectId,
+    projectName: initialState.userInput?.name,
+    hasDocuments: initialState.hasDocuments,
+  });
+
   const app = buildArchitectureWorkflow(listener);
   const result = await app.invoke(initialState);
+
+  AgentLogger.banner("LangGraph Multi-Agent Workflow Finished", {
+    projectId: initialState.projectId,
+    totalComponents: result.components?.length || 0,
+    totalDependencies: result.dependencies?.length || 0,
+    finalStatus: result.analysisStatus,
+  });
+
   return result;
 }

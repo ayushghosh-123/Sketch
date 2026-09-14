@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { ProjectService } from "@/services/projectService";
 import { DocumentService } from "@/services/documentService";
 import { runArchitectureWorkflow } from "@/lib/langgraph/workflow";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 
 export async function POST(
   request: NextRequest,
@@ -18,6 +19,13 @@ export async function POST(
   }
 
   const { project, requirements } = projectData;
+
+  AgentLogger.banner("API /architecture/generate TRIGGERED", {
+    projectId: project.id,
+    projectName: project.name,
+    projectType: project.project_type,
+    description: project.description?.slice(0, 100),
+  });
 
   // Check if documents exist
   let hasDocs = false;

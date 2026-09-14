@@ -3,6 +3,7 @@ import { ProjectService } from "@/services/projectService";
 import { ArchitectureService } from "@/services/architectureService";
 import { RagService } from "@/services/ragService";
 import { getGeminiClient, isGeminiConfigured } from "@/lib/gemini/client";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 
 export async function POST(
   request: NextRequest,
@@ -18,6 +19,12 @@ export async function POST(
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  AgentLogger.banner("Chat Assistant Request Received", {
+    projectId,
+    query: message,
+    historyLength: messages.length,
+  });
 
   // 1. Load project context
   const projectData = await ProjectService.getProjectById(projectId);
@@ -92,6 +99,13 @@ INSTRUCTIONS:
       await writer.write(encoder.encode(`data: ${sourcesEvent}\n\n`));
 
       if (!isGeminiConfigured()) {
+        AgentLogger.modelApiFallback(
+          "gemini-1.5-flash",
+          "Chat Assistant",
+          "No valid Gemini API key configured. Streaming intelligent architectural advisory response.",
+          { project: projectData?.project.name, query: message }
+        );
+
         // Fallback intelligent response for demo testing
         const fallbackText = `### Architecture Advisory
 
@@ -114,6 +128,9 @@ Based on your system topology for **${projectData?.project.name}**:
         await writer.close();
         return;
       }
+
+      AgentLogger.modelApiCall("gemini-1.5-flash", "Chat Assistant", message, true);
+      const startTime = Date.now();
 
       // Live Gemini Streaming
       const genAI = getGeminiClient();
@@ -138,17 +155,26 @@ Based on your system topology for **${projectData?.project.name}**:
 
       const resultStream = await chat.sendMessageStream(message);
 
+      let totalTokens = 0;
       for await (const chunk of resultStream.stream) {
         const chunkText = chunk.text();
         if (chunkText) {
+          totalTokens++;
           await writer.write(
             encoder.encode(`data: ${JSON.stringify({ type: "chunk", text: chunkText })}\n\n`)
           );
         }
       }
 
+      const duration = Date.now() - startTime;
+      AgentLogger.modelApiSuccess("gemini-1.5-flash", "Chat Assistant", duration, {
+        totalChunksReceived: totalTokens,
+        status: "Streaming complete",
+      });
+
       await writer.write(encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`));
     } catch (err: unknown) {
+      AgentLogger.modelApiError("gemini-1.5-flash", "Chat Assistant", err, false);
       console.error("Chat streaming error:", err);
       const msg = err instanceof Error ? err.message : "Chat error";
       await writer.write(encoder.encode(`data: ${JSON.stringify({ type: "error", error: msg })}\n\n`));

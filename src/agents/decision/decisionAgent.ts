@@ -1,4 +1,5 @@
 import { GeminiService } from "@/lib/gemini/model";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 import type {
   RagProjectContext,
   ResearchFindings,
@@ -303,11 +304,27 @@ Return valid JSON conforming to:
     ],
   };
 
+  AgentLogger.agentAction("Decision Agent", "FORMULATING ARCHITECTURE BLUEPRINT", {
+    projectName: input.projectName,
+    projectType: input.researchFindings.projectType,
+    hasValidationFeedback: Boolean(input.validationFeedback && !input.validationFeedback.isValid),
+  });
+
   const result = await GeminiService.generateStructuredJson<ArchitectureSpecification>(
     prompt,
     "You are the Sketch Decision Agent, designing verified production architectures.",
-    fallback
+    fallback,
+    "Decision Agent"
   );
 
-  return result || fallback;
+  const finalSpec = result || fallback;
+  AgentLogger.agentAction("Decision Agent", "BLUEPRINT FORMULATED", {
+    layersCount: finalSpec.layers?.length || 0,
+    componentsCount: finalSpec.components?.length || 0,
+    connectionsCount: finalSpec.connections?.length || 0,
+    decisionsCount: finalSpec.decisions?.length || 0,
+    technologyStack: Object.keys(finalSpec.technologyStack || {}),
+  });
+
+  return finalSpec;
 }

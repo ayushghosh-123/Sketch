@@ -1,4 +1,5 @@
 import { GeminiService } from "@/lib/gemini/model";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 import type { ProposedArchitectureChange } from "../types";
 import type { ArchitectureGraphData } from "@/types/database";
 
@@ -9,6 +10,11 @@ export interface AIEditorInput {
 }
 
 export async function runAIEditorAgent(input: AIEditorInput): Promise<ProposedArchitectureChange> {
+  AgentLogger.agentAction("AI Editor Agent", "COMMAND RECEIVED", {
+    command: input.command,
+    existingNodesCount: input.currentGraph?.nodes?.length || 0,
+    existingEdgesCount: input.currentGraph?.edges?.length || 0,
+  });
   const currentNodes = input.currentGraph.nodes.map(
     (n) => `${n.id} (${n.data.label} - ${n.data.componentType} - ${n.data.technology})`
   );
@@ -182,8 +188,20 @@ Return valid JSON conforming to:
   const result = await GeminiService.generateStructuredJson<ProposedArchitectureChange>(
     prompt,
     "You are the Sketch Architecture Editing Agent providing safe, impact-aware architecture modifications.",
-    fallback
+    fallback,
+    "AI Editor Agent"
   );
 
-  return result || fallback;
+  const finalOutput = result || fallback;
+  AgentLogger.agentAction("AI Editor Agent", "PROPOSED ARCHITECTURE CHANGE", {
+    command: finalOutput.command,
+    summary: finalOutput.summary,
+    riskLevel: finalOutput.riskLevel,
+    componentsToAdd: finalOutput.add?.length || 0,
+    componentsToModify: finalOutput.modify?.length || 0,
+    componentsToRemove: finalOutput.remove?.length || 0,
+    newConnections: finalOutput.newConnections?.length || 0,
+  });
+
+  return finalOutput;
 }

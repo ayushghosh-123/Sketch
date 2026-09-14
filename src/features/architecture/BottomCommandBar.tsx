@@ -37,6 +37,11 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
     const finalCmd = cmdToSend || command;
     if (!finalCmd.trim()) return;
 
+    console.log("%c🤖 [AI ARCHITECTURE EDITOR] Sent Command to Agent System:", "color: #38bdf8; font-weight: bold;", {
+      projectId,
+      command: finalCmd.trim(),
+    });
+
     setIsProcessing(true);
     setProposedChange(null);
     setLastAppliedMessage(null);
@@ -53,10 +58,11 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
 
       const json = await res.json();
       if (json.success && json.data?.proposedChange) {
+        console.log("%c✨ [AI ARCHITECTURE EDITOR] Received Proposed Changes:", "color: #34d399; font-weight: bold;", json.data.proposedChange);
         setProposedChange(json.data.proposedChange);
       }
     } catch (err) {
-      console.error("Command planning failed:", err);
+      console.error("%c❌ [AI ARCHITECTURE EDITOR] Command planning failed:", "color: #f43f5e; font-weight: bold;", err);
     } finally {
       setIsProcessing(false);
     }

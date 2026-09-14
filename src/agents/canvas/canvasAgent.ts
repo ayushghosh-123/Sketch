@@ -1,6 +1,7 @@
 import dagre from "dagre";
 import type { ArchitectureSpecification } from "../types";
 import type { ArchitectureGraphData, ComponentType } from "@/types/database";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 
 export interface CanvasAgentOutput {
   graphData: ArchitectureGraphData;
@@ -29,15 +30,6 @@ export function runCanvasAgent(spec: ArchitectureSpecification): CanvasAgentOutp
     ranksep: 100,
     align: "UL",
   });
-
-  // Assign layers ordering
-  const layerOrderMap: Record<string, number> = {
-    client: 0,
-    application: 1,
-    ai: 2,
-    data: 3,
-    infra: 4,
-  };
 
   // Add nodes to Dagre graph
   spec.components.forEach((comp) => {
@@ -107,8 +99,17 @@ export function runCanvasAgent(spec: ArchitectureSpecification): CanvasAgentOutp
     nodeIds: spec.components.filter((c) => c.layerId === layer.id).map((c) => c.id),
   }));
 
-  return {
+  const output: CanvasAgentOutput = {
     graphData: { nodes, edges },
     layerGroups,
   };
+
+  AgentLogger.agentAction("Canvas Agent", "REACT FLOW TOPOLOGY COMPUTED", {
+    totalVisualNodes: nodes.length,
+    totalVisualEdges: edges.length,
+    layerGroupsCount: layerGroups.length,
+    layoutOrientation: "Left-to-Right (LR)",
+  });
+
+  return output;
 }

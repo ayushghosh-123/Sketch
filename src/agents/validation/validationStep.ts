@@ -1,4 +1,5 @@
 import type { ArchitectureSpecification, ValidationResult } from "../types";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 
 export function runValidationStep(
   spec: ArchitectureSpecification
@@ -57,7 +58,7 @@ export function runValidationStep(
     feedback = `Please fix: ${[...missingComponents, ...brokenRelationships, ...invalidCombinations].join("; ")}.`;
   }
 
-  return {
+  const result: ValidationResult = {
     isValid,
     score,
     missingComponents,
@@ -67,4 +68,16 @@ export function runValidationStep(
     scalabilityConcerns,
     feedbackForDecisionAgent: feedback || undefined,
   };
+
+  AgentLogger.agentAction("Validation Step", "VALIDATION RESULTS COMPUTED", {
+    isValid,
+    score: `${score}/100`,
+    missingComponentsCount: missingComponents.length,
+    brokenRelationshipsCount: brokenRelationships.length,
+    securityConcernsCount: securityConcerns.length,
+    scalabilityConcernsCount: scalabilityConcerns.length,
+    feedback: feedback || "None (Architecture structurally sound)",
+  });
+
+  return result;
 }

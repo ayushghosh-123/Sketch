@@ -1,0 +1,400 @@
+- generic [ref=e4]:
+  - navigation [ref=e7]:
+    - link "ChaiCode home" [ref=e8] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e21]:
+      - button "Toggle theme" [ref=e22] [cursor=pointer]
+      - button "Open menu" [ref=e24] [cursor=pointer]:
+        - generic [ref=e25]: Menu
+  - main [ref=e26]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]: Trusted by 1.5M+ Developers Worldwide
+          - heading "Consistency and Community" [level=1] [ref=e33]
+          - paragraph [ref=e34]: Content is everywhere. We provide what is rare “an unmatched, community-driven learning experience” with peer learning, bounties, code reviews, doubt sessions, alumni network.
+          - generic [ref=e35]:
+            - link [ref=e36] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/view-all?show=all&type=100
+              - button "Start Learning" [ref=e37]
+            - link [ref=e38] [cursor=pointer]:
+              - /url: /reviews
+              - button "See The Impact" [ref=e39]
+        - img "ChaiCode learning community showcase, slide 1 of 3" [ref=e41]
+      - heading "Trending" [level=2] [ref=e42]
+      - paragraph [ref=e43]: Latest and most impactful course that combine fresh insights with real-world application.
+      - article [ref=e44]:
+        - link [ref=e45] [cursor=pointer]:
+          - /url: /cohorts/gen-ai
+          - heading "GenAI with JavaScript Cohort" [level=3] [ref=e48]
+      - heading "Our Cohorts" [level=2] [ref=e49]
+      - paragraph [ref=e50]: Learn in engaging live classes, collaborate with peers, share ideas, and grow together as part of a vibrant learning community.
+      - region "Our Cohorts" [ref=e51]:
+        - region [ref=e53]:
+          - generic [ref=e54]:
+            - link "View GenAI JS cohort" [ref=e55] [cursor=pointer]:
+              - /url: /cohorts/gen-ai
+              - generic [ref=e58]:
+                - generic [ref=e61]: Live
+                - paragraph [ref=e66]: GenAI JS
+                - img "Hitesh Choudhary and Piyush Garg" [ref=e86]
+            - link "View Full Stack cohort" [ref=e89] [cursor=pointer]:
+              - /url: /cohorts/web-dev
+              - generic [ref=e92]:
+                - generic [ref=e95]: Recorded
+                - paragraph [ref=e100]: Full Stack
+                - img "Hitesh Choudhary and Piyush Garg" [ref=e119]
+            - link "View Mobile Dev cohort" [ref=e122] [cursor=pointer]:
+              - /url: /cohorts/mobile-dev
+              - generic [ref=e125]:
+                - generic [ref=e128]: Recorded
+                - paragraph [ref=e133]: Mobile Dev
+                - generic [ref=e150]:
+                  - img "Hitesh Choudhary and Suraj Jha"
+            - link "View System Design cohort" [ref=e154] [cursor=pointer]:
+              - /url: /cohorts/system-design
+              - generic [ref=e157]:
+                - generic [ref=e160]: Recorded
+                - paragraph [ref=e165]: System Design
+                - img "Hitesh Choudhary and Piyush Garg" [ref=e191]
+            - link "View Data Projects cohort" [ref=e194] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/fast-checkout/252975?priceId=237667
+              - generic [ref=e197]:
+                - generic [ref=e200]: Recorded
+                - paragraph [ref=e205]: Data Projects
+                - generic [ref=e222]:
+                  - img "Hitesh Choudhary and Priya Bhatia"
+            - link "View Genai with Js cohort" [ref=e226] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/fast-checkout/239669?priceId=213415
+              - generic [ref=e229]:
+                - generic [ref=e232]: Recorded
+                - paragraph [ref=e237]: Genai with Js
+                - img "Hitesh Choudhary and Piyush Garg" [ref=e257]
+            - link "View Dsa with Java cohort" [ref=e260] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/fast-checkout/238372?priceId=211133
+              - generic [ref=e263]:
+                - generic [ref=e266]: Recorded
+                - paragraph [ref=e271]: Dsa with Java
+                - generic [ref=e288]:
+                  - img "Hitesh Choudhary and Piyush Garg"
+            - link "View Data Science cohort" [ref=e292] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/fast-checkout/227817?priceId=191900
+              - generic [ref=e295]:
+                - generic [ref=e298]: Recorded
+                - paragraph [ref=e303]: Data Science
+                - generic [ref=e320]:
+                  - img "Hitesh Choudhary and Priya Bhatia"
+            - link "View Genai with Py cohort" [ref=e324] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/fast-checkout/232480?priceId=200528
+              - generic [ref=e327]:
+                - generic [ref=e330]: Recorded
+                - paragraph [ref=e335]: Genai with Py
+                - img "Hitesh Choudhary and Piyush Garg" [ref=e354]
+            - link "View Dsa with Cpp cohort" [ref=e357] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/fast-checkout/230409?priceId=196680
+              - generic [ref=e360]:
+                - generic [ref=e363]: Recorded
+                - paragraph [ref=e368]: Dsa with Cpp
+                - generic [ref=e385]:
+                  - img "Hitesh Choudhary and Prateek Jain"
+        - generic [ref=e389]:
+          - button "Previous cohort" [disabled]
+          - button "Next cohort" [ref=e390] [cursor=pointer]
+      - heading "Udemy Courses" [level=2] [ref=e391]
+      - paragraph [ref=e392]: Learn at your own pace with structured, high-quality video lessons designed to give you real-world skills and flexibility.
+      - region "Udemy Courses" [ref=e393]:
+        - region [ref=e395]:
+          - generic [ref=e396]:
+            - article [ref=e397]:
+              - link [ref=e398] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy
+                - heading "Complete web development course" [level=3] [ref=e401]
+            - article [ref=e402]:
+              - link [ref=e403] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-py
+                - 'heading "The Ultimate Python Bootcamp: Learn by Building 50 Projects" [level=3] [ref=e406]'
+            - article [ref=e407]:
+              - link [ref=e408] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-ai
+                - heading "Full stack generative and Agentic AI with python" [level=3] [ref=e411]
+            - article [ref=e412]:
+              - link [ref=e413] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-nodejs
+                - heading "Node.js- Beginner to Advance course with projects" [level=3] [ref=e416]
+            - article [ref=e417]:
+              - link [ref=e418] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-mobile
+                - heading "Complete Mobile Developer course with AI Projects" [level=3] [ref=e421]
+            - article [ref=e422]:
+              - link [ref=e423] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-nextjs
+                - heading "Complete React and NextJS course with AI powered Projects" [level=3] [ref=e426]
+            - article [ref=e427]:
+              - link [ref=e428] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-dsa-py
+                - heading "Data structures and Algorithm (DSA) for Tech Interviews" [level=3] [ref=e431]
+            - article [ref=e432]:
+              - link [ref=e433] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-devops
+                - heading "Docker and Kubernetes for beginners | DevOps journey" [level=3] [ref=e436]
+            - article [ref=e437]:
+              - link [ref=e438] [cursor=pointer]:
+                - /url: https://hitesh.ai/udemy-fastapi
+                - heading "FastAPI with GenAI and AgenticAI project - From Basic to AI" [level=3] [ref=e441]
+      - heading "Workshops" [level=2] [ref=e442]
+      - paragraph [ref=e443]: Engage in interactive hands-on workshops designed to help you master new skills and stay ahead of the curve.
+      - region "Workshops" [ref=e444]:
+        - region [ref=e446]:
+          - generic [ref=e447]:
+            - link "View AI vs Engineer workshop" [ref=e448] [cursor=pointer]:
+              - /url: https://inapp.app/chaicodesocials/ai-vs-engineer
+              - heading "AI vs Engineer" [level=3] [ref=e454]
+            - link "More workshops coming soon" [ref=e455] [cursor=pointer]:
+              - /url: https://www.masterji.co/events
+              - generic [ref=e456]: More Coming Soon
+              - heading "Stay Tuned" [level=3] [ref=e461]
+        - generic [ref=e462]:
+          - button "Previous workshop" [disabled]
+          - button "Next workshop" [disabled]
+      - heading "Interview Preparation" [level=2] [ref=e463]
+      - paragraph [ref=e464]: Build job-ready skills with our comprehensive interview preparation bundle that includes multiple courses like
+      - region "Interview Preparation" [ref=e465]:
+        - region [ref=e467]:
+          - generic [ref=e468]:
+            - link "View Computer Networking course" [ref=e469] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "Computer Networking" [level=3] [ref=e475]
+            - link "View Operating Systems course" [ref=e476] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "Operating Systems" [level=3] [ref=e482]
+            - link "View Database Management System course" [ref=e483] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "Database Management System" [level=3] [ref=e489]
+            - link "View System Design course" [ref=e490] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "System Design" [level=3] [ref=e496]
+            - link "View DSA in Java course" [ref=e497] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "DSA in Java" [level=3] [ref=e503]
+            - link "View DSA in CPP course" [ref=e504] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "DSA in CPP" [level=3] [ref=e510]
+            - link "View DSA in Python course" [ref=e511] [cursor=pointer]:
+              - /url: /courses/interview-preparation
+              - heading "DSA in Python" [level=3] [ref=e517]
+        - generic [ref=e518]:
+          - button "Previous course" [disabled]
+          - button "Next course" [ref=e519] [cursor=pointer]
+      - heading "Bring ChaiCode To Your Campus" [level=2] [ref=e520]
+      - paragraph [ref=e521]: We're building student-led communities across campuses to help students grow together and become industry-ready.
+      - generic:
+        - link "Learn more about bringing ChaiCode to your campus":
+          - /url: /campus
+          - img "Students collaborating at a ChaiCode campus event"
+          - button "Learn More" [ref=e522] [cursor=pointer]
+      - heading "But Why ChaiCode?" [level=2] [ref=e523]
+      - region "Features" [ref=e524]:
+        - paragraph [ref=e525]: Our purpose is to make learning accountable. With our advanced in-house performance tracking system, every learner’s progress is monitored, guided, and transformed into measurable growth.
+        - generic [ref=e526]:
+          - generic [ref=e527]:
+            - generic [ref=e528]:
+              - generic [ref=e529]: You finish it
+              - paragraph [ref=e533]: By learning together, you’ll stay motivated and finish strong. Together we win.
+              - link "Cohorts" [ref=e535] [cursor=pointer]:
+                - /url: /#cohort
+            - generic [ref=e538]:
+              - generic [ref=e539]: Real world Tasks
+              - paragraph [ref=e543]: Real-world challenges that mirror industry expectations and build job-ready skills.
+              - link "Tasks" [ref=e545] [cursor=pointer]:
+                - /url: https://masterji.co/projects
+            - generic [ref=e548]:
+              - generic [ref=e549]: Peer Reviews
+              - paragraph [ref=e553]: Give and receive constructive feedback to improve via collaborative learning.
+              - link "Code Reviews" [ref=e555] [cursor=pointer]:
+                - /url: https://masterji.co/peer-reviews
+          - generic [ref=e558]:
+            - generic [ref=e559]:
+              - generic [ref=e560]: Community
+              - paragraph [ref=e564]: Get guidance and grow with our developer community on Discord.
+              - link "We write code" [ref=e566] [cursor=pointer]:
+                - /url: https://hitesh.ai/discord
+            - generic [ref=e569]:
+              - generic [ref=e570]: Trainings
+              - paragraph [ref=e574]: We bring industry experts into classes for real-world insights.
+              - link "Start learning" [ref=e576] [cursor=pointer]:
+                - /url: https://courses.chaicode.com/learn/view-all?show=batch&type=17
+            - generic [ref=e579]:
+              - generic [ref=e580]: Self Learning
+              - paragraph [ref=e584]: We offer in-dept courses for you to learn on your own pace.
+              - link "Udemy" [ref=e586] [cursor=pointer]:
+                - /url: /udemy
+            - generic [ref=e589]:
+              - generic [ref=e590]: Writing
+              - paragraph [ref=e594]: Technical writing shows your grip on tech-stack.
+              - link "Topics" [ref=e596] [cursor=pointer]:
+                - /url: https://hashnode.com/n/chaicode
+            - generic [ref=e599]:
+              - generic [ref=e600]: Proof of work
+              - paragraph [ref=e604]: Everything you create builds a public portfolio you can proudly share with employers.
+              - link "Learn in public" [ref=e606] [cursor=pointer]:
+                - /url: https://www.notion.so/chai-code/1d2ad542f9b480488e33ce13f118a608?v=1d2ad542f9b4803fbb51000c650b6845&pvs=4
+            - generic [ref=e609]:
+              - generic [ref=e610]: Progress Tracking
+              - paragraph [ref=e614]: Track projects, manage assignments, and monitor your learning progress.
+              - link "Practice" [ref=e616] [cursor=pointer]:
+                - /url: https://masterji.co
+      - generic [ref=e619]:
+        - heading "Wall of Love" [level=2] [ref=e621]
+        - region "Our Reviews" [ref=e622]:
+          - generic [ref=e623]:
+            - paragraph [ref=e624]: Loved by Students , Trusted by Professionals. Community says it better than we ever could.
+            - link [ref=e625] [cursor=pointer]:
+              - /url: /reviews
+              - button "View All" [ref=e626]
+          - generic [ref=e627]:
+            - region "Our Reviews" [ref=e629]:
+              - generic [ref=e630]:
+                - region "Video Player - Saloni Jain" [ref=e633] [cursor=pointer]:
+                  - generic [ref=e636]:
+                    - generic [ref=e638]:
+                      - img "Saloni Jain"
+                    - generic [ref=e639]:
+                      - button "Saloni Jain" [ref=e640]
+                      - button "Play Saloni Jain's testimonial video" [ref=e641]
+                - region "Video Player - Shravan Bhati" [ref=e647] [cursor=pointer]:
+                  - generic [ref=e650]:
+                    - generic [ref=e652]:
+                      - img "Shravan Bhati"
+                    - generic [ref=e653]:
+                      - button "Shravan Bhati" [ref=e654]
+                      - button "Play Shravan Bhati's testimonial video" [ref=e655]
+                - region "Video Player - Ansh Mishra" [ref=e661] [cursor=pointer]:
+                  - generic [ref=e664]:
+                    - generic [ref=e666]:
+                      - img "Ansh Mishra"
+                    - generic [ref=e667]:
+                      - button "Ansh Mishra" [ref=e668]
+                      - button "Play Ansh Mishra's testimonial video" [ref=e669]
+                - region "Video Player - Suprabhat" [ref=e675] [cursor=pointer]:
+                  - generic [ref=e678]:
+                    - generic [ref=e680]:
+                      - img "Suprabhat"
+                    - generic [ref=e681]:
+                      - button "Suprabhat" [ref=e682]
+                      - button "Play Suprabhat's testimonial video" [ref=e683]
+                - region "Video Player - Harshit Pant" [ref=e689] [cursor=pointer]:
+                  - generic [ref=e692]:
+                    - generic [ref=e694]:
+                      - img "Harshit Pant"
+                    - generic [ref=e695]:
+                      - button "Harshit Pant" [ref=e696]
+                      - button "Play Harshit Pant's testimonial video" [ref=e697]
+                - region "Video Player - Hari Rajak" [ref=e703] [cursor=pointer]:
+                  - generic [ref=e706]:
+                    - generic [ref=e708]:
+                      - img "Hari Rajak"
+                    - generic [ref=e709]:
+                      - button "Hari Rajak" [ref=e710]
+                      - button "Play Hari Rajak's testimonial video" [ref=e711]
+                - region "Video Player - Dipti Shrivas" [ref=e717] [cursor=pointer]:
+                  - generic [ref=e720]:
+                    - generic [ref=e722]:
+                      - img "Dipti Shrivas"
+                    - generic [ref=e723]:
+                      - button "Dipti Shrivas" [ref=e724]
+                      - button "Play Dipti Shrivas's testimonial video" [ref=e725]
+                - region "Video Player - Mohammed Saleh" [ref=e731] [cursor=pointer]:
+                  - generic [ref=e734]:
+                    - generic [ref=e736]:
+                      - img "Mohammed Saleh"
+                    - generic [ref=e737]:
+                      - button "Mohammed Saleh" [ref=e738]
+                      - button "Play Mohammed Saleh's testimonial video" [ref=e739]
+            - generic [ref=e743]:
+              - button "Previous testimonial" [disabled]
+              - button "Next testimonial" [ref=e744] [cursor=pointer]
+      - region "Our Apps" [ref=e745]:
+        - generic [ref=e746]:
+          - heading "Your Classroom, Always With You" [level=2] [ref=e747]
+          - paragraph [ref=e748]: Take your coding journey anywhere with the ChaiCode Mobile App. Access courses, join live sessions, and connect with the community - All From Your Pocket.
+          - generic [ref=e749]:
+            - link "Download on the App Store" [ref=e750] [cursor=pointer]:
+              - /url: https://apps.apple.com/in/app/chaicode/id6504993143
+            - link "Get it on Google Play" [ref=e775] [cursor=pointer]:
+              - /url: https://play.google.com/store/apps/details?id=com.chaicode.courses&pcampaignid=web_share
+        - generic [ref=e801] [cursor=pointer]:
+          - img "ChaiCode app on Android phone" [ref=e802]
+          - img "ChaiCode app on iPhone" [ref=e803]
+  - generic [ref=e808]:
+    - generic [ref=e809]:
+      - generic [ref=e810]:
+        - link "ChaiCode home" [ref=e812] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e825]: Home for Programmers
+      - generic [ref=e826]:
+        - paragraph [ref=e827]: © 2026 ChaiCode.
+        - paragraph [ref=e828]: All rights reserved.
+    - generic [ref=e829]:
+      - generic [ref=e830]:
+        - generic [ref=e831]: Products
+        - list [ref=e832]:
+          - listitem [ref=e833]:
+            - link "Courses" [ref=e834] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn
+          - listitem [ref=e835]:
+            - link "Cohorts" [ref=e836] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/view-all?show=batch&type=17
+          - listitem [ref=e837]:
+            - link "MasterJi" [ref=e838] [cursor=pointer]:
+              - /url: https://masterji.co
+          - listitem [ref=e839]:
+            - link "FreeAPI" [ref=e840] [cursor=pointer]:
+              - /url: https://freeapi.app/
+          - listitem [ref=e841]:
+            - link "More..." [ref=e842] [cursor=pointer]:
+              - /url: /products
+      - generic [ref=e843]:
+        - generic [ref=e844]: Resources
+        - list [ref=e845]:
+          - listitem [ref=e846]:
+            - link "Docs" [ref=e847] [cursor=pointer]:
+              - /url: https://docs.chaicode.com
+          - listitem [ref=e848]:
+            - link "Privacy Policy" [ref=e849] [cursor=pointer]:
+              - /url: /privacy-policy
+          - listitem [ref=e850]:
+            - link "Terms of Service" [ref=e851] [cursor=pointer]:
+              - /url: /terms-of-service
+          - listitem [ref=e852]:
+            - link "Pricing Policy" [ref=e853] [cursor=pointer]:
+              - /url: /pricing-policy
+          - listitem [ref=e854]:
+            - link "Refund Policy" [ref=e855] [cursor=pointer]:
+              - /url: /Refund-policy
+      - generic [ref=e856]:
+        - generic [ref=e857]: Social
+        - list [ref=e858]:
+          - listitem [ref=e859]:
+            - link "x.com" [ref=e860] [cursor=pointer]:
+              - /url: https://x.com/ChaiCodeHQ
+          - listitem [ref=e863]:
+            - link "Discord" [ref=e864] [cursor=pointer]:
+              - /url: https://hitesh.ai/discord
+          - listitem [ref=e867]:
+            - link "GitHub" [ref=e868] [cursor=pointer]:
+              - /url: https://github.com/hiteshchoudhary
+          - listitem [ref=e871]:
+            - link "Youtube Hindi" [ref=e872] [cursor=pointer]:
+              - /url: https://www.youtube.com/@chaiaurcode
+          - listitem [ref=e875]:
+            - link "LinkedIn" [ref=e876] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/chaicodehq/
+          - listitem [ref=e879]:
+            - link "Youtube English" [ref=e880] [cursor=pointer]:
+              - /url: https://www.youtube.com/@hiteshcodelab
+          - listitem [ref=e883]:
+            - link "Instagram" [ref=e884] [cursor=pointer]:
+              - /url: https://www.instagram.com/hiteshchoudharyofficial
+          - listitem [ref=e887]:
+            - link "Chai Aur Clips" [ref=e888] [cursor=pointer]:
+              - /url: https://www.youtube.com/@ChaiCodeClips

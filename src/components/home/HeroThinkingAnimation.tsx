@@ -127,12 +127,12 @@ export function HeroThinkingAnimation() {
   }, [currentStep, triggerDoodleSketchAnimation]);
 
   return (
-    <div className="w-full rounded-2xl border border-[#27272a] bg-[#111113] p-4 sm:p-6 shadow-2xl font-mono relative overflow-hidden">
+    <div className="w-full rounded-2xl border border-white/10 bg-[#111111] p-4 sm:p-6 shadow-2xl font-mono relative overflow-hidden">
       {/* Top Header Bar with Step Tabs */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#27272a]/70">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <span className="flex h-2 w-2 rounded-full bg-[#0ea5e9] animate-ping" />
-          <span className="text-xs font-semibold text-[#f4f4f5] tracking-wide">
+          <span className="flex h-2 w-2 rounded-full bg-[#f97316] animate-ping" />
+          <span className="text-xs font-semibold text-white tracking-wide">
             AGENTIC THINKING PIPELINE
           </span>
         </div>
@@ -141,7 +141,7 @@ export function HeroThinkingAnimation() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsPaused((prev) => !prev)}
-            className="p-1.5 rounded-md hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors border border-transparent hover:border-[#27272a]"
+            className="p-1.5 rounded-md hover:bg-[#18181b] text-[#a1a1aa] hover:text-white transition-colors border border-transparent hover:border-white/10"
             title={isPaused ? "Resume animation" : "Pause animation"}
           >
             {isPaused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
@@ -151,7 +151,7 @@ export function HeroThinkingAnimation() {
               setCurrentStep(0);
               setIsPaused(false);
             }}
-            className="p-1.5 rounded-md hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors border border-transparent hover:border-[#27272a]"
+            className="p-1.5 rounded-md hover:bg-[#18181b] text-[#a1a1aa] hover:text-white transition-colors border border-transparent hover:border-white/10"
             title="Restart pipeline"
           >
             <RotateCcw className="h-3.5 w-3.5" />
@@ -172,8 +172,8 @@ export function HeroThinkingAnimation() {
               }}
               className={`relative text-left px-3 py-2 rounded-lg text-xs transition-all border ${
                 isActive
-                  ? "bg-[#18181b] border-[#0ea5e9]/70 text-[#f4f4f5] shadow-xs"
-                  : "bg-[#09090b]/60 border-[#27272a]/50 text-[#71717a] hover:text-[#a1a1aa] hover:bg-[#18181b]/50"
+                  ? "bg-[#18181b] border-[#f97316]/70 text-white shadow-xs"
+                  : "bg-black/60 border-white/10 text-[#71717a] hover:text-[#a1a1aa] hover:bg-[#18181b]/50"
               }`}
             >
               <div className="flex items-center justify-between">
@@ -181,7 +181,7 @@ export function HeroThinkingAnimation() {
                   {step.label}
                 </span>
                 {isActive && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#0ea5e9]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" />
                 )}
               </div>
               <div className="text-[10px] truncate mt-0.5 opacity-80">
@@ -191,7 +191,7 @@ export function HeroThinkingAnimation() {
               {/* Step Progress Line */}
               {isActive && !isPaused && (
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0ea5e9] rounded-b"
+                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#f97316] rounded-b"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 4.8, ease: "linear" }}
@@ -217,38 +217,38 @@ export function HeroThinkingAnimation() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="space-y-4"
             >
-              <div className="p-4 rounded-xl border border-[#0ea5e9]/40 bg-[#18181b] relative overflow-hidden">
-                <div className="flex items-center justify-between text-[11px] text-[#0ea5e9] mb-2 font-semibold">
+              <div className="p-4 rounded-xl border border-[#f97316]/40 bg-[#18181b] relative overflow-hidden">
+                <div className="flex items-center justify-between text-[11px] text-[#f97316] mb-2 font-semibold">
                   <span className="flex items-center gap-1.5">
-                    <Lightbulb className="h-3.5 w-3.5 text-[#0ea5e9]" />
+                    <Lightbulb className="h-3.5 w-3.5 text-[#f97316]" />
                     STEP 1: USER BRINGS THE IDEA
                   </span>
                   <span className="text-[10px] text-[#71717a]">RAW INPUT</span>
                 </div>
 
                 {/* Hand-drawn idea prompt */}
-                <div className="p-3.5 rounded-lg bg-[#09090b] border border-[#27272a] text-xs text-[#f4f4f5] leading-relaxed">
-                  <span className="text-[#0ea5e9] mr-2">›</span>
+                <div className="p-3.5 rounded-lg bg-black border border-white/10 text-xs text-[#f4f4f5] leading-relaxed">
+                  <span className="text-[#f97316] mr-2">›</span>
                   &ldquo;I need to build an AI software architecture platform. Users describe an app or upload specs; agents research tradeoffs, decide the tech stack, and sketch an interactive, editable blueprint canvas with drag-and-drop nodes.&rdquo;
                 </div>
 
                 {/* Ingested Documents & Notes */}
                 <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px]">
                   <span className="text-[#71717a]">Attached context:</span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#09090b] border border-[#27272a] text-[#a1a1aa]">
-                    <FileText className="h-3 w-3 text-[#0ea5e9]" />
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-black border border-white/10 text-[#a1a1aa]">
+                    <FileText className="h-3 w-3 text-[#f97316]" />
                     spec-v2-architecture.pdf (14 pages)
                   </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#09090b] border border-[#27272a] text-[#a1a1aa]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-black border border-white/10 text-[#a1a1aa]">
                     <FileText className="h-3 w-3 text-[#10b981]" />
                     security-requirements.docx
                   </span>
                 </div>
 
                 {/* Doodle Lightbulb & Scribble Hint */}
-                <div className="mt-3 pt-3 border-t border-[#27272a]/60 flex items-center justify-between text-[10px] text-[#71717a]">
+                <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-[#71717a]">
                   <span>Sketch accepts plain ideas OR complete technical documentation.</span>
-                  <span className="text-[#0ea5e9] flex items-center gap-1">
+                  <span className="text-[#f97316] flex items-center gap-1">
                     Understanding User Scope →
                   </span>
                 </div>
@@ -268,17 +268,17 @@ export function HeroThinkingAnimation() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="space-y-3"
             >
-              <div className="p-4 rounded-xl border border-[#0ea5e9]/40 bg-[#18181b] space-y-3">
-                <div className="flex items-center justify-between text-[11px] text-[#0ea5e9] font-semibold">
+              <div className="p-4 rounded-xl border border-[#f97316]/40 bg-[#18181b] space-y-3">
+                <div className="flex items-center justify-between text-[11px] text-[#f97316] font-semibold">
                   <span className="flex items-center gap-1.5">
-                    <Search className="h-3.5 w-3.5 text-[#0ea5e9] animate-pulse" />
+                    <Search className="h-3.5 w-3.5 text-[#f97316] animate-pulse" />
                     STEP 2: RESEARCH & TRADEOFF AGENT
                   </span>
                   <span className="text-[10px] text-[#10b981]">● 3 BENCHMARKS EVALUATED</span>
                 </div>
 
                 <div className="space-y-2">
-                  <div className="p-2.5 rounded bg-[#09090b] border border-[#27272a] flex items-center justify-between text-xs">
+                  <div className="p-2.5 rounded bg-black border border-white/10 flex items-center justify-between text-xs">
                     <div>
                       <span className="text-[#a1a1aa]">Frontend:</span>{" "}
                       <span className="text-[#f4f4f5] font-semibold">Next.js 16 App Router</span>
@@ -288,7 +288,7 @@ export function HeroThinkingAnimation() {
                     </span>
                   </div>
 
-                  <div className="p-2.5 rounded bg-[#09090b] border border-[#27272a] flex items-center justify-between text-xs">
+                  <div className="p-2.5 rounded bg-black border border-white/10 flex items-center justify-between text-xs">
                     <div>
                       <span className="text-[#a1a1aa]">Database:</span>{" "}
                       <span className="text-[#f4f4f5] font-semibold">Supabase PostgreSQL + pgvector</span>
@@ -298,7 +298,7 @@ export function HeroThinkingAnimation() {
                     </span>
                   </div>
 
-                  <div className="p-2.5 rounded bg-[#09090b] border border-[#27272a] flex items-center justify-between text-xs">
+                  <div className="p-2.5 rounded bg-black border border-white/10 flex items-center justify-between text-xs">
                     <div>
                       <span className="text-[#a1a1aa]">Orchestration:</span>{" "}
                       <span className="text-[#f4f4f5] font-semibold">LangGraph StateGraph Engine</span>
@@ -309,9 +309,9 @@ export function HeroThinkingAnimation() {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-[#27272a]/60 text-[10px] text-[#a1a1aa] flex items-center justify-between">
+                <div className="pt-2 border-t border-white/10 text-[10px] text-[#a1a1aa] flex items-center justify-between">
                   <span>Synthesized 14 tradeoffs across compute, storage, and latency.</span>
-                  <span className="text-[#0ea5e9]">Feeding into Decision Matrix →</span>
+                  <span className="text-[#f97316]">Feeding into Decision Matrix →</span>
                 </div>
               </div>
             </motion.div>
@@ -329,8 +329,8 @@ export function HeroThinkingAnimation() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="space-y-3"
             >
-              <div className="p-4 rounded-xl border border-[#0ea5e9]/40 bg-[#18181b] space-y-3">
-                <div className="flex items-center justify-between text-[11px] text-[#0ea5e9] font-semibold">
+              <div className="p-4 rounded-xl border border-[#f97316]/40 bg-[#18181b] space-y-3">
+                <div className="flex items-center justify-between text-[11px] text-[#f97316] font-semibold">
                   <span className="flex items-center gap-1.5">
                     <CheckCircle2 className="h-3.5 w-3.5 text-[#10b981]" />
                     STEP 3: DECISION AGENT · SYSTEM SPEC VERIFIED
@@ -339,32 +339,32 @@ export function HeroThinkingAnimation() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="p-3 rounded-lg bg-[#09090b] border border-[#27272a] space-y-1">
-                    <span className="text-[10px] text-[#0ea5e9] font-semibold uppercase">TIER 1 · EDGE & UI</span>
+                  <div className="p-3 rounded-lg bg-black border border-white/10 space-y-1">
+                    <span className="text-[10px] text-[#f97316] font-semibold uppercase">TIER 1 · EDGE & UI</span>
                     <div className="font-semibold text-[#f4f4f5]">Interactive Canvas</div>
                     <div className="text-[10px] text-[#71717a]">React Flow · Tailwind · Zustand · Dagre</div>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-[#09090b] border border-[#27272a] space-y-1">
-                    <span className="text-[10px] text-[#0ea5e9] font-semibold uppercase">TIER 2 · GATEWAY</span>
+                  <div className="p-3 rounded-lg bg-black border border-white/10 space-y-1">
+                    <span className="text-[10px] text-[#f97316] font-semibold uppercase">TIER 2 · GATEWAY</span>
                     <div className="font-semibold text-[#f4f4f5]">API & Security</div>
                     <div className="text-[10px] text-[#71717a]">Next.js Route Handlers · Clerk Auth</div>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-[#09090b] border border-[#27272a] space-y-1">
-                    <span className="text-[10px] text-[#0ea5e9] font-semibold uppercase">TIER 3 · AI BRAIN</span>
+                  <div className="p-3 rounded-lg bg-black border border-white/10 space-y-1">
+                    <span className="text-[10px] text-[#f97316] font-semibold uppercase">TIER 3 · AI BRAIN</span>
                     <div className="font-semibold text-[#f4f4f5]">Multi-Agent Graph</div>
                     <div className="text-[10px] text-[#71717a]">Input Orchestrator · RAG · Decision Agent</div>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-[#09090b] border border-[#27272a] space-y-1">
-                    <span className="text-[10px] text-[#0ea5e9] font-semibold uppercase">TIER 4 · STORAGE</span>
+                  <div className="p-3 rounded-lg bg-black border border-white/10 space-y-1">
+                    <span className="text-[10px] text-[#f97316] font-semibold uppercase">TIER 4 · STORAGE</span>
                     <div className="font-semibold text-[#f4f4f5]">PostgreSQL + Vectors</div>
                     <div className="text-[10px] text-[#71717a]">Supabase DB · pgvector 1536d Cosine</div>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-[#27272a]/60 text-[10px] text-[#a1a1aa] flex items-center justify-between">
+                <div className="pt-2 border-t border-white/10 text-[10px] text-[#a1a1aa] flex items-center justify-between">
                   <span>Architecture schema validated with Zod. Generating visual graph...</span>
                   <span className="text-[#10b981]">Ready to Sketch →</span>
                 </div>
@@ -385,9 +385,9 @@ export function HeroThinkingAnimation() {
               className="space-y-3"
             >
               {/* Doodle Sketch Canvas Container */}
-              <div className="p-3 sm:p-4 rounded-xl border border-[#0ea5e9]/50 bg-[#09090b] relative overflow-hidden">
+              <div className="p-3 sm:p-4 rounded-xl border border-[#f97316]/50 bg-black relative overflow-hidden">
                 {/* Canvas Status Bar */}
-                <div className="flex items-center justify-between text-[11px] mb-2 pb-2 border-b border-[#27272a]">
+                <div className="flex items-center justify-between text-[11px] mb-2 pb-2 border-b border-white/10">
                   <div className="flex items-center gap-2">
                     <span className="text-[#10b981] font-semibold flex items-center gap-1">
                       <Sparkles className="h-3 w-3" />
@@ -400,7 +400,7 @@ export function HeroThinkingAnimation() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={triggerDoodleSketchAnimation}
-                      className="text-[10px] text-[#0ea5e9] hover:underline flex items-center gap-1"
+                      className="text-[10px] text-[#f97316] hover:underline flex items-center gap-1"
                     >
                       <RotateCcw className="h-2.5 w-2.5" />
                       Redraw Sketch
@@ -412,12 +412,12 @@ export function HeroThinkingAnimation() {
                 </div>
 
                 {/* Hand-drawn Doodle Architectural SVG Diagram */}
-                <div className="relative w-full h-[220px] bg-[#111113]/90 rounded-lg border border-[#27272a] p-2 flex items-center justify-center select-none">
+                <div className="relative w-full h-[220px] bg-[#111111]/90 rounded-lg border border-white/10 p-2 flex items-center justify-center select-none">
                   {/* Subtle Grid Background */}
                   <div
                     className="absolute inset-0 opacity-20 pointer-events-none"
                     style={{
-                      backgroundImage: `radial-gradient(#0ea5e9 1px, transparent 1px)`,
+                      backgroundImage: `radial-gradient(#f97316 1px, transparent 1px)`,
                       backgroundSize: "16px 16px",
                     }}
                   />
@@ -440,7 +440,7 @@ export function HeroThinkingAnimation() {
                         markerHeight="6"
                         orient="auto-start-reverse"
                       >
-                        <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#0ea5e9" />
+                        <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#f97316" />
                       </marker>
                     </defs>
 
@@ -448,7 +448,7 @@ export function HeroThinkingAnimation() {
                     {/* Path 1: Client -> API Gateway */}
                     <path
                       d="M 100 95 C 130 92, 140 96, 170 95"
-                      stroke="#0ea5e9"
+                      stroke="#f97316"
                       strokeWidth="2.2"
                       strokeLinecap="round"
                       strokeDasharray="4 3"
@@ -459,7 +459,7 @@ export function HeroThinkingAnimation() {
                     {/* Path 2: API Gateway -> Auth */}
                     <path
                       d="M 220 75 C 235 55, 255 45, 275 45"
-                      stroke="#0ea5e9"
+                      stroke="#f97316"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeDasharray="4 3"
@@ -470,7 +470,7 @@ export function HeroThinkingAnimation() {
                     {/* Path 3: API Gateway -> LangGraph Agent */}
                     <path
                       d="M 240 95 C 265 95, 280 95, 305 95"
-                      stroke="#0ea5e9"
+                      stroke="#f97316"
                       strokeWidth="2.4"
                       strokeLinecap="round"
                       className="doodle-path"
@@ -500,7 +500,7 @@ export function HeroThinkingAnimation() {
                     />
 
                     {/* Animated Pulse along main artery (Client to Agent) */}
-                    <circle r="3" fill="#38bdf8" className="animate-pulse">
+                    <circle r="3" fill="#fb923c" className="animate-pulse">
                       <animateMotion
                         path="M 100 95 C 130 92, 140 96, 170 95 L 240 95 C 265 95, 280 95, 305 95"
                         dur="2.8s"
@@ -517,15 +517,15 @@ export function HeroThinkingAnimation() {
                       <path
                         d="M 22 65 Q 60 63 98 66 Q 102 95 98 126 Q 58 128 22 125 Q 18 95 22 65 Z"
                         fill="#18181b"
-                        stroke="#27272a"
+                        stroke="rgba(255,255,255,0.12)"
                         strokeWidth="2"
-                        className="transition-colors hover:stroke-[#0ea5e9]"
+                        className="transition-colors hover:stroke-[#f97316]"
                       />
                       {/* Browser header scribble */}
                       <circle cx="32" cy="74" r="2.5" fill="#f43f5e" />
                       <circle cx="40" cy="74" r="2.5" fill="#eab308" />
                       <circle cx="48" cy="74" r="2.5" fill="#10b981" />
-                      <line x1="22" y1="82" x2="98" y2="82" stroke="#27272a" strokeWidth="1" />
+                      <line x1="22" y1="82" x2="98" y2="82" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
                       <text x="32" y="98" fill="#f4f4f5" fontSize="10" fontFamily="monospace" fontWeight="bold" className="doodle-label">
                         Client UI
                       </text>
@@ -542,11 +542,11 @@ export function HeroThinkingAnimation() {
                       <path
                         d="M 172 72 Q 206 69 238 73 Q 242 95 238 120 Q 204 123 172 119 Q 168 95 172 72 Z"
                         fill="#18181b"
-                        stroke="#0ea5e9"
+                        stroke="#f97316"
                         strokeWidth="2"
-                        className="transition-colors hover:stroke-[#38bdf8]"
+                        className="transition-colors hover:stroke-[#fb923c]"
                       />
-                      <text x="180" y="92" fill="#0ea5e9" fontSize="10" fontFamily="monospace" fontWeight="bold" className="doodle-label">
+                      <text x="180" y="92" fill="#f97316" fontSize="10" fontFamily="monospace" fontWeight="bold" className="doodle-label">
                         Edge API
                       </text>
                       <text x="180" y="106" fill="#a1a1aa" fontSize="8" fontFamily="monospace" className="doodle-label">
@@ -562,7 +562,7 @@ export function HeroThinkingAnimation() {
                       <path
                         d="M 276 28 Q 320 26 360 29 Q 363 48 360 62 Q 318 64 276 61 Q 273 45 276 28 Z"
                         fill="#18181b"
-                        stroke="#27272a"
+                        stroke="rgba(255,255,255,0.12)"
                         strokeWidth="1.8"
                         className="transition-colors hover:stroke-[#10b981]"
                       />
@@ -582,17 +582,17 @@ export function HeroThinkingAnimation() {
                       <path
                         d="M 306 70 Q 344 67 380 71 Q 385 95 381 123 Q 342 126 306 122 Q 302 95 306 70 Z"
                         fill="#18181b"
-                        stroke="#0ea5e9"
+                        stroke="#f97316"
                         strokeWidth="2.4"
-                        className="transition-colors hover:stroke-[#38bdf8]"
+                        className="transition-colors hover:stroke-[#fb923c]"
                       />
                       {/* Doodle Brain/Node icon */}
-                      <circle cx="318" cy="84" r="4" fill="#0ea5e9" opacity="0.3" />
-                      <circle cx="318" cy="84" r="2" fill="#0ea5e9" />
+                      <circle cx="318" cy="84" r="4" fill="#f97316" opacity="0.3" />
+                      <circle cx="318" cy="84" r="2" fill="#f97316" />
                       <text x="328" y="88" fill="#f4f4f5" fontSize="10" fontFamily="monospace" fontWeight="bold" className="doodle-label">
                         LangGraph
                       </text>
-                      <text x="318" y="104" fill="#0ea5e9" fontSize="8.5" fontFamily="monospace" fontWeight="600" className="doodle-label">
+                      <text x="318" y="104" fill="#f97316" fontSize="8.5" fontFamily="monospace" fontWeight="600" className="doodle-label">
                         Multi-Agent
                       </text>
                       <text x="318" y="116" fill="#71717a" fontSize="7.5" fontFamily="monospace" className="doodle-label">
@@ -645,10 +645,10 @@ export function HeroThinkingAnimation() {
                 </div>
 
                 {/* Inspect Selected Node Bar */}
-                <div className="mt-2.5 p-2 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-between text-[11px]">
+                <div className="mt-2.5 p-2 rounded bg-[#18181b] border border-white/10 flex items-center justify-between text-[11px]">
                   <div className="flex items-center gap-2">
                     <span className="text-[#71717a]">Selected Node:</span>
-                    <span className="text-[#0ea5e9] font-bold uppercase">
+                    <span className="text-[#f97316] font-bold uppercase">
                       {selectedCanvasNode === "client" && "Client UI · Next.js 16 + React Flow"}
                       {selectedCanvasNode === "gateway" && "Edge API Gateway · Route Handlers"}
                       {selectedCanvasNode === "auth" && "Authentication · Clerk JWT Token Verify"}
@@ -667,11 +667,11 @@ export function HeroThinkingAnimation() {
         </AnimatePresence>
 
         {/* Bottom Flow Pipeline Summary */}
-        <div className="pt-3 border-t border-[#27272a]/70 flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#71717a]">
+        <div className="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#71717a]">
           <div className="flex items-center gap-2">
-            <span className="text-[#0ea5e9]">✦</span>
+            <span className="text-[#f97316]">✦</span>
             <span>Step {currentStep + 1} of 4:</span>
-            <span className="text-[#f4f4f5] font-semibold">
+            <span className="text-white font-semibold">
               {THINKING_STEPS[currentStep].subhead}
             </span>
           </div>
@@ -685,7 +685,7 @@ export function HeroThinkingAnimation() {
                   setIsPaused(true);
                 }}
                 className={`h-2 rounded-full transition-all ${
-                  currentStep === s.id ? "w-6 bg-[#0ea5e9]" : "w-2 bg-[#27272a] hover:bg-[#71717a]"
+                  currentStep === s.id ? "w-6 bg-[#f97316]" : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
                 title={`Go to step ${s.id + 1}`}
               />

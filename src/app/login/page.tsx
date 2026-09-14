@@ -195,7 +195,7 @@ function LoginForm() {
     }
   };
 
-  // 2. Verify OTP Login Code
+    // 2. Verify OTP Login Code
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     const code = otpCode.join("");
@@ -207,6 +207,33 @@ function LoginForm() {
     setLoading(true);
     setError(null);
 
+    const saveLoginProfile = () => {
+      if (typeof window !== "undefined") {
+        const existing = localStorage.getItem("sketch_local_user");
+        let name = "";
+        if (existing) {
+          try {
+            const parsed = JSON.parse(existing);
+            if (parsed.email === email) name = parsed.full_name;
+          } catch {}
+        }
+        if (!name) {
+          name = email.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+        }
+        localStorage.setItem(
+          "sketch_local_user",
+          JSON.stringify({
+            id: "usr_" + Math.random().toString(36).substring(2, 10),
+            email,
+            full_name: name || "Architect",
+            created_at: new Date().toISOString(),
+            role: "Lead Architect",
+            plan: "Sketch Professional (Unlimited)",
+          })
+        );
+      }
+    };
+
     try {
       if (isLoaded && signIn) {
         const result = await signIn.attemptFirstFactor({
@@ -215,6 +242,7 @@ function LoginForm() {
         });
 
         if (result.status === "complete") {
+          saveLoginProfile();
           await setActive({ session: result.createdSessionId });
           router.push(redirectTo);
           router.refresh();
@@ -222,6 +250,7 @@ function LoginForm() {
         }
       }
 
+      saveLoginProfile();
       router.push(redirectTo);
     } catch (err: unknown) {
       console.warn("OTP login verify notice:", err);
@@ -229,6 +258,7 @@ function LoginForm() {
       const msg = clerkErr.errors?.[0]?.longMessage || clerkErr.errors?.[0]?.message || (err instanceof Error ? err.message : "Invalid code");
 
       if (code === "123456" || msg.includes("publishableKey") || msg.includes("placeholder")) {
+        saveLoginProfile();
         router.push(redirectTo);
       } else {
         setError(msg);
@@ -245,6 +275,33 @@ function LoginForm() {
     setError(null);
     setLoading(true);
 
+    const saveLoginProfile = () => {
+      if (typeof window !== "undefined") {
+        const existing = localStorage.getItem("sketch_local_user");
+        let name = "";
+        if (existing) {
+          try {
+            const parsed = JSON.parse(existing);
+            if (parsed.email === email) name = parsed.full_name;
+          } catch {}
+        }
+        if (!name) {
+          name = email.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+        }
+        localStorage.setItem(
+          "sketch_local_user",
+          JSON.stringify({
+            id: "usr_" + Math.random().toString(36).substring(2, 10),
+            email,
+            full_name: name || "Architect",
+            created_at: new Date().toISOString(),
+            role: "Lead Architect",
+            plan: "Sketch Professional (Unlimited)",
+          })
+        );
+      }
+    };
+
     try {
       const result = await signIn.create({
         identifier: email,
@@ -252,17 +309,20 @@ function LoginForm() {
       });
 
       if (result.status === "complete") {
+        saveLoginProfile();
         await setActive({ session: result.createdSessionId });
         router.push(redirectTo);
         router.refresh();
         return;
       }
+      saveLoginProfile();
       router.push(redirectTo);
     } catch (err: unknown) {
       const clerkErr = err as { errors?: Array<{ message: string; longMessage?: string }> };
       const msg = clerkErr.errors?.[0]?.longMessage || clerkErr.errors?.[0]?.message || (err instanceof Error ? err.message : "Failed to sign in");
       
       if (msg.includes("publishableKey") || msg.includes("placeholder")) {
+        saveLoginProfile();
         router.push(redirectTo);
       } else {
         setError(msg);

@@ -60,6 +60,12 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
     const q = customQuery || query;
     if (!q.trim() || isAnalyzing) return;
 
+    console.log("%c🤖 [CHAT ASSISTANT] Dispatched Query to Model API:", "color: #38bdf8; font-weight: bold;", {
+      projectId,
+      query: q,
+      timestamp: new Date().toISOString(),
+    });
+
     setQuery("");
     setIsAnalyzing(true);
 
@@ -88,8 +94,15 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
         sources: Array.from(new Set(sourcesList)),
       };
 
+      console.log("%c✨ [CHAT ASSISTANT] Received State Flow & Model Output:", "color: #34d399; font-weight: bold;", {
+        query: q,
+        analysis: newAnalysis,
+        sourcesFound: sourcesList.length,
+      });
+
       setHistory((prev) => [...prev, { query: q, analysis: newAnalysis }]);
-    } catch {
+    } catch (err) {
+      console.warn("%c⚠ [CHAT ASSISTANT] Network or Stream Notice (Engaging Fallback State):", "color: #f59e0b; font-weight: bold;", err);
       // Fallback structured analysis
       setHistory((prev) => [
         ...prev,

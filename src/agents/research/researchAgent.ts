@@ -1,4 +1,5 @@
 import { GeminiService } from "@/lib/gemini/model";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 import type { RagProjectContext, ResearchFindings, UserPreferences } from "../types";
 
 export interface ResearchAgentInput {
@@ -169,7 +170,7 @@ Return valid JSON conforming to this structure:
       frontend: "Next.js",
       backend: "Node.js & Next.js Server Actions",
       database: "Supabase PostgreSQL + pgvector",
-      ai: "Gemini 1.5 Flash",
+      ai: "Gemini 3.8 Flash",
       orchestration: "LangGraph.js",
       storage: "Vercel Blob",
       deployment: "Vercel",
@@ -183,11 +184,26 @@ Return valid JSON conforming to this structure:
     securityApproach: "Row-Level Security (RLS) policies, JWT session validation, TLS 1.3 transit encryption, and least-privilege IAM roles.",
   };
 
+  AgentLogger.agentAction("Research Agent", "EVALUATING ARCHITECTURAL ALTERNATIVES", {
+    idea: input.idea,
+    hasRagContext: hasRag,
+    userPreferences: input.userPreferences || "None",
+  });
+
   const result = await GeminiService.generateStructuredJson<ResearchFindings>(
     prompt,
     "You are the Sketch Research Agent, an elite systems researcher evaluating technological alternatives.",
-    fallback
+    fallback,
+    "Research Agent"
   );
 
-  return result || fallback;
+  const finalOutput = result || fallback;
+  AgentLogger.agentAction("Research Agent", "RESEARCH SYNTHESIZED", {
+    projectType: finalOutput.projectType,
+    complexity: finalOutput.complexityAssessment,
+    recommendedStack: finalOutput.recommendedStack,
+    keyPatterns: finalOutput.keyArchitecturalPatterns,
+  });
+
+  return finalOutput;
 }

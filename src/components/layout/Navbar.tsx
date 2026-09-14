@@ -11,7 +11,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full h-[68px] bg-[#09090b] text-[#f4f4f5] border-none shadow-none">
+    <header className="sticky top-0 z-50 w-full h-[68px] bg-black/90 backdrop-blur-md text-white border-b border-white/10 shadow-none">
       <div className="w-full h-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
         {/* LEFT: AgentArchitect logo and wordmark */}
         <div className="flex items-center">

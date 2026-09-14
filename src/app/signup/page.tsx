@@ -149,6 +149,21 @@ function SignUpForm() {
     setError(null);
     setLoading(true);
 
+    // Persist provisional user details
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        "sketch_local_user",
+        JSON.stringify({
+          id: "usr_" + Math.random().toString(36).substring(2, 10),
+          email,
+          full_name: fullName.trim() || "Architect",
+          created_at: new Date().toISOString(),
+          role: "Lead Architect",
+          plan: "Sketch Professional (Unlimited)",
+        })
+      );
+    }
+
     try {
       await signUp.create({
         emailAddress: email,
@@ -200,6 +215,24 @@ function SignUpForm() {
     setLoading(true);
     setError(null);
 
+    // Make sure local profile exists
+    if (typeof window !== "undefined") {
+      const existing = localStorage.getItem("sketch_local_user");
+      if (!existing && email) {
+        localStorage.setItem(
+          "sketch_local_user",
+          JSON.stringify({
+            id: "usr_" + Math.random().toString(36).substring(2, 10),
+            email,
+            full_name: fullName.trim() || email.split("@")[0],
+            created_at: new Date().toISOString(),
+            role: "Lead Architect",
+            plan: "Sketch Professional (Unlimited)",
+          })
+        );
+      }
+    }
+
     try {
       if (isLoaded && signUp) {
         const completeSignUp = await signUp.attemptEmailAddressVerification({
@@ -232,6 +265,19 @@ function SignUpForm() {
 
   // 3. Google OAuth Sign-Up
   const handleGoogleSignUp = async () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        "sketch_local_user",
+        JSON.stringify({
+          id: "usr_google_" + Math.random().toString(36).substring(2, 10),
+          email: "architect@sketch.dev",
+          full_name: "Google Architect",
+          created_at: new Date().toISOString(),
+          role: "Lead Architect",
+          plan: "Sketch Professional (Unlimited)",
+        })
+      );
+    }
     if (!isLoaded || !signUp) return;
     setError(null);
     setLoading(true);

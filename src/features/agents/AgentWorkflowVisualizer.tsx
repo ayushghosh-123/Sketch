@@ -15,17 +15,14 @@ export interface NodeStatusItem {
   description: string;
 }
 
-const WORKFLOW_NODES: { id: string; name: string }[] = [
-  { id: "input_validation", name: "Input Validation" },
-  { id: "project_analyzer", name: "Project Analyzer" },
-  { id: "requirement_analyzer", name: "Requirement Analyzer" },
-  { id: "rag_retriever", name: "RAG Retriever" },
-  { id: "architecture_designer", name: "Architecture Designer" },
-  { id: "technology_analyzer", name: "Technology Analyzer" },
-  { id: "security_analyzer", name: "Security Analyzer" },
-  { id: "dependency_generator", name: "Dependency Generator" },
-  { id: "validation_node", name: "Validation Node" },
-  { id: "save_architecture", name: "Save Architecture" },
+export const WORKFLOW_NODES: { id: string; name: string; description: string }[] = [
+  { id: "input_orchestrator", name: "Input Orchestrator", description: "Route idea & inspect docs" },
+  { id: "rag_agent", name: "RAG Agent", description: "Vector semantic retrieval" },
+  { id: "research_agent", name: "Research Agent", description: "Architectural & tech research" },
+  { id: "decision_agent", name: "Decision Agent", description: "Decide layers & components" },
+  { id: "validation_step", name: "Validation Step", description: "Verify system integrity" },
+  { id: "canvas_agent", name: "Canvas Agent", description: "Dagre layout generation" },
+  { id: "save_project", name: "Save Project", description: "Persist & version state" },
 ];
 
 interface AgentWorkflowVisualizerProps {
@@ -49,7 +46,7 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
       <div className="px-4 py-2 bg-[#111113] border-b border-[#27272a] flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 font-bold text-[#f4f4f5] uppercase tracking-wider text-[11px]">
-            <span>◎ AGENT EXECUTION</span>
+            <span>◎ AGENT WORKFLOW PIPELINE</span>
           </div>
           {isGenerating ? (
             <span className="text-[10px] text-[#0ea5e9] flex items-center gap-1">
@@ -63,7 +60,7 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
 
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-[#71717a] hover:text-[#f4f4f5] p-1 flex items-center gap-1 text-[10px]"
+          className="text-[#71717a] hover:text-[#f4f4f5] p-1 flex items-center gap-1 text-[10px] cursor-pointer"
         >
           <span>{isExpanded ? "COLLAPSE" : "EXPAND"}</span>
           {isExpanded ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />}
@@ -74,14 +71,18 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
       {isExpanded && (
         <div className="p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 max-h-56 overflow-y-auto">
           {/* Node Status Pipeline Grid (7 cols) */}
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-5 gap-2">
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
             {WORKFLOW_NODES.map((node) => {
-              const status = nodeStatuses[node.id] || "idle";
-              const isCurrent = currentNode === node.id;
+              const status =
+                nodeStatuses[node.id] ||
+                nodeStatuses[node.name] ||
+                (currentNode === node.id || currentNode === node.name ? "running" : "idle");
+              const isCurrent = currentNode === node.id || currentNode === node.name;
 
               return (
                 <div
                   key={node.id}
+                  title={node.description}
                   className={`p-2 rounded border text-[10px] space-y-1 transition-all ${
                     status === "completed"
                       ? "bg-[#111113] border-[#27272a] text-[#f4f4f5]"
@@ -103,7 +104,7 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
                       {status === "running" || isCurrent ? "RUNNING" : status}
                     </span>
                   </div>
-                  <div className="font-medium truncate">{node.name}</div>
+                  <div className="font-medium leading-tight truncate">{node.name}</div>
                 </div>
               );
             })}

@@ -1,5 +1,6 @@
 import { GeminiService } from "@/lib/gemini/model";
 import { RagService } from "@/services/ragService";
+import { AgentLogger } from "@/lib/logger/agentLogger";
 import type { MatchedChunk } from "@/types/database";
 import type { RagProjectContext } from "../types";
 
@@ -10,6 +11,11 @@ export interface RagAgentInput {
 }
 
 export async function runRagAgent(input: RagAgentInput): Promise<RagProjectContext> {
+  AgentLogger.agentAction("RAG Agent", "QUERYING VECTOR KNOWLEDGE BASE", {
+    projectId: input.projectId,
+    queryTerm: `${input.idea.slice(0, 60)}...`,
+  });
+
   // Retrieve semantic chunks from pgvector if available
   let retrievedChunks: string[] = [];
   try {
@@ -19,8 +25,14 @@ export async function runRagAgent(input: RagAgentInput): Promise<RagProjectConte
       topK: 10,
     });
     retrievedChunks = matched.map((c: MatchedChunk) => c.content);
+    AgentLogger.agentAction("RAG Agent", "SEMANTIC RETRIEVAL SUCCESS", {
+      chunksRetrieved: retrievedChunks.length,
+      topSimilarity: matched[0]?.similarity ?? "N/A",
+    });
   } catch (err) {
-    console.warn("RAG retrieval warning:", err);
+    AgentLogger.agentAction("RAG Agent", "SEMANTIC RETRIEVAL FALLBACK (No vector DB or empty corpus)", {
+      warning: String(err),
+    });
   }
 
   const documentContext = retrievedChunks.length > 0 
@@ -82,8 +94,17 @@ Return a JSON object conforming to:
   const result = await GeminiService.generateStructuredJson<RagProjectContext>(
     prompt,
     "You are the Sketch RAG Agent specializing in technical specification analysis and requirements extraction.",
-    fallback
+    fallback,
+    "RAG Agent"
   );
 
-  return result || fallback;
+  const finalOutput = result || fallback;
+  AgentLogger.agentAction("RAG Agent", "EXTRACTED CONTEXT READY", {
+    productName: finalOutput.productName,
+    targetUsers: finalOutput.targetUsers,
+    coreRequirementsCount: finalOutput.coreRequirements.length,
+    identifiedTechnologies: finalOutput.identifiedTechnologies,
+  });
+
+  return finalOutput;
 }
