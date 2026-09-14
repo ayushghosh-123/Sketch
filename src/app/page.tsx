@@ -21,7 +21,21 @@ import {
   ArrowUpRight,
   FileCode,
   Sliders,
-  MoveRight
+  MoveRight,
+  MousePointer,
+  Hand,
+  Square,
+  Circle,
+  Type,
+  Workflow,
+  Monitor,
+  Server,
+  Bot,
+  Activity,
+  Wifi,
+  Battery,
+  Smartphone,
+  Laptop
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -29,6 +43,8 @@ export default function LandingPage() {
 
   // Selected node in interactive system preview
   const [selectedNode, setSelectedNode] = useState<"client" | "api" | "auth" | "backend" | "ai" | "db">("db");
+  const [activeTool, setActiveTool] = useState<string>("select");
+  const [devicePreview, setDevicePreview] = useState<"desktop" | "mobile">("desktop");
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-white selection:bg-orange-500/30 selection:text-orange-200 font-sans">
@@ -239,251 +255,764 @@ export default function LandingPage() {
                 Click components in the visual canvas below to inspect technical details and connections.
               </p>
             </div>
-            <Link href="/dashboard">
-              <button className="bg-white hover:bg-neutral-200 text-black font-semibold text-xs h-9 px-4 transition-all duration-200 flex items-center shadow-sm chai-btn-primary cursor-pointer font-mono">
-                Open Workspace →
-              </button>
-            </Link>
-          </div>
-
-          {/* Interactive Workspace Studio (ChaiCode Card Animation) */}
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ amount: 0.15, once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.008 }}
-            className="rounded-2xl border border-white/10 bg-[#111111] overflow-hidden font-mono shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer"
-          >
-            {/* Top Workspace Bar */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-[#18181b] border-b border-white/10 text-xs">
-              <div className="flex items-center gap-2">
-                <span className="text-[#f97316]">◈</span>
-                <span className="font-semibold text-white">AI Learning Platform · Architecture</span>
-              </div>
-              <div className="flex items-center gap-3 text-[11px]">
-                <span className="text-[#10b981] flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" /> READY
-                </span>
-                <span className="text-[#71717a]">6 COMPONENTS · 7 EDGES</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px]">
-              {/* Left: Tools Palette (3 cols) */}
-              <div className="lg:col-span-3 border-r border-white/10 bg-black p-4 text-xs space-y-4">
-                <div className="text-[10px] uppercase tracking-wider text-[#71717a] font-semibold">
-                  Workspace Tools
-                </div>
-                <div className="space-y-1">
-                  <div className="p-1.5 rounded bg-[#18181b] border border-white/10 text-white flex items-center gap-2">
-                    <span className="text-[#f97316]">↖</span> Select
-                  </div>
-                  <div className="p-1.5 rounded bg-[#111111] text-[#a1a1aa] flex items-center gap-2">
-                    <span>✋</span> Hand / Pan
-                  </div>
-                  <div className="p-1.5 rounded bg-[#111111] text-[#a1a1aa] flex items-center gap-2">
-                    <span>□</span> Rectangle
-                  </div>
-                  <div className="p-1.5 rounded bg-[#111111] text-[#a1a1aa] flex items-center gap-2">
-                    <span>○</span> Circle
-                  </div>
-                  <div className="p-1.5 rounded bg-[#111111] text-[#a1a1aa] flex items-center gap-2">
-                    <span>T</span> Text Box
-                  </div>
-                  <div className="p-1.5 rounded bg-[#111111] text-[#a1a1aa] flex items-center gap-2">
-                    <span>→</span> Connector
-                  </div>
-                </div>
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Device Preview Switcher (Desktop Canvas vs Floating Mobile Phone) */}
+              <div className="flex items-center p-1 rounded-xl bg-[#141417] border border-white/10 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setDevicePreview("desktop")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-[11px] cursor-pointer ${
+                    devicePreview === "desktop"
+                      ? "bg-white/10 text-white font-semibold shadow-sm"
+                      : "text-[#71717a] hover:text-white"
+                  }`}
+                >
+                  <Laptop className="w-3.5 h-3.5" /> Desktop Studio
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDevicePreview("mobile")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all font-mono text-[11px] cursor-pointer ${
+                    devicePreview === "mobile"
+                      ? "bg-[#f97316] text-black font-semibold shadow-sm"
+                      : "text-[#71717a] hover:text-white"
+                  }`}
+                >
+                  <Smartphone className="w-3.5 h-3.5" /> Mobile Phone
+                </button>
               </div>
 
-              {/* Center: Interactive Canvas Nodes (6 cols) */}
-              <div className="lg:col-span-6 p-6 flex flex-col justify-center items-center relative bg-black bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:16px_16px]">
-                <div className="grid grid-cols-2 gap-5 w-full max-w-md">
-                  {/* Node 1: Web Application */}
-                  <div
-                    onClick={() => setSelectedNode("client")}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all ${
-                      selectedNode === "client"
-                        ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
-                        : "bg-[#111111] border-white/10 hover:border-white/25"
-                    }`}
-                  >
-                    <div className="text-[10px] text-[#f97316] uppercase flex items-center justify-between">
-                      <span>◈ FRONTEND</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
-                    </div>
-                    <div className="text-xs font-semibold text-white mt-1">Web Application</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">Next.js / TypeScript</div>
-                  </div>
-
-                  {/* Node 2: API Gateway */}
-                  <div
-                    onClick={() => setSelectedNode("api")}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all ${
-                      selectedNode === "api"
-                        ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
-                        : "bg-[#111111] border-white/10 hover:border-white/25"
-                    }`}
-                  >
-                    <div className="text-[10px] text-[#a1a1aa] uppercase flex items-center justify-between">
-                      <span>↔ API</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
-                    </div>
-                    <div className="text-xs font-semibold text-white mt-1">API Router</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">Route Handlers</div>
-                  </div>
-
-                  {/* Node 3: AI Agent System */}
-                  <div
-                    onClick={() => setSelectedNode("ai")}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all ${
-                      selectedNode === "ai"
-                        ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
-                        : "bg-[#111111] border-white/10 hover:border-white/25"
-                    }`}
-                  >
-                    <div className="text-[10px] text-[#f97316] uppercase flex items-center justify-between">
-                      <span>◎ AI AGENT</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
-                    </div>
-                    <div className="text-xs font-semibold text-white mt-1">AI Tutor Engine</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">LangGraph.js + Gemini</div>
-                  </div>
-
-                  {/* Node 4: Database */}
-                  <div
-                    onClick={() => setSelectedNode("db")}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all ${
-                      selectedNode === "db"
-                        ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
-                        : "bg-[#111111] border-white/10 hover:border-white/25"
-                    }`}
-                  >
-                    <div className="text-[10px] text-[#10b981] uppercase flex items-center justify-between">
-                      <span>◉ DATABASE</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
-                    </div>
-                    <div className="text-xs font-semibold text-white mt-1">Primary Database</div>
-                    <div className="text-[10px] text-[#71717a] mt-0.5">Supabase PostgreSQL</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Component Inspector Panel (3 cols) */}
-              <div className="lg:col-span-3 border-l border-white/10 bg-black p-4 text-xs space-y-4">
-                <div className="text-[10px] uppercase tracking-wider text-[#71717a] font-semibold">
-                  Inspector
-                </div>
-
-                {selectedNode === "db" && (
-                  <div className="space-y-3">
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">NAME</div>
-                      <div className="text-sm font-semibold text-white">Primary Database</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
-                      <div className="text-xs text-[#f97316]">Supabase PostgreSQL 16 + pgvector</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
-                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
-                        ACID relational database with Row-Level Security policies and vector embeddings for semantic search.
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
-                      <div className="text-[11px] text-[#a1a1aa]">← API Router, AI Tutor Engine</div>
-                    </div>
-                  </div>
-                )}
-
-                {selectedNode === "client" && (
-                  <div className="space-y-3">
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">NAME</div>
-                      <div className="text-sm font-semibold text-white">Web Application</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
-                      <div className="text-xs text-[#f97316]">Next.js / TypeScript & React</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
-                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
-                        User interface with server components, client state, and streaming real-time chat.
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
-                      <div className="text-[11px] text-[#a1a1aa]">→ API Router</div>
-                    </div>
-                  </div>
-                )}
-
-                {selectedNode === "api" && (
-                  <div className="space-y-3">
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">NAME</div>
-                      <div className="text-sm font-semibold text-white">API Router</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
-                      <div className="text-xs text-[#f97316]">Next.js Route Handlers</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
-                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
-                        Dispatches requests, validates session tokens, and executes business operations.
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
-                      <div className="text-[11px] text-[#a1a1aa]">→ Primary Database, AI Tutor Engine</div>
-                    </div>
-                  </div>
-                )}
-
-                {selectedNode === "ai" && (
-                  <div className="space-y-3">
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">NAME</div>
-                      <div className="text-sm font-semibold text-white">AI Tutor Engine</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">TECHNOLOGY</div>
-                      <div className="text-xs text-[#f97316]">LangGraph.js + Gemini 1.5</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">DESCRIPTION</div>
-                      <div className="text-[11px] text-[#a1a1aa] leading-relaxed">
-                        Multi-agent system providing personalized student coding help and retrieval.
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
-                      <div className="text-[11px] text-[#a1a1aa]">→ Primary Database (vector similarity)</div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Bottom AI Command Bar Preview */}
-            <div className="p-3 bg-[#18181b] border-t border-white/10 flex items-center justify-between text-xs text-[#a1a1aa]">
-              <div className="flex items-center gap-2">
-                <span className="text-[#f97316]">✦</span>
-                <span className="text-[#71717a]">Try command:</span>
-                <span className="text-white bg-black px-2.5 py-0.5 rounded-md border border-white/15 font-mono">
-                  &ldquo;Add Redis caching&rdquo;
-                </span>
-              </div>
-              <Link href="/dashboard" className="text-[#f97316] hover:underline font-mono text-xs">
-                Try in Workspace →
+              <Link href="/dashboard">
+                <button className="bg-white hover:bg-neutral-200 text-black font-semibold text-xs h-9 px-4 transition-all duration-200 flex items-center shadow-sm chai-btn-primary cursor-pointer font-mono">
+                  Open Workspace →
+                </button>
               </Link>
             </div>
-          </motion.div>
+          </div>
+
+          {/* VIEW 1: FLOATING 3D SMARTPHONE PREVIEW (Visible on mobile view or when Mobile Phone is selected) */}
+          <div className={devicePreview === "mobile" ? "block" : "block sm:hidden"}>
+            <div className="relative py-8 flex flex-col items-center justify-center [perspective:1200px]">
+              {/* Ambient radial glow aura */}
+              <div className="absolute w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-orange-600/25 to-emerald-500/15 rounded-full blur-[100px] pointer-events-none -z-10" />
+
+              {/* 3D Floating Mobile Phone Structure */}
+              <motion.div
+                animate={{
+                  y: [-9, 9, -9],
+                  rotateX: [2.5, -2.5, 2.5],
+                  rotateY: [-3.5, 3.5, -3.5],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative w-full max-w-[325px] sm:max-w-[360px] rounded-[48px] p-[10px] bg-gradient-to-b from-[#2e2e33] via-[#151518] to-[#25252a] border border-white/25 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_50px_rgba(249,115,22,0.15)] font-mono select-none"
+              >
+                {/* Physical Hardware Buttons */}
+                {/* Action button */}
+                <div className="absolute -left-[13px] top-24 w-[3px] h-6 bg-[#404047] rounded-l-sm" />
+                {/* Volume Up */}
+                <div className="absolute -left-[13px] top-34 w-[3px] h-9 bg-[#404047] rounded-l-sm" />
+                {/* Volume Down */}
+                <div className="absolute -left-[13px] top-47 w-[3px] h-9 bg-[#404047] rounded-l-sm" />
+                {/* Power Button */}
+                <div className="absolute -right-[13px] top-34 w-[3px] h-12 bg-[#404047] rounded-r-sm" />
+
+                {/* Inner Bezel Screen */}
+                <div className="relative rounded-[38px] overflow-hidden bg-[#09090b] border border-black min-h-[570px] flex flex-col justify-between">
+                  {/* Status Bar with Dynamic Island */}
+                  <div className="relative z-30 pt-3 px-5 pb-2 bg-[#09090b] flex items-center justify-between text-[11px] text-white">
+                    <span className="font-semibold tracking-tighter text-xs">9:41</span>
+
+                    {/* Dynamic Island pill */}
+                    <div className="w-24 h-5 bg-black rounded-full border border-white/10 flex items-center justify-between px-2 shadow-inner">
+                      <div className="w-2 h-2 rounded-full bg-[#18181b] border border-white/20" />
+                      <div className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
+                        <span className="text-[8px] text-emerald-400 font-mono">LIVE</span>
+                      </div>
+                    </div>
+
+                    {/* Battery & Wifi */}
+                    <div className="flex items-center gap-1.5 text-white/80">
+                      <Wifi className="w-3 h-3" />
+                      <Battery className="w-3.5 h-3.5 text-white fill-white/80" />
+                    </div>
+                  </div>
+
+                  {/* Glass Glare Sheen Reflection */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none z-20" />
+
+                  {/* Mobile Canvas Viewport */}
+                  <div className="relative flex-1 px-3 py-2 flex flex-col justify-between overflow-hidden bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:14px_14px]">
+                    {/* Top Mini Workspace Title & Floating Tools Pill */}
+                    <div className="relative z-10 flex flex-col items-center gap-2">
+                      <div className="flex items-center justify-between w-full px-1 text-[10px] text-[#a1a1aa]">
+                        <span className="text-[#f97316] font-semibold flex items-center gap-1">
+                          ◈ Architecture Canvas
+                        </span>
+                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-[#a1a1aa]">
+                          Mobile Studio
+                        </span>
+                      </div>
+
+                      {/* Floating Mobile Toolbar Dock */}
+                      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#18181b]/95 backdrop-blur-md border border-white/10 shadow-lg">
+                        {[
+                          { id: "select", label: "Select", icon: MousePointer },
+                          { id: "hand", label: "Pan", icon: Hand },
+                          { id: "rect", label: "Box", icon: Square },
+                          { id: "circle", label: "Circle", icon: Circle },
+                          { id: "connector", label: "Wire", icon: Workflow },
+                        ].map((tool) => {
+                          const Icon = tool.icon;
+                          const isActive = activeTool === tool.id;
+                          return (
+                            <button
+                              key={tool.id}
+                              type="button"
+                              onClick={() => setActiveTool(tool.id)}
+                              className={`p-1.5 rounded-lg transition-all cursor-pointer ${
+                                isActive
+                                  ? "bg-[#f97316] text-black shadow-sm"
+                                  : "text-[#a1a1aa] hover:text-white"
+                              }`}
+                              title={tool.label}
+                            >
+                              <Icon className="w-3 h-3" />
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Nodes Canvas with Animated SVG Connector Wires */}
+                    <div className="relative w-full my-auto py-2">
+                      <svg
+                        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+                        viewBox="0 0 300 170"
+                        preserveAspectRatio="none"
+                      >
+                        {/* Wire 1: Client to API */}
+                        <path
+                          d="M 120 40 C 135 40, 155 40, 175 40"
+                          stroke="#f97316"
+                          strokeWidth="2"
+                          strokeDasharray="3 3"
+                          fill="none"
+                        />
+                        <circle cx="148" cy="40" r="2.5" fill="#f97316" className="animate-pulse" />
+
+                        {/* Wire 2: API to DB */}
+                        <path
+                          d="M 235 75 C 235 90, 235 100, 235 115"
+                          stroke="#10b981"
+                          strokeWidth="2"
+                          strokeDasharray="3 3"
+                          fill="none"
+                        />
+                        <circle cx="235" cy="95" r="2.5" fill="#10b981" className="animate-pulse" />
+
+                        {/* Wire 3: API to AI */}
+                        <path
+                          d="M 215 75 C 190 95, 140 95, 100 115"
+                          stroke="#f97316"
+                          strokeWidth="1.5"
+                          strokeDasharray="3 3"
+                          fill="none"
+                          opacity="0.5"
+                        />
+
+                        {/* Wire 4: AI to DB */}
+                        <path
+                          d="M 120 135 C 135 135, 155 135, 175 135"
+                          stroke="#10b981"
+                          strokeWidth="2"
+                          strokeDasharray="3 3"
+                          fill="none"
+                        />
+                      </svg>
+
+                      {/* 4 Interactive Touch Nodes */}
+                      <div className="relative z-10 grid grid-cols-2 gap-3">
+                        {/* Node 1: Web App */}
+                        <div
+                          onClick={() => setSelectedNode("client")}
+                          className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                            selectedNode === "client"
+                              ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/30 shadow-[0_0_15px_rgba(249,115,22,0.25)]"
+                              : "bg-[#111113]/90 border-white/10 hover:border-white/20"
+                          }`}
+                        >
+                          <div className="text-[9px] text-[#f97316] uppercase flex items-center justify-between font-semibold">
+                            <span className="flex items-center gap-1"><Monitor className="w-2.5 h-2.5" /> Client</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+                          </div>
+                          <div className="text-[11px] font-bold text-white mt-1">Web App</div>
+                          <div className="text-[9px] text-[#71717a]">Next.js 16</div>
+                        </div>
+
+                        {/* Node 2: API Router */}
+                        <div
+                          onClick={() => setSelectedNode("api")}
+                          className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                            selectedNode === "api"
+                              ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/30 shadow-[0_0_15px_rgba(249,115,22,0.25)]"
+                              : "bg-[#111113]/90 border-white/10 hover:border-white/20"
+                          }`}
+                        >
+                          <div className="text-[9px] text-[#a1a1aa] uppercase flex items-center justify-between font-semibold">
+                            <span className="flex items-center gap-1"><Server className="w-2.5 h-2.5" /> API</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+                          </div>
+                          <div className="text-[11px] font-bold text-white mt-1">API Router</div>
+                          <div className="text-[9px] text-[#71717a]">Handlers</div>
+                        </div>
+
+                        {/* Node 3: AI Tutor Engine */}
+                        <div
+                          onClick={() => setSelectedNode("ai")}
+                          className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                            selectedNode === "ai"
+                              ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/30 shadow-[0_0_15px_rgba(249,115,22,0.25)]"
+                              : "bg-[#111113]/90 border-white/10 hover:border-white/20"
+                          }`}
+                        >
+                          <div className="text-[9px] text-[#f97316] uppercase flex items-center justify-between font-semibold">
+                            <span className="flex items-center gap-1"><Bot className="w-2.5 h-2.5" /> Agent</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+                          </div>
+                          <div className="text-[11px] font-bold text-white mt-1">AI Engine</div>
+                          <div className="text-[9px] text-[#71717a]">LangGraph</div>
+                        </div>
+
+                        {/* Node 4: Database */}
+                        <div
+                          onClick={() => setSelectedNode("db")}
+                          className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                            selectedNode === "db"
+                              ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/30 shadow-[0_0_15px_rgba(249,115,22,0.25)]"
+                              : "bg-[#111113]/90 border-white/10 hover:border-white/20"
+                          }`}
+                        >
+                          <div className="text-[9px] text-[#10b981] uppercase flex items-center justify-between font-semibold">
+                            <span className="flex items-center gap-1"><Database className="w-2.5 h-2.5" /> DB</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+                          </div>
+                          <div className="text-[11px] font-bold text-white mt-1">Primary DB</div>
+                          <div className="text-[9px] text-[#71717a]">PostgreSQL</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mobile Inspector Drawer Sheet */}
+                    <div className="relative z-10 p-3 rounded-2xl bg-[#141417]/95 border border-white/10 backdrop-blur-md shadow-lg text-[10px]">
+                      <div className="flex items-center justify-between pb-1.5 border-b border-white/10">
+                        <div className="flex items-center gap-1 text-[9px] font-bold uppercase text-[#71717a]">
+                          <Sliders className="w-2.5 h-2.5 text-[#f97316]" /> Inspector
+                        </div>
+                        <span className="text-[8px] px-1 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono">
+                          LIVE SYNC
+                        </span>
+                      </div>
+
+                      <div className="mt-2 space-y-1">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#71717a]">NODE:</span>
+                          <span className="font-bold text-white">
+                            {selectedNode === "client" && "Web Application"}
+                            {selectedNode === "api" && "API Router"}
+                            {selectedNode === "ai" && "AI Tutor Engine"}
+                            {selectedNode === "db" && "Primary Database"}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#71717a]">TECH:</span>
+                          <span className="text-[#f97316] font-mono">
+                            {selectedNode === "client" && "Next.js / TypeScript"}
+                            {selectedNode === "api" && "Route Handlers"}
+                            {selectedNode === "ai" && "LangGraph + Gemini"}
+                            {selectedNode === "db" && "Supabase + pgvector"}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#71717a]">LATENCY:</span>
+                          <span className="text-white font-mono">&lt; 14ms (p95)</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mini Command Prompt */}
+                    <div className="relative z-10 mt-2 p-2 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between text-[9px]">
+                      <div className="flex items-center gap-1 text-[#a1a1aa] truncate">
+                        <span className="text-[#f97316]">✦</span>
+                        <span className="truncate">&ldquo;Add Redis caching&rdquo;</span>
+                      </div>
+                      <Link href="/dashboard" className="text-[#f97316] font-semibold hover:underline shrink-0 ml-1">
+                        Try →
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* iOS Home Indicator Bar */}
+                  <div className="pb-2 pt-1 flex justify-center bg-[#09090b]">
+                    <div className="w-28 h-1 bg-white/40 rounded-full" />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Dynamic Soft Ambient Shadow Beneath Floating Phone */}
+              <motion.div
+                animate={{
+                  scale: [0.85, 1.05, 0.85],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-44 sm:w-56 h-4 bg-orange-500/20 rounded-full blur-xl mt-4 pointer-events-none"
+              />
+            </div>
+          </div>
+
+          {/* VIEW 2: DESKTOP STUDIO CANVAS (Visible on sm: screens when Desktop Studio is active) */}
+          <div className={devicePreview === "desktop" ? "hidden sm:block" : "hidden"}>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ amount: 0.15, once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="rounded-2xl border border-white/10 bg-[#0d0d0f] overflow-hidden font-mono shadow-2xl transition-all duration-300 hover:border-orange-500/30"
+            >
+              {/* Top Workspace Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-[#141417] border-b border-white/10 text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="text-[#f97316] animate-pulse">◈</span>
+                  <span className="font-semibold text-white tracking-wide">AI Learning Platform · Architecture Studio</span>
+                  <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#a1a1aa]">
+                    Canvas v2.4
+                  </span>
+                </div>
+                <div className="flex items-center gap-3 text-[11px]">
+                  <span className="text-[#10b981] flex items-center gap-1.5 font-medium">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10b981]"></span>
+                    </span>
+                    TOPOLOGY LIVE
+                  </span>
+                  <span className="text-[#71717a] hidden md:inline">4 NODES · 4 EDGES ACTIVE</span>
+                </div>
+              </div>
+
+              {/* Studio Body: Canvas + Inspector */}
+              <div className="flex flex-col lg:flex-row min-h-[460px]">
+                {/* Main Interactive Canvas Area */}
+                <div className="relative flex-1 p-6 sm:p-10 flex flex-col justify-center items-center bg-[#09090b] bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] overflow-hidden min-h-[360px]">
+                  {/* Floating Canvas Toolbar (Figma / tldraw style) */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1 rounded-xl bg-[#18181b]/90 backdrop-blur-md border border-white/10 shadow-2xl max-w-[95%]">
+                    {[
+                      { id: "select", label: "Select", icon: MousePointer },
+                      { id: "hand", label: "Hand", icon: Hand },
+                      { id: "rect", label: "Box", icon: Square },
+                      { id: "circle", label: "Circle", icon: Circle },
+                      { id: "text", label: "Text", icon: Type },
+                      { id: "connector", label: "Wire", icon: Workflow },
+                    ].map((tool) => {
+                      const Icon = tool.icon;
+                      const isActive = activeTool === tool.id;
+                      return (
+                        <button
+                          key={tool.id}
+                          type="button"
+                          onClick={() => setActiveTool(tool.id)}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
+                            isActive
+                              ? "bg-[#f97316] text-black font-semibold shadow-md shadow-orange-500/20"
+                              : "text-[#a1a1aa] hover:text-white hover:bg-white/10"
+                          }`}
+                          title={tool.label}
+                        >
+                          <Icon className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline text-[11px]">{tool.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Nodes Container with Connecting Wires */}
+                  <div className="relative w-full max-w-lg mt-8 mb-4">
+                    {/* SVG Connector Wires Overlay */}
+                    <svg
+                      className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+                      viewBox="0 0 480 220"
+                      preserveAspectRatio="none"
+                    >
+                      <defs>
+                        <linearGradient id="glowOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#f97316" stopOpacity="0.9" />
+                          <stop offset="100%" stopColor="#fb923c" stopOpacity="0.6" />
+                        </linearGradient>
+                        <linearGradient id="glowGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#10b981" stopOpacity="0.8" />
+                          <stop offset="100%" stopColor="#34d399" stopOpacity="0.5" />
+                        </linearGradient>
+                      </defs>
+
+                      {/* Edge 1: Web Application -> API Router */}
+                      <path
+                        d="M 190 48 C 215 48, 235 48, 260 48"
+                        stroke="#f97316"
+                        strokeWidth="2"
+                        strokeDasharray="4 4"
+                        fill="none"
+                        opacity="0.75"
+                      />
+                      <circle cx="225" cy="48" r="3" fill="#f97316" className="animate-pulse" />
+
+                      {/* Edge 2: API Router -> AI Tutor Engine */}
+                      <path
+                        d="M 350 95 C 330 130, 200 120, 150 145"
+                        stroke="#f97316"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 4"
+                        fill="none"
+                        opacity="0.4"
+                      />
+
+                      {/* Edge 3: API Router -> Primary Database */}
+                      <path
+                        d="M 370 95 C 370 115, 370 125, 370 145"
+                        stroke="#10b981"
+                        strokeWidth="2"
+                        strokeDasharray="4 4"
+                        fill="none"
+                        opacity="0.75"
+                      />
+                      <circle cx="370" cy="120" r="3" fill="#10b981" className="animate-pulse" />
+
+                      {/* Edge 4: AI Tutor Engine -> Primary Database */}
+                      <path
+                        d="M 190 180 C 215 180, 235 180, 260 180"
+                        stroke="#10b981"
+                        strokeWidth="2"
+                        strokeDasharray="4 4"
+                        fill="none"
+                        opacity="0.6"
+                      />
+                    </svg>
+
+                    {/* Nodes Grid */}
+                    <div className="relative z-10 grid grid-cols-2 gap-x-8 sm:gap-x-14 gap-y-8">
+                      {/* Node 1: Web Application */}
+                      <div
+                        onClick={() => setSelectedNode("client")}
+                        className={`relative p-3.5 rounded-xl border transition-all cursor-pointer backdrop-blur-sm ${
+                          selectedNode === "client"
+                            ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/40 shadow-[0_0_20px_rgba(249,115,22,0.25)]"
+                            : "bg-[#111113]/90 border-white/10 hover:border-white/25 hover:bg-[#161619]"
+                        }`}
+                      >
+                        {/* Port Right */}
+                        <span className="absolute -right-2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#0d0d0f] border-2 border-[#f97316] flex items-center justify-center">
+                          <span className="w-1 h-1 rounded-full bg-[#f97316]" />
+                        </span>
+                        <div className="text-[10px] text-[#f97316] uppercase flex items-center justify-between tracking-wider font-semibold">
+                          <span className="flex items-center gap-1.5">
+                            <Monitor className="w-3 h-3" /> FRONTEND
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
+                        </div>
+                        <div className="text-xs font-bold text-white mt-1.5">Web Application</div>
+                        <div className="text-[10px] text-[#71717a] mt-0.5">Next.js / TypeScript</div>
+                      </div>
+
+                      {/* Node 2: API Gateway */}
+                      <div
+                        onClick={() => setSelectedNode("api")}
+                        className={`relative p-3.5 rounded-xl border transition-all cursor-pointer backdrop-blur-sm ${
+                          selectedNode === "api"
+                            ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/40 shadow-[0_0_20px_rgba(249,115,22,0.25)]"
+                            : "bg-[#111113]/90 border-white/10 hover:border-white/25 hover:bg-[#161619]"
+                        }`}
+                      >
+                        {/* Port Left & Bottom */}
+                        <span className="absolute -left-2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#0d0d0f] border-2 border-[#f97316] flex items-center justify-center">
+                          <span className="w-1 h-1 rounded-full bg-[#f97316]" />
+                        </span>
+                        <span className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#0d0d0f] border-2 border-[#10b981] flex items-center justify-center">
+                          <span className="w-1 h-1 rounded-full bg-[#10b981]" />
+                        </span>
+                        <div className="text-[10px] text-[#a1a1aa] uppercase flex items-center justify-between tracking-wider font-semibold">
+                          <span className="flex items-center gap-1.5">
+                            <Server className="w-3 h-3" /> API
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
+                        </div>
+                        <div className="text-xs font-bold text-white mt-1.5">API Router</div>
+                        <div className="text-[10px] text-[#71717a] mt-0.5">Route Handlers</div>
+                      </div>
+
+                      {/* Node 3: AI Agent System */}
+                      <div
+                        onClick={() => setSelectedNode("ai")}
+                        className={`relative p-3.5 rounded-xl border transition-all cursor-pointer backdrop-blur-sm ${
+                          selectedNode === "ai"
+                            ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/40 shadow-[0_0_20px_rgba(249,115,22,0.25)]"
+                            : "bg-[#111113]/90 border-white/10 hover:border-white/25 hover:bg-[#161619]"
+                        }`}
+                      >
+                        {/* Port Right */}
+                        <span className="absolute -right-2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#0d0d0f] border-2 border-[#10b981] flex items-center justify-center">
+                          <span className="w-1 h-1 rounded-full bg-[#10b981]" />
+                        </span>
+                        <div className="text-[10px] text-[#f97316] uppercase flex items-center justify-between tracking-wider font-semibold">
+                          <span className="flex items-center gap-1.5">
+                            <Bot className="w-3 h-3" /> AI AGENT
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
+                        </div>
+                        <div className="text-xs font-bold text-white mt-1.5">AI Tutor Engine</div>
+                        <div className="text-[10px] text-[#71717a] mt-0.5">LangGraph.js + Gemini</div>
+                      </div>
+
+                      {/* Node 4: Database */}
+                      <div
+                        onClick={() => setSelectedNode("db")}
+                        className={`relative p-3.5 rounded-xl border transition-all cursor-pointer backdrop-blur-sm ${
+                          selectedNode === "db"
+                            ? "bg-[#18181b] border-[#f97316] ring-2 ring-[#f97316]/40 shadow-[0_0_20px_rgba(249,115,22,0.25)]"
+                            : "bg-[#111113]/90 border-white/10 hover:border-white/25 hover:bg-[#161619]"
+                        }`}
+                      >
+                        {/* Port Left & Top */}
+                        <span className="absolute -left-2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#0d0d0f] border-2 border-[#10b981] flex items-center justify-center">
+                          <span className="w-1 h-1 rounded-full bg-[#10b981]" />
+                        </span>
+                        <span className="absolute left-1/2 -top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#0d0d0f] border-2 border-[#10b981] flex items-center justify-center">
+                          <span className="w-1 h-1 rounded-full bg-[#10b981]" />
+                        </span>
+                        <div className="text-[10px] text-[#10b981] uppercase flex items-center justify-between tracking-wider font-semibold">
+                          <span className="flex items-center gap-1.5">
+                            <Database className="w-3 h-3" /> DATABASE
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
+                        </div>
+                        <div className="text-xs font-bold text-white mt-1.5">Primary Database</div>
+                        <div className="text-[10px] text-[#71717a] mt-0.5">Supabase PostgreSQL</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Micro-hint */}
+                  <div className="text-[11px] text-[#71717a] text-center mt-2 flex items-center gap-1.5">
+                    <span className="text-[#f97316]">✦</span> Click any node to inspect architecture specifications
+                  </div>
+                </div>
+
+                {/* Right: Component Inspector Panel */}
+                <div className="w-full lg:w-80 border-t lg:border-t-0 lg:border-l border-white/10 bg-[#121215] p-5 text-xs flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                      <div className="text-[10px] uppercase tracking-wider text-[#71717a] font-bold flex items-center gap-1.5">
+                        <Sliders className="w-3 h-3 text-[#f97316]" /> Component Inspector
+                      </div>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+                        SYNCED
+                      </span>
+                    </div>
+
+                    {selectedNode === "db" && (
+                      <div className="space-y-3.5">
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Node Name</div>
+                          <div className="text-sm font-bold text-white mt-0.5 flex items-center gap-2">
+                            Primary Database
+                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-white/10 text-[#a1a1aa]">Stateful</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Engine & Schema</div>
+                          <div className="text-xs text-[#f97316] font-mono mt-0.5">Supabase PostgreSQL 16 + pgvector</div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Specifications</div>
+                          <p className="text-[11px] text-[#a1a1aa] leading-relaxed mt-0.5">
+                            ACID relational database with Row-Level Security policies and vector embeddings for semantic search & retrieval.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold mb-1">Incoming / Outgoing Edges</div>
+                          <div className="flex flex-wrap gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("api")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#f97316] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              ← API Router
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("ai")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#10b981] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              ← AI Tutor Engine
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedNode === "client" && (
+                      <div className="space-y-3.5">
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Node Name</div>
+                          <div className="text-sm font-bold text-white mt-0.5 flex items-center gap-2">
+                            Web Application
+                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-white/10 text-[#a1a1aa]">Edge Ingress</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Framework</div>
+                          <div className="text-xs text-[#f97316] font-mono mt-0.5">Next.js 16 + React 19 + TypeScript</div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Specifications</div>
+                          <p className="text-[11px] text-[#a1a1aa] leading-relaxed mt-0.5">
+                            Responsive user interface with server components, client state, and streaming real-time chat with diagram renderers.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold mb-1">Incoming / Outgoing Edges</div>
+                          <div className="flex flex-wrap gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("api")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#f97316] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              → API Router
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedNode === "api" && (
+                      <div className="space-y-3.5">
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Node Name</div>
+                          <div className="text-sm font-bold text-white mt-0.5 flex items-center gap-2">
+                            API Router
+                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-white/10 text-[#a1a1aa]">Gateway</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Runtime Handler</div>
+                          <div className="text-xs text-[#f97316] font-mono mt-0.5">Next.js App Route Handlers</div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Specifications</div>
+                          <p className="text-[11px] text-[#a1a1aa] leading-relaxed mt-0.5">
+                            Dispatches HTTP/WebSocket requests, validates JWT session tokens, and executes transactional operations.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold mb-1">Incoming / Outgoing Edges</div>
+                          <div className="flex flex-wrap gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("client")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#a1a1aa] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              ← Web App
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("ai")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#f97316] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              → AI Tutor Engine
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("db")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#10b981] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              → Primary DB
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedNode === "ai" && (
+                      <div className="space-y-3.5">
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Node Name</div>
+                          <div className="text-sm font-bold text-white mt-0.5 flex items-center gap-2">
+                            AI Tutor Engine
+                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-white/10 text-[#a1a1aa]">Multi-Agent</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Orchestration</div>
+                          <div className="text-xs text-[#f97316] font-mono mt-0.5">LangGraph.js + Gemini 1.5 Pro</div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold">Specifications</div>
+                          <p className="text-[11px] text-[#a1a1aa] leading-relaxed mt-0.5">
+                            Autonomous multi-agent system executing curriculum retrieval, step-by-step code guidance, and validation checks.
+                          </p>
+                        </div>
+                        <div>
+                          <div className="text-[10px] text-[#71717a] uppercase font-semibold mb-1">Incoming / Outgoing Edges</div>
+                          <div className="flex flex-wrap gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("api")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#f97316] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              ← API Router
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedNode("db")}
+                              className="text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#10b981] hover:bg-white/10 transition-all cursor-pointer"
+                            >
+                              → Primary DB (vector)
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10 text-[11px] text-[#71717a] flex items-center justify-between">
+                    <span>Latency: <strong className="text-white font-mono">&lt; 14ms</strong></span>
+                    <span className="text-[#10b981]">99.9% Uptime</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom AI Command Bar Preview */}
+              <div className="p-3 bg-[#141417] border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-[#a1a1aa]">
+                <div className="flex items-center gap-2">
+                  <span className="text-[#f97316]">✦</span>
+                  <span className="text-[#71717a]">Try prompt in studio:</span>
+                  <span className="text-white bg-black/60 px-2.5 py-0.5 rounded-md border border-white/15 font-mono text-[11px]">
+                    &ldquo;Add Redis caching tier between API and DB&rdquo;
+                  </span>
+                </div>
+                <Link href="/dashboard" className="text-[#f97316] hover:text-orange-400 hover:underline font-mono text-xs flex items-center gap-1">
+                  Open Full Studio <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
