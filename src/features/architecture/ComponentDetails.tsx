@@ -52,7 +52,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
 
   // Form state for edge
   const [edgeLabel, setEdgeLabel] = useState("");
-  const [edgeColor, setEdgeColor] = useState("#0ea5e9");
+  const [edgeColor, setEdgeColor] = useState("#f97316");
 
   useEffect(() => {
     if (selectedNode) {
@@ -67,18 +67,18 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
   useEffect(() => {
     if (selectedEdge) {
       setEdgeLabel(typeof selectedEdge.label === "string" ? selectedEdge.label : "");
-      const stroke = (selectedEdge.style as Record<string, string>)?.stroke || "#0ea5e9";
+      const stroke = (selectedEdge.style as Record<string, string>)?.stroke || "#f97316";
       setEdgeColor(stroke);
     }
   }, [selectedEdge]);
 
   // COLOR PRESETS: Neutral, Blue, Green, Purple, Orange, Red
   const colorPresets = [
-    { name: "neutral", bg: "#18181b", border: "#27272a", label: "Neutral" },
-    { name: "blue", bg: "#0284c7", border: "#0ea5e9", label: "Blue" },
+    { name: "neutral", bg: "#18181b", border: "rgba(255,255,255,0.1)", label: "Neutral" },
+    { name: "blue", bg: "#0284c7", border: "#38bdf8", label: "Blue" },
     { name: "green", bg: "#059669", border: "#10b981", label: "Green" },
     { name: "purple", bg: "#7c3aed", border: "#a855f7", label: "Purple" },
-    { name: "orange", bg: "#d97706", border: "#f59e0b", label: "Orange" },
+    { name: "orange", bg: "#ea580c", border: "#f97316", label: "Orange" },
     { name: "red", bg: "#dc2626", border: "#ef4444", label: "Red" },
   ];
 
@@ -91,27 +91,27 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
     const techStack = Array.from(techSet);
 
     return (
-      <div className="h-full bg-[#09090b] border-l border-[#27272a] flex flex-col font-mono text-xs w-80 select-none">
-        <div className="p-4 bg-[#111113] border-b border-[#27272a]">
-          <div className="text-[10px] uppercase text-[#0ea5e9] font-bold">PROJECT OVERVIEW</div>
-          <h3 className="text-sm font-bold text-[#f4f4f5] truncate mt-1">{projectName}</h3>
+      <div className="h-full bg-[#000000] border-l border-white/10 flex flex-col font-mono text-xs w-80 select-none">
+        <div className="p-4 bg-[#111111] border-b border-white/10">
+          <div className="text-[10px] uppercase text-[#f97316] font-bold">PROJECT OVERVIEW</div>
+          <h3 className="text-sm font-bold text-white truncate mt-1">{projectName}</h3>
         </div>
 
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {/* Metrics */}
           <div className="grid grid-cols-2 gap-2">
-            <div className="p-3 rounded bg-[#111113] border border-[#27272a]">
+            <div className="p-3 rounded-lg bg-[#111111] border border-white/10">
               <div className="text-[10px] text-[#71717a]">COMPONENTS</div>
-              <div className="text-lg font-bold text-[#f4f4f5] mt-0.5">{nodes.length}</div>
+              <div className="text-lg font-bold text-white mt-0.5">{nodes.length}</div>
             </div>
-            <div className="p-3 rounded bg-[#111113] border border-[#27272a]">
+            <div className="p-3 rounded-lg bg-[#111111] border border-white/10">
               <div className="text-[10px] text-[#71717a]">CONNECTIONS</div>
-              <div className="text-lg font-bold text-[#0ea5e9] mt-0.5">{edges.length}</div>
+              <div className="text-lg font-bold text-[#f97316] mt-0.5">{edges.length}</div>
             </div>
           </div>
 
           {/* Architecture Health */}
-          <div className="p-3.5 rounded-lg border border-[#27272a] bg-[#111113] space-y-2">
+          <div className="p-3.5 rounded-xl border border-white/10 bg-[#111111] space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-[10px] uppercase text-[#71717a] font-semibold">ARCHITECTURE HEALTH</span>
               <span className="text-[10px] text-[#10b981] flex items-center gap-1 font-bold">
@@ -127,7 +127,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
           </div>
 
           {/* Technology Stack */}
-          <div className="space-y-2 pt-2 border-t border-[#27272a]">
+          <div className="space-y-2 pt-2 border-t border-white/10">
             <div className="text-[10px] uppercase text-[#71717a] font-semibold">
               TECHNOLOGY STACK ({techStack.length})
             </div>
@@ -135,7 +135,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
               {techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 rounded bg-[#18181b] border border-[#27272a] text-[11px] text-[#f4f4f5]"
+                  className="px-2 py-1 rounded-md bg-[#18181b] border border-white/10 text-[11px] text-white"
                 >
                   {tech}
                 </span>
@@ -143,7 +143,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
             </div>
           </div>
 
-          <div className="p-3 rounded bg-[#18181b] border border-[#27272a] text-[11px] text-[#71717a] leading-relaxed">
+          <div className="p-3 rounded-xl bg-[#18181b] border border-white/10 text-[11px] text-[#71717a] leading-relaxed">
             💡 Click any component or connection line to inspect attributes, change colors, or test change blast radiuses.
           </div>
         </div>
@@ -164,17 +164,17 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
     };
 
     return (
-      <div className="h-full bg-[#09090b] border-l border-[#27272a] flex flex-col font-mono text-xs w-80 select-none">
-        <div className="p-4 bg-[#111113] border-b border-[#27272a] flex items-center justify-between">
+      <div className="h-full bg-[#000000] border-l border-white/10 flex flex-col font-mono text-xs w-80 select-none">
+        <div className="p-4 bg-[#111111] border-b border-white/10 flex items-center justify-between">
           <div>
-            <div className="text-[10px] uppercase text-[#0ea5e9] font-bold">CONNECTION DETAILS</div>
-            <div className="text-xs font-semibold text-[#f4f4f5] truncate mt-0.5">
+            <div className="text-[10px] uppercase text-[#f97316] font-bold">CONNECTION DETAILS</div>
+            <div className="text-xs font-semibold text-white truncate mt-0.5">
               {sourceNode?.data.label || selectedEdge.source} → {targetNode?.data.label || selectedEdge.target}
             </div>
           </div>
           <button
             onClick={() => setSelectedEdge(null)}
-            className="text-[#71717a] hover:text-[#f4f4f5] p-1"
+            className="text-[#71717a] hover:text-white p-1"
           >
             <X className="h-4 w-4" />
           </button>
@@ -183,19 +183,19 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           <div className="space-y-1">
             <div className="text-[10px] uppercase text-[#71717a]">FROM (SOURCE)</div>
-            <div className="p-2 rounded bg-[#111113] border border-[#27272a] text-[#f4f4f5] text-xs">
+            <div className="p-2 rounded-lg bg-[#111111] border border-white/10 text-white text-xs">
               {sourceNode?.data.label || selectedEdge.source}
             </div>
           </div>
 
           <div className="space-y-1">
             <div className="text-[10px] uppercase text-[#71717a]">TO (TARGET)</div>
-            <div className="p-2 rounded bg-[#111113] border border-[#27272a] text-[#f4f4f5] text-xs">
+            <div className="p-2 rounded-lg bg-[#111111] border border-white/10 text-white text-xs">
               {targetNode?.data.label || selectedEdge.target}
             </div>
           </div>
 
-          <div className="space-y-1 pt-2 border-t border-[#27272a]">
+          <div className="space-y-1 pt-2 border-t border-white/10">
             <div className="text-[10px] uppercase text-[#71717a]">CONNECTION LABEL</div>
             <Input
               value={edgeLabel}
@@ -204,14 +204,14 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
                 handleSaveEdge(e.target.value, edgeColor);
               }}
               placeholder="e.g. HTTPS / API Call"
-              className="bg-[#111113] border-[#27272a] text-xs text-[#f4f4f5] h-8"
+              className="bg-[#18181b] border-white/10 text-xs text-white h-8"
             />
           </div>
 
-          <div className="space-y-2 pt-2 border-t border-[#27272a]">
+          <div className="space-y-2 pt-2 border-t border-white/10">
             <div className="text-[10px] uppercase text-[#71717a]">LINE COLOR</div>
             <div className="flex items-center gap-2">
-              {["#0ea5e9", "#10b981", "#f59e0b", "#f43f5e", "#a855f7", "#ffffff"].map((color) => (
+              {["#f97316", "#10b981", "#38bdf8", "#f59e0b", "#a855f7", "#ffffff"].map((color) => (
                 <button
                   key={color}
                   onClick={() => {
@@ -228,7 +228,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
           </div>
         </div>
 
-        <div className="p-3 bg-[#111113] border-t border-[#27272a]">
+        <div className="p-3 bg-[#111111] border-t border-white/10">
           <Button
             variant="outline"
             onClick={() => deleteEdge(selectedEdge.id)}
@@ -284,11 +284,11 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
   if (!selectedNode) return null;
 
   return (
-    <div className="h-full bg-[#09090b] border-l border-[#27272a] flex flex-col font-mono text-xs w-80 select-none">
-      <div className="p-4 bg-[#111113] border-b border-[#27272a] flex items-center justify-between">
+    <div className="h-full bg-[#000000] border-l border-white/10 flex flex-col font-mono text-xs w-80 select-none">
+      <div className="p-4 bg-[#111111] border-b border-white/10 flex items-center justify-between">
         <div>
-          <div className="text-[10px] uppercase text-[#0ea5e9] font-bold">COMPONENT DETAILS</div>
-          <div className="text-sm font-bold text-[#f4f4f5] truncate max-w-[200px] mt-0.5">
+          <div className="text-[10px] uppercase text-[#f97316] font-bold">COMPONENT DETAILS</div>
+          <div className="text-sm font-bold text-white truncate max-w-[200px] mt-0.5">
             {label}
           </div>
         </div>
@@ -297,7 +297,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
             clearImpact();
             setSelectedNode(null);
           }}
-          className="text-[#71717a] hover:text-[#f4f4f5] p-1"
+          className="text-[#71717a] hover:text-white p-1"
         >
           <X className="h-4 w-4" />
         </button>
@@ -313,7 +313,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
               setLabel(e.target.value);
               updateNodeData(selectedNode.id, { label: e.target.value });
             }}
-            className="bg-[#111113] border-[#27272a] text-xs font-mono text-[#f4f4f5] h-8"
+            className="bg-[#18181b] border-white/10 text-xs font-mono text-white h-8 focus:border-[#f97316]"
           />
         </div>
 
@@ -326,14 +326,14 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
               setTechnology(e.target.value);
               updateNodeData(selectedNode.id, { technology: e.target.value });
             }}
-            className="bg-[#111113] border-[#27272a] text-xs font-mono text-[#f4f4f5] h-8"
+            className="bg-[#18181b] border-white/10 text-xs font-mono text-white h-8 focus:border-[#f97316]"
           />
         </div>
 
         {/* Category */}
         <div className="space-y-1">
           <div className="text-[10px] uppercase text-[#71717a]">CATEGORY / TYPE</div>
-          <div className="p-2 rounded bg-[#111113] border border-[#27272a] text-[#0ea5e9] uppercase text-xs">
+          <div className="p-2 rounded-lg bg-[#18181b] border border-white/10 text-[#f97316] uppercase text-xs font-semibold">
             {selectedNode.data.componentType}
           </div>
         </div>
@@ -348,12 +348,12 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
               updateNodeData(selectedNode.id, { description: e.target.value });
             }}
             rows={3}
-            className="bg-[#111113] border-[#27272a] text-xs font-mono text-[#f4f4f5] resize-none"
+            className="bg-[#18181b] border-white/10 text-xs font-mono text-white resize-none focus:border-[#f97316]"
           />
         </div>
 
         {/* Color Presets */}
-        <div className="space-y-2 pt-2 border-t border-[#27272a]">
+        <div className="space-y-2 pt-2 border-t border-white/10">
           <div className="text-[10px] uppercase text-[#71717a]">COLOR PRESET</div>
           <div className="grid grid-cols-3 gap-2">
             {colorPresets.map((p) => (
@@ -365,8 +365,8 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
                     colorPreset: p.name as "neutral" | "blue" | "green" | "purple" | "orange" | "red" | "custom",
                   });
                 }}
-                className={`p-1.5 rounded border text-[10px] flex items-center gap-1.5 transition-all ${
-                  colorPreset === p.name ? "border-[#0ea5e9] ring-1 ring-[#0ea5e9]" : "border-[#27272a] bg-[#111113]"
+                className={`p-1.5 rounded-lg border text-[10px] flex items-center gap-1.5 transition-all ${
+                  colorPreset === p.name ? "border-[#f97316] ring-1 ring-[#f97316]" : "border-white/10 bg-[#18181b]"
                 }`}
               >
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: p.border }} />
@@ -378,12 +378,12 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
 
         {/* Impact Analysis Results */}
         {impactData && (
-          <div className="pt-2 border-t border-[#27272a] space-y-2">
+          <div className="pt-2 border-t border-white/10 space-y-2">
             <div className="text-[10px] uppercase text-[#f59e0b] font-semibold flex items-center gap-1.5">
               <AlertTriangle className="h-3.5 w-3.5 text-[#f59e0b]" />
               BLAST RADIUS REPORT
             </div>
-            <div className="p-2.5 rounded bg-[#111113] border border-[#f59e0b]/40 space-y-1.5 text-[11px]">
+            <div className="p-2.5 rounded-lg bg-[#111111] border border-[#f59e0b]/40 space-y-1.5 text-[11px]">
               <div className="flex justify-between">
                 <span className="text-[#71717a]">RISK:</span>
                 <span className="font-bold text-[#ef4444]">{impactData.riskLevel?.toUpperCase()}</span>
@@ -398,12 +398,12 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
       </div>
 
       {/* Footer Actions */}
-      <div className="p-3 bg-[#111113] border-t border-[#27272a] space-y-2">
+      <div className="p-3 bg-[#111111] border-t border-white/10 space-y-2">
         <div className="grid grid-cols-2 gap-2">
           <Button
             variant="outline"
             onClick={() => duplicateNode(selectedNode.id)}
-            className="border-[#27272a] bg-[#18181b] text-[#f4f4f5] text-xs h-8"
+            className="border-white/10 bg-[#18181b] text-white text-xs h-8 hover:bg-white/10"
           >
             <Copy className="h-3 w-3 mr-1" />
             Duplicate
@@ -422,7 +422,7 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
         <Button
           onClick={handleRunImpactAnalysis}
           disabled={isAnalyzing}
-          className="w-full bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] text-xs h-8 font-semibold"
+          className="w-full bg-[#f97316] hover:bg-[#ea580c] text-black text-xs h-8 font-semibold chai-btn-primary cursor-pointer"
         >
           <Activity className="h-3.5 w-3.5 mr-1.5" />
           {isAnalyzing ? "Analyzing..." : "Analyze Impact (BFS) →"}

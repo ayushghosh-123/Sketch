@@ -104,7 +104,7 @@ export function NavLinks({ links: customLinks, className = "", onLinkClick }: Na
                   : "text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#111113]"
               }`}
             >
-              {Icon && <Icon className="h-3.5 w-3.5 text-[#0ea5e9]" />}
+              {Icon && <Icon className="h-3.5 w-3.5 text-[#f97316]" />}
               <span>{link.label}</span>
             </Link>
           );

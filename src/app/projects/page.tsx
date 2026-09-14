@@ -72,19 +72,22 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="flex-1 space-y-6 mt-6 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full text-[#f4f4f5]">
+    <div className="flex-1 space-y-6 mt-6 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full text-white relative">
+      {/* Ambient Glow */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[300px] bg-gradient-to-b from-orange-500/10 via-amber-600/5 to-transparent blur-3xl pointer-events-none -z-10" />
+
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-[#27272a]">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-[#0ea5e9]">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-[#f97316]">
               // SYSTEMS REGISTRY // ARCHITECTURE REPOSITORY
             </span>
             <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
             <span className="font-mono text-[10px] text-[#10b981]">SYSTEM REGISTRY ONLINE</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-            <FolderKanban className="h-6 w-6 text-[#0ea5e9]" />
+            <FolderKanban className="h-6 w-6 text-[#f97316]" />
             Architecture Projects
           </h1>
           <p className="text-xs text-[#a1a1aa] mt-1">
@@ -93,12 +96,12 @@ export default function ProjectsPage() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 font-mono text-xs px-3 py-1.5 rounded bg-[#111113] border border-[#27272a] text-[#a1a1aa]">
+          <div className="hidden sm:flex items-center gap-2 font-mono text-xs px-3 py-1.5 rounded-lg bg-[#111111] border border-white/10 text-[#a1a1aa]">
             TOTAL: <span className="text-white font-bold">{projects.length}</span>
           </div>
           <Button
             onClick={() => setIsCreateOpen(true)}
-            className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-mono font-bold text-xs shadow-lg shadow-sky-950/40"
+            className="bg-[#f97316] hover:bg-[#ea580c] text-black font-mono font-bold text-xs h-9 px-4 rounded-lg chai-btn-primary shadow-[0_0_20px_rgba(249,115,22,0.25)] transition-all cursor-pointer"
           >
             <Plus className="h-4 w-4 mr-1.5" />
             New Architecture
@@ -114,7 +117,7 @@ export default function ProjectsPage() {
             placeholder="Search systems by keyword, protocol, stack..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="h-9 pl-9 bg-[#111113] border-[#27272a] text-xs text-white placeholder-[#71717a] focus:ring-1 focus:ring-[#0ea5e9]"
+            className="h-9 pl-9 bg-[#111111] border-white/10 text-xs text-white placeholder-[#71717a] focus:ring-1 focus:ring-[#f97316] focus:border-[#f97316]"
           />
         </div>
 
@@ -124,10 +127,10 @@ export default function ProjectsPage() {
             <button
               key={t.value}
               onClick={() => setSelectedType(t.value)}
-              className={`px-3 py-1.5 rounded text-xs font-mono font-semibold transition-colors whitespace-nowrap cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-colors whitespace-nowrap cursor-pointer ${
                 selectedType === t.value
-                  ? "bg-[#0ea5e9]/20 text-[#0ea5e9] border border-[#0ea5e9]/40"
-                  : "bg-[#111113] text-[#71717a] hover:text-white border border-[#27272a]"
+                  ? "bg-[#f97316]/15 text-[#f97316] border border-[#f97316]/40"
+                  : "bg-[#111111] text-[#71717a] hover:text-white border border-white/10"
               }`}
             >
               {t.label}
@@ -142,12 +145,12 @@ export default function ProjectsPage() {
           {[1, 2, 3].map((n) => (
             <div
               key={n}
-              className="h-56 rounded-xl border border-[#27272a] bg-[#111113] animate-pulse"
+              className="h-56 rounded-xl border border-white/10 bg-[#111111] animate-pulse"
             />
           ))}
         </div>
       ) : filteredProjects.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-[#27272a] bg-[#111113]/40 p-12 text-center font-mono">
+        <div className="rounded-xl border border-dashed border-white/15 bg-[#111111]/40 p-12 text-center font-mono">
           <Layers className="h-10 w-10 text-[#52525b] mx-auto mb-3" />
           <h3 className="text-sm font-semibold text-white">No architecture projects found</h3>
           <p className="text-xs text-[#71717a] max-w-sm mx-auto mt-1 mb-4">
@@ -157,7 +160,7 @@ export default function ProjectsPage() {
           </p>
           <Button
             onClick={() => setIsCreateOpen(true)}
-            className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-mono font-bold text-xs"
+            className="bg-[#f97316] hover:bg-[#ea580c] text-black font-mono font-bold text-xs chai-btn-primary"
           >
             Create Architecture Blueprint
           </Button>

@@ -64,36 +64,36 @@ export function WorkspaceTopBar({
   };
 
   return (
-    <header className="h-12 bg-[#09090b] border-b border-[#27272a] px-3 sm:px-4 flex items-center justify-between font-mono text-xs z-20 select-none">
+    <header className="h-12 bg-[#000000] border-b border-white/10 px-3 sm:px-4 flex items-center justify-between font-mono text-xs z-20 select-none">
       {/* LEFT: Back, Sketch Logo & Project Name */}
       <div className="flex items-center gap-3">
         <Link
           href="/dashboard"
-          className="text-[#71717a] hover:text-[#f4f4f5] p-1 rounded hover:bg-[#18181b] transition-colors"
+          className="text-[#71717a] hover:text-white p-1 rounded-lg hover:bg-[#18181b] transition-colors"
           title="Back to Dashboard"
         >
           <ArrowLeft className="h-4 w-4" />
         </Link>
 
         <div className="flex items-center gap-2">
-          <div className="h-6 w-6 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-center text-[#0ea5e9]">
+          <div className="h-6 w-6 rounded bg-[#18181b] border border-white/10 flex items-center justify-center text-[#f97316]">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="m18 2 4 4-10 10H8v-4L18 2z" />
               <path d="m14 6 4 4" />
               <path d="M4 20h16" />
             </svg>
           </div>
-          <span className="font-bold text-[#f4f4f5] uppercase font-sans tracking-wide">
+          <span className="font-bold text-white uppercase font-sans tracking-wide">
             SKETCH
           </span>
           <span className="text-[#71717a]">/</span>
-          <span className="font-semibold text-[#f4f4f5] truncate max-w-[140px] sm:max-w-xs">
+          <span className="font-semibold text-white truncate max-w-[140px] sm:max-w-xs">
             {projectName}
           </span>
         </div>
 
         {/* Project Status */}
-        <div className="hidden md:flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#111113] border border-[#27272a] text-[10px] text-[#10b981]">
+        <div className="hidden md:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#111111] border border-white/10 text-[10px] text-[#10b981]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
           <span>Ready</span>
         </div>
@@ -103,14 +103,14 @@ export function WorkspaceTopBar({
       <div className="hidden lg:flex items-center gap-2">
         <Link
           href={`/workspace/${projectId}/decisions`}
-          className="px-2.5 py-1 rounded hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors flex items-center gap-1.5 border border-transparent hover:border-[#27272a]"
+          className="px-2.5 py-1 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-white transition-colors flex items-center gap-1.5 border border-transparent hover:border-white/10"
         >
-          <Layers className="h-3.5 w-3.5 text-[#0ea5e9]" />
+          <Layers className="h-3.5 w-3.5 text-[#f97316]" />
           <span>Decisions</span>
         </Link>
         <Link
           href={`/tech-stack/${projectId}`}
-          className="px-2.5 py-1 rounded hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] transition-colors flex items-center gap-1.5 border border-transparent hover:border-[#27272a]"
+          className="px-2.5 py-1 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-white transition-colors flex items-center gap-1.5 border border-transparent hover:border-white/10"
         >
           <Cpu className="h-3.5 w-3.5 text-[#10b981]" />
           <span>Tech Stack</span>
@@ -124,7 +124,7 @@ export function WorkspaceTopBar({
           onClick={undo}
           disabled={history.length === 0}
           title="Undo (Ctrl+Z)"
-          className="h-7 w-7 rounded flex items-center justify-center text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#18181b] disabled:opacity-30 disabled:hover:bg-transparent"
+          className="h-7 w-7 rounded-md flex items-center justify-center text-[#a1a1aa] hover:text-white hover:bg-[#18181b] disabled:opacity-30 disabled:hover:bg-transparent"
         >
           <Undo className="h-3.5 w-3.5" />
         </button>
@@ -133,20 +133,20 @@ export function WorkspaceTopBar({
           onClick={redo}
           disabled={future.length === 0}
           title="Redo (Ctrl+Y)"
-          className="h-7 w-7 rounded flex items-center justify-center text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#18181b] disabled:opacity-30 disabled:hover:bg-transparent"
+          className="h-7 w-7 rounded-md flex items-center justify-center text-[#a1a1aa] hover:text-white hover:bg-[#18181b] disabled:opacity-30 disabled:hover:bg-transparent"
         >
           <Redo className="h-3.5 w-3.5" />
         </button>
 
-        <div className="h-4 w-px bg-[#27272a]" />
+        <div className="h-4 w-px bg-white/10" />
 
         {/* Auto Arrange */}
         <button
           onClick={() => applyLayout("LR")}
           title="Auto Arrange Layout"
-          className="h-7 px-2 rounded flex items-center gap-1 text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#18181b] text-[11px]"
+          className="h-7 px-2 rounded-md flex items-center gap-1 text-[#a1a1aa] hover:text-white hover:bg-[#18181b] text-[11px]"
         >
-          <LayoutGrid className="h-3 w-3 text-[#0ea5e9]" />
+          <LayoutGrid className="h-3 w-3 text-[#f97316]" />
           <span className="hidden sm:inline">Arrange</span>
         </button>
 
@@ -154,7 +154,7 @@ export function WorkspaceTopBar({
         <button
           onClick={handleShare}
           title="Share Project URL"
-          className="h-7 px-2 rounded flex items-center gap-1 text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#18181b] text-[11px]"
+          className="h-7 px-2 rounded-md flex items-center gap-1 text-[#a1a1aa] hover:text-white hover:bg-[#18181b] text-[11px]"
         >
           <Share2 className="h-3 w-3" />
           <span className="hidden sm:inline">{copied ? "Copied!" : "Share"}</span>
@@ -164,20 +164,20 @@ export function WorkspaceTopBar({
         <button
           onClick={handleExport}
           title="Export Architecture Spec JSON"
-          className="h-7 px-2 rounded flex items-center gap-1 text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#18181b] text-[11px]"
+          className="h-7 px-2 rounded-md flex items-center gap-1 text-[#a1a1aa] hover:text-white hover:bg-[#18181b] text-[11px]"
         >
           <Download className="h-3 w-3" />
           <span className="hidden sm:inline">Export</span>
         </button>
 
-        <div className="h-4 w-px bg-[#27272a]" />
+        <div className="h-4 w-px bg-white/10" />
 
         {/* Save Button */}
         <Button
           size="sm"
           onClick={onSave}
           disabled={isSaving}
-          className="h-7 px-3 text-[11px] bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-semibold"
+          className="h-7 px-3 text-[11px] bg-[#f97316] hover:bg-[#ea580c] text-black font-semibold rounded-md chai-btn-primary"
         >
           {saveSuccess ? (
             <span className="flex items-center gap-1">

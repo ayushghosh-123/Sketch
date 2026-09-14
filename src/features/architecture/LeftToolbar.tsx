@@ -75,7 +75,7 @@ export function LeftToolbar() {
   };
 
   return (
-    <div className="w-14 bg-[#09090b] border-r border-[#27272a] flex flex-col items-center py-3 gap-1 z-10 select-none">
+    <div className="w-14 bg-[#000000] border-r border-white/10 flex flex-col items-center py-3 gap-1 z-10 select-none">
       {/* Tool items */}
       {tools.map((t) => {
         const Icon = t.icon;
@@ -95,8 +95,8 @@ export function LeftToolbar() {
             title={t.label}
             className={`h-9 w-9 rounded-lg flex items-center justify-center transition-colors ${
               isActive
-                ? "bg-[#18181b] text-[#0ea5e9] border border-[#0ea5e9]/50 shadow-sm"
-                : "text-[#a1a1aa] hover:text-[#f4f4f5] hover:bg-[#111113]"
+                ? "bg-[#18181b] text-[#f97316] border border-[#f97316]/50 shadow-xs"
+                : "text-[#a1a1aa] hover:text-white hover:bg-[#18181b]"
             }`}
           >
             <Icon className="h-4 w-4" />
@@ -104,13 +104,13 @@ export function LeftToolbar() {
         );
       })}
 
-      <div className="w-8 h-px bg-[#27272a] my-2" />
+      <div className="w-8 h-px bg-white/10 my-2" />
 
       {/* Quick Add Components */}
       <button
         onClick={() => handleQuickAdd("frontend")}
         title="Add Frontend Node"
-        className="h-9 w-9 rounded-lg flex items-center justify-center text-[#a1a1aa] hover:text-[#38bdf8] hover:bg-[#111113] transition-colors"
+        className="h-9 w-9 rounded-lg flex items-center justify-center text-[#a1a1aa] hover:text-[#38bdf8] hover:bg-[#18181b] transition-colors"
       >
         <Monitor className="h-4 w-4" />
       </button>
@@ -118,7 +118,7 @@ export function LeftToolbar() {
       <button
         onClick={() => handleQuickAdd("backend")}
         title="Add Backend Node"
-        className="h-9 w-9 rounded-lg flex items-center justify-center text-[#a1a1aa] hover:text-[#818cf8] hover:bg-[#111113] transition-colors"
+        className="h-9 w-9 rounded-lg flex items-center justify-center text-[#a1a1aa] hover:text-[#818cf8] hover:bg-[#18181b] transition-colors"
       >
         <Server className="h-4 w-4" />
       </button>
@@ -126,7 +126,7 @@ export function LeftToolbar() {
       <button
         onClick={() => handleQuickAdd("database")}
         title="Add Database Node"
-        className="h-9 w-9 rounded-lg flex items-center justify-center text-[#a1a1aa] hover:text-[#10b981] hover:bg-[#111113] transition-colors"
+        className="h-9 w-9 rounded-lg flex items-center justify-center text-[#a1a1aa] hover:text-[#10b981] hover:bg-[#18181b] transition-colors"
       >
         <Database className="h-4 w-4" />
       </button>

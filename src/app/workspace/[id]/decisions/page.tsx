@@ -114,28 +114,31 @@ export default function DecisionsPage({
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-[#09090b] text-[#71717a] font-mono text-xs">
+      <div className="flex-1 flex items-center justify-center bg-[#000000] text-[#71717a] font-mono text-xs">
         Loading decisions...
       </div>
     );
   }
 
   return (
-    <div className="flex-1 bg-[#09090b] text-[#f4f4f5] min-h-[calc(100vh-68px)] p-4 sm:p-8 max-w-5xl mx-auto w-full font-mono">
+    <div className="flex-1 bg-[#000000] text-[#f4f4f5] min-h-[calc(100vh-68px)] p-4 sm:p-8 max-w-5xl mx-auto w-full font-mono relative">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-1/4 w-[450px] h-[320px] bg-orange-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#27272a]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <Link
             href={`/workspace/${projectId}`}
-            className="text-xs text-[#71717a] hover:text-[#0ea5e9] flex items-center gap-1 mb-2 transition-colors"
+            className="text-xs text-[#71717a] hover:text-[#f97316] flex items-center gap-1 mb-2 transition-colors font-sans"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to Canvas
           </Link>
-          <div className="text-xs text-[#0ea5e9] uppercase tracking-wider font-bold">
+          <div className="text-xs text-[#f97316] uppercase tracking-wider font-bold">
             ARCHITECTURE DECISION RECORDS (ADR)
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-sans mt-1">
             Why Sketch Chose This
           </h1>
           <p className="text-xs text-[#a1a1aa] font-sans mt-0.5">
@@ -144,12 +147,12 @@ export default function DecisionsPage({
         </div>
 
         {/* Explain Simply Mode Toggle */}
-        <div className="flex items-center gap-2 self-start sm:self-auto p-1.5 rounded-lg bg-[#111113] border border-[#27272a]">
-          <span className="text-[11px] text-[#a1a1aa] px-1">Explain Simply</span>
+        <div className="flex items-center gap-2 self-start sm:self-auto p-1.5 rounded-lg bg-[#111111] border border-white/10">
+          <span className="text-[11px] text-[#a1a1aa] px-1 font-sans">Explain Simply</span>
           <button
             onClick={() => setExplainSimply(!explainSimply)}
-            className={`w-11 h-6 rounded-full transition-colors relative p-0.5 ${
-              explainSimply ? "bg-[#0ea5e9]" : "bg-[#27272a]"
+            className={`w-11 h-6 rounded-full transition-colors relative p-0.5 cursor-pointer ${
+              explainSimply ? "bg-[#f97316]" : "bg-white/10"
             }`}
           >
             <div
@@ -166,13 +169,13 @@ export default function DecisionsPage({
         {displayDecisions.map((dec, idx) => (
           <div
             key={dec.id}
-            className="rounded-xl border border-[#27272a] bg-[#111113] p-5 sm:p-6 space-y-4 shadow-sm"
+            className="rounded-xl border border-white/10 bg-[#111111] p-5 sm:p-6 space-y-4 shadow-sm hover:border-white/20 transition-colors"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#27272a]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold text-[#0ea5e9]">ADR 0{idx + 1}</span>
+                <span className="text-[11px] font-bold text-[#f97316]">ADR 0{idx + 1}</span>
                 <span className="text-[#71717a]">·</span>
-                <h2 className="text-sm font-bold text-[#f4f4f5] uppercase">{dec.title}</h2>
+                <h2 className="text-sm font-bold text-white uppercase font-sans">{dec.title}</h2>
               </div>
               <span className="text-[10px] text-[#10b981] bg-[#10b981]/10 border border-[#10b981]/30 px-2 py-0.5 rounded self-start">
                 ✓ ACCEPTED DECISION
@@ -182,14 +185,14 @@ export default function DecisionsPage({
             {/* WHAT WAS CHOSEN */}
             <div>
               <div className="text-[10px] uppercase text-[#71717a] font-semibold">WHAT WAS CHOSEN</div>
-              <div className="text-base font-bold text-[#f4f4f5] mt-0.5">
+              <div className="text-base font-bold text-white font-sans mt-0.5">
                 {dec.chosen}
               </div>
             </div>
 
             {/* WHY IT WAS CHOSEN */}
             <div>
-              <div className="text-[10px] uppercase text-[#0ea5e9] font-semibold">
+              <div className="text-[10px] uppercase text-[#f97316] font-semibold">
                 {explainSimply ? "WHY IT HELPS YOU (SIMPLE EXPLANATION)" : "WHY IT WAS CHOSEN (TECHNICAL RATIONALE)"}
               </div>
               <p className="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed font-sans mt-1">
@@ -198,7 +201,7 @@ export default function DecisionsPage({
             </div>
 
             {/* ALTERNATIVES CONSIDERED */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[#27272a]/60">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-white/10">
               <div>
                 <div className="text-[10px] uppercase text-[#71717a] font-semibold">
                   ALTERNATIVES EVALUATED
@@ -207,7 +210,7 @@ export default function DecisionsPage({
                   {dec.alternatives.map((alt) => (
                     <span
                       key={alt}
-                      className="px-2 py-0.5 rounded bg-[#18181b] border border-[#27272a] text-xs text-[#71717a]"
+                      className="px-2 py-0.5 rounded bg-[#18181b] border border-white/10 text-xs text-white/80"
                     >
                       {alt}
                     </span>

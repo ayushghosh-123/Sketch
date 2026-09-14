@@ -37,15 +37,23 @@ export default function LandingPage() {
       <section className="relative pt-20 pb-20 md:pt-28 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 w-full">
         {/* Ambient Warm Chai Backlight Glow */}
         <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[650px] h-[360px] rounded-full bg-gradient-to-tr from-amber-600/15 via-orange-500/15 to-transparent blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-gradient-to-bl from-orange-500/10 via-amber-600/5 to-transparent blur-3xl pointer-events-none -z-10" />
+
+        {/* ChaiCode Signature Honeycomb Decorative Mesh */}
+        <div className="absolute -left-12 top-28 pointer-events-none opacity-20 hidden lg:block -z-10">
+          <svg width="100" height="220" viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10L90 33.094V79.282L50 102.376L10 79.282V33.094L50 10Z" stroke="white" strokeWidth="1.2" strokeOpacity="0.4" />
+            <path d="M50 90L90 113.094V159.282L50 182.376L10 159.282V113.094L50 90Z" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.5" />
+            <path d="M10 50L50 73.094V119.282L10 142.376L-30 119.282V73.094L10 50Z" stroke="white" strokeWidth="1.2" strokeOpacity="0.3" />
+          </svg>
+        </div>
 
         {/* Subtle Technical Label */}
         <div className="flex items-center gap-2 mb-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111111] border border-white/15 text-[11px] font-mono text-[#a1a1aa]">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#111111]/90 border border-white/10 text-[11px] font-mono text-[#a1a1aa] shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[#f97316] animate-pulse" />
             AI SOFTWARE ARCHITECTURE WORKSPACE
           </span>
-          <span className="text-[11px] font-mono text-[#71717a]">/</span>
-          <span className="text-[11px] font-mono text-[#71717a]">DESCRIBE · RESEARCH · SKETCH</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

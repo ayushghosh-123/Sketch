@@ -75,20 +75,23 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex-1 bg-[#09090b] text-[#f4f4f5] min-h-[calc(100vh-68px)] p-4 sm:p-8 max-w-4xl mx-auto w-full font-mono text-xs">
+    <div className="flex-1 bg-[#000000] text-[#f4f4f5] min-h-[calc(100vh-68px)] p-4 sm:p-8 max-w-4xl mx-auto w-full font-mono text-xs relative">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-1/4 w-[400px] h-[300px] bg-orange-600/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+
       {/* Header */}
-      <div className="pb-6 border-b border-[#27272a] space-y-2">
+      <div className="pb-6 border-b border-white/10 space-y-2">
         <Link
           href="/dashboard"
-          className="text-xs text-[#71717a] hover:text-[#0ea5e9] flex items-center gap-1 mb-2 transition-colors"
+          className="text-xs text-[#71717a] hover:text-[#f97316] flex items-center gap-1 mb-2 transition-colors font-sans"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back to Dashboard
         </Link>
-        <div className="text-xs text-[#0ea5e9] uppercase tracking-wider font-bold">
+        <div className="text-xs text-[#f97316] uppercase tracking-wider font-bold">
           WORKSPACE CONFIGURATION
         </div>
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5]">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-sans">
           Account & Workspace Settings
         </h1>
         <p className="text-xs text-[#a1a1aa] font-sans">
@@ -98,25 +101,25 @@ export default function SettingsPage() {
 
       <div className="space-y-6 pt-6">
         {/* User Detail & Profile Card */}
-        <div className="rounded-xl border border-[#27272a] bg-[#111113] p-5 sm:p-6 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#27272a]">
+        <div className="rounded-xl border border-white/10 bg-[#111111] p-5 sm:p-6 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
             <div className="flex items-center gap-3.5">
               <div className="relative">
-                <div className="h-12 w-12 rounded-full bg-[#18181b] border-2 border-[#0ea5e9]/50 flex items-center justify-center text-sm font-bold text-[#0ea5e9] shadow-sm">
+                <div className="h-12 w-12 rounded-full bg-[#18181b] border-2 border-[#f97316]/60 flex items-center justify-center text-sm font-bold text-[#f97316] shadow-sm">
                   {initials}
                 </div>
                 <span
-                  className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full bg-emerald-500 border-2 border-[#111113]"
+                  className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full bg-emerald-500 border-2 border-[#111111]"
                   title="Active Session"
                 />
               </div>
 
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-base font-semibold text-[#f4f4f5]">
+                  <h2 className="text-base font-semibold text-white font-sans">
                     {loading ? "Loading account..." : displayName}
                   </h2>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#0ea5e9]/10 text-[#0ea5e9] border border-[#0ea5e9]/20">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#f97316]/10 text-[#f97316] border border-[#f97316]/20">
                     Active Architect
                   </span>
                 </div>
@@ -141,22 +144,22 @@ export default function SettingsPage() {
           {/* User Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Full Name */}
-            <div className="p-3 rounded-lg bg-[#18181b]/70 border border-[#27272a] space-y-1">
+            <div className="p-3 rounded-lg bg-[#18181b] border border-white/10 space-y-1">
               <div className="flex items-center gap-1.5 text-[10px] text-[#71717a] uppercase font-bold">
-                <User className="h-3 w-3 text-[#0ea5e9]" />
+                <User className="h-3 w-3 text-[#f97316]" />
                 <span>Full Name</span>
               </div>
-              <div className="text-xs font-semibold text-[#f4f4f5]">{displayName}</div>
+              <div className="text-xs font-semibold text-white">{displayName}</div>
             </div>
 
             {/* Email Address */}
-            <div className="p-3 rounded-lg bg-[#18181b]/70 border border-[#27272a] space-y-1">
+            <div className="p-3 rounded-lg bg-[#18181b] border border-white/10 space-y-1">
               <div className="flex items-center gap-1.5 text-[10px] text-[#71717a] uppercase font-bold">
-                <Mail className="h-3 w-3 text-[#0ea5e9]" />
+                <Mail className="h-3 w-3 text-[#f97316]" />
                 <span>Email Address</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-[#f4f4f5] truncate mr-2">
+                <span className="text-xs font-semibold text-white truncate mr-2">
                   {displayEmail}
                 </span>
                 <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-sans">
@@ -166,36 +169,34 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            
-
             {/* Member Since */}
-            <div className="p-3 rounded-lg bg-[#18181b]/70 border border-[#27272a] space-y-1">
+            <div className="p-3 rounded-lg bg-[#18181b] border border-white/10 space-y-1">
               <div className="flex items-center gap-1.5 text-[10px] text-[#71717a] uppercase font-bold">
-                <Calendar className="h-3 w-3 text-[#0ea5e9]" />
+                <Calendar className="h-3 w-3 text-[#f97316]" />
                 <span>Account Created</span>
               </div>
-              <div className="text-xs font-semibold text-[#f4f4f5]">{memberSince}</div>
+              <div className="text-xs font-semibold text-white">{memberSince}</div>
             </div>
 
             {/* Architecture Plan */}
-            <div className="p-3 rounded-lg bg-[#18181b]/70 border border-[#27272a] space-y-1">
+            <div className="p-3 rounded-lg bg-[#18181b] border border-white/10 space-y-1">
               <div className="flex items-center gap-1.5 text-[10px] text-[#71717a] uppercase font-bold">
-                <Sparkles className="h-3 w-3 text-[#0ea5e9]" />
+                <Sparkles className="h-3 w-3 text-[#f97316]" />
                 <span>Subscription Tier</span>
               </div>
-              <div className="text-xs text-emerald-400 flex items-center gap-1.5 font-medium">
+              <div className="text-xs text-emerald-400 flex items-center gap-1.5 font-medium font-sans">
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 <span>Sketch Professional (Unlimited Canvas & AI)</span>
               </div>
             </div>
 
             {/* Session Status */}
-            <div className="p-3 rounded-lg bg-[#18181b]/70 border border-[#27272a] space-y-1">
+            <div className="p-3 rounded-lg bg-[#18181b] border border-white/10 space-y-1">
               <div className="flex items-center gap-1.5 text-[10px] text-[#71717a] uppercase font-bold">
-                <ShieldCheck className="h-3 w-3 text-[#0ea5e9]" />
+                <ShieldCheck className="h-3 w-3 text-[#f97316]" />
                 <span>Session Status</span>
               </div>
-              <div className="text-xs text-[#f4f4f5] flex items-center gap-1.5">
+              <div className="text-xs text-white flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>{isSignedIn ? "Authenticated & Synced" : "Local Workspace Session"}</span>
               </div>
@@ -204,9 +205,9 @@ export default function SettingsPage() {
         </div>
 
         {/* AI & Architecture Defaults */}
-        <div className="rounded-xl border border-[#27272a] bg-[#111113] p-5 space-y-4">
-          <div className="flex items-center gap-2 pb-2 border-b border-[#27272a] font-bold text-sm text-[#f4f4f5]">
-            <Sliders className="h-4 w-4 text-[#0ea5e9]" />
+        <div className="rounded-xl border border-white/10 bg-[#111111] p-5 space-y-4">
+          <div className="flex items-center gap-2 pb-2 border-b border-white/10 font-bold text-sm text-white font-sans">
+            <Sliders className="h-4 w-4 text-[#f97316]" />
             <span>ARCHITECTURE GENERATION PREFERENCES</span>
           </div>
 
@@ -218,7 +219,7 @@ export default function SettingsPage() {
               <select
                 value={defaultCloud}
                 onChange={(e) => setDefaultCloud(e.target.value)}
-                className="w-full p-2.5 rounded bg-[#18181b] border border-[#27272a] text-[#f4f4f5] focus:outline-none focus:border-[#0ea5e9]"
+                className="w-full p-2.5 rounded bg-[#18181b] border border-white/10 text-white focus:outline-none focus:border-[#f97316]"
               >
                 <option value="Vercel">Vercel (Recommended)</option>
                 <option value="AWS">Amazon Web Services (AWS)</option>
@@ -234,7 +235,7 @@ export default function SettingsPage() {
               <select
                 value={defaultDb}
                 onChange={(e) => setDefaultDb(e.target.value)}
-                className="w-full p-2.5 rounded bg-[#18181b] border border-[#27272a] text-[#f4f4f5] focus:outline-none focus:border-[#0ea5e9]"
+                className="w-full p-2.5 rounded bg-[#18181b] border border-white/10 text-white focus:outline-none focus:border-[#f97316]"
               >
                 <option value="Supabase PostgreSQL">Supabase PostgreSQL + pgvector (Recommended)</option>
                 <option value="Neon PostgreSQL">Neon Serverless PostgreSQL</option>
@@ -246,7 +247,7 @@ export default function SettingsPage() {
           <div className="pt-2">
             <Button
               onClick={handleSave}
-              className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-semibold text-xs h-8 px-4 cursor-pointer"
+              className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold text-xs h-9 px-5 cursor-pointer chai-btn-primary shadow-lg shadow-orange-950/30"
             >
               {saved ? "Preferences Saved!" : "Save Preferences"}
             </Button>

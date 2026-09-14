@@ -103,9 +103,9 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
       case "orange":
         return "border-[#f97316]/50 bg-[#f97316]/10 text-[#f4f4f5]";
       case "red":
-        return "border-[#ef4444]/50 bg-[#ef4444]/10 text-[#f4f4f5]";
+        return "border-[#ef4444]/50 bg-[#ef4444]/10 text-white";
       default:
-        return "border-[#27272a] bg-[#111113] text-[#f4f4f5]";
+        return "border-white/10 bg-[#111111] text-white";
     }
   };
 
@@ -122,7 +122,7 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
   } else if (isIndirect) {
     statusClass = "border-[#f59e0b]/50 bg-[#18181b] border-dashed";
   } else if (selected) {
-    statusClass = "border-[#0ea5e9] bg-[#18181b] ring-1 ring-[#0ea5e9]";
+    statusClass = "border-[#f97316] bg-[#18181b] ring-1 ring-[#f97316]";
   }
 
   // 1. Text Object Shape
@@ -131,7 +131,7 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
       <div
         onDoubleClick={handleDoubleClick}
         className={`p-2 rounded font-mono transition-all select-none cursor-pointer ${
-          selected ? "ring-1 ring-[#0ea5e9]" : ""
+          selected ? "ring-1 ring-[#f97316]" : ""
         }`}
       >
         {isEditing ? (
@@ -142,10 +142,10 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
             onChange={(e) => setEditLabel(e.target.value)}
             onBlur={handleSaveEdit}
             onKeyDown={handleKeyDown}
-            className="bg-[#18181b] text-sm text-[#f4f4f5] border border-[#0ea5e9] rounded px-1.5 py-0.5 focus:outline-none"
+            className="bg-[#18181b] text-sm text-white border border-[#f97316] rounded px-1.5 py-0.5 focus:outline-none"
           />
         ) : (
-          <span className="text-sm font-semibold text-[#f4f4f5]">{label}</span>
+          <span className="text-sm font-semibold text-white">{label}</span>
         )}
       </div>
     );
@@ -162,8 +162,8 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
           borderColor: customBorder,
         }}
       >
-        <Handle type="target" position={Position.Left} className="!h-2 !w-2 !bg-[#0ea5e9] !border-0" />
-        <Handle type="source" position={Position.Right} className="!h-2 !w-2 !bg-[#0ea5e9] !border-0" />
+        <Handle type="target" position={Position.Left} className="!h-2 !w-2 !bg-[#f97316] !border-0" />
+        <Handle type="source" position={Position.Right} className="!h-2 !w-2 !bg-[#f97316] !border-0" />
         {isEditing ? (
           <input
             type="text"
@@ -172,10 +172,10 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
             onChange={(e) => setEditLabel(e.target.value)}
             onBlur={handleSaveEdit}
             onKeyDown={handleKeyDown}
-            className="w-20 bg-[#18181b] text-[11px] text-center text-[#f4f4f5] border border-[#0ea5e9] rounded px-1"
+            className="w-20 bg-[#18181b] text-[11px] text-center text-white border border-[#f97316] rounded px-1"
           />
         ) : (
-          <span className="text-xs font-semibold truncate max-w-[90px]">{label}</span>
+          <span className="text-xs font-semibold truncate max-w-[90px] text-white">{label}</span>
         )}
       </div>
     );
@@ -186,17 +186,17 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
     return (
       <div
         onDoubleClick={handleDoubleClick}
-        className={`group relative min-w-[200px] min-h-[110px] rounded-lg border-2 border-dashed p-3 font-mono transition-all duration-150 cursor-pointer select-none ${statusClass}`}
+        className={`group relative min-w-[200px] min-h-[110px] rounded-xl border-2 border-dashed p-3 font-mono transition-all duration-150 cursor-pointer select-none ${statusClass}`}
         style={{
           backgroundColor: customBg || "rgba(24, 24, 27, 0.45)",
-          borderColor: customBorder || (selected ? "#0ea5e9" : "#3f3f46"),
+          borderColor: customBorder || (selected ? "#f97316" : "rgba(255, 255, 255, 0.15)"),
         }}
       >
-        <Handle type="target" position={Position.Left} className="!h-2.5 !w-2.5 !bg-[#0ea5e9] !border-0" />
-        <Handle type="source" position={Position.Right} className="!h-2.5 !w-2.5 !bg-[#0ea5e9] !border-0" />
-        <Handle type="target" position={Position.Top} id="top" className="!h-2 !w-2 !bg-[#0ea5e9] !border-0 opacity-0 group-hover:opacity-100" />
-        <Handle type="source" position={Position.Bottom} id="bottom" className="!h-2 !w-2 !bg-[#0ea5e9] !border-0 opacity-0 group-hover:opacity-100" />
-        <div className="flex items-center justify-between pb-1.5 border-b border-[#27272a]/60">
+        <Handle type="target" position={Position.Left} className="!h-2.5 !w-2.5 !bg-[#f97316] !border-0" />
+        <Handle type="source" position={Position.Right} className="!h-2.5 !w-2.5 !bg-[#f97316] !border-0" />
+        <Handle type="target" position={Position.Top} id="top" className="!h-2 !w-2 !bg-[#f97316] !border-0 opacity-0 group-hover:opacity-100" />
+        <Handle type="source" position={Position.Bottom} id="bottom" className="!h-2 !w-2 !bg-[#f97316] !border-0 opacity-0 group-hover:opacity-100" />
+        <div className="flex items-center justify-between pb-1.5 border-b border-white/10">
           {isEditing ? (
             <input
               type="text"
@@ -205,7 +205,7 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
               onChange={(e) => setEditLabel(e.target.value)}
               onBlur={handleSaveEdit}
               onKeyDown={handleKeyDown}
-              className="bg-[#18181b] border border-[#0ea5e9] rounded px-1.5 py-0.5 text-xs text-[#f4f4f5] focus:outline-none"
+              className="bg-[#18181b] border border-[#f97316] rounded px-1.5 py-0.5 text-xs text-white focus:outline-none"
             />
           ) : (
             <span className="text-[11px] font-semibold text-[#a1a1aa] tracking-wider uppercase">{label}</span>
@@ -219,7 +219,7 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
   return (
     <div
       onDoubleClick={handleDoubleClick}
-      className={`group relative min-w-[210px] max-w-[250px] rounded-lg border p-3.5 font-mono transition-all duration-150 cursor-pointer shadow-xs select-none ${statusClass}`}
+      className={`group relative min-w-[210px] max-w-[250px] rounded-xl border p-3.5 font-mono transition-all duration-150 cursor-pointer shadow-xs select-none ${statusClass}`}
       style={{
         backgroundColor: customBg,
         borderColor: customBorder,
@@ -229,30 +229,30 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
       <Handle
         type="target"
         position={Position.Left}
-        className="!h-2.5 !w-2.5 !rounded-none !border-0 !bg-[#0ea5e9] transition-transform"
+        className="!h-2.5 !w-2.5 !rounded-none !border-0 !bg-[#f97316] transition-transform"
       />
       <Handle
         type="source"
         position={Position.Right}
-        className="!h-2.5 !w-2.5 !rounded-none !border-0 !bg-[#0ea5e9] transition-transform"
+        className="!h-2.5 !w-2.5 !rounded-none !border-0 !bg-[#f97316] transition-transform"
       />
       <Handle
         type="target"
         position={Position.Top}
         id="top"
-        className="!h-2 !w-2 !rounded-none !border-0 !bg-[#0ea5e9] opacity-0 group-hover:opacity-100"
+        className="!h-2 !w-2 !rounded-none !border-0 !bg-[#f97316] opacity-0 group-hover:opacity-100"
       />
       <Handle
         type="source"
         position={Position.Bottom}
         id="bottom"
-        className="!h-2 !w-2 !rounded-none !border-0 !bg-[#0ea5e9] opacity-0 group-hover:opacity-100"
+        className="!h-2 !w-2 !rounded-none !border-0 !bg-[#f97316] opacity-0 group-hover:opacity-100"
       />
 
       {/* Node Header */}
-      <div className="flex items-center justify-between gap-1 pb-2 border-b border-[#27272a]/60">
+      <div className="flex items-center justify-between gap-1 pb-2 border-b border-white/10">
         <div className="flex items-center gap-1.5 text-[10px] text-[#a1a1aa]">
-          <span className="text-[#0ea5e9] font-bold">{meta.glyph}</span>
+          <span className="text-[#f97316] font-bold">{meta.glyph}</span>
           <span className="tracking-wider uppercase font-semibold">{meta.category}</span>
         </div>
 
@@ -291,7 +291,7 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
               onChange={(e) => setEditLabel(e.target.value)}
               onBlur={handleSaveEdit}
               onKeyDown={handleKeyDown}
-              className="w-full bg-[#18181b] border border-[#0ea5e9] rounded px-1.5 py-0.5 text-xs text-[#f4f4f5] focus:outline-none"
+              className="w-full bg-[#18181b] border border-[#f97316] rounded px-1.5 py-0.5 text-xs text-white focus:outline-none"
             />
             <input
               type="text"
@@ -300,7 +300,7 @@ export const CustomNode = memo(({ id, data, selected }: NodeProps) => {
               onChange={(e) => setEditTech(e.target.value)}
               onBlur={handleSaveEdit}
               onKeyDown={handleKeyDown}
-              className="w-full bg-[#18181b] border border-[#27272a] rounded px-1.5 py-0.5 text-[10px] text-[#a1a1aa] focus:outline-none"
+              className="w-full bg-[#18181b] border border-white/10 rounded px-1.5 py-0.5 text-[10px] text-[#a1a1aa] focus:outline-none focus:border-[#f97316]"
             />
           </div>
         ) : (

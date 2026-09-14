@@ -41,26 +41,26 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="flex flex-col bg-[#09090b] border-t border-[#27272a] font-mono text-xs select-none">
+    <div className="flex flex-col bg-[#000000] border-t border-white/10 font-mono text-xs select-none">
       {/* Header Bar */}
-      <div className="px-4 py-2 bg-[#111113] border-b border-[#27272a] flex items-center justify-between">
+      <div className="px-4 py-2 bg-[#111111] border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 font-bold text-[#f4f4f5] uppercase tracking-wider text-[11px]">
+          <div className="flex items-center gap-1.5 font-bold text-white uppercase tracking-wider text-[11px] font-sans">
             <span>◎ AGENT WORKFLOW PIPELINE</span>
           </div>
           {isGenerating ? (
-            <span className="text-[10px] text-[#0ea5e9] flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0ea5e9] animate-pulse" />
+            <span className="text-[10px] text-[#f97316] flex items-center gap-1 font-mono">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#f97316] animate-pulse" />
               RUNNING / {currentNode?.replace(/_/g, " ").toUpperCase() || "ORCHESTRATING"}
             </span>
           ) : (
-            <span className="text-[10px] text-[#71717a]">○ IDLE</span>
+            <span className="text-[10px] text-[#71717a] font-mono">○ IDLE</span>
           )}
         </div>
 
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-[#71717a] hover:text-[#f4f4f5] p-1 flex items-center gap-1 text-[10px] cursor-pointer"
+          className="text-[#71717a] hover:text-white p-1 flex items-center gap-1 text-[10px] cursor-pointer"
         >
           <span>{isExpanded ? "COLLAPSE" : "EXPAND"}</span>
           {isExpanded ? <ChevronDown className="h-3 w-3" /> : <ChevronUp className="h-3 w-3" />}
@@ -85,18 +85,18 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
                   title={node.description}
                   className={`p-2 rounded border text-[10px] space-y-1 transition-all ${
                     status === "completed"
-                      ? "bg-[#111113] border-[#27272a] text-[#f4f4f5]"
+                      ? "bg-[#111111] border-white/10 text-white"
                       : status === "running" || isCurrent
-                      ? "bg-[#18181b] border-[#0ea5e9] text-[#f4f4f5] ring-1 ring-[#0ea5e9]"
+                      ? "bg-[#18181b] border-[#f97316] text-white ring-1 ring-[#f97316]"
                       : status === "failed"
                       ? "bg-red-950/20 border-red-500/50 text-red-400"
-                      : "bg-[#09090b] border-[#27272a]/50 text-[#71717a]"
+                      : "bg-[#000000] border-white/10 text-[#71717a]"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-bold">
                       {status === "completed" && <span className="text-[#10b981]">✓</span>}
-                      {(status === "running" || isCurrent) && <span className="text-[#0ea5e9] animate-pulse">◉</span>}
+                      {(status === "running" || isCurrent) && <span className="text-[#f97316] animate-pulse">◉</span>}
                       {status === "idle" && !isCurrent && <span className="text-[#71717a]">○</span>}
                       {status === "failed" && <span className="text-[#ef4444]">✕</span>}
                     </span>
@@ -104,15 +104,15 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
                       {status === "running" || isCurrent ? "RUNNING" : status}
                     </span>
                   </div>
-                  <div className="font-medium leading-tight truncate">{node.name}</div>
+                  <div className="font-medium leading-tight truncate font-sans">{node.name}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Execution Logs Stream (5 cols) */}
-          <div className="lg:col-span-5 bg-[#111113] border border-[#27272a] rounded p-2.5 text-[10px] text-[#a1a1aa] overflow-y-auto max-h-48 space-y-1">
-            <div className="text-[9px] uppercase text-[#71717a] pb-1 border-b border-[#27272a]">
+          <div className="lg:col-span-5 bg-[#111111] border border-white/10 rounded p-2.5 text-[10px] text-[#a1a1aa] overflow-y-auto max-h-48 space-y-1">
+            <div className="text-[9px] uppercase text-[#71717a] pb-1 border-b border-white/10">
               Execution Telemetry Logs
             </div>
             {logs.length === 0 ? (
@@ -120,8 +120,8 @@ export const AgentWorkflowVisualizer = memo(function AgentWorkflowVisualizer({
             ) : (
               logs.map((log, idx) => (
                 <div key={idx} className="leading-tight flex items-start gap-1.5 font-mono">
-                  <span className="text-[#0ea5e9] select-none">&gt;</span>
-                  <span className="text-[#f4f4f5]">{log}</span>
+                  <span className="text-[#f97316] select-none">&gt;</span>
+                  <span className="text-white">{log}</span>
                 </div>
               ))
             )}

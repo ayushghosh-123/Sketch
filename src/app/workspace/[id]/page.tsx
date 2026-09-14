@@ -37,12 +37,12 @@ function CanvasZoomHud() {
 
   return (
     <Panel position="bottom-left" className="!m-3 z-20 select-none">
-      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#111113]/95 border border-[#27272a] shadow-xl backdrop-blur-md font-mono text-xs text-[#f4f4f5]">
+      <div className="flex items-center gap-1 p-1 rounded-xl bg-[#111111]/95 border border-white/10 shadow-xl backdrop-blur-md font-mono text-xs text-white">
         {/* Zoom Out (-) */}
         <button
           type="button"
           onClick={() => zoomOut({ duration: 250 })}
-          className="h-7 w-7 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] flex items-center justify-center transition-colors border border-transparent hover:border-[#27272a]"
+          className="h-7 w-7 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-white flex items-center justify-center transition-colors border border-transparent hover:border-white/10"
           title="Zoom Out (-)"
           aria-label="Zoom Out"
         >
@@ -53,7 +53,7 @@ function CanvasZoomHud() {
         <button
           type="button"
           onClick={() => zoomTo(1, { duration: 250 })}
-          className="h-7 px-2.5 rounded-lg hover:bg-[#18181b] text-[#0ea5e9] font-semibold text-[11px] flex items-center justify-center transition-colors border border-transparent hover:border-[#27272a]"
+          className="h-7 px-2.5 rounded-lg hover:bg-[#18181b] text-[#f97316] font-semibold text-[11px] flex items-center justify-center transition-colors border border-transparent hover:border-white/10"
           title="Reset Zoom to 100% (Ctrl+0)"
         >
           {zoomPercent}%
@@ -63,20 +63,20 @@ function CanvasZoomHud() {
         <button
           type="button"
           onClick={() => zoomIn({ duration: 250 })}
-          className="h-7 w-7 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] flex items-center justify-center transition-colors border border-transparent hover:border-[#27272a]"
+          className="h-7 w-7 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-white flex items-center justify-center transition-colors border border-transparent hover:border-white/10"
           title="Zoom In (+)"
           aria-label="Zoom In"
         >
           <Plus className="h-3.5 w-3.5" />
         </button>
 
-        <div className="h-4 w-[1px] bg-[#27272a] mx-0.5" />
+        <div className="h-4 w-[1px] bg-white/10 mx-0.5" />
 
         {/* Fit View Button */}
         <button
           type="button"
           onClick={() => fitView({ padding: 0.2, duration: 350 })}
-          className="h-7 px-2.5 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-[#f4f4f5] flex items-center gap-1.5 text-[11px] transition-colors border border-transparent hover:border-[#27272a]"
+          className="h-7 px-2.5 rounded-lg hover:bg-[#18181b] text-[#a1a1aa] hover:text-white flex items-center gap-1.5 text-[11px] transition-colors border border-transparent hover:border-white/10"
           title="Fit All Nodes in View (F)"
         >
           <Maximize2 className="h-3.5 w-3.5 text-[#10b981]" />
@@ -301,9 +301,9 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-[#09090b] text-[#71717a] font-mono text-xs">
+      <div className="flex-1 flex items-center justify-center bg-[#000000] text-[#71717a] font-mono text-xs">
         <div className="flex flex-col items-center gap-2">
-          <div className="h-6 w-6 rounded-full border-2 border-[#0ea5e9] border-t-transparent animate-spin" />
+          <div className="h-6 w-6 rounded-full border-2 border-[#f97316] border-t-transparent animate-spin" />
           <span>Opening Sketch Workspace...</span>
         </div>
       </div>
@@ -313,7 +313,7 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
   const sourceNodeLabel = nodes.find((n) => n.id === connectingSourceId)?.data?.label || "Selected Node";
 
   return (
-    <div className="flex flex-col h-[calc(100vh-68px)] w-full overflow-hidden bg-[#09090b] text-[#f4f4f5]">
+    <div className="flex flex-col h-[calc(100vh-68px)] w-full overflow-hidden bg-[#000000] text-[#f4f4f5]">
       {/* Top Bar */}
       <WorkspaceTopBar
         projectId={projectId}
@@ -332,8 +332,8 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
         <div className="flex-1 h-full relative">
           {/* Active Tool Guidance HUD */}
           {activeTool !== "select" && (
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-[#111113]/95 border border-[#0ea5e9]/50 shadow-2xl backdrop-blur-md text-xs font-mono text-[#f4f4f5]">
-              <span className="h-2 w-2 rounded-full bg-[#0ea5e9] animate-pulse" />
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-[#111111]/95 border border-[#f97316]/50 shadow-2xl backdrop-blur-md text-xs font-mono text-white">
+              <span className="h-2 w-2 rounded-full bg-[#f97316] animate-pulse" />
               <span>
                 {activeTool === "hand" && "Hand Tool: Drag anywhere on canvas to pan viewport"}
                 {activeTool === "rectangle" && "Rectangle Tool: Click canvas to place boundary box"}
@@ -358,7 +358,7 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
                   setActiveTool("select");
                   setConnectingSourceId(null);
                 }}
-                className="ml-2 text-[10px] text-[#a1a1aa] hover:text-white px-2 py-0.5 rounded bg-[#18181b] border border-[#27272a] transition-colors"
+                className="ml-2 text-[10px] text-[#a1a1aa] hover:text-white px-2 py-0.5 rounded bg-[#18181b] border border-white/10 transition-colors"
               >
                 Done (Esc)
               </button>
@@ -384,7 +384,7 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
             panOnDrag={activeTool === "hand" ? true : [1, 2]}
             selectionOnDrag={activeTool === "select"}
             elementsSelectable={activeTool !== "hand"}
-            className={`bg-[#09090b] ${
+            className={`bg-[#000000] ${
               activeTool === "hand"
                 ? "!cursor-grab active:!cursor-grabbing"
                 : activeTool === "select"
@@ -392,13 +392,13 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
                 : "cursor-crosshair"
             }`}
           >
-            <Background color="#27272a" gap={20} size={1} />
+            <Background color="rgba(255, 255, 255, 0.08)" gap={20} size={1} />
             <Controls
               position="bottom-right"
               showZoom={true}
               showFitView={true}
               showInteractive={true}
-              className="!bg-[#111113] !border-[#27272a] text-[#f4f4f5] !shadow-xl"
+              className="!bg-[#111111] !border-white/10 text-white !shadow-xl"
             />
             <CanvasZoomHud />
             <MiniMap
@@ -417,12 +417,12 @@ function WorkspaceCanvasInner({ projectId }: { projectId: string }) {
                   case "cache":
                     return "#f59e0b";
                   case "ai":
-                    return "#a855f7";
+                    return "#f97316";
                   default:
                     return "#71717a";
                 }
               }}
-              className="!bg-[#111113]/90 !border-[#27272a]"
+              className="!bg-[#111111]/90 !border-white/10"
             />
           </ReactFlow>
         </div>

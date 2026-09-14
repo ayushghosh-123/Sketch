@@ -76,7 +76,7 @@ export default function TechStackPage({
       category: "AGENT WORKFLOW",
       name: "LangGraph.js",
       icon: Cpu,
-      color: "text-[#0ea5e9]",
+      color: "text-[#f97316]",
       technicalWhy: "Supports stateful cyclical multi-agent workflows, branching conditions, and runtime Zod validation.",
       simpleWhy: "Coordinates AI agents like a disciplined engineering team, reviewing steps before drawing diagrams.",
     },
@@ -99,21 +99,24 @@ export default function TechStackPage({
   ];
 
   return (
-    <div className="flex-1 bg-[#09090b] text-[#f4f4f5] min-h-[calc(100vh-68px)] p-4 sm:p-8 max-w-5xl mx-auto w-full font-mono">
+    <div className="flex-1 bg-[#000000] text-[#f4f4f5] min-h-[calc(100vh-68px)] p-4 sm:p-8 max-w-5xl mx-auto w-full font-mono relative">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-1/4 w-[450px] h-[320px] bg-orange-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#27272a]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <Link
             href={`/workspace/${projectId}`}
-            className="text-xs text-[#71717a] hover:text-[#0ea5e9] flex items-center gap-1 mb-2 transition-colors"
+            className="text-xs text-[#71717a] hover:text-[#f97316] flex items-center gap-1 mb-2 transition-colors font-sans"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to Canvas
           </Link>
-          <div className="text-xs text-[#0ea5e9] uppercase tracking-wider font-bold">
+          <div className="text-xs text-[#f97316] uppercase tracking-wider font-bold">
             TECHNOLOGY STACK SPECIFICATION
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4f4f5] mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-sans mt-1">
             Tech Stack Decisions
           </h1>
           <p className="text-xs text-[#a1a1aa] font-sans mt-0.5">
@@ -122,12 +125,12 @@ export default function TechStackPage({
         </div>
 
         {/* Explain Simply Mode Toggle */}
-        <div className="flex items-center gap-2 self-start sm:self-auto p-1.5 rounded-lg bg-[#111113] border border-[#27272a]">
-          <span className="text-[11px] text-[#a1a1aa] px-1">Explain Simply</span>
+        <div className="flex items-center gap-2 self-start sm:self-auto p-1.5 rounded-lg bg-[#111111] border border-white/10">
+          <span className="text-[11px] text-[#a1a1aa] px-1 font-sans">Explain Simply</span>
           <button
             onClick={() => setExplainSimply(!explainSimply)}
-            className={`w-11 h-6 rounded-full transition-colors relative p-0.5 ${
-              explainSimply ? "bg-[#0ea5e9]" : "bg-[#27272a]"
+            className={`w-11 h-6 rounded-full transition-colors relative p-0.5 cursor-pointer ${
+              explainSimply ? "bg-[#f97316]" : "bg-white/10"
             }`}
           >
             <div
@@ -147,11 +150,11 @@ export default function TechStackPage({
           return (
             <div
               key={tier.category}
-              className="rounded-xl border border-[#27272a] bg-[#111113] p-5 space-y-3 shadow-xs"
+              className="rounded-xl border border-white/10 bg-[#111111] p-5 space-y-3 shadow-xs hover:border-white/20 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className={`h-7 w-7 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-center ${tier.color}`}>
+                  <div className={`h-7 w-7 rounded bg-[#18181b] border border-white/10 flex items-center justify-center ${tier.color}`}>
                     <Icon className="h-4 w-4" />
                   </div>
                   <span className="text-[10px] uppercase text-[#71717a] font-bold">
@@ -164,11 +167,11 @@ export default function TechStackPage({
               </div>
 
               <div>
-                <h3 className="text-sm font-bold text-[#f4f4f5]">{tier.name}</h3>
+                <h3 className="text-sm font-bold text-white font-sans">{tier.name}</h3>
               </div>
 
               <div>
-                <div className="text-[10px] uppercase text-[#0ea5e9] font-semibold">
+                <div className="text-[10px] uppercase text-[#f97316] font-semibold">
                   {explainSimply ? "WHY THIS HELPS YOU" : "WHY SKETCH CHOSE THIS"}
                 </div>
                 <p className="text-xs text-[#a1a1aa] font-sans mt-1 leading-relaxed">
@@ -183,7 +186,7 @@ export default function TechStackPage({
       {/* Footer Navigation */}
       <div className="pt-8 flex justify-center">
         <Link href={`/workspace/${projectId}`}>
-          <Button className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-semibold text-xs h-9 px-5">
+          <Button className="bg-[#f97316] hover:bg-[#ea580c] text-white font-semibold text-xs h-10 px-6 cursor-pointer chai-btn-primary shadow-lg shadow-orange-950/40">
             Return to Visual Architecture Canvas →
           </Button>
         </Link>

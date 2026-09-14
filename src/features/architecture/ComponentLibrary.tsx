@@ -174,10 +174,10 @@ export function ComponentLibrary() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#09090b] border-r border-[#27272a] select-none font-mono text-xs w-60">
+    <div className="flex flex-col h-full bg-[#000000] border-r border-white/10 select-none font-mono text-xs w-60">
       {/* Toolbox Header */}
-      <div className="p-3 border-b border-[#27272a] bg-[#111113] flex items-center justify-between">
-        <span className="text-[11px] font-semibold tracking-wider text-[#f4f4f5] uppercase">
+      <div className="p-3 border-b border-white/10 bg-[#111111] flex items-center justify-between">
+        <span className="text-[11px] font-semibold tracking-wider text-white uppercase font-sans">
           Toolbox
         </span>
         <span className="text-[10px] text-[#71717a]">DRAG & DROP</span>
@@ -200,14 +200,14 @@ export function ComponentLibrary() {
                     draggable
                     onDragStart={(e) => handleDragStart(e, item)}
                     onClick={() => handleQuickAdd(item)}
-                    className="p-2 rounded bg-[#111113] border border-[#27272a] hover:border-[#0ea5e9]/60 hover:bg-[#18181b] transition-all cursor-grab active:cursor-grabbing flex items-center justify-between group"
+                    className="p-2 rounded bg-[#111111] border border-white/10 hover:border-[#f97316]/60 hover:bg-[#18181b] transition-all cursor-grab active:cursor-grabbing flex items-center justify-between group"
                     title={`Click or drag to canvas: ${item.defaultDesc}`}
                   >
                     <div className="flex items-center gap-2 truncate">
-                      <Icon className="h-3.5 w-3.5 text-[#71717a] group-hover:text-[#0ea5e9] shrink-0" />
-                      <span className="text-xs text-[#f4f4f5] truncate">{item.label}</span>
+                      <Icon className="h-3.5 w-3.5 text-[#71717a] group-hover:text-[#f97316] shrink-0 transition-colors" />
+                      <span className="text-xs text-white truncate font-sans">{item.label}</span>
                     </div>
-                    <Plus className="h-3 w-3 text-[#71717a] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Plus className="h-3 w-3 text-[#71717a] group-hover:text-[#f97316] opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 );
               })}

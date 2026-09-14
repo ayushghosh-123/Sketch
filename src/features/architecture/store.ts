@@ -164,7 +164,7 @@ export const useArchitectureStore = create<ArchitectureState>((set, get) => ({
     let edgeConfig: Partial<Edge> = {
       type: "smoothstep",
       animated: true,
-      style: { stroke: "#0ea5e9", strokeWidth: 2 },
+      style: { stroke: "#f97316", strokeWidth: 2 },
       label: "Request / Flow",
     };
 
@@ -182,9 +182,9 @@ export const useArchitectureStore = create<ArchitectureState>((set, get) => ({
           type: MarkerType.ArrowClosed,
           width: 16,
           height: 16,
-          color: "#0ea5e9",
+          color: "#f97316",
         },
-        style: { stroke: "#0ea5e9", strokeWidth: 2 },
+        style: { stroke: "#f97316", strokeWidth: 2 },
       };
     }
 
@@ -206,7 +206,7 @@ export const useArchitectureStore = create<ArchitectureState>((set, get) => ({
     let edgeConfig: Partial<Edge> = {
       type: "smoothstep",
       animated: true,
-      style: { stroke: "#0ea5e9", strokeWidth: 2 },
+      style: { stroke: "#f97316", strokeWidth: 2 },
       label: "Request / Flow",
     };
 
@@ -224,9 +224,9 @@ export const useArchitectureStore = create<ArchitectureState>((set, get) => ({
           type: MarkerType.ArrowClosed,
           width: 16,
           height: 16,
-          color: "#0ea5e9",
+          color: "#f97316",
         },
-        style: { stroke: "#0ea5e9", strokeWidth: 2 },
+        style: { stroke: "#f97316", strokeWidth: 2 },
       };
     }
 
@@ -405,7 +405,7 @@ export const useArchitectureStore = create<ArchitectureState>((set, get) => ({
 
     const updatedEdges = get().edges.map((edge) => ({
       ...edge,
-      style: { stroke: "#0ea5e9", strokeWidth: 2 },
+      style: { stroke: "#f97316", strokeWidth: 2 },
     }));
 
     set({

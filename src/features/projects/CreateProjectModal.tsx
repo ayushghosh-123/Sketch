@@ -148,12 +148,12 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-xl p-0 border border-[#27272a] bg-[#111113] text-[#f4f4f5] font-mono shadow-2xl overflow-hidden">
+      <DialogContent className="max-w-xl p-0 border border-white/10 bg-[#111111] text-white font-mono shadow-2xl overflow-hidden rounded-2xl">
         {/* Header Bar */}
-        <div className="p-5 bg-[#18181b] border-b border-[#27272a] flex items-center justify-between">
+        <div className="p-5 bg-[#18181b] border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-[#0ea5e9] text-xs">◉</span>
-            <span className="text-xs font-semibold text-[#f4f4f5] tracking-wider uppercase">
+            <span className="text-[#f97316] text-xs">◉</span>
+            <span className="text-xs font-semibold text-white tracking-wider uppercase">
               NEW SYSTEM SPECIFICATION
             </span>
           </div>
@@ -163,25 +163,25 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
         </div>
 
         {/* Progress Timeline: 01 ━━━●━━ 02 ━━━○━━ 03 ━━━○━━ 04 */}
-        <div className="px-6 pt-4 pb-2 flex items-center justify-between text-[11px] text-[#71717a] border-b border-[#27272a]/60">
+        <div className="px-6 pt-4 pb-2 flex items-center justify-between text-[11px] text-[#71717a] border-b border-white/10">
           <div className="flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${currentStep >= 1 ? "bg-[#0ea5e9]" : "bg-[#27272a]"}`} />
-            <span className={currentStep === 1 ? "text-[#f4f4f5] font-semibold" : ""}>01 DEFINE</span>
+            <span className={`h-2 w-2 rounded-full ${currentStep >= 1 ? "bg-[#f97316]" : "bg-white/10"}`} />
+            <span className={currentStep === 1 ? "text-white font-semibold" : ""}>01 DEFINE</span>
           </div>
-          <span className="text-[#27272a]">━━━━</span>
+          <span className="text-white/10">━━━━</span>
           <div className="flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${currentStep >= 2 ? "bg-[#0ea5e9]" : "bg-[#27272a]"}`} />
-            <span className={currentStep === 2 ? "text-[#f4f4f5] font-semibold" : ""}>02 SCALE</span>
+            <span className={`h-2 w-2 rounded-full ${currentStep >= 2 ? "bg-[#f97316]" : "bg-white/10"}`} />
+            <span className={currentStep === 2 ? "text-white font-semibold" : ""}>02 SCALE</span>
           </div>
-          <span className="text-[#27272a]">━━━━</span>
+          <span className="text-white/10">━━━━</span>
           <div className="flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${currentStep >= 3 ? "bg-[#0ea5e9]" : "bg-[#27272a]"}`} />
-            <span className={currentStep === 3 ? "text-[#f4f4f5] font-semibold" : ""}>03 PRIORITIES</span>
+            <span className={`h-2 w-2 rounded-full ${currentStep >= 3 ? "bg-[#f97316]" : "bg-white/10"}`} />
+            <span className={currentStep === 3 ? "text-white font-semibold" : ""}>03 PRIORITIES</span>
           </div>
-          <span className="text-[#27272a]">━━━━</span>
+          <span className="text-white/10">━━━━</span>
           <div className="flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${currentStep >= 4 ? "bg-[#0ea5e9]" : "bg-[#27272a]"}`} />
-            <span className={currentStep === 4 ? "text-[#f4f4f5] font-semibold" : ""}>04 TECH</span>
+            <span className={`h-2 w-2 rounded-full ${currentStep >= 4 ? "bg-[#f97316]" : "bg-white/10"}`} />
+            <span className={currentStep === 4 ? "text-white font-semibold" : ""}>04 TECH</span>
           </div>
         </div>
 
@@ -198,8 +198,8 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
           {currentStep === 1 && (
             <div className="space-y-4 animate-in fade-in duration-200">
               <div>
-                <div className="text-xs text-[#0ea5e9] uppercase font-semibold">01 / DEFINE</div>
-                <h3 className="text-base font-semibold text-[#f4f4f5] mt-0.5">What are you building?</h3>
+                <div className="text-xs text-[#f97316] uppercase font-semibold">01 / DEFINE</div>
+                <h3 className="text-base font-semibold text-white mt-0.5">What are you building?</h3>
               </div>
 
               <div className="space-y-2">
@@ -208,7 +208,7 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Distributed Payment Gateway"
-                  className="bg-[#09090b] border-[#27272a] text-xs font-mono text-[#f4f4f5] focus:border-[#0ea5e9]"
+                  className="bg-[#18181b] border-white/10 text-xs font-mono text-white focus:border-[#f97316]"
                 />
               </div>
 
@@ -219,7 +219,7 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                   onChange={(e) => setDescription(e.target.value)}
                   rows={4}
                   placeholder="Describe your product requirements, user workflows, data inputs, and scale expectations..."
-                  className="bg-[#09090b] border-[#27272a] text-xs font-mono text-[#f4f4f5] focus:border-[#0ea5e9] resize-none"
+                  className="bg-[#18181b] border-white/10 text-xs font-mono text-white focus:border-[#f97316] resize-none"
                 />
               </div>
             </div>
@@ -229,22 +229,22 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
           {currentStep === 2 && (
             <div className="space-y-4 animate-in fade-in duration-200">
               <div>
-                <div className="text-xs text-[#0ea5e9] uppercase font-semibold">02 / SCALE</div>
-                <h3 className="text-base font-semibold text-[#f4f4f5] mt-0.5">How should this system operate?</h3>
+                <div className="text-xs text-[#f97316] uppercase font-semibold">02 / SCALE</div>
+                <h3 className="text-base font-semibold text-white mt-0.5">How should this system operate?</h3>
               </div>
 
               <div className="space-y-3 pt-2">
                 <div
                   onClick={() => setScale("prototype")}
-                  className={`p-3.5 rounded border cursor-pointer transition-all flex items-start gap-3 ${
+                  className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
                     scale === "prototype"
-                      ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
-                      : "bg-[#09090b] border-[#27272a] hover:border-[#3f3f46]"
+                      ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
+                      : "bg-[#111111] border-white/10 hover:border-white/20"
                   }`}
                 >
-                  <div className="mt-0.5">{scale === "prototype" ? "●" : "○"}</div>
+                  <div className="mt-0.5 text-[#f97316]">{scale === "prototype" ? "●" : "○"}</div>
                   <div>
-                    <div className="text-xs font-semibold text-[#f4f4f5]">Prototype / MVP</div>
+                    <div className="text-xs font-semibold text-white">Prototype / MVP</div>
                     <div className="text-[11px] text-[#71717a] mt-0.5">
                       Low complexity, minimal operational cost, fast iteration, single-instance database.
                     </div>
@@ -253,15 +253,15 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
 
                 <div
                   onClick={() => setScale("growth")}
-                  className={`p-3.5 rounded border cursor-pointer transition-all flex items-start gap-3 ${
+                  className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
                     scale === "growth"
-                      ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
-                      : "bg-[#09090b] border-[#27272a] hover:border-[#3f3f46]"
+                      ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
+                      : "bg-[#111111] border-white/10 hover:border-white/20"
                   }`}
                 >
-                  <div className="mt-0.5">{scale === "growth" ? "●" : "○"}</div>
+                  <div className="mt-0.5 text-[#f97316]">{scale === "growth" ? "●" : "○"}</div>
                   <div>
-                    <div className="text-xs font-semibold text-[#f4f4f5]">Growing Product</div>
+                    <div className="text-xs font-semibold text-white">Growing Product</div>
                     <div className="text-[11px] text-[#71717a] mt-0.5">
                       Modular microservices, caching layer (Redis), async job queues, auto-scaling API routers.
                     </div>
@@ -270,15 +270,15 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
 
                 <div
                   onClick={() => setScale("high-scale")}
-                  className={`p-3.5 rounded border cursor-pointer transition-all flex items-start gap-3 ${
+                  className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
                     scale === "high-scale"
-                      ? "bg-[#18181b] border-[#0ea5e9] ring-1 ring-[#0ea5e9]"
-                      : "bg-[#09090b] border-[#27272a] hover:border-[#3f3f46]"
+                      ? "bg-[#18181b] border-[#f97316] ring-1 ring-[#f97316]"
+                      : "bg-[#111111] border-white/10 hover:border-white/20"
                   }`}
                 >
-                  <div className="mt-0.5">{scale === "high-scale" ? "●" : "○"}</div>
+                  <div className="mt-0.5 text-[#f97316]">{scale === "high-scale" ? "●" : "○"}</div>
                   <div>
-                    <div className="text-xs font-semibold text-[#f4f4f5]">High-Scale Distributed System</div>
+                    <div className="text-xs font-semibold text-white">High-Scale Distributed System</div>
                     <div className="text-[11px] text-[#71717a] mt-0.5">
                       Multi-region active-active clusters, Kafka message bus, circuit breakers, 99.99% availability SLA.
                     </div>
@@ -292,8 +292,8 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
           {currentStep === 3 && (
             <div className="space-y-4 animate-in fade-in duration-200">
               <div>
-                <div className="text-xs text-[#0ea5e9] uppercase font-semibold">03 / PRIORITIES</div>
-                <h3 className="text-base font-semibold text-[#f4f4f5] mt-0.5">Select architecture priorities</h3>
+                <div className="text-xs text-[#f97316] uppercase font-semibold">03 / PRIORITIES</div>
+                <h3 className="text-base font-semibold text-white mt-0.5">Select architecture priorities</h3>
                 <p className="text-xs text-[#71717a] mt-0.5">The multi-agent council weights tradeoffs based on these targets.</p>
               </div>
 
@@ -304,14 +304,14 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                     <div
                       key={p}
                       onClick={() => togglePriority(p)}
-                      className={`p-3 rounded border cursor-pointer text-xs font-mono transition-all flex items-center justify-between ${
+                      className={`p-3 rounded-lg border cursor-pointer text-xs font-mono transition-all flex items-center justify-between ${
                         isSelected
-                          ? "bg-[#0ea5e9]/10 border-[#0ea5e9] text-[#f4f4f5]"
-                          : "bg-[#09090b] border-[#27272a] text-[#a1a1aa] hover:border-[#3f3f46]"
+                          ? "bg-[#f97316]/15 border-[#f97316] text-white"
+                          : "bg-[#111111] border-white/10 text-[#a1a1aa] hover:border-white/20"
                       }`}
                     >
                       <span>[ {p} ]</span>
-                      {isSelected && <Check className="h-3.5 w-3.5 text-[#0ea5e9]" />}
+                      {isSelected && <Check className="h-3.5 w-3.5 text-[#f97316]" />}
                     </div>
                   );
                 })}
@@ -323,8 +323,8 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
           {currentStep === 4 && (
             <div className="space-y-4 animate-in fade-in duration-200">
               <div>
-                <div className="text-xs text-[#0ea5e9] uppercase font-semibold">04 / TECHNOLOGY</div>
-                <h3 className="text-base font-semibold text-[#f4f4f5] mt-0.5">Preferred technologies & tools</h3>
+                <div className="text-xs text-[#f97316] uppercase font-semibold">04 / TECHNOLOGY</div>
+                <h3 className="text-base font-semibold text-white mt-0.5">Preferred technologies & tools</h3>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1">
@@ -335,10 +335,10 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                       key={t}
                       type="button"
                       onClick={() => toggleTech(t)}
-                      className={`px-3 py-1.5 rounded text-xs transition-colors cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                         isSelected
-                          ? "bg-[#0ea5e9] text-[#09090b] font-semibold"
-                          : "bg-[#09090b] border border-[#27272a] text-[#a1a1aa] hover:text-[#f4f4f5]"
+                          ? "bg-[#f97316] text-black font-semibold"
+                          : "bg-[#18181b] border border-white/10 text-[#a1a1aa] hover:text-white"
                       }`}
                     >
                       {t}
@@ -353,14 +353,14 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                   onChange={(e) => setCustomTech(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addCustomTech())}
                   placeholder="Add custom technology (e.g. Cassandra, ClickHouse)..."
-                  className="bg-[#09090b] border-[#27272a] text-xs text-[#f4f4f5]"
+                  className="bg-[#18181b] border-white/10 text-xs text-white"
                 />
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
                   onClick={addCustomTech}
-                  className="border-[#27272a] bg-[#18181b] text-xs h-9 px-3"
+                  className="border-white/10 bg-[#18181b] text-xs h-9 px-3 text-white hover:bg-white/10"
                 >
                   Add
                 </Button>
@@ -369,7 +369,7 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
           )}
 
           {/* Bottom Button Actions */}
-          <div className="pt-4 border-t border-[#27272a] flex items-center justify-between">
+          <div className="pt-4 border-t border-white/10 flex items-center justify-between">
             {currentStep > 1 ? (
               <Button
                 type="button"
@@ -377,7 +377,7 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                 size="sm"
                 onClick={handleBack}
                 disabled={loading}
-                className="border-[#27272a] bg-[#09090b] text-xs h-9 px-3 text-[#a1a1aa] hover:text-[#f4f4f5]"
+                className="border-white/10 bg-[#18181b] text-xs h-9 px-3 text-[#a1a1aa] hover:text-white"
               >
                 <ArrowLeft className="h-3 w-3 mr-1.5" />
                 Back
@@ -391,7 +391,7 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                 type="button"
                 size="sm"
                 onClick={handleNext}
-                className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] text-xs h-9 px-4 font-semibold"
+                className="bg-[#f97316] hover:bg-[#ea580c] text-black text-xs h-9 px-4 font-semibold chai-btn-primary"
               >
                 Continue
                 <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
@@ -402,7 +402,7 @@ export function CreateProjectModal({ isOpen, onClose, onProjectCreated }: Create
                 size="sm"
                 onClick={handleFinalSubmit}
                 disabled={loading}
-                className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] text-xs h-9 px-5 font-semibold"
+                className="bg-[#f97316] hover:bg-[#ea580c] text-black text-xs h-9 px-5 font-semibold chai-btn-primary"
               >
                 {loading ? "Synthesizing Architecture..." : "Generate System Architecture →"}
               </Button>

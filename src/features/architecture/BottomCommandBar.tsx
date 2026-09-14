@@ -109,16 +109,16 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
     <>
       {/* Proposed Changes Preview Modal */}
       {proposedChange && (
-        <div className="fixed inset-0 z-50 bg-[#09090b]/80 backdrop-blur-sm flex items-center justify-center p-4 font-mono">
-          <div className="w-full max-w-lg rounded-xl border border-[#27272a] bg-[#111113] p-5 shadow-2xl space-y-4 text-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-[#27272a]">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 font-mono">
+          <div className="w-full max-w-lg rounded-2xl border border-white/10 bg-[#111111] p-5 shadow-2xl space-y-4 text-xs">
+            <div className="flex items-center justify-between pb-2 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <span className="text-[#0ea5e9]">✦</span>
-                <span className="font-bold text-[#f4f4f5] uppercase">PROPOSED ARCHITECTURE CHANGES</span>
+                <span className="text-[#f97316]">✦</span>
+                <span className="font-bold text-white uppercase">PROPOSED ARCHITECTURE CHANGES</span>
               </div>
               <button
                 onClick={() => setProposedChange(null)}
-                className="text-[#71717a] hover:text-[#f4f4f5]"
+                className="text-[#71717a] hover:text-white"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -126,7 +126,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
 
             <div className="space-y-1">
               <span className="text-[10px] text-[#71717a] uppercase">COMMAND</span>
-              <div className="p-2 rounded bg-[#18181b] border border-[#27272a] text-[#f4f4f5]">
+              <div className="p-2.5 rounded-lg bg-[#18181b] border border-white/10 text-white">
                 &ldquo;{proposedChange.command}&rdquo;
               </div>
             </div>
@@ -139,7 +139,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
             <div className="space-y-2 max-h-56 overflow-y-auto">
               {/* ADD */}
               {proposedChange.add?.map((item, idx) => (
-                <div key={idx} className="p-2.5 rounded bg-emerald-950/20 border border-emerald-500/30 text-emerald-400 space-y-0.5">
+                <div key={idx} className="p-2.5 rounded-lg bg-emerald-950/20 border border-emerald-500/30 text-emerald-400 space-y-0.5">
                   <div className="font-bold flex items-center gap-1.5 text-[11px]">
                     <Plus className="h-3 w-3" /> ADD: {item.name} ({item.technology})
                   </div>
@@ -149,7 +149,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
 
               {/* MODIFY */}
               {proposedChange.modify?.map((item, idx) => (
-                <div key={idx} className="p-2.5 rounded bg-amber-950/20 border border-amber-500/30 text-amber-400 space-y-0.5">
+                <div key={idx} className="p-2.5 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-400 space-y-0.5">
                   <div className="font-bold flex items-center gap-1.5 text-[11px]">
                     <Edit2 className="h-3 w-3" /> MODIFY: {item.name}
                   </div>
@@ -159,7 +159,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
 
               {/* REMOVE */}
               {proposedChange.remove?.map((item, idx) => (
-                <div key={idx} className="p-2.5 rounded bg-red-950/20 border border-red-500/30 text-red-400 space-y-0.5">
+                <div key={idx} className="p-2.5 rounded-lg bg-red-950/20 border border-red-500/30 text-red-400 space-y-0.5">
                   <div className="font-bold flex items-center gap-1.5 text-[11px]">
                     <MinusCircle className="h-3 w-3" /> REMOVE: {item.name}
                   </div>
@@ -168,12 +168,12 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#27272a]">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-white/10">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setProposedChange(null)}
-                className="border-[#27272a] bg-[#18181b] text-[#f4f4f5] text-xs"
+                className="border-white/10 bg-[#18181b] text-white text-xs hover:bg-white/10"
               >
                 Cancel
               </Button>
@@ -181,7 +181,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
                 size="sm"
                 onClick={handleApplyChanges}
                 disabled={isProcessing}
-                className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] text-xs font-semibold"
+                className="bg-[#f97316] hover:bg-[#ea580c] text-black text-xs font-semibold chai-btn-primary"
               >
                 {isProcessing ? "Applying..." : "Apply Changes →"}
               </Button>
@@ -191,10 +191,10 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
       )}
 
       {/* Main Bottom Command Bar */}
-      <div className="border-t border-[#27272a] bg-[#09090b] p-3 font-mono text-xs z-10 flex flex-col gap-2">
+      <div className="border-t border-white/10 bg-[#000000] p-3 font-mono text-xs z-10 flex flex-col gap-2">
         {/* Applied Feedback Bar */}
         {lastAppliedMessage && (
-          <div className="flex items-center justify-between px-3 py-1.5 rounded bg-emerald-950/30 border border-emerald-500/40 text-emerald-400 text-xs animate-in fade-in">
+          <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-emerald-950/30 border border-emerald-500/40 text-emerald-400 text-xs animate-in fade-in">
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5" />
               {lastAppliedMessage}
@@ -214,8 +214,8 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
 
         {/* Input area */}
         <div className="flex items-center gap-2 max-w-5xl mx-auto w-full">
-          <div className="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg bg-[#111113] border border-[#27272a] focus-within:border-[#0ea5e9] transition-colors">
-            <Sparkles className="h-4 w-4 text-[#0ea5e9] shrink-0" />
+          <div className="flex-1 flex items-center gap-2 px-3 py-2 rounded-xl bg-[#111111] border border-white/10 focus-within:border-[#f97316] transition-colors">
+            <Sparkles className="h-4 w-4 text-[#f97316] shrink-0" />
             <input
               type="text"
               value={command}
@@ -224,7 +224,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
                 if (e.key === "Enter") handleSendCommand();
               }}
               placeholder="✦ Ask Sketch to change your system... (e.g. Add Redis caching, Add a mobile app, Make scalable)"
-              className="w-full bg-transparent text-xs text-[#f4f4f5] placeholder:text-[#71717a] focus:outline-none"
+              className="w-full bg-transparent text-xs text-white placeholder:text-[#71717a] focus:outline-none"
             />
           </div>
 
@@ -232,7 +232,7 @@ export function BottomCommandBar({ projectId }: BottomCommandBarProps) {
             size="sm"
             onClick={() => handleSendCommand()}
             disabled={!command.trim() || isProcessing}
-            className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] text-xs font-semibold px-4 h-9 shadow-none disabled:opacity-50"
+            className="bg-[#f97316] hover:bg-[#ea580c] text-black text-xs font-semibold px-4 h-9 shadow-none disabled:opacity-50 chai-btn-primary cursor-pointer"
           >
             {isProcessing ? (
               <span>Planning...</span>

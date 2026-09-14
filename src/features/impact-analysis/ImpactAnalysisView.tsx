@@ -107,7 +107,7 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
   return (
     <div className="space-y-6 max-w-6xl mx-auto p-4 sm:p-6 text-[#f4f4f5]">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-[#27272a]">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="font-mono text-[11px] uppercase tracking-wider text-amber-400">
@@ -116,28 +116,28 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
             <span className="font-mono text-[10px] text-amber-400">TOPOLOGICAL SORT ACTIVE</span>
           </div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2 font-sans">
             <Activity className="h-5 w-5 text-amber-400" />
             Directed Impact & Failure Cascade Analyzer
           </h2>
-          <p className="text-xs text-[#a1a1aa] mt-1">
+          <p className="text-xs text-[#a1a1aa] mt-1 font-sans">
             Simulate schema shifts, decommissioned endpoints, or technology replacements across directed acyclic dependency graphs (DAG).
           </p>
         </div>
 
         <div className="flex items-center gap-3 font-mono text-xs">
-          <div className="px-3 py-1.5 rounded border border-[#27272a] bg-[#111113] text-[#a1a1aa]">
+          <div className="px-3 py-1.5 rounded border border-white/10 bg-[#111111] text-[#a1a1aa]">
             NODES: <span className="text-white font-bold">{components.length}</span>
           </div>
-          <div className="px-3 py-1.5 rounded border border-[#27272a] bg-[#111113] text-[#a1a1aa]">
+          <div className="px-3 py-1.5 rounded border border-white/10 bg-[#111111] text-[#a1a1aa]">
             EDGES: <span className="text-white font-bold">{dependencies.length}</span>
           </div>
         </div>
       </div>
 
       {/* Control & Query Panel */}
-      <div className="rounded-xl border border-[#27272a] bg-[#111113] p-5 space-y-4">
-        <div className="text-xs font-mono uppercase tracking-wider text-[#a1a1aa] flex items-center gap-2 pb-2 border-b border-[#27272a]/70">
+      <div className="rounded-xl border border-white/10 bg-[#111111] p-5 space-y-4">
+        <div className="text-xs font-mono uppercase tracking-wider text-[#a1a1aa] flex items-center gap-2 pb-2 border-b border-white/10">
           <Radio className="h-3.5 w-3.5 text-amber-400" />
           <span>Simulation Configuration</span>
         </div>
@@ -151,7 +151,7 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
             <select
               value={selectedCompId}
               onChange={(e) => setSelectedCompId(e.target.value)}
-              className="w-full h-10 px-3 rounded-md bg-[#09090b] border border-[#27272a] text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-400 font-mono"
+              className="w-full h-10 px-3 rounded-md bg-[#18181b] border border-white/10 text-xs text-white focus:outline-none focus:ring-1 focus:ring-[#f97316] font-mono"
             >
               {components.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -174,16 +174,16 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
                     key={t}
                     type="button"
                     onClick={() => setChangeType(t)}
-                    className={`h-9 text-[11px] font-mono font-bold rounded border transition-colors ${
+                    className={`h-9 text-[11px] font-mono font-bold rounded border transition-colors cursor-pointer ${
                       isSel
                         ? t === "REMOVE"
                           ? "bg-red-500/20 border-red-500 text-red-400"
                           : t === "MODIFY"
                           ? "bg-amber-500/20 border-amber-500 text-amber-400"
                           : t === "REPLACE"
-                          ? "bg-[#0ea5e9]/20 border-[#0ea5e9] text-[#0ea5e9]"
+                          ? "bg-[#f97316]/20 border-[#f97316] text-[#f97316]"
                           : "bg-purple-500/20 border-purple-500 text-purple-400"
-                        : "border-[#27272a] bg-[#09090b] text-[#71717a] hover:text-white"
+                        : "border-white/10 bg-[#18181b] text-[#71717a] hover:text-white"
                     }`}
                   >
                     {t}
@@ -202,19 +202,19 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
               placeholder="e.g. Migrating auth token to Ed25519 or schema alteration"
               value={changeDescription}
               onChange={(e) => setChangeDescription(e.target.value)}
-              className="h-9 text-xs bg-[#09090b] border-[#27272a] text-white font-mono placeholder-[#71717a]"
+              className="h-9 text-xs bg-[#18181b] border-white/10 text-white font-mono placeholder-[#71717a] focus:border-[#f97316]"
             />
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-[#27272a]/70">
+        <div className="flex items-center justify-between pt-2 border-t border-white/10">
           <span className="text-[11px] font-mono text-[#71717a]">
             BFS Traversal Algorithm: Bidirectional Upstream Callers & Downstream Consumers
           </span>
           <Button
             onClick={handleRunAnalysis}
             disabled={isAnalyzing || components.length === 0}
-            className="bg-amber-400 hover:bg-amber-300 text-[#09090b] font-mono font-bold text-xs shadow-lg shadow-amber-950/30"
+            className="bg-[#f97316] hover:bg-[#ea580c] text-white font-mono font-bold text-xs chai-btn-primary shadow-lg shadow-orange-950/40 cursor-pointer"
           >
             {isAnalyzing ? (
               <span className="flex items-center gap-2">
@@ -290,8 +290,8 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
               </div>
             </div>
 
-            <div className="p-3 rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/5">
-              <div className="text-[10px] text-[#0ea5e9] uppercase tracking-wider">
+            <div className="p-3 rounded-lg border border-[#f97316]/30 bg-[#f97316]/5">
+              <div className="text-[10px] text-[#f97316] uppercase tracking-wider">
                 ○ Indirect Cascade (D&ge;2)
               </div>
               <div className="text-base font-bold text-white mt-1">
@@ -299,7 +299,7 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
               </div>
             </div>
 
-            <div className="p-3 rounded-lg border border-[#27272a] bg-[#111113]">
+            <div className="p-3 rounded-lg border border-white/10 bg-[#111111]">
               <div className="text-[10px] text-[#71717a] uppercase tracking-wider">
                 Total Blast Radius
               </div>
@@ -310,8 +310,8 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
           </div>
 
           {/* Visual Blast Radius Cascade Tree */}
-          <div className="rounded-xl border border-[#27272a] bg-[#111113] p-5">
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#27272a]">
+          <div className="rounded-xl border border-white/10 bg-[#111111] p-5">
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
               <span className="text-xs font-mono uppercase tracking-wider text-white font-semibold flex items-center gap-2">
                 <Network className="h-4 w-4 text-amber-400" />
                 Directed Dependency Cascade Visualization
@@ -349,7 +349,7 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
                 </div>
 
                 {directList.length === 0 ? (
-                  <div className="p-3 rounded bg-[#09090b] border border-[#27272a] text-xs text-[#71717a] font-mono italic">
+                  <div className="p-3 rounded bg-[#18181b] border border-white/10 text-xs text-[#71717a] font-mono italic">
                     No direct callers or upstream dependencies registered.
                   </div>
                 ) : (
@@ -363,7 +363,7 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
                           <span className="font-bold text-white">{comp.name}</span>
                           <span className="text-[10px] text-amber-400 font-bold">[DIRECT]</span>
                         </div>
-                        <p className="text-[11px] text-[#a1a1aa] mt-1.5 leading-relaxed">
+                        <p className="text-[11px] text-[#a1a1aa] mt-1.5 leading-relaxed font-sans">
                           {comp.impactDescription}
                         </p>
                       </div>
@@ -373,14 +373,14 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
               </div>
 
               {/* Cascade Level 2+ (Indirect) */}
-              <div className="pl-12 border-l-2 border-[#0ea5e9]/30 space-y-2">
-                <div className="flex items-center gap-2 font-mono text-[11px] text-[#0ea5e9] font-bold">
+              <div className="pl-12 border-l-2 border-[#f97316]/30 space-y-2">
+                <div className="flex items-center gap-2 font-mono text-[11px] text-[#f97316] font-bold">
                   <CornerDownRight className="h-3.5 w-3.5" />
                   ○ INDIRECT CASCADE (DISTANCE &ge; 2) — SECONDARY CONSUMERS
                 </div>
 
                 {indirectList.length === 0 ? (
-                  <div className="p-3 rounded bg-[#09090b] border border-[#27272a] text-xs text-[#71717a] font-mono italic">
+                  <div className="p-3 rounded bg-[#18181b] border border-white/10 text-xs text-[#71717a] font-mono italic">
                     No downstream indirect cascading dependencies impacted.
                   </div>
                 ) : (
@@ -388,13 +388,13 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
                     {indirectList.map((comp) => (
                       <div
                         key={comp.id}
-                        className="p-3 rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/5 font-mono"
+                        className="p-3 rounded-lg border border-[#f97316]/30 bg-[#f97316]/5 font-mono"
                       >
                         <div className="flex items-center justify-between text-xs">
                           <span className="font-bold text-white">{comp.name}</span>
-                          <span className="text-[10px] text-[#0ea5e9] font-bold">[INDIRECT]</span>
+                          <span className="text-[10px] text-[#f97316] font-bold">[INDIRECT]</span>
                         </div>
-                        <p className="text-[11px] text-[#a1a1aa] mt-1.5 leading-relaxed">
+                        <p className="text-[11px] text-[#a1a1aa] mt-1.5 leading-relaxed font-sans">
                           {comp.impactDescription}
                         </p>
                       </div>
@@ -406,10 +406,10 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
           </div>
 
           {/* AI Engineering Mitigation Strategy */}
-          <div className="rounded-xl border border-[#27272a] bg-[#111113] p-5">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#27272a]">
+          <div className="rounded-xl border border-white/10 bg-[#111111] p-5">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
               <span className="text-xs font-mono uppercase tracking-wider text-white font-semibold flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-[#0ea5e9]" />
+                <Sparkles className="h-4 w-4 text-[#f97316]" />
                 AI Engineering Mitigation Strategy
               </span>
               <span className="font-mono text-[10px] text-[#71717a]">ZERO-DOWNTIME PROTOCOL</span>
@@ -419,12 +419,12 @@ export function ImpactAnalysisView({ projectId }: ImpactAnalysisViewProps) {
               {analysisResult.recommendations.map((rec, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-3 p-3 rounded-lg bg-[#09090b] border border-[#27272a] text-xs font-mono"
+                  className="flex items-start gap-3 p-3 rounded-lg bg-[#18181b] border border-white/10 text-xs font-mono"
                 >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#0ea5e9]/20 text-[#0ea5e9] text-[10px] font-bold border border-[#0ea5e9]/40">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#f97316]/20 text-[#f97316] text-[10px] font-bold border border-[#f97316]/40">
                     0{i + 1}
                   </span>
-                  <div className="leading-relaxed text-[#f4f4f5]">
+                  <div className="leading-relaxed text-white font-sans">
                     {rec}
                   </div>
                 </div>

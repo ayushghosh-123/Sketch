@@ -16,7 +16,7 @@ import {
 function BrandMark() {
   return (
     <Link href="/" className="inline-flex flex-col items-center gap-2.5 group select-none">
-      <div className="h-9 w-9 rounded-lg bg-[#18181b] border border-[#27272a] flex items-center justify-center text-[#0ea5e9] shadow-sm transition-transform duration-200 group-hover:scale-105">
+      <div className="h-9 w-9 rounded-lg bg-[#18181b] border border-white/10 flex items-center justify-center text-[#f97316] shadow-sm transition-transform duration-200 group-hover:scale-105">
         <svg
           width="18"
           height="18"

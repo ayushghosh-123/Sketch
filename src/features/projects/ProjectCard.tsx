@@ -17,11 +17,11 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onDelete }: ProjectCardProps) {
   return (
-    <div className="rounded border border-[#27272a] bg-[#111113] p-5 hover:border-[#0ea5e9]/50 hover:bg-[#18181b] transition-all font-mono flex flex-col justify-between group">
+    <div className="rounded-xl border border-white/10 bg-[#111111] p-5 hover:border-[#f97316]/50 hover:bg-[#18181b] transition-all font-mono flex flex-col justify-between group shadow-sm">
       <div>
         {/* Top: System Type and Delete Action */}
-        <div className="flex items-center justify-between text-xs text-[#71717a] pb-2 border-b border-[#27272a]/60">
-          <span className="uppercase text-[10px] tracking-wider text-[#0ea5e9]">
+        <div className="flex items-center justify-between text-xs text-[#71717a] pb-2 border-b border-white/10">
+          <span className="uppercase text-[10px] tracking-wider text-[#f97316] font-semibold">
             {project.project_type?.replace(/_/g, " ") || "DISTRIBUTED SYSTEM"}
           </span>
           {onDelete && (
@@ -41,7 +41,7 @@ export function ProjectCard({ project, onDelete }: ProjectCardProps) {
 
         {/* Project Name */}
         <Link href={`/workspace/${project.id}`}>
-          <h3 className="text-sm font-bold text-[#f4f4f5] group-hover:text-[#0ea5e9] transition-colors mt-3 uppercase tracking-tight line-clamp-1">
+          <h3 className="text-sm font-bold text-white group-hover:text-[#f97316] transition-colors mt-3 uppercase tracking-tight line-clamp-1">
             {project.name}
           </h3>
         </Link>
@@ -52,35 +52,31 @@ export function ProjectCard({ project, onDelete }: ProjectCardProps) {
         </p>
 
         {/* System Status */}
-        <div className="mt-4 pt-3 border-t border-[#27272a]/60">
+        <div className="mt-4 pt-3 border-t border-white/10">
           <div className="text-[10px] uppercase text-[#71717a]">SYSTEM STATUS</div>
-          <div className="text-xs font-semibold text-[#10b981] flex items-center gap-1.5 mt-0.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
-            ● READY
-          </div>
         </div>
 
         {/* Grid Attributes: Components & Documents */}
         <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-          <div className="p-2 rounded bg-[#09090b] border border-[#27272a]">
+          <div className="p-2 rounded-lg bg-[#000000] border border-white/10">
             <div className="text-[9px] text-[#71717a] uppercase">COMPONENTS</div>
-            <div className="text-xs font-bold text-[#f4f4f5] mt-0.5">12 NODES</div>
+            <div className="text-xs font-bold text-white mt-0.5">12 NODES</div>
           </div>
-          <div className="p-2 rounded bg-[#09090b] border border-[#27272a]">
+          <div className="p-2 rounded-lg bg-[#000000] border border-white/10">
             <div className="text-[9px] text-[#71717a] uppercase">DOCUMENTS</div>
-            <div className="text-xs font-bold text-[#f4f4f5] mt-0.5">6 SPECS</div>
+            <div className="text-xs font-bold text-white mt-0.5">6 SPECS</div>
           </div>
         </div>
       </div>
 
       {/* Footer: Last Updated & Open Button */}
-      <div className="mt-4 pt-3 border-t border-[#27272a]/60 flex items-center justify-between text-[11px] text-[#71717a]">
+      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-[#71717a]">
         <div>
           UPDATED <span className="text-[#a1a1aa]">{formatDate(project.updated_at)}</span>
         </div>
         <Link
           href={`/workspace/${project.id}`}
-          className="text-[#0ea5e9] hover:text-[#38bdf8] flex items-center gap-1 font-semibold transition-colors"
+          className="text-[#f97316] hover:text-[#fb923c] flex items-center gap-1 font-semibold transition-colors"
         >
           OPEN <span>→</span>
         </Link>

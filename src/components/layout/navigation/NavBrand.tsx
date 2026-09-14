@@ -23,7 +23,7 @@ export function NavBrand({ className = "", showTag = false }: NavBrandProps) {
       aria-label="Sketch Platform"
     >
       {/* Minimal Architectural Compass & Pencil Glyph */}
-      <div className="h-8 w-8 rounded-md bg-[#18181b] border border-[#27272a] flex items-center justify-center text-white group-hover:border-[#0ea5e9]/60 transition-colors shadow-xs">
+      <div className="h-8 w-8 rounded-md bg-[#18181b] border border-white/10 flex items-center justify-center text-white group-hover:border-[#f97316]/60 transition-colors shadow-xs">
         <svg
           width="18"
           height="18"
@@ -33,7 +33,7 @@ export function NavBrand({ className = "", showTag = false }: NavBrandProps) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-[#0ea5e9]"
+          className="text-[#f97316]"
         >
           {/* Conceptual Sketch pencil + geometry */}
           <path d="m18 2 4 4-10 10H8v-4L18 2z" />

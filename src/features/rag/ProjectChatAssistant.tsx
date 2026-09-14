@@ -125,12 +125,12 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8.5rem)] bg-[#09090b] font-mono text-xs border border-[#27272a] rounded-lg overflow-hidden select-none">
+    <div className="flex flex-col h-[calc(100vh-8.5rem)] bg-[#000000] font-mono text-xs border border-white/10 rounded-lg overflow-hidden select-none">
       {/* Top Header */}
-      <div className="p-3.5 bg-[#111113] border-b border-[#27272a] flex items-center justify-between">
+      <div className="p-3.5 bg-[#111111] border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-[#0ea5e9]">◉</span>
-          <span className="font-bold text-[#f4f4f5] uppercase tracking-wider text-xs">
+          <span className="text-[#f97316]">◉</span>
+          <span className="font-bold text-white uppercase tracking-wider text-xs font-sans">
             AI ENGINEERING WORKSPACE
           </span>
         </div>
@@ -141,7 +141,7 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
         {/* Left Column: System Context Panel (4 cols) */}
-        <div className="lg:col-span-4 border-r border-[#27272a] bg-[#0c0c0e] p-5 overflow-y-auto space-y-5">
+        <div className="lg:col-span-4 border-r border-white/10 bg-[#0c0c0e] p-5 overflow-y-auto space-y-5">
           <div>
             <div className="text-[10px] uppercase text-[#71717a] font-semibold tracking-wider">
               SYSTEM CONTEXT
@@ -153,22 +153,22 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
 
           <div className="space-y-2">
             <div className="text-[10px] uppercase text-[#71717a]">Topology Metrics</div>
-            <div className="p-3 rounded bg-[#111113] border border-[#27272a] space-y-2 text-[11px]">
+            <div className="p-3 rounded bg-[#111111] border border-white/10 space-y-2 text-[11px]">
               <div className="flex justify-between">
                 <span className="text-[#71717a]">Documents Indexed:</span>
-                <span className="text-[#f4f4f5] font-bold">6 Specs</span>
+                <span className="text-white font-bold">6 Specs</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#71717a]">Active Components:</span>
-                <span className="text-[#f4f4f5] font-bold">12 Nodes</span>
+                <span className="text-white font-bold">12 Nodes</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#71717a]">Dependency Edges:</span>
-                <span className="text-[#f4f4f5] font-bold">18 Connections</span>
+                <span className="text-white font-bold">18 Connections</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#71717a]">Orchestrator:</span>
-                <span className="text-[#0ea5e9]">LangGraph State</span>
+                <span className="text-[#f97316]">LangGraph State</span>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
                 <button
                   key={sample}
                   onClick={() => handleExecuteQuery(sample)}
-                  className="w-full text-left p-2 rounded bg-[#111113] border border-[#27272a] hover:border-[#0ea5e9]/50 hover:bg-[#18181b] text-[11px] text-[#a1a1aa] hover:text-[#f4f4f5] transition-all truncate block"
+                  className="w-full text-left p-2 rounded bg-[#111111] border border-white/10 hover:border-[#f97316]/50 hover:bg-[#18181b] text-[11px] text-[#a1a1aa] hover:text-white transition-all truncate block cursor-pointer"
                 >
                   &gt; {sample}
                 </button>
@@ -194,23 +194,23 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
         </div>
 
         {/* Right Column: AI Analysis & Structured Responses (8 cols) */}
-        <div className="lg:col-span-8 flex flex-col justify-between bg-[#09090b] overflow-hidden">
+        <div className="lg:col-span-8 flex flex-col justify-between bg-[#000000] overflow-hidden">
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
             {history.map((item, idx) => (
               <div key={idx} className="space-y-4">
                 {/* User Query Block */}
-                <div className="p-3 rounded bg-[#111113] border border-[#27272a] text-[#f4f4f5] flex items-center gap-2">
-                  <span className="text-[#0ea5e9]">&gt;</span>
+                <div className="p-3 rounded bg-[#111111] border border-white/10 text-white flex items-center gap-2 font-sans">
+                  <span className="text-[#f97316] font-mono">&gt;</span>
                   <span className="font-semibold">{item.query}</span>
                 </div>
 
                 {/* Structured Engineering Response Block */}
-                <div className="rounded border border-[#27272a] bg-[#111113] overflow-hidden">
-                  <div className="p-4 bg-[#18181b] border-b border-[#27272a]">
-                    <div className="text-[10px] uppercase text-[#0ea5e9] font-bold">
+                <div className="rounded border border-white/10 bg-[#111111] overflow-hidden">
+                  <div className="p-4 bg-[#18181b] border-b border-white/10">
+                    <div className="text-[10px] uppercase text-[#f97316] font-bold">
                       ARCHITECTURE RECOMMENDATION
                     </div>
-                    <div className="text-xs text-[#f4f4f5] mt-1 leading-relaxed font-sans font-medium">
+                    <div className="text-xs text-white mt-1 leading-relaxed font-sans font-medium">
                       {item.analysis.recommendation}
                     </div>
                   </div>
@@ -222,7 +222,7 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
                       <ul className="mt-1.5 space-y-1 text-[11px] text-[#a1a1aa] font-sans">
                         {item.analysis.why.map((reason, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="text-[#0ea5e9] mt-0.5">•</span>
+                            <span className="text-[#f97316] mt-0.5">•</span>
                             <span>{reason}</span>
                           </li>
                         ))}
@@ -238,7 +238,7 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
                         {item.analysis.affectedComponents.map((comp) => (
                           <span
                             key={comp}
-                            className="px-2 py-0.5 rounded bg-[#18181b] border border-[#27272a] text-[10px] text-[#f4f4f5]"
+                            className="px-2 py-0.5 rounded bg-[#18181b] border border-white/10 text-[10px] text-white"
                           >
                             [ {comp} ]
                           </span>
@@ -247,9 +247,9 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
                     </div>
 
                     {/* SOURCES */}
-                    <div className="pt-2 border-t border-[#27272a]">
+                    <div className="pt-2 border-t border-white/10">
                       <div className="text-[10px] uppercase text-[#71717a] font-bold">SOURCES</div>
-                      <div className="mt-1 flex items-center gap-3 text-[10px] text-[#0ea5e9]">
+                      <div className="mt-1 flex items-center gap-3 text-[10px] text-[#f97316]">
                         {item.analysis.sources.map((src) => (
                           <span key={src} className="flex items-center gap-1 hover:underline cursor-pointer">
                             <FileText className="h-3 w-3 text-[#71717a]" />
@@ -264,7 +264,7 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
             ))}
 
             {isAnalyzing && (
-              <div className="p-4 rounded border border-[#0ea5e9]/50 bg-[#18181b] text-xs text-[#0ea5e9] flex items-center gap-2 animate-pulse">
+              <div className="p-4 rounded border border-[#f97316]/50 bg-[#18181b] text-xs text-[#f97316] flex items-center gap-2 animate-pulse">
                 <span>◉ Traversing reverse-dependency graph & querying vector RAG...</span>
               </div>
             )}
@@ -273,7 +273,7 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
           </div>
 
           {/* Bottom Command Prompt Input */}
-          <div className="p-4 bg-[#111113] border-t border-[#27272a]">
+          <div className="p-4 bg-[#111111] border-t border-white/10">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -285,12 +285,12 @@ export function ProjectChatAssistant({ projectId }: ProjectChatAssistantProps) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Ask about this system (e.g. database choice, scalability, blast radius)..."
-                className="bg-[#09090b] border-[#27272a] text-xs font-mono text-[#f4f4f5] focus:border-[#0ea5e9] h-10"
+                className="bg-[#18181b] border-white/10 text-xs font-mono text-white focus:border-[#f97316] h-10"
               />
               <Button
                 type="submit"
                 disabled={isAnalyzing || !query.trim()}
-                className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] h-10 px-4 font-semibold shrink-0"
+                className="bg-[#f97316] hover:bg-[#ea580c] text-white h-10 px-4 font-semibold shrink-0 chai-btn-primary cursor-pointer"
               >
                 <Send className="h-3.5 w-3.5" />
               </Button>

@@ -142,20 +142,20 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
   return (
     <div className="space-y-6 max-w-6xl mx-auto p-4 sm:p-6 text-[#f4f4f5]">
       {/* Header & Meta telemetry */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-[#27272a]">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-[#0ea5e9]">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-[#f97316]">
               // KNOWLEDGE BASE // SPECIFICATION REGISTRY
             </span>
             <span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" />
             <span className="font-mono text-[10px] text-[#10b981]">PGVECTOR ONLINE</span>
           </div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-            <FileText className="h-5 w-5 text-[#0ea5e9]" />
+          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2 font-sans">
+            <FileText className="h-5 w-5 text-[#f97316]" />
             Project Documents & Vector Corpus
           </h2>
-          <p className="text-xs text-[#a1a1aa] mt-1">
+          <p className="text-xs text-[#a1a1aa] mt-1 font-sans">
             Ingest PRDs, architecture RFCs, API specifications, and security policies for semantic retrieval during AI synthesis.
           </p>
         </div>
@@ -171,7 +171,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
           <Button
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
-            className="bg-[#0ea5e9] hover:bg-[#0284c7] text-[#09090b] font-mono font-bold text-xs shadow-lg shadow-sky-950/40"
+            className="bg-[#f97316] hover:bg-[#ea580c] text-white font-mono font-bold text-xs chai-btn-primary shadow-lg shadow-orange-950/40 cursor-pointer"
           >
             {uploading ? (
               <>
@@ -196,10 +196,10 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
       )}
 
       {/* 5-Step RAG Ingestion Pipeline Telemetry */}
-      <div className="rounded-xl border border-[#27272a] bg-[#111113] p-4">
-        <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#27272a]/70">
+      <div className="rounded-xl border border-white/10 bg-[#111111] p-4">
+        <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
           <span className="text-[11px] font-mono uppercase tracking-wider text-[#a1a1aa] flex items-center gap-1.5">
-            <Binary className="h-3.5 w-3.5 text-[#0ea5e9]" />
+            <Binary className="h-3.5 w-3.5 text-[#f97316]" />
             Continuous Vector Ingestion Pipeline
           </span>
           <span className="font-mono text-[10px] text-[#71717a]">MODEL: text-embedding-004 (768-DIM)</span>
@@ -207,7 +207,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-2 text-xs">
           {/* Step 1 */}
-          <div className="p-2.5 rounded-lg border border-[#27272a] bg-[#09090b]/80">
+          <div className="p-2.5 rounded-lg border border-white/10 bg-[#18181b]/80">
             <div className="flex items-center justify-between font-mono text-[10px] text-[#a1a1aa] mb-1">
               <span>01 / UPLOAD</span>
               <span className="text-[#10b981]">READY ✓</span>
@@ -217,7 +217,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
           </div>
 
           {/* Step 2 */}
-          <div className="p-2.5 rounded-lg border border-[#27272a] bg-[#09090b]/80">
+          <div className="p-2.5 rounded-lg border border-white/10 bg-[#18181b]/80">
             <div className="flex items-center justify-between font-mono text-[10px] text-[#a1a1aa] mb-1">
               <span>02 / EXTRACTION</span>
               <span className="text-[#10b981]">NORMALIZED ✓</span>
@@ -227,7 +227,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
           </div>
 
           {/* Step 3 */}
-          <div className="p-2.5 rounded-lg border border-[#27272a] bg-[#09090b]/80">
+          <div className="p-2.5 rounded-lg border border-white/10 bg-[#18181b]/80">
             <div className="flex items-center justify-between font-mono text-[10px] text-[#a1a1aa] mb-1">
               <span>03 / CHUNKING</span>
               <span className="text-[#10b981]">PASS ✓</span>
@@ -237,20 +237,20 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
           </div>
 
           {/* Step 4 */}
-          <div className="p-2.5 rounded-lg border border-[#0ea5e9]/30 bg-[#0ea5e9]/5">
-            <div className="flex items-center justify-between font-mono text-[10px] text-[#0ea5e9] mb-1">
+          <div className="p-2.5 rounded-lg border border-[#f97316]/40 bg-[#f97316]/10">
+            <div className="flex items-center justify-between font-mono text-[10px] text-[#f97316] mb-1">
               <span>04 / EMBEDDING</span>
-              <span className="text-[#0ea5e9] flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#0ea5e9] animate-ping" />
+              <span className="text-[#f97316] flex items-center gap-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f97316] animate-ping" />
                 ACTIVE ◉
               </span>
             </div>
             <div className="font-semibold text-white text-xs">Gemini 768-dim</div>
-            <div className="text-[10px] text-[#0ea5e9]/80 font-mono mt-0.5">Cosine normalized vector</div>
+            <div className="text-[10px] text-[#f97316]/90 font-mono mt-0.5">Cosine normalized vector</div>
           </div>
 
           {/* Step 5 */}
-          <div className="p-2.5 rounded-lg border border-[#27272a] bg-[#09090b]/80">
+          <div className="p-2.5 rounded-lg border border-white/10 bg-[#18181b]/80">
             <div className="flex items-center justify-between font-mono text-[10px] text-[#a1a1aa] mb-1">
               <span>05 / VECTOR INDEX</span>
               <span className="text-[#10b981]">ONLINE ○</span>
@@ -263,21 +263,21 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
 
       {/* Corpus Metrics Bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-        <div className="p-3 rounded-lg border border-[#27272a] bg-[#111113]">
+        <div className="p-3 rounded-lg border border-white/10 bg-[#111111]">
           <div className="text-[10px] text-[#71717a] uppercase tracking-wider">Total Documents</div>
           <div className="text-lg font-bold text-white mt-1">{documents.length}</div>
         </div>
-        <div className="p-3 rounded-lg border border-[#27272a] bg-[#111113]">
+        <div className="p-3 rounded-lg border border-white/10 bg-[#111111]">
           <div className="text-[10px] text-[#71717a] uppercase tracking-wider">Corpus Volume</div>
           <div className="text-lg font-bold text-white mt-1">{formatBytes(totalBytes)}</div>
         </div>
-        <div className="p-3 rounded-lg border border-[#27272a] bg-[#111113]">
+        <div className="p-3 rounded-lg border border-white/10 bg-[#111111]">
           <div className="text-[10px] text-[#71717a] uppercase tracking-wider">Indexed Documents</div>
           <div className="text-lg font-bold text-[#10b981] mt-1">{completedCount} / {documents.length}</div>
         </div>
-        <div className="p-3 rounded-lg border border-[#27272a] bg-[#111113]">
+        <div className="p-3 rounded-lg border border-white/10 bg-[#111111]">
           <div className="text-[10px] text-[#71717a] uppercase tracking-wider">Vector Embeddings</div>
-          <div className="text-lg font-bold text-[#0ea5e9] mt-1">768-D DENSE</div>
+          <div className="text-lg font-bold text-[#f97316] mt-1">768-D DENSE</div>
         </div>
       </div>
 
@@ -289,13 +289,13 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
         onClick={() => fileInputRef.current?.click()}
         className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${
           isDragging
-            ? "border-[#0ea5e9] bg-[#0ea5e9]/10"
-            : "border-[#27272a] bg-[#111113]/40 hover:border-[#3f3f46] hover:bg-[#111113]"
+            ? "border-[#f97316] bg-[#f97316]/10"
+            : "border-white/10 bg-[#111111]/40 hover:border-white/20 hover:bg-[#111111]"
         }`}
       >
-        <Upload className={`h-8 w-8 mx-auto mb-2 ${isDragging ? "text-[#0ea5e9]" : "text-[#71717a]"}`} />
+        <Upload className={`h-8 w-8 mx-auto mb-2 ${isDragging ? "text-[#f97316]" : "text-[#71717a]"}`} />
         <div className="text-sm font-semibold text-white">
-          Drag and drop architecture specification, or <span className="text-[#0ea5e9] underline">browse files</span>
+          Drag and drop architecture specification, or <span className="text-[#f97316] underline">browse files</span>
         </div>
         <p className="text-xs text-[#71717a] mt-1 font-mono">
           SUPPORTED: .PDF, .MD, .TXT, .DOCX, .JSON (MAX 25MB)
@@ -317,7 +317,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
             placeholder="Filter documents..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-8 pl-8 pr-3 rounded-md bg-[#111113] border border-[#27272a] text-xs text-white placeholder-[#71717a] focus:outline-none focus:ring-1 focus:ring-[#0ea5e9] font-mono"
+            className="w-full h-8 pl-8 pr-3 rounded-md bg-[#111111] border border-white/10 text-xs text-white placeholder-[#71717a] focus:outline-none focus:ring-1 focus:ring-[#f97316] font-mono"
           />
         </div>
       </div>
@@ -326,14 +326,14 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
       {loading ? (
         <div className="space-y-3 font-mono">
           {[1, 2, 3].map((n) => (
-            <div key={n} className="h-16 rounded-lg bg-[#111113] border border-[#27272a] animate-pulse" />
+            <div key={n} className="h-16 rounded-lg bg-[#111111] border border-white/10 animate-pulse" />
           ))}
         </div>
       ) : filteredDocuments.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-[#27272a] bg-[#111113]/40 p-10 text-center font-mono">
+        <div className="rounded-xl border border-dashed border-white/10 bg-[#111111]/40 p-10 text-center font-mono">
           <FileText className="h-8 w-8 text-[#52525b] mx-auto mb-2" />
           <h4 className="text-sm font-semibold text-white">No specifications match criteria</h4>
-          <p className="text-xs text-[#71717a] max-w-sm mx-auto mt-1 mb-4">
+          <p className="text-xs text-[#71717a] max-w-sm mx-auto mt-1 mb-4 font-sans">
             Upload your project requirement documents (PRD), API design documents, or technical RFCs to inform AI architecture generation.
           </p>
         </div>
@@ -347,20 +347,20 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
             return (
               <div
                 key={doc.id}
-                className="rounded-lg border border-[#27272a] bg-[#111113] hover:border-[#3f3f46] transition-colors"
+                className="rounded-lg border border-white/10 bg-[#111111] hover:border-white/20 transition-colors"
               >
                 <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-start gap-3 min-w-0">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded border border-[#27272a] bg-[#09090b] text-[#0ea5e9]">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded border border-white/10 bg-[#18181b] text-[#f97316]">
                       <FileText className="h-4 w-4" />
                     </div>
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#18181b] border border-[#27272a] text-[#a1a1aa]">
+                        <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#18181b] border border-white/10 text-[#a1a1aa]">
                           {docShortId}
                         </span>
-                        <h4 className="text-xs font-bold text-white truncate max-w-md">
+                        <h4 className="text-xs font-bold text-white truncate max-w-md font-sans">
                           {doc.file_name}
                         </h4>
                         <span
@@ -369,7 +369,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
                               ? "bg-[#10b981]/10 text-[#10b981] border-[#10b981]/30"
                               : doc.processing_status === "failed"
                               ? "bg-red-500/10 text-red-400 border-red-500/30"
-                              : "bg-[#0ea5e9]/10 text-[#0ea5e9] border-[#0ea5e9]/30"
+                              : "bg-[#f97316]/10 text-[#f97316] border-[#f97316]/30"
                           }`}
                         >
                           {doc.processing_status === "completed"
@@ -397,7 +397,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
                       variant="ghost"
                       size="sm"
                       onClick={() => setExpandedDocId(isExpanded ? null : doc.id)}
-                      className="h-7 px-2.5 text-xs font-mono text-[#a1a1aa] hover:text-white hover:bg-[#18181b] border border-[#27272a]"
+                      className="h-7 px-2.5 text-xs font-mono text-[#a1a1aa] hover:text-white hover:bg-[#18181b] border border-white/10 cursor-pointer"
                     >
                       {isExpanded ? (
                         <>
@@ -416,7 +416,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleDeleteDocument(doc.id)}
-                      className="h-7 px-2 text-xs font-mono text-[#71717a] hover:text-red-400 hover:bg-red-500/10"
+                      className="h-7 px-2 text-xs font-mono text-[#71717a] hover:text-red-400 hover:bg-red-500/10 cursor-pointer"
                       title="Delete Specification"
                     >
                       <Trash2 className="h-3.5 w-3.5 mr-1" />
@@ -427,22 +427,22 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
 
                 {/* Inspect Drawer inside card */}
                 {isExpanded && (
-                  <div className="px-4 pb-4 pt-3 border-t border-[#27272a] bg-[#09090b]/90 text-xs font-mono">
-                    <div className="flex items-center justify-between text-[11px] text-[#a1a1aa] mb-2 pb-1 border-b border-[#27272a]">
+                  <div className="px-4 pb-4 pt-3 border-t border-white/10 bg-[#000000]/90 text-xs font-mono">
+                    <div className="flex items-center justify-between text-[11px] text-[#a1a1aa] mb-2 pb-1 border-b border-white/10">
                       <span>VECTOR EMBEDDING TELEMETRY // {docShortId}</span>
-                      <span className="text-[#0ea5e9]">DIMENSION: 768 / METRIC: COSINE</span>
+                      <span className="text-[#f97316]">DIMENSION: 768 / METRIC: COSINE</span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
-                      <div className="p-2 rounded bg-[#111113] border border-[#27272a]">
+                      <div className="p-2 rounded bg-[#111111] border border-white/10">
                         <span className="text-[10px] text-[#71717a] block">ESTIMATED CHUNKS</span>
                         <span className="font-bold text-white">{estChunks} blocks</span>
                       </div>
-                      <div className="p-2 rounded bg-[#111113] border border-[#27272a]">
+                      <div className="p-2 rounded bg-[#111111] border border-white/10">
                         <span className="text-[10px] text-[#71717a] block">ESTIMATED TOKENS</span>
                         <span className="font-bold text-white">~{estChunks * 380} tokens</span>
                       </div>
-                      <div className="p-2 rounded bg-[#111113] border border-[#27272a]">
+                      <div className="p-2 rounded bg-[#111111] border border-white/10">
                         <span className="text-[10px] text-[#71717a] block">RAG CONTEXT WEIGHT</span>
                         <span className="font-bold text-[#10b981]">HIGH RELEVANCE</span>
                       </div>
@@ -452,8 +452,8 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
                       <span className="text-[10px] text-[#71717a] uppercase tracking-wider block">
                         Ingested Segment Samples
                       </span>
-                      <div className="p-2.5 rounded bg-[#111113] border border-[#27272a] text-[11px] text-[#a1a1aa] leading-relaxed">
-                        <span className="text-[#0ea5e9] font-bold mr-2">[CHUNK #001]:</span>
+                      <div className="p-2.5 rounded bg-[#111111] border border-white/10 text-[11px] text-[#a1a1aa] leading-relaxed font-sans">
+                        <span className="text-[#f97316] font-bold mr-2 font-mono">[CHUNK #001]:</span>
                         Architecture specification for system {doc.file_name}. Contains component topology, data flow protocols, scalability boundaries, and security policies. Ingested into pgvector store for semantic grounding in AI Architect chat prompts.
                       </div>
                     </div>
