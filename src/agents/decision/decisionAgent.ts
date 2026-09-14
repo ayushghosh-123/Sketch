@@ -238,9 +238,9 @@ Return valid JSON conforming to:
         simpleReason: "Safely stores all user accounts, records, and tables in organized storage.",
       },
       ai: {
-        name: "Gemini 1.5 & LangGraph.js",
-        reason: "Fast multimodal reasoning paired with deterministic multi-agent state machines.",
-        simpleReason: "The smart AI brain that reads notes, answers questions, and automates tasks.",
+        name: "Groq (LPU) & LangGraph.js",
+        reason: "Ultra-fast low-latency LPU inference paired with deterministic multi-agent state machines.",
+        simpleReason: "The ultra-fast AI engine that thinks, reasons, and organizes your project in milliseconds.",
       },
       storage: {
         name: "Vercel Blob",
@@ -312,12 +312,47 @@ Return valid JSON conforming to:
 
   const result = await GeminiService.generateStructuredJson<ArchitectureSpecification>(
     prompt,
-    "You are the Sketch Decision Agent, designing verified production architectures.",
+    "You are the Sketch Decision Agent, designing verified production architectures. You MUST return complete JSON with layers, components, connections, technologyStack, and decisions.",
     fallback,
     "Decision Agent"
   );
 
-  const finalSpec = result || fallback;
+  const rawComponents = result?.components?.length ? result.components : fallback.components;
+  let rawConnections = result?.connections?.length ? result.connections : [];
+
+  if (rawConnections.length === 0 && rawComponents.length > 1) {
+    const compIds = new Set(rawComponents.map((c) => c.id));
+    const matchingFallback = fallback.connections.filter(
+      (fc) => compIds.has(fc.source) && compIds.has(fc.target)
+    );
+    if (matchingFallback.length > 0) {
+      rawConnections = matchingFallback;
+    } else {
+      for (let i = 0; i < rawComponents.length - 1; i++) {
+        rawConnections.push({
+          source: rawComponents[i].id,
+          target: rawComponents[i + 1].id,
+          label: "Inter-service RPC",
+          type: "sync",
+          description: `${rawComponents[i].name} to ${rawComponents[i + 1].name}`,
+        });
+      }
+    }
+  }
+
+  const finalSpec: ArchitectureSpecification = {
+    ...fallback,
+    ...result,
+    layers: result?.layers?.length ? result.layers : fallback.layers,
+    components: rawComponents,
+    connections: rawConnections.length ? rawConnections : fallback.connections,
+    decisions: result?.decisions?.length ? result.decisions : fallback.decisions,
+    technologyStack:
+      result?.technologyStack && Object.keys(result.technologyStack).length
+        ? result.technologyStack
+        : fallback.technologyStack,
+  };
+
   AgentLogger.agentAction("Decision Agent", "BLUEPRINT FORMULATED", {
     layersCount: finalSpec.layers?.length || 0,
     componentsCount: finalSpec.components?.length || 0,

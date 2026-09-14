@@ -1,18 +1,24 @@
 import { getGeminiClient, isGeminiConfigured } from "./client";
+import { GroqService } from "@/lib/groq/groqService";
+import { isGroqConfigured } from "@/lib/groq/client";
 import { AgentLogger } from "@/lib/logger/agentLogger";
 
 export class GeminiService {
   private static DEFAULT_MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
   /**
-   * Generates text or JSON response using Gemini
+   * Generates text or JSON response using Groq or Gemini
    */
   static async generateContent(
     prompt: string,
     systemInstruction?: string,
-    caller: string = "GeminiService",
+    caller: string = "AgentService",
     overrideModel?: string
   ): Promise<string> {
+    if (isGroqConfigured()) {
+      return GroqService.generateContent(prompt, systemInstruction, caller, overrideModel);
+    }
+
     const modelToUse = overrideModel || this.DEFAULT_MODEL;
     const configured = isGeminiConfigured();
     AgentLogger.modelApiCall(modelToUse, caller, prompt, configured);
@@ -21,7 +27,7 @@ export class GeminiService {
       AgentLogger.modelApiFallback(
         modelToUse,
         caller,
-        "API key is not configured or is a placeholder in .env",
+        "Neither Groq nor Gemini API key is configured in .env",
         ""
       );
       return "";
@@ -53,15 +59,25 @@ export class GeminiService {
   }
 
   /**
-   * Generates structured JSON response conforming to a schema
+   * Generates structured JSON response conforming to a schema using Groq or Gemini
    */
   static async generateStructuredJson<T>(
     prompt: string,
     systemInstruction: string,
     fallbackValue: T,
-    caller: string = "GeminiService",
+    caller: string = "AgentService",
     overrideModel?: string
   ): Promise<T> {
+    if (isGroqConfigured()) {
+      return GroqService.generateStructuredJson<T>(
+        prompt,
+        systemInstruction,
+        fallbackValue,
+        caller,
+        overrideModel
+      );
+    }
+
     const modelToUse = overrideModel || this.DEFAULT_MODEL;
     const configured = isGeminiConfigured();
     AgentLogger.modelApiCall(modelToUse, caller, prompt, configured);
@@ -70,7 +86,7 @@ export class GeminiService {
       AgentLogger.modelApiFallback(
         modelToUse,
         caller,
-        "No active Gemini API key found (GEMINI_API_KEY/GOOGLE_GENERATIVE_AI_API_KEY). Using deterministic fallback.",
+        "No active AI API key found (GROQ_API_KEY/GEMINI_API_KEY). Using deterministic fallback.",
         fallbackValue
       );
       return fallbackValue;

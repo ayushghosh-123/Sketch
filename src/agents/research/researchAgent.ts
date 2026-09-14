@@ -148,11 +148,11 @@ Return valid JSON conforming to this structure:
     ],
     aiOrchestration: [
       {
-        name: "LangGraph.js + Gemini",
+        name: "LangGraph.js + Groq (LPU)",
         category: "ai",
         recommended: true,
-        reason: "Supports deterministic multi-agent state machines, cyclical graphs, and Zod validation.",
-        pros: ["Native TypeScript state graph", "Cycle support", "High speed with Gemini"],
+        reason: "Ultra-low-latency deterministic multi-agent state machines powered by Groq LPU inference.",
+        pros: ["Sub-second multi-agent execution", "Native TypeScript state graph", "Cycle & retry support"],
         cons: ["State schema discipline required"],
       },
     ],
@@ -170,7 +170,7 @@ Return valid JSON conforming to this structure:
       frontend: "Next.js",
       backend: "Node.js & Next.js Server Actions",
       database: "Supabase PostgreSQL + pgvector",
-      ai: "Gemini 3.8 Flash",
+      ai: "Groq (LPU) & LangGraph.js",
       orchestration: "LangGraph.js",
       storage: "Vercel Blob",
       deployment: "Vercel",

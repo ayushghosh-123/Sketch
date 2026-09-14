@@ -12,5 +12,10 @@ export function getGeminiClient(): GoogleGenerativeAI {
 
 export function isGeminiConfigured(): boolean {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GEMINI_API_KEY || "";
-  return !!apiKey && !apiKey.includes("your-gemini-api-key") && !apiKey.includes("placeholder");
+  return (
+    !!apiKey &&
+    !apiKey.includes("your-gemini-api-key") &&
+    !apiKey.includes("placeholder") &&
+    !apiKey.startsWith("gsk_")
+  );
 }

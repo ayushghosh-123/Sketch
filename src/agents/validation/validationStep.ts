@@ -10,11 +10,14 @@ export function runValidationStep(
   const securityConcerns: string[] = [];
   const scalabilityConcerns: string[] = [];
 
-  const compIds = new Set(spec.components.map((c) => c.id));
-  const compTypes = new Set(spec.components.map((c) => c.category));
+  const components = spec.components || [];
+  const connections = spec.connections || [];
+
+  const compIds = new Set(components.map((c) => c.id));
+  const compTypes = new Set(components.map((c) => c.category));
 
   // 1. Check required architectural tiers
-  if (!compTypes.has("frontend") && !spec.components.some((c) => c.name.toLowerCase().includes("client") || c.name.toLowerCase().includes("web"))) {
+  if (!compTypes.has("frontend") && !components.some((c) => c.name.toLowerCase().includes("client") || c.name.toLowerCase().includes("web"))) {
     missingComponents.push("Missing user-facing client or frontend layer");
   }
 
@@ -22,19 +25,23 @@ export function runValidationStep(
     missingComponents.push("Missing persistent database or data storage layer");
   }
 
-  if (!compTypes.has("authentication") && !spec.components.some((c) => c.name.toLowerCase().includes("auth"))) {
+  if (!compTypes.has("authentication") && !components.some((c) => c.name.toLowerCase().includes("auth"))) {
     securityConcerns.push("No dedicated authentication service or identity provider detected");
   }
 
   // 2. Check broken relationships / orphan connections
-  spec.connections.forEach((conn) => {
-    if (!compIds.has(conn.source)) {
-      brokenRelationships.push(`Connection source '${conn.source}' does not exist in components`);
-    }
-    if (!compIds.has(conn.target)) {
-      brokenRelationships.push(`Connection target '${conn.target}' does not exist in components`);
-    }
-  });
+  if (connections.length === 0 && components.length > 1) {
+    brokenRelationships.push("No connections specified between components");
+  } else {
+    connections.forEach((conn) => {
+      if (!compIds.has(conn.source)) {
+        brokenRelationships.push(`Connection source '${conn.source}' does not exist in components`);
+      }
+      if (!compIds.has(conn.target)) {
+        brokenRelationships.push(`Connection target '${conn.target}' does not exist in components`);
+      }
+    });
+  }
 
   // 3. Check scalability concerns
   const hasCache = compTypes.has("cache") || spec.components.some((c) => c.name.toLowerCase().includes("cache") || c.name.toLowerCase().includes("redis"));
