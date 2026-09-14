@@ -127,7 +127,7 @@ export function HeroThinkingAnimation() {
   }, [currentStep, triggerDoodleSketchAnimation]);
 
   return (
-    <div className="w-full rounded-2xl border border-white/10 bg-[#111111] p-4 sm:p-6 shadow-2xl font-mono relative overflow-hidden">
+    <div className="w-full p-4 sm:p-6 font-mono relative overflow-hidden">
       {/* Top Header Bar with Step Tabs */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
         <div className="flex items-center gap-2">

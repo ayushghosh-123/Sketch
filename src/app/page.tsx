@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { HeroThinkingAnimation } from "@/components/home/HeroThinkingAnimation";
+import { motion } from "framer-motion";
+import { ChaiHeroSection } from "@/components/home/ChaiHeroSection";
 import {
   ArrowRight,
   Sparkles,
@@ -32,88 +33,9 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white selection:bg-orange-500/30 selection:text-orange-200 font-sans">
       {/* ====================================================================
-          HERO SECTION
+          HERO SECTION (ChaiCode Design & Animation System)
           ==================================================================== */}
-      <section className="relative pt-20 pb-20 md:pt-28 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 w-full">
-        {/* Ambient Warm Chai Backlight Glow */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[650px] h-[360px] rounded-full bg-gradient-to-tr from-amber-600/15 via-orange-500/15 to-transparent blur-3xl pointer-events-none -z-10" />
-        <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-gradient-to-bl from-orange-500/10 via-amber-600/5 to-transparent blur-3xl pointer-events-none -z-10" />
-
-        {/* ChaiCode Signature Honeycomb Decorative Mesh */}
-        <div className="absolute -left-12 top-28 pointer-events-none opacity-20 hidden lg:block -z-10">
-          <svg width="100" height="220" viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 10L90 33.094V79.282L50 102.376L10 79.282V33.094L50 10Z" stroke="white" strokeWidth="1.2" strokeOpacity="0.4" />
-            <path d="M50 90L90 113.094V159.282L50 182.376L10 159.282V113.094L50 90Z" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.5" />
-            <path d="M10 50L50 73.094V119.282L10 142.376L-30 119.282V73.094L10 50Z" stroke="white" strokeWidth="1.2" strokeOpacity="0.3" />
-          </svg>
-        </div>
-
-        {/* Subtle Technical Label */}
-        <div className="flex items-center gap-2 mb-6">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#111111]/90 border border-white/10 text-[11px] font-mono text-[#a1a1aa] shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#f97316] animate-pulse" />
-            AI SOFTWARE ARCHITECTURE WORKSPACE
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Core Value Proposition */}
-          <div className="lg:col-span-6 space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
-              Sketch your software <br />
-              <span className="text-[#f97316]">before you build it.</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-[#a1a1aa] leading-relaxed font-normal">
-              Start with an idea. Add your research if you have it.{" "}
-              <strong className="text-white font-semibold">Sketch researches the rest</strong>, decides the best approach,
-              and creates your software architecture.
-            </p>
-
-            {/* ChaiCode Signature Diagonal Button Pair */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <Link href="/signup">
-                <button className="bg-white hover:bg-neutral-200 text-black font-semibold text-xs h-11 px-6 transition-all duration-200 flex items-center shadow-sm chai-btn-primary cursor-pointer">
-                  Sign Up & Sketch
-                  <ArrowRight className="h-3.5 w-3.5 ml-2" />
-                </button>
-              </Link>
-              <Link href="#how-it-works">
-                <button className="border border-white/20 bg-transparent text-white hover:bg-white/5 font-semibold text-xs h-11 px-6 transition-all duration-200 flex items-center chai-btn-secondary cursor-pointer">
-                  See How It Works
-                </button>
-              </Link>
-            </div>
-
-            {/* Core Promise Indicators with ChaiCode Pastel Tags */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-3 text-xs">
-              <div className="p-3 rounded-lg bg-[#111111] border border-white/10 space-y-1">
-                <div className="inline-flex text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/20 font-mono">
-                  01 / INPUT
-                </div>
-                <div className="text-xs font-semibold text-white mt-1">Idea or Docs</div>
-              </div>
-              <div className="p-3 rounded-lg bg-[#111111] border border-white/10 space-y-1">
-                <div className="inline-flex text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/20 font-mono">
-                  02 / INTEL
-                </div>
-                <div className="text-xs font-semibold text-[#f97316] mt-1">Auto Research</div>
-              </div>
-              <div className="p-3 rounded-lg bg-[#111111] border border-white/10 space-y-1">
-                <div className="inline-flex text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 font-mono">
-                  03 / OUTPUT
-                </div>
-                <div className="text-xs font-semibold text-[#10b981] mt-1">Blueprint</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Interactive Step-by-Step Thinking & Doodle Sketch Canvas */}
-          <div className="lg:col-span-6">
-            <HeroThinkingAnimation />
-          </div>
-        </div>
-      </section>
+      <ChaiHeroSection />
 
       {/* ====================================================================
           SECTION: CORE PRODUCT WORKFLOW (TWO PATHS)
@@ -157,67 +79,144 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Dynamic Path Diagram with Bento Grid & Pastel Pills */}
+          {/* Dynamic Path Diagram with Bento Grid & Pastel Pills (ChaiCode Card Animation) */}
           {activePath === "has-docs" ? (
             <div className="grid grid-cols-1 sm:grid-cols-6 gap-2.5 font-mono text-xs">
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/20 font-bold">01 / INPUT</div>
                 <div className="font-semibold text-white">Idea + Documents</div>
                 <p className="text-[10px] text-[#71717a]">PDF, DOCX, TXT, MD notes ingested.</p>
-              </div>
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-purple-500/15 text-purple-400 border border-purple-500/20 font-bold">02 / RAG AGENT</div>
                 <div className="font-semibold text-white">Project Context</div>
                 <p className="text-[10px] text-[#71717a]">Semantic extraction answers key specs.</p>
-              </div>
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/20 font-bold">03 / RESEARCH</div>
                 <div className="font-semibold text-white">Research Agent</div>
                 <p className="text-[10px] text-[#71717a]">Researches missing info & options.</p>
-              </div>
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-orange-500/15 text-[#f97316] border border-orange-500/20 font-bold">04 / DECISION</div>
                 <div className="font-semibold text-white">Decision Agent</div>
                 <p className="text-[10px] text-[#71717a]">Decides architecture & tech stack.</p>
-              </div>
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-3.5 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/20 font-bold">05 / VALIDATE</div>
                 <div className="font-semibold text-white">Validation Step</div>
                 <p className="text-[10px] text-[#71717a]">Checks integrity before visual layout.</p>
-              </div>
-              <div className="p-3.5 rounded-xl border border-emerald-500/40 bg-black hover:border-emerald-500/60 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-3.5 rounded-xl border border-emerald-500/40 bg-black hover:border-emerald-500/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 font-bold">06 / CANVAS</div>
                 <div className="font-semibold text-white">Editable Canvas</div>
                 <p className="text-[10px] text-[#10b981]">Interactive React Flow studio ready.</p>
-              </div>
+              </motion.div>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 font-mono text-xs">
-              <div className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/20 font-bold">01 / INPUT</div>
                 <div className="font-semibold text-white">Idea Only</div>
                 <p className="text-[10px] text-[#71717a]">Describe what you want to build in plain text.</p>
-              </div>
-              <div className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/20 font-bold">02 / RESEARCH</div>
                 <div className="font-semibold text-white">Autonomous Research</div>
                 <p className="text-[10px] text-[#71717a]">Sketch researches best solutions from scratch.</p>
-              </div>
-              <div className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-orange-500/15 text-[#f97316] border border-orange-500/20 font-bold">03 / DECISION</div>
                 <div className="font-semibold text-white">Decision Agent</div>
                 <p className="text-[10px] text-[#71717a]">Selects tiers, components, and trade-offs.</p>
-              </div>
-              <div className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-4 rounded-xl border border-white/10 bg-black hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/20 font-bold">04 / VALIDATE</div>
                 <div className="font-semibold text-white">Validation Step</div>
                 <p className="text-[10px] text-[#71717a]">Enforces security and scalability rules.</p>
-              </div>
-              <div className="p-4 rounded-xl border border-emerald-500/40 bg-black hover:border-emerald-500/60 transition-all space-y-1.5">
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ amount: 0.2, once: true }}
+                transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.02 }}
+                className="p-4 rounded-xl border border-emerald-500/40 bg-black hover:border-emerald-500/60 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 cursor-pointer space-y-1.5"
+              >
                 <div className="inline-flex text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 font-bold">05 / CANVAS</div>
                 <div className="font-semibold text-white">Editable Canvas</div>
                 <p className="text-[10px] text-[#10b981]">Complete visual architecture generated.</p>
-              </div>
+              </motion.div>
             </div>
           )}
         </div>
@@ -247,8 +246,15 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          {/* Interactive Workspace Studio */}
-          <div className="rounded-2xl border border-white/10 bg-[#111111] overflow-hidden font-mono shadow-2xl">
+          {/* Interactive Workspace Studio (ChaiCode Card Animation) */}
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ amount: 0.15, once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            whileHover={{ scale: 1.008 }}
+            className="rounded-2xl border border-white/10 bg-[#111111] overflow-hidden font-mono shadow-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer"
+          >
             {/* Top Workspace Bar */}
             <div className="flex items-center justify-between px-4 py-2.5 bg-[#18181b] border-b border-white/10 text-xs">
               <div className="flex items-center gap-2">
@@ -477,7 +483,7 @@ export default function LandingPage() {
                 Try in Workspace →
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

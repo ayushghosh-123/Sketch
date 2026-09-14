@@ -4,19 +4,20 @@
 > *Build the system before the code.*
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.3.4_(Turbopack)-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.8-blue?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0_(Strict)-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![LangGraph.js](https://img.shields.io/badge/LangGraph.js-1.4.14-purple?style=flat-square)](https://langchain-ai.github.io/langgraphjs/)
-[![Gemini](https://img.shields.io/badge/Google_Gemini-2.5_Pro_/_Flash-orange?style=flat-square&logo=google)](https://ai.google.dev/)
+[![Gemini](https://img.shields.io/badge/Google_Gemini-1.5_/_2.5-orange?style=flat-square&logo=google)](https://ai.google.dev/)
 [![pgvector](https://img.shields.io/badge/PostgreSQL-pgvector_(768--dim)-336791?style=flat-square&logo=postgresql)](https://github.com/pgvector/pgvector)
 [![React Flow](https://img.shields.io/badge/@xyflow/react-12.11.6-ff0072?style=flat-square)](https://reactflow.dev/)
-[![Clerk](https://img.shields.io/badge/Auth-Clerk_(OTP_&_Password)-6C47FF?style=flat-square&logo=clerk)](https://clerk.com/)
+[![Design System](https://img.shields.io/badge/Design_System-ChaiCode_Orange-f97316?style=flat-square)](https://tailwindcss.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 
 ---
 
 ## 1. Executive Summary
 
-**AgentArchitect** is a developer tool and software architecture studio. Instead of generating ungrounded code snippets from generic chatbots, AgentArchitect models complex software requirements step-by-step into verifiable system architectures, directed dependency graphs, failure blast radiuses, and architecture decision records (ADRs).
+**AgentArchitect** (also known as **Sketch**) is a software architecture studio and developer command center. Instead of generating ungrounded, hallucinated code snippets from generic chatbots, AgentArchitect models complex software specifications step-by-step into verifiable system architectures, directed dependency graphs (DAG), failure blast radius simulations, and transparent Architecture Decision Records (ADRs).
 
 ```
 ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
@@ -36,13 +37,13 @@
 ## 2. Core Capabilities
 
 ### ◈ 1. Interactive Architecture Studio
-- **React Flow Canvas**: Living directed acyclic graph (DAG) canvas powered by `@xyflow/react`.
+- **React Flow Canvas**: Living directed acyclic graph (DAG) canvas powered by `@xyflow/react` over an infinite pitch-black workspace (`#000000`).
 - **Dagre Auto-Layout**: One-click hierarchical topological layout (Left-to-Right `LR` or Top-to-Bottom `TB`).
-- **Domain Node Primitives**: Specialized nodes for `Frontend`, `API Gateway`, `Backend Microservice`, `Database`, `In-Memory Cache`, `Message Queue`, and `Autonomous AI Agent`.
-- **Component Toolbox**: Drag-and-drop palette grouped by *Application*, *Data & Storage*, *AI & Orchestration*, and *External Integrations*.
+- **Domain Node Primitives**: Specialized custom nodes for `Frontend`, `API Gateway`, `Backend Microservice`, `Database`, `In-Memory Cache`, `Message Queue`, and `Autonomous AI Agent`.
+- **Component Toolbox Drawer**: Drag-and-drop palette grouped by *Application*, *Data & Storage*, *AI & Orchestration*, and *External Integrations*.
 - **Deep Inspector Drawer**: Node configuration drawer with real-time parameter mutations, upstream/downstream dependency viewers, and inline blast radius simulation.
 
-### ◉ 2. Autonomous 10-Node Multi-Agent Pipeline (LangGraph.js)
+### ◉ 2. Autonomous Multi-Agent Pipeline (LangGraph.js)
 Multi-step architecture synthesis with formal Zod schema boundaries at every transition:
 1. `InputSanitizer`: Strips prompt injection, normalizes technical constraints, and structures domain vocabulary.
 2. `RequirementAnalyzer`: Decomposes functional requirements and non-functional targets (throughput, latency, compliance).
@@ -58,7 +59,7 @@ Multi-step architecture synthesis with formal Zod schema boundaries at every tra
 ### ⚡ 3. Directed Impact Analysis & Blast Radius Radar
 - **Graph Breadth-First Search (BFS)**: Bidirectional traversal engine calculating upstream callers and downstream consumers.
 - **Topological Cascade Visualizer**:
-  - `● CHANGED (Distance = 0)`: Origin node of structural alteration or technology replacement.
+  - `● ROOT / ORIGIN (Distance = 0)`: Origin node of structural alteration or technology replacement.
   - `▲ DIRECT IMPACT (Distance = 1)`: Immediate callers, ORMs, and drivers requiring contract changes.
   - `○ INDIRECT CASCADE (Distance ≥ 2)`: Downstream ripple failures, data pipeline breakage, or schema desynchronization.
 - **AI Mitigation Engine**: Generates zero-downtime transition playbooks (dual-schema write windows, circuit breakers, adapter layers).
@@ -78,36 +79,70 @@ Multi-step architecture synthesis with formal Zod schema boundaries at every tra
   - `= UNCHANGED`: Stable foundational nodes.
 - **One-Click Restore**: Instant rollback of the active workspace canvas to any previous snapshot.
 
-### 💎 6. Premium Minimalist Technology Navigation
-- Inspired by modern technology leaders (Linear, OpenAI, Stripe).
-- **Full-width near-black layout** (`bg-[#09090b]`, `h-[68px]`) with no visible borders or heavy shadows.
-- **Three distinct horizontal sections**:
-  - **Left**: Minimal geometric glyph and wordmark (`NavBrand`).
-  - **Center**: Text navigation links with generous spacing (`NavLinks`: *Product*, *Workflow*, *Features*, *Documentation*).
-  - **Right**: Global search modal (`NavSearch` with `⌘K`), dark pill-shaped secondary button (*Sign In*), and high-contrast white pill-shaped primary button (*Launch Workspace ↗*).
-- **100% Modular Architecture**: Every part is an isolated reusable component (`NavBrand`, `NavLinks`, `NavSearch`, `NavActions`, `NavMobileMenu`).
+### ⚖️ 6. Architecture Decision Records (ADRs) & "Explain Simply" Mode
+- **Transparent Rationale**: Every chosen technology or pattern includes architectural justification, evaluated alternatives, and trade-offs.
+- **Dual Explanation Switch**: Single-click toggle between technical engineering specifications and plain-English executive summaries.
 
 ---
 
-## 3. Technology Stack
+## 3. ChaiCode Design System
+
+The application features the unified **ChaiCode** design system across every page (landing, authentication, dashboard, project catalog, visual canvas, and sub-views):
+
+| Element | Token / Value | Description |
+| :--- | :--- | :--- |
+| **Canvas Base** | `#000000` | Pure pitch-black base canvas |
+| **Card Surfaces** | `#111111` | Primary cards, panels, and modal containers |
+| **Elevated Surfaces** | `#18181b` | Secondary sub-cards, drawers, and form inputs |
+| **Primary Accent** | `#f97316` / `#ea580c` | Warm Chai Orange replacing legacy blues |
+| **Ambient Glow** | `rgba(234, 88, 12, 0.15)` | Radial background spotlight glow (`blur-[120px]`) |
+| **Hairline Borders** | `border-white/10` | Subtle translucent borders (`hover:border-white/20`) |
+| **Typography** | `Manrope`, `font-sans` | Crisp geometric sans headings paired with `font-mono` metadata |
+| **Primary Buttons** | `chai-btn-primary` | High-contrast orange CTA with signature diagonal corners (`0px 10px 0px 10px`) |
+| **Footer** | 4-Column Layout | Comprehensive directory with inline SVG social icons |
+
+---
+
+## 4. Technology Stack
 
 | Layer | Technology | Description |
 | :--- | :--- | :--- |
-| **Framework** | [Next.js 16 (App Router)](https://nextjs.org/) | Fast server/client components with Turbopack compilation |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) | Strict type checking with zero `any` across stores and services |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) | Modern utility engine with `@theme` design tokens and monospace metadata |
-| **Canvas Engine** | [@xyflow/react (React Flow)](https://reactflow.dev/) | High-performance interactive node-graph visualizer |
+| **Framework** | [Next.js 16 (App Router)](https://nextjs.org/) | Next.js with Turbopack compilation and React Server Components |
+| **Runtime & UI** | [React 19](https://react.dev/) | React 19 streaming SSR and modern hooks |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) | Strict end-to-end type safety |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) | Modern utility engine with `@theme` design tokens |
+| **Canvas Engine** | [@xyflow/react](https://reactflow.dev/) | High-performance interactive node-graph visualizer |
 | **Graph Layout** | [Dagre](https://github.com/dagrejs/dagre) | Directed graph layout engine for automatic node positioning |
 | **AI Multi-Agent** | [LangGraph.js](https://langchain-ai.github.io/langgraphjs/) | Stateful autonomous multi-actor workflow orchestration |
-| **LLM & Embeddings**| [Google Gemini](https://ai.google.dev/) | `gemini-2.5-pro`, `gemini-2.5-flash`, and `text-embedding-004` |
-| **Database & Vector**| [PostgreSQL + pgvector](https://supabase.com/) | Relational metadata storage and 768-dimensional cosine vector search |
+| **LLM & Embeddings**| [Google Gemini](https://ai.google.dev/) | `gemini-1.5-flash`, `gemini-1.5-pro`, and `text-embedding-004` |
+| **Database & Vector**| [Supabase PostgreSQL + pgvector](https://supabase.com/) | 768-dimensional cosine vector search and transactional relational data |
 | **Authentication** | [Clerk](https://clerk.com/) | Passwordless Email OTP & Secure Password authentication |
 | **Client State** | [Zustand](https://zustand-demo.pmnd.rs/) | Lightweight reactive state stores for canvas, nodes, and edges |
-| **Icons** | [Lucide React](https://lucide.dev/) | Clean, consistent icons for technical interfaces |
+| **Icons** | [Lucide React](https://lucide.dev/) | Clean, modern technical interface glyphs |
 
 ---
 
-## 4. Repository Structure
+## 5. Security & Performance Architecture
+
+```mermaid
+flowchart LR
+    Client["Client / React Flow"] -->|"HTTPS + JWT"| Edge["Next.js Edge Middleware (Rate Limit + Auth)"]
+    Edge -->|"Validated"| API["Route Handler"]
+    API -->|"Stream (SSE)"| Client
+    API -->|"Cache Check O(1)"| Redis["Redis Cache"]
+    API -->|"HNSW Index O(log N)"| VectorDB["Supabase pgvector (Pooled)"]
+    API -->|"Async Chunks"| Gemini["Gemini 1.5"]
+```
+
+- **Tenant Isolation & Zero-Trust**: All `/api/projects/[id]/*` endpoints enforce strict user ownership checks (`user.id === project.user_id`) to eliminate Insecure Direct Object References (IDOR).
+- **HNSW Vector Indexing**: `pgvector` embeddings use Hierarchical Navigable Small World (HNSW) indexing, converting linear vector table scans ($O(N \cdot D)$) into sub-linear logarithmic lookups ($O(\log N)$).
+- **Relational Composite Indexing**: High-cardinality foreign keys (`project_id`, `created_at`) are indexed with B-Trees for $O(1)$ canvas loading.
+- **Server-Sent Events (SSE) Streaming**: Long-running agent reasoning and RAG chat stream intermediate tokens over `ReadableStream`, preventing serverless gateway timeouts (504s).
+- **Connection Resilience**: Database access is routed through the Supabase Transaction Pooler (PgBouncer on port `6543`) to prevent connection pool exhaustion under serverless scale.
+
+---
+
+## 6. Repository Structure
 
 ```
 D:/Sketch/
@@ -117,31 +152,29 @@ D:/Sketch/
 │   │   │   └── projects/
 │   │   │       ├── [id]/
 │   │   │       │   ├── architecture/          # Graph CRUD & LangGraph generation
-│   │   │       │   ├── chat/                  # RAG AI assistant endpoint
+│   │   │       │   ├── chat/                  # RAG AI assistant endpoint (SSE stream)
 │   │   │       │   ├── documents/             # Multi-format upload & parsing
 │   │   │       │   ├── impact-analysis/       # BFS blast radius calculation
 │   │   │       │   └── versions/              # Snapshot commit & rollback
 │   │   │       └── route.ts                   # Projects collection API
 │   │   ├── dashboard/                         # Command Center & Registry overview
-│   │   ├── projects/                          # Architecture catalog & details
+│   │   ├── docs/                              # System documentation & manual
+│   │   ├── forgot-password/                   # Password recovery flow
 │   │   ├── login/ & signup/                   # Clerk OTP & Password authentication
-│   │   ├── globals.css                        # Tailwind v4 theme & monospace tokens
-│   │   ├── layout.tsx                         # Root layout with ClerkProvider & Navbar
+│   │   ├── projects/                          # Architecture catalog & details
+│   │   ├── settings/                          # User profile & architecture preferences
+│   │   ├── tech-stack/[id]/                   # Technology selection & explanation mode
+│   │   ├── workspace/[id]/                    # React Flow studio & visual DAG canvas
+│   │   │   └── decisions/                     # Architecture Decision Records (ADR)
+│   │   ├── globals.css                        # Tailwind v4 theme, ChaiCode tokens, animations
+│   │   ├── layout.tsx                         # Root layout with ClerkProvider, Navbar & Footer
 │   │   └── page.tsx                           # Command Center product launch landing page
 │   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Navbar.tsx                     # Full-width minimalist technology navbar
-│   │   │   ├── Footer.tsx                     # Clean architectural footer
-│   │   │   └── navigation/                    # Modular navigation building blocks
-│   │   │       ├── NavBrand.tsx               # Minimal glyph & wordmark
-│   │   │       ├── NavLinks.tsx               # Text navigation links (Product, Workflow...)
-│   │   │       ├── NavSearch.tsx              # Quick search trigger & ⌘K command modal
-│   │   │       ├── NavActions.tsx             # Sign In dark pill & Launch Workspace ↗ white pill
-│   │   │       ├── NavMobileMenu.tsx          # Responsive mobile drawer
-│   │   │       └── index.ts                   # Modular component exports
+│   │   ├── home/                              # LivingTopologyGraph hero animation
+│   │   ├── layout/                            # Navbar, ChaiCode Footer, Brand glyph
 │   │   └── ui/                                # Primitives (Button, Card, Input, Tabs, Dialog)
 │   ├── features/
-│   │   ├── agents/                            # LangGraph state visualizer & SSE telemetry
+│   │   ├── agents/                            # LangGraph state visualizer & telemetry
 │   │   ├── architecture/                      # Canvas, CustomNode, Toolbox, Inspector, Store
 │   │   ├── documents/                         # Knowledge base manager & 5-step RAG pipeline
 │   │   ├── impact-analysis/                   # Blast radius visual tree & mitigation strategy
@@ -150,7 +183,7 @@ D:/Sketch/
 │   │   └── versions/                          # Git-style vertical timeline & side-by-side diff
 │   ├── lib/
 │   │   ├── gemini/                            # Gemini model client & embeddings
-│   │   ├── supabase/                          # Admin client & pgvector operations
+│   │   ├── supabase/                          # Admin client, server client & pgvector operations
 │   │   └── utils/                             # Dagre auto-layout & formatters
 │   ├── services/                              # ArchitectureService, DocumentService, ImpactService...
 │   └── types/                                 # Strict TypeScript database & graph schemas
@@ -163,7 +196,7 @@ D:/Sketch/
 
 ---
 
-## 5. Getting Started
+## 7. Getting Started
 
 ### Prerequisites
 - **Node.js**: `v20.x` or higher
@@ -172,7 +205,7 @@ D:/Sketch/
 - **Google AI Studio**: Gemini API key
 - **Clerk**: Authentication project keys
 
-### Installation
+### Installation & Local Setup
 
 1. **Clone the repository**:
    ```bash
@@ -186,7 +219,7 @@ D:/Sketch/
    ```
 
 3. **Configure Environment Variables**:
-   Create a `.env.local` file in the root directory (based on `.env.example`):
+   Create a `.env.local` file in the root directory:
    ```env
    # Clerk Authentication
    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
@@ -219,7 +252,7 @@ D:/Sketch/
 
 ---
 
-## 6. API Surface
+## 8. API Surface
 
 | Route | Method | Description |
 | :--- | :---: | :--- |
@@ -229,29 +262,19 @@ D:/Sketch/
 | `/api/projects/[id]` | `DELETE` | Permanently decommission project and all embeddings |
 | `/api/projects/[id]/architecture` | `GET` | Fetch active components and directed dependency links |
 | `/api/projects/[id]/architecture` | `PUT` | Persist modified graph topology from React Flow canvas |
-| `/api/projects/[id]/architecture/generate` | `POST` | Execute 10-node LangGraph autonomous synthesis (SSE stream) |
+| `/api/projects/[id]/architecture/generate` | `POST` | Execute multi-agent autonomous synthesis (SSE stream) |
 | `/api/projects/[id]/documents` | `GET` | List ingested specifications and vector status |
 | `/api/projects/[id]/documents` | `POST` | Upload and chunk PDF/DOCX/MD into 768-dim pgvector store |
 | `/api/projects/[id]/documents/[docId]` | `DELETE` | Remove document and purge vector embeddings |
 | `/api/projects/[id]/impact-analysis` | `POST` | Execute BFS graph traversal to calculate blast radius |
-| `/api/projects/[id]/chat` | `POST` | Context-grounded RAG query against project corpus |
+| `/api/projects/[id]/chat` | `POST` | Context-grounded RAG query against project corpus (SSE stream) |
 | `/api/projects/[id]/versions` | `GET` | Fetch immutable snapshot history |
 | `/api/projects/[id]/versions` | `POST` | Tag manual architecture release checkpoint |
 | `/api/projects/[id]/versions/[versionId]/restore`| `POST` | Restore studio canvas to snapshot |
 
 ---
 
-## 7. Design System Philosophy
-
-AgentArchitect adheres to a **Command Center & Developer Tool** aesthetic:
-- **Palette**: Near-black foundations (`#09090B`), structured surfaces (`#111113`, `#18181B`), and sharp borders (`#27272A`).
-- **Accent**: Technical Cyan (`#0EA5E9`), Success (`#10B981`), Warning (`#F59E0B`), and Critical Red (`#EF4444`).
-- **Typography**: Clean Modern Sans for human readability paired with **JetBrains Mono** for technical IDs, tokens, coordinates, and real-time agent telemetry.
-- **Clean Restraint**: Zero purple glowing blobs, zero bubbly chatbots, zero gratuitous glassmorphism. Every pixel communicates **systems, architecture, dependencies, and engineering control**.
-
----
-
-## 8. Contributing & License
+## 9. Contributing & License
 
 Contributions are welcome from system architects, distributed systems engineers, and AI practitioners.
 

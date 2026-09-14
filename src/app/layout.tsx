@@ -33,6 +33,14 @@ export default function RootLayout({
         lang="en"
         className={`${manrope.variable} ${anton.variable} dark h-full antialiased`}
       >
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+        </head>
         <body className="min-h-screen bg-black text-neutral-100 flex flex-col selection:bg-orange-500/30 selection:text-orange-200 font-sans">
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>

@@ -1,0 +1,295 @@
+- generic [active] [ref=f8e1]:
+  - banner [ref=f8e2]:
+    - generic [ref=f8e3]:
+      - link "Sketch Platform" [ref=f8e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f8e10]: SKETCH
+      - navigation "Main Navigation" [ref=f8e13]:
+        - link "Product" [ref=f8e14] [cursor=pointer]:
+          - /url: /#product
+        - link "How It Works" [ref=f8e15] [cursor=pointer]:
+          - /url: /#how-it-works
+        - link "Features" [ref=f8e16] [cursor=pointer]:
+          - /url: /#features
+        - link "Documentation" [ref=f8e17] [cursor=pointer]:
+          - /url: /docs
+      - generic [ref=f8e18]:
+        - button "Search architecture resources (⌘K)" [ref=f8e19]
+        - button "Toggle theme" [ref=f8e23] [cursor=pointer]
+        - generic [ref=f8e29]:
+          - link "Log In" [ref=f8e30] [cursor=pointer]:
+            - /url: /login
+          - link "Sign Up" [ref=f8e31] [cursor=pointer]:
+            - /url: /signup
+  - main [ref=f8e35]:
+    - generic [ref=f8e36]:
+      - generic [ref=f8e38]:
+        - generic [ref=f8e39]: AI SOFTWARE ARCHITECTURE WORKSPACE
+        - generic [ref=f8e45]:
+          - paragraph [ref=f8e46]: Autonomous Architecture
+          - img [ref=f8e48]:
+            - generic [ref=f8e49]: SKETCH
+        - paragraph [ref=f8e50]:
+          - text: Master software architecture before writing code through
+          - strong [ref=f8e51]: autonomous multi-agent research
+          - text: ", intelligent system blueprints, and guidance from"
+          - strong [ref=f8e52]: Industry Best Practices
+          - text: .
+        - generic [ref=f8e53]:
+          - link [ref=f8e54] [cursor=pointer]:
+            - /url: /signup
+            - button "Launch Workspace" [ref=f8e55]
+          - link [ref=f8e60] [cursor=pointer]:
+            - /url: "#pipeline-studio"
+            - button "View Interactive Pipeline" [ref=f8e61]
+        - generic [ref=f8e67]:
+          - generic [ref=f8e68]:
+            - generic [ref=f8e69]: AGENTIC THINKING PIPELINE
+            - generic [ref=f8e72]:
+              - button "Pause animation" [ref=f8e73]
+              - button "Restart pipeline" [ref=f8e77]
+          - generic [ref=f8e81]:
+            - button "01 · User Idea UNDERSTAND BY USER" [ref=f8e82]:
+              - generic [ref=f8e83]: 01 · User Idea
+              - generic [ref=f8e86]: UNDERSTAND BY USER
+            - button "02 · Research AUTONOMOUS RESEARCH" [ref=f8e88]:
+              - generic [ref=f8e89]: 02 · Research
+              - generic [ref=f8e91]: AUTONOMOUS RESEARCH
+            - button "03 · Decision ARCHITECTURE SYNTHESIS" [ref=f8e92]:
+              - generic [ref=f8e93]: 03 · Decision
+              - generic [ref=f8e95]: ARCHITECTURE SYNTHESIS
+            - button "04 · Make Sketch DOODLE BLUEPRINT CANVAS" [ref=f8e96]:
+              - generic [ref=f8e97]: 04 · Make Sketch
+              - generic [ref=f8e99]: DOODLE BLUEPRINT CANVAS
+          - generic [ref=f8e100]:
+            - generic [ref=f8e102]:
+              - generic [ref=f8e103]:
+                - generic [ref=f8e104]: "STEP 1: USER BRINGS THE IDEA"
+                - generic [ref=f8e107]: RAW INPUT
+              - generic [ref=f8e108]: ›“I need to build an AI software architecture platform. Users describe an app or upload specs; agents research tradeoffs, decide the tech stack, and sketch an interactive, editable blueprint canvas with drag-and-drop nodes.”
+              - generic [ref=f8e109]:
+                - generic [ref=f8e110]: "Attached context:"
+                - generic [ref=f8e111]: spec-v2-architecture.pdf (14 pages)
+                - generic [ref=f8e115]: security-requirements.docx
+              - generic [ref=f8e119]:
+                - generic [ref=f8e120]: Sketch accepts plain ideas OR complete technical documentation.
+                - generic [ref=f8e121]: Understanding User Scope →
+            - generic [ref=f8e122]:
+              - generic [ref=f8e123]:
+                - generic [ref=f8e124]: ✦
+                - generic [ref=f8e125]: "Step 1 of 4:"
+                - generic [ref=f8e126]: Natural Language & Research Ingestion
+              - generic [ref=f8e127]:
+                - button "Go to step 1" [ref=f8e128]
+                - button "Go to step 2" [ref=f8e129]
+                - button "Go to step 3" [ref=f8e130]
+                - button "Go to step 4" [ref=f8e131]
+      - generic [ref=f8e133]:
+        - generic [ref=f8e134]:
+          - text: The Core Principle
+          - heading "You do not need to have research documents." [level=2] [ref=f8e135]
+          - paragraph [ref=f8e136]:
+            - text: If you only have an idea,
+            - strong [ref=f8e137]: Sketch researches the problem for you
+            - text: . If you already have research, Sketch understands and incorporates it.
+          - generic [ref=f8e138]:
+            - 'button "Path 1: User Has Documents" [ref=f8e139] [cursor=pointer]'
+            - 'button "Path 2: User Has No Documents" [ref=f8e140] [cursor=pointer]'
+        - generic [ref=f8e141]:
+          - generic [ref=f8e142]:
+            - generic [ref=f8e143]: 01 / INPUT
+            - generic [ref=f8e144]: Idea + Documents
+            - paragraph [ref=f8e145]: PDF, DOCX, TXT, MD notes ingested.
+          - generic [ref=f8e146]:
+            - generic [ref=f8e147]: 02 / RAG AGENT
+            - generic [ref=f8e148]: Project Context
+            - paragraph [ref=f8e149]: Semantic extraction answers key specs.
+          - generic [ref=f8e150]:
+            - generic [ref=f8e151]: 03 / RESEARCH
+            - generic [ref=f8e152]: Research Agent
+            - paragraph [ref=f8e153]: Researches missing info & options.
+          - generic [ref=f8e154]:
+            - generic [ref=f8e155]: 04 / DECISION
+            - generic [ref=f8e156]: Decision Agent
+            - paragraph [ref=f8e157]: Decides architecture & tech stack.
+          - generic [ref=f8e158]:
+            - generic [ref=f8e159]: 05 / VALIDATE
+            - generic [ref=f8e160]: Validation Step
+            - paragraph [ref=f8e161]: Checks integrity before visual layout.
+          - generic [ref=f8e162]:
+            - generic [ref=f8e163]: 06 / CANVAS
+            - generic [ref=f8e164]: Editable Canvas
+            - paragraph [ref=f8e165]: Interactive React Flow studio ready.
+      - generic [ref=f8e167]:
+        - generic [ref=f8e168]:
+          - generic [ref=f8e169]:
+            - text: Interactive Architecture Editor
+            - heading "Explore the Sketch Workspace" [level=2] [ref=f8e170]
+            - paragraph [ref=f8e171]: Click components in the visual canvas below to inspect technical details and connections.
+          - link [ref=f8e172] [cursor=pointer]:
+            - /url: /dashboard
+            - button "Open Workspace →" [ref=f8e173]
+        - generic [ref=f8e174]:
+          - generic [ref=f8e175]:
+            - generic [ref=f8e176]:
+              - generic [ref=f8e177]: ◈
+              - generic [ref=f8e178]: AI Learning Platform · Architecture
+            - generic [ref=f8e179]:
+              - generic [ref=f8e180]: READY
+              - generic [ref=f8e182]: 6 COMPONENTS · 7 EDGES
+          - generic [ref=f8e183]:
+            - generic [ref=f8e184]:
+              - generic [ref=f8e185]: Workspace Tools
+              - generic [ref=f8e186]:
+                - generic [ref=f8e187]:
+                  - generic [ref=f8e188]: ↖
+                  - text: Select
+                - generic [ref=f8e189]:
+                  - generic [ref=f8e190]: ✋
+                  - text: Hand / Pan
+                - generic [ref=f8e191]:
+                  - generic [ref=f8e192]: □
+                  - text: Rectangle
+                - generic [ref=f8e193]:
+                  - generic [ref=f8e194]: ○
+                  - text: Circle
+                - generic [ref=f8e195]:
+                  - generic [ref=f8e196]: T
+                  - text: Text Box
+                - generic [ref=f8e197]:
+                  - generic [ref=f8e198]: →
+                  - text: Connector
+            - generic [ref=f8e200]:
+              - generic [ref=f8e201] [cursor=pointer]:
+                - generic [ref=f8e202]: ◈ FRONTEND
+                - generic [ref=f8e205]: Web Application
+                - generic [ref=f8e206]: Next.js / TypeScript
+              - generic [ref=f8e207] [cursor=pointer]:
+                - generic [ref=f8e208]: ↔ API
+                - generic [ref=f8e211]: API Router
+                - generic [ref=f8e212]: Route Handlers
+              - generic [ref=f8e213] [cursor=pointer]:
+                - generic [ref=f8e214]: ◎ AI AGENT
+                - generic [ref=f8e217]: AI Tutor Engine
+                - generic [ref=f8e218]: LangGraph.js + Gemini
+              - generic [ref=f8e219] [cursor=pointer]:
+                - generic [ref=f8e220]: ◉ DATABASE
+                - generic [ref=f8e223]: Primary Database
+                - generic [ref=f8e224]: Supabase PostgreSQL
+            - generic [ref=f8e225]:
+              - generic [ref=f8e226]: Inspector
+              - generic [ref=f8e227]:
+                - generic [ref=f8e228]:
+                  - generic [ref=f8e229]: NAME
+                  - generic [ref=f8e230]: Primary Database
+                - generic [ref=f8e231]:
+                  - generic [ref=f8e232]: TECHNOLOGY
+                  - generic [ref=f8e233]: Supabase PostgreSQL 16 + pgvector
+                - generic [ref=f8e234]:
+                  - generic [ref=f8e235]: DESCRIPTION
+                  - generic [ref=f8e236]: ACID relational database with Row-Level Security policies and vector embeddings for semantic search.
+                - generic [ref=f8e237]:
+                  - generic [ref=f8e238]: CONNECTIONS
+                  - generic [ref=f8e239]: ← API Router, AI Tutor Engine
+          - generic [ref=f8e240]:
+            - generic [ref=f8e241]:
+              - generic [ref=f8e242]: ✦
+              - generic [ref=f8e243]: "Try command:"
+              - generic [ref=f8e244]: “Add Redis caching”
+            - link "Try in Workspace →" [ref=f8e245] [cursor=pointer]:
+              - /url: /dashboard
+      - generic [ref=f8e247]:
+        - generic [ref=f8e248]:
+          - text: The 7-Step Journey
+          - heading "How Sketch Works" [level=2] [ref=f8e249]
+          - paragraph [ref=f8e250]: Simple enough for a beginner to understand. Powerful enough for senior architects.
+        - generic [ref=f8e251]:
+          - generic [ref=f8e252]:
+            - generic [ref=f8e253]: STEP 1
+            - heading "Tell Sketch what you want to build." [level=3] [ref=f8e254]
+            - paragraph [ref=f8e255]: Describe your software idea in simple words. No formal architecture degree required.
+          - generic [ref=f8e256]:
+            - generic [ref=f8e257]: STEP 2
+            - heading "Upload research if you have it." [level=3] [ref=f8e258]
+            - paragraph [ref=f8e259]: Add PDFs, technical RFCs, or notes. If you don't have any, Sketch handles it.
+          - generic [ref=f8e260]:
+            - generic [ref=f8e261]: STEP 3
+            - heading "Sketch understands your information." [level=3] [ref=f8e262]
+            - paragraph [ref=f8e263]: RAG agent extracts requirements, existing decisions, and constraints from your documents.
+          - generic [ref=f8e264]:
+            - generic [ref=f8e265]: STEP 4
+            - heading "Sketch researches anything missing." [level=3] [ref=f8e266]
+            - paragraph [ref=f8e267]: Research agent evaluates current technologies, frameworks, and architecture patterns.
+          - generic [ref=f8e268]:
+            - generic [ref=f8e269]: STEP 5
+            - heading "Sketch decides how your system works." [level=3] [ref=f8e270]
+            - paragraph [ref=f8e271]: Decision agent specifies layers, components, connections, and trade-offs.
+          - generic [ref=f8e272]:
+            - generic [ref=f8e273]: STEP 6
+            - heading "Sketch creates your visual architecture." [level=3] [ref=f8e274]
+            - paragraph [ref=f8e275]: Canvas agent renders an organized React Flow diagram with automated Dagre layout.
+          - generic [ref=f8e276]:
+            - generic [ref=f8e277]: STEP 7 · FULL CONTROL
+            - heading "You can edit everything." [level=3] [ref=f8e278]
+            - paragraph [ref=f8e279]: Move nodes, change colors, rename services, add shapes, or ask AI to alter your system with natural language commands.
+      - generic [ref=f8e281]:
+        - generic [ref=f8e282]: DESCRIBE IT · RESEARCH IT · SKETCH IT
+        - heading "You bring the idea. Sketch figures out the rest." [level=2] [ref=f8e285]: You bring the idea.Sketch figures out the rest.
+        - paragraph [ref=f8e286]: Turn your software idea into an intelligent, editable architecture canvas in seconds.
+        - link [ref=f8e288] [cursor=pointer]:
+          - /url: /signup
+          - button "Sign Up & Start Sketching →" [ref=f8e289]
+  - contentinfo [ref=f8e290]:
+    - generic [ref=f8e291]:
+      - generic [ref=f8e292]:
+        - link "SKETCH" [ref=f8e293] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f8e299]: Home for Software Architects
+        - paragraph [ref=f8e300]: Turn complex ideas into living, verifiable software architectures with autonomous AI research and interactive canvas modeling.
+        - generic [ref=f8e301]: © 2026 Sketch. All rights reserved.
+      - generic [ref=f8e302]:
+        - heading "Products" [level=3] [ref=f8e303]
+        - list [ref=f8e304]:
+          - listitem [ref=f8e305]:
+            - link "System Canvas" [ref=f8e306] [cursor=pointer]:
+              - /url: /workspace/demo-project-e-commerce
+          - listitem [ref=f8e307]:
+            - link "Architecture Registry" [ref=f8e308] [cursor=pointer]:
+              - /url: /projects
+          - listitem [ref=f8e309]:
+            - link "Decision Engine" [ref=f8e310] [cursor=pointer]:
+              - /url: /#workflow
+          - listitem [ref=f8e311]:
+            - link "Autonomous Research" [ref=f8e312] [cursor=pointer]:
+              - /url: /#how-it-works
+          - listitem [ref=f8e313]:
+            - link "Blast Radius Radar" [ref=f8e314] [cursor=pointer]:
+              - /url: /#impact-preview
+          - listitem [ref=f8e315]:
+            - link "Command Center →" [ref=f8e316] [cursor=pointer]:
+              - /url: /dashboard
+      - generic [ref=f8e317]:
+        - heading "Resources" [level=3] [ref=f8e318]
+        - list [ref=f8e319]:
+          - listitem [ref=f8e320]:
+            - link "Docs" [ref=f8e321] [cursor=pointer]:
+              - /url: /docs
+      - generic [ref=f8e322]:
+        - heading "Social" [level=3] [ref=f8e323]
+        - generic [ref=f8e324]:
+          - link "x.com" [ref=f8e325] [cursor=pointer]:
+            - /url: https://x.com
+          - link "Discord" [ref=f8e329] [cursor=pointer]:
+            - /url: https://discord.com
+          - link "GitHub" [ref=f8e333] [cursor=pointer]:
+            - /url: https://github.com
+          - link "LinkedIn" [ref=f8e337] [cursor=pointer]:
+            - /url: https://linkedin.com
+  - button "Open Next.js Dev Tools" [ref=f8e346] [cursor=pointer]:
+    - generic [ref=f8e349]:
+      - text: Compiling
+      - generic [ref=f8e350]:
+        - generic [ref=f8e351]: .
+        - generic [ref=f8e352]: .
+        - generic [ref=f8e353]: .
+  - alert [ref=f8e354]

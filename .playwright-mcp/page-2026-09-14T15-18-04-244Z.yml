@@ -1,0 +1,465 @@
+- generic [ref=e4]:
+  - navigation [ref=e6]:
+    - link "ChaiCode home" [ref=e7] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e20]:
+      - button "Toggle theme" [ref=e21] [cursor=pointer]
+      - button "Open menu" [ref=e23] [cursor=pointer]:
+        - generic [ref=e24]: Menu
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - paragraph [ref=e29]: Mobile Development
+          - img "Cohort illustration" [ref=e30]
+        - paragraph [ref=e31]: Master cross-platform mobile development through real-world app builds, hands-on projects, and guidance from industry engineers.
+        - generic [ref=e32]:
+          - link [ref=e33] [cursor=pointer]:
+            - /url: https://courses.chaicode.com/learn/fast-checkout/265683?priceId=261676
+            - button "Enroll Now" [ref=e34]
+          - link [ref=e35] [cursor=pointer]:
+            - /url: /cohorts/mobile-dev#syllabus
+            - button "View Syllabus" [ref=e36]
+        - generic [ref=e38]:
+          - heading "Cohort is Live From" [level=2] [ref=e39]
+          - paragraph [ref=e40]: 2 May 2026 - 11:00 AM IST
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - generic [ref=e43]: "00"
+              - generic [ref=e44]: Days
+            - generic [ref=e45]: ":"
+            - generic [ref=e46]:
+              - generic [ref=e47]: "00"
+              - generic [ref=e48]: Hours
+            - generic [ref=e49]: ":"
+            - generic [ref=e50]:
+              - generic [ref=e51]: "00"
+              - generic [ref=e52]: Mins
+            - generic [ref=e53]: ":"
+            - generic [ref=e54]:
+              - generic [ref=e55]: "00"
+              - generic [ref=e56]: Secs
+          - paragraph [ref=e57]: Every Saturday & Sunday Live on Zoom.
+      - generic [ref=e59]:
+        - heading "What you'll Learn" [level=2] [ref=e60]
+        - paragraph [ref=e61]: Comprehensive curriculum designed to teach you how to build mobile apps that Ship to production and reach Millions of Users
+        - generic [ref=e63]:
+          - generic [ref=e65] [cursor=pointer]:
+            - generic [ref=e66]:
+              - heading "React JS Refresher" [level=2] [ref=e67]
+              - paragraph [ref=e68]: This phase strengthens your React foundation so you can transition smoothly into mobile development with confidence and clarity.
+            - generic [ref=e69]:
+              - generic [ref=e70]:
+                - heading "React Fundamentals" [level=3] [ref=e71]
+                - generic [ref=e72]:
+                  - generic [ref=e73]: What is React
+                  - generic [ref=e76]: SPA vs traditional websites
+                  - generic [ref=e79]: Component-based architecture
+                  - generic [ref=e82]: Virtual DOM fundamentals
+              - generic [ref=e85]:
+                - heading "Project Structure & Syntax" [level=3] [ref=e86]
+                - generic [ref=e87]:
+                  - generic [ref=e88]: Folder structure for scalable React apps
+                  - generic [ref=e91]: JSX fundamentals
+                  - generic [ref=e94]: Functional components
+                  - generic [ref=e97]: Props and component composition
+              - generic [ref=e100]:
+                - heading "Hooks & Forms" [level=3] [ref=e101]
+                - generic [ref=e102]:
+                  - generic [ref=e103]: useState, useEffect, useRef, useCallback
+                  - generic [ref=e106]: Event handling in React
+                  - generic [ref=e109]: Controlled vs uncontrolled inputs
+                  - generic [ref=e112]: Handling forms properly
+          - generic [ref=e118] [cursor=pointer]:
+            - generic [ref=e119]:
+              - heading "Getting Started with Expo" [level=2] [ref=e120]
+              - paragraph [ref=e121]: This phase introduces modern mobile development using React Native and Expo. You'll understand how cross-platform apps are structured and how the development workflow works when building applications that run on real devices.
+            - generic [ref=e123]:
+              - heading "Expo Basics" [level=3] [ref=e124]
+              - generic [ref=e125]:
+                - generic [ref=e126]: What is Mobile Development?
+                - generic [ref=e129]: What is React Native & Expo
+                - generic [ref=e132]: Environment setup & first Expo app
+                - generic [ref=e135]: Understanding project structure
+          - generic [ref=e141] [cursor=pointer]:
+            - generic [ref=e142]:
+              - heading "Core Components & Styling" [level=2] [ref=e143]
+              - paragraph [ref=e144]: Now that your environment is ready, this phase focuses on building mobile interfaces using core components and responsive styling techniques that adapt across devices and screen sizes.
+            - generic [ref=e145]:
+              - generic [ref=e146]:
+                - heading "Core Components" [level=3] [ref=e147]
+                - generic [ref=e148]:
+                  - generic [ref=e149]: View, Text, Image, TextInput
+                  - generic [ref=e152]: Pressable, ScrollView, Button, Switch
+                  - generic [ref=e155]: FlatList, KeyboardAvoidingView
+                  - generic [ref=e158]: ImageBackground, TouchableOpacity
+              - generic [ref=e161]:
+                - heading "Styling" [level=3] [ref=e162]
+                - generic [ref=e163]:
+                  - generic [ref=e164]: StyleSheet (Create, Compose, Flatten)
+                  - generic [ref=e167]: Responsive Design Techniques
+                  - generic [ref=e170]: useColorScheme (Dark/Light Mode)
+                  - generic [ref=e173]: useWindowDimensions
+          - generic [ref=e179] [cursor=pointer]:
+            - generic [ref=e180]:
+              - heading "Navigation with React Navigation" [level=2] [ref=e181]
+              - paragraph [ref=e182]: Mobile apps rely heavily on navigation flows. In this phase, you'll learn how real applications structure screen transitions and organize multi-screen experiences.
+            - generic [ref=e184]:
+              - heading "React Navigation" [level=3] [ref=e185]
+              - generic [ref=e186]:
+                - generic [ref=e187]: Setup & configuration
+                - generic [ref=e190]: Screen navigation
+                - generic [ref=e193]: Passing parameters
+                - generic [ref=e196]: Stack Navigation (customization)
+                - generic [ref=e199]: Bottom Tabs & Drawer Navigation
+          - generic [ref=e205] [cursor=pointer]:
+            - generic [ref=e206]:
+              - heading "Expo Router (Modern Routing)" [level=2] [ref=e207]
+              - paragraph [ref=e208]: This phase introduces file-based routing used in modern Expo applications and helps structure navigation in scalable and production-ready ways.
+            - generic [ref=e210]:
+              - heading "Expo Router" [level=3] [ref=e211]
+              - generic [ref=e212]:
+                - generic [ref=e213]: File-based routing fundamentals
+                - generic [ref=e216]: Static routes
+                - generic [ref=e219]: Dynamic routes [id]
+                - generic [ref=e222]: Groups (auth)
+                - generic [ref=e225]: _layout.tsx and nested layouts
+                - generic [ref=e228]: +not-found
+                - generic [ref=e231]: +middleware
+                - generic [ref=e234]: Protected routes & stacks
+                - generic [ref=e237]: Tabs (JS, Native, Custom)
+                - generic [ref=e240]: Drawer Navigation
+                - generic [ref=e243]: Splash Screens & App Icons
+          - generic [ref=e249] [cursor=pointer]:
+            - generic [ref=e250]:
+              - heading "Networking & Backend Integration" [level=2] [ref=e251]
+              - paragraph [ref=e252]: Now that your application structure is ready, this phase connects your mobile app with backend services and teaches how real applications exchange data with servers.
+            - generic [ref=e254]:
+              - heading "API & Backend" [level=3] [ref=e255]
+              - generic [ref=e256]:
+                - generic [ref=e257]: API fundamentals
+                - generic [ref=e260]: Creating API routes
+                - generic [ref=e263]: CRUD operations (GET, POST, PUT, PATCH, DELETE)
+                - generic [ref=e266]: Connecting frontend to backend
+                - generic [ref=e269]: Database integration basics
+          - generic [ref=e275] [cursor=pointer]:
+            - generic [ref=e276]:
+              - heading "Data Storage & Offline Support" [level=2] [ref=e277]
+              - paragraph [ref=e278]: Real mobile apps must work even without internet. This phase introduces local storage systems and secure device-level persistence techniques.
+            - generic [ref=e280]:
+              - heading "Storage Options" [level=3] [ref=e281]
+              - generic [ref=e282]:
+                - generic [ref=e283]: AsyncStorage
+                - generic [ref=e286]: SecureStore (secure data handling)
+                - generic [ref=e289]: SQLite (local database)
+                - generic [ref=e292]: FileSystem (file handling)
+          - generic [ref=e298] [cursor=pointer]:
+            - generic [ref=e299]:
+              - heading "Sensors & Motion" [level=2] [ref=e300]
+              - paragraph [ref=e301]: This phase explores device hardware capabilities that make mobile apps interactive and context-aware.
+            - generic [ref=e303]:
+              - heading "Expo Sensors" [level=3] [ref=e304]
+              - generic [ref=e305]:
+                - generic [ref=e306]: Expo Sensors overview
+                - generic [ref=e309]: Accelerometer → Tilt-based game
+                - generic [ref=e312]: Gyroscope → 3D Card Effect
+                - generic [ref=e315]: Magnetometer → Compass App
+                - generic [ref=e318]: Light Sensor → Auto Theme Switcher
+                - generic [ref=e321]: Pedometer → Step Counter
+                - generic [ref=e324]: DeviceMotion → Shake Detection
+          - generic [ref=e330] [cursor=pointer]:
+            - generic [ref=e331]:
+              - heading "Camera, Media & Audio" [level=2] [ref=e332]
+              - paragraph [ref=e333]: Mobile devices provide powerful media capabilities. In this phase, you'll integrate camera, audio and media features into real applications.
+            - generic [ref=e335]:
+              - heading "Media APIs" [level=3] [ref=e336]
+              - generic [ref=e337]:
+                - generic [ref=e338]: Expo Camera
+                - generic [ref=e341]: Audio recording & playback
+                - generic [ref=e344]: Media Library
+          - generic [ref=e350] [cursor=pointer]:
+            - generic [ref=e351]:
+              - heading "Device & System APIs" [level=2] [ref=e352]
+              - paragraph [ref=e353]: This phase introduces deeper integrations with system-level APIs that enable richer application behavior.
+            - generic [ref=e355]:
+              - heading "System APIs" [level=3] [ref=e356]
+              - generic [ref=e357]:
+                - generic [ref=e358]: Location (expo-location)
+                - generic [ref=e361]: Network state (expo-network)
+                - generic [ref=e364]: Battery status (expo-battery)
+                - generic [ref=e367]: Haptics (expo-haptics)
+                - generic [ref=e370]: File handling (document picker)
+                - generic [ref=e373]: Contacts access
+          - generic [ref=e379] [cursor=pointer]:
+            - generic [ref=e380]:
+              - heading "Expo Application Services (EAS)" [level=2] [ref=e381]
+              - paragraph [ref=e382]: Now that apps are feature-complete, this phase prepares them for real-device testing and production build workflows.
+            - generic [ref=e384]:
+              - heading "EAS" [level=3] [ref=e385]
+              - generic [ref=e386]:
+                - generic [ref=e387]: What is EAS & why it matters
+                - generic [ref=e390]: Expo Go vs Dev Builds
+                - generic [ref=e393]: Creating custom dev builds
+                - generic [ref=e396]: Running builds on real devices
+                - generic [ref=e399]: Managing multiple app variants
+          - generic [ref=e405] [cursor=pointer]:
+            - generic [ref=e406]:
+              - heading "Background Tasks & Deep Linking" [level=2] [ref=e407]
+              - paragraph [ref=e408]: Modern mobile apps often perform work outside the visible UI. This phase introduces background processing and deep linking workflows used in production apps.
+            - generic [ref=e410]:
+              - heading "Background & Linking" [level=3] [ref=e411]
+              - generic [ref=e412]:
+                - generic [ref=e413]: Background tasks (headless execution)
+                - generic [ref=e416]: Scheduling background work
+                - generic [ref=e419]: Deep linking (URL-based navigation)
+                - generic [ref=e422]: Universal links
+          - generic [ref=e428] [cursor=pointer]:
+            - generic [ref=e429]:
+              - heading "Notifications" [level=2] [ref=e430]
+              - paragraph [ref=e431]: User engagement depends heavily on notifications. This phase teaches how mobile apps communicate with users across different app states.
+            - generic [ref=e433]:
+              - heading "Notifications" [level=3] [ref=e434]
+              - generic [ref=e435]:
+                - generic [ref=e436]: Setup & configuration
+                - generic [ref=e439]: Push tokens
+                - generic [ref=e442]: Permissions handling
+                - generic [ref=e445]: Notification listeners
+                - generic [ref=e448]: Custom sounds & icons
+                - generic [ref=e451]: Background notifications
+                - generic [ref=e454]: Local notifications scheduling
+          - generic [ref=e460] [cursor=pointer]:
+            - generic [ref=e461]:
+              - heading "Authentication" [level=2] [ref=e462]
+              - paragraph [ref=e463]: Secure access control is a core requirement of most applications. This phase introduces authentication flows used in modern mobile apps.
+            - generic [ref=e465]:
+              - heading "Auth" [level=3] [ref=e466]
+              - generic [ref=e467]:
+                - generic [ref=e468]: Auth flow & protected routes
+                - generic [ref=e471]: Email/password authentication
+                - generic [ref=e474]: Google OAuth
+                - generic [ref=e477]: GitHub OAuth
+                - generic [ref=e480]: Clerk Authentication
+          - generic [ref=e486] [cursor=pointer]:
+            - generic [ref=e487]:
+              - heading "Weather App" [level=2] [ref=e488]
+              - paragraph [ref=e489]: This project introduces real-world API integration, location-aware experiences and smooth UI interactions commonly used in modern mobile applications.
+            - generic [ref=e491]:
+              - heading "Features" [level=3] [ref=e492]
+              - generic [ref=e493]:
+                - generic [ref=e494]: Location-based weather
+                - generic [ref=e497]: 7-day forecast
+                - generic [ref=e500]: Weather alerts
+                - generic [ref=e503]: Offline caching
+                - generic [ref=e506]: Smooth animations
+          - generic [ref=e512] [cursor=pointer]:
+            - generic [ref=e513]:
+              - heading "Wallpaper App" [level=2] [ref=e514]
+              - paragraph [ref=e515]: This project focuses on performance-heavy UI rendering, scalable list handling and building polished user-facing experiences.
+            - generic [ref=e517]:
+              - heading "Features" [level=3] [ref=e518]
+              - generic [ref=e519]:
+                - generic [ref=e520]: Image grid & categories
+                - generic [ref=e523]: Search functionality
+                - generic [ref=e526]: Infinite scroll
+                - generic [ref=e529]: Download & save
+                - generic [ref=e532]: Favorites system
+                - generic [ref=e535]: Image caching optimization
+          - generic [ref=e541] [cursor=pointer]:
+            - generic [ref=e542]:
+              - heading "AI Study Assistant" [level=2] [ref=e543]
+              - paragraph [ref=e544]: This project introduces AI-powered workflows along with production-grade monetization patterns used in modern mobile applications.
+            - generic [ref=e545]:
+              - generic [ref=e546]:
+                - heading "Core Features" [level=3] [ref=e547]
+                - generic [ref=e548]:
+                  - generic [ref=e549]: Upload PDFs / notes
+                  - generic [ref=e552]: AI summarization
+                  - generic [ref=e555]: Flashcard generation
+                  - generic [ref=e558]: Offline support
+              - generic [ref=e561]:
+                - heading "Monetization with RevenueCat" [level=3] [ref=e562]
+                - generic [ref=e563]:
+                  - generic [ref=e564]: Introduction to in-app purchases
+                  - generic [ref=e567]: Subscriptions vs one-time payments
+                  - generic [ref=e570]: RevenueCat setup & dashboard
+                  - generic [ref=e573]: Creating products & entitlements
+                  - generic [ref=e576]: Implementing paywall UI
+                  - generic [ref=e579]: Unlocking premium features
+                  - generic [ref=e582]: Restore purchases & subscription handling
+              - generic [ref=e585]:
+                - heading "Deployment & Production Workflows" [level=3] [ref=e586]
+                - generic [ref=e587]:
+                  - generic [ref=e588]: EAS Build (APK/AAB)
+                  - generic [ref=e591]: Play Store upload
+                  - generic [ref=e594]: App listing (title, description, assets)
+                  - generic [ref=e597]: Versioning strategy
+                  - generic [ref=e600]: OTA Updates (Expo Updates)
+          - generic [ref=e606] [cursor=pointer]:
+            - generic [ref=e607]:
+              - heading "Jarvis AI Agent" [level=2] [ref=e608]
+              - paragraph [ref=e609]: This final project explores voice-enabled conversational assistants and real-time interaction systems powered by modern AI workflows.
+            - generic [ref=e611]:
+              - heading "Features" [level=3] [ref=e612]
+              - generic [ref=e613]:
+                - generic [ref=e614]: Voice interaction (ElevenLabs)
+                - generic [ref=e617]: AI conversational assistant
+                - generic [ref=e620]: Task automation
+                - generic [ref=e623]: Context-aware responses
+                - generic [ref=e626]: Real-time interaction UI
+          - generic [ref=e632] [cursor=pointer]:
+            - generic [ref=e633]:
+              - heading "Bonus" [level=2] [ref=e634]
+              - paragraph [ref=e635]: Extra rewards and community events throughout the cohort to keep you engaged, motivated, and connected with fellow learners.
+            - generic [ref=e637]:
+              - heading "Perks" [level=3] [ref=e638]
+              - generic [ref=e639]:
+                - generic [ref=e640]: Bounties
+                - generic [ref=e643]: Giveaways
+                - generic [ref=e646]: Hackathons
+                - generic [ref=e649]: Hands-on Workshops
+                - generic [ref=e652]: Live Interactive Quizzes
+      - generic [ref=e655]:
+        - heading "Meet your Instructors" [level=2] [ref=e656]
+        - paragraph [ref=e657]:
+          - text: Learn from Industry Veterans and Guest Experts who bring real-world experience
+          - generic [ref=e658]: to the classroom. Our instructors are passionate about teaching and committed to your success
+          - text: .
+        - generic [ref=e659]:
+          - generic [ref=e660]:
+            - generic [ref=e661]:
+              - button "View Hitesh Choudhary" [ref=e662] [cursor=pointer]:
+                - img "Hitesh Choudhary profile" [ref=e663]
+              - button "View Suraj Jha" [ref=e664] [cursor=pointer]:
+                - img "Suraj Jha profile" [ref=e665]
+            - generic [ref=e666]:
+              - heading "Hitesh Choudhary" [level=2] [ref=e667]
+              - paragraph [ref=e668]: My hallmark is making the toughest topics easy to understand, a skill that has earned me a dedicated following. I am committed to educating and inspiring a diverse audience worldwide, making complex subjects accessible and engaging.
+              - generic [ref=e669]:
+                - link "Youtube" [ref=e670] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@chaiaurcode
+                - link "LinkedIn Profile" [ref=e673] [cursor=pointer]:
+                  - /url: http://linkedin.com/in/hiteshchoudhary
+                - link "X Profile" [ref=e676] [cursor=pointer]:
+                  - /url: https://x.com/hiteshdotcom
+                - link "Website" [ref=e679] [cursor=pointer]:
+                  - /url: https://hitesh.ai
+          - generic [ref=e687] [cursor=pointer]:
+            - generic [ref=e688]: a
+            - generic [ref=e690]:
+              - img "Hitesh Choudhary"
+            - generic [ref=e692]:
+              - img "Hitesh Choudhary logo" [ref=e693]
+              - paragraph [ref=e694]: Lead Instructor
+      - generic [ref=e696]:
+        - heading "Get Certified" [level=2] [ref=e697]
+        - paragraph [ref=e698]: Certification awarded upon successful Course Completion and Final Evaluation.
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - img "Sample ChaiCode course completion certificate"
+      - generic [ref=e700]:
+        - heading "Learn Anywhere" [level=2] [ref=e701]
+        - paragraph [ref=e702]: Learn at your own pace, track your progress, and never miss an update.Access courses, join live sessions, and connect with the community, right from the ChaiCode Mobile App.
+        - generic [ref=e704]:
+          - link "App Store" [ref=e705] [cursor=pointer]:
+            - /url: https://apps.apple.com/in/app/chaicode/id6504993143
+          - link "Google Play" [ref=e710] [cursor=pointer]:
+            - /url: https://play.google.com/store/apps/details?id=com.chaicode.courses&pcampaignid=web_share
+        - generic:
+          - img "Chaicode App"
+      - heading "Frequently asked Questions" [level=2] [ref=e715]
+      - generic [ref=e717]:
+        - button "Language and Prerequisites?" [ref=e719] [cursor=pointer]
+        - button "Will I get recordings if I miss a class?" [ref=e722] [cursor=pointer]
+        - button "What are the class timings?" [ref=e725] [cursor=pointer]
+        - button "How long will I have access to the course content?" [ref=e728] [cursor=pointer]
+        - button "What is MasterJi and community?" [ref=e731] [cursor=pointer]
+        - button "Is this course job-guaranteed?" [ref=e734] [cursor=pointer]
+        - button "How many devices can I access the course on?" [ref=e737] [cursor=pointer]
+        - button "What payment methods are supported?" [ref=e740] [cursor=pointer]
+        - button "Are loan & EMI options available?" [ref=e743] [cursor=pointer]
+        - button "What is the refund policy?" [ref=e746] [cursor=pointer]
+      - paragraph [ref=e748]:
+        - text: Still have questions..? Mail us at
+        - link "team@chaicode.com" [ref=e749] [cursor=pointer]:
+          - /url: mailto:team@chaicode.com
+      - generic [ref=e756]:
+        - heading "Build Apps That Actually Ship." [level=2] [ref=e757]
+        - paragraph [ref=e758]: Go beyond concepts with hands-on workflows used in modern production mobile apps.
+        - link [ref=e760] [cursor=pointer]:
+          - /url: https://courses.chaicode.com/learn/fast-checkout/265683?priceId=261676
+          - button "Enroll Now" [ref=e761]
+  - generic [ref=e764]:
+    - generic [ref=e765]:
+      - generic [ref=e766]:
+        - link "ChaiCode home" [ref=e768] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e781]: Home for Programmers
+      - generic [ref=e782]:
+        - paragraph [ref=e783]: © 2026 ChaiCode.
+        - paragraph [ref=e784]: All rights reserved.
+    - generic [ref=e785]:
+      - generic [ref=e786]:
+        - generic [ref=e787]: Products
+        - list [ref=e788]:
+          - listitem [ref=e789]:
+            - link "Courses" [ref=e790] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn
+          - listitem [ref=e791]:
+            - link "Cohorts" [ref=e792] [cursor=pointer]:
+              - /url: https://courses.chaicode.com/learn/view-all?show=batch&type=17
+          - listitem [ref=e793]:
+            - link "MasterJi" [ref=e794] [cursor=pointer]:
+              - /url: https://masterji.co
+          - listitem [ref=e795]:
+            - link "FreeAPI" [ref=e796] [cursor=pointer]:
+              - /url: https://freeapi.app/
+          - listitem [ref=e797]:
+            - link "More..." [ref=e798] [cursor=pointer]:
+              - /url: /products
+      - generic [ref=e799]:
+        - generic [ref=e800]: Resources
+        - list [ref=e801]:
+          - listitem [ref=e802]:
+            - link "Docs" [ref=e803] [cursor=pointer]:
+              - /url: https://docs.chaicode.com
+          - listitem [ref=e804]:
+            - link "Privacy Policy" [ref=e805] [cursor=pointer]:
+              - /url: /privacy-policy
+          - listitem [ref=e806]:
+            - link "Terms of Service" [ref=e807] [cursor=pointer]:
+              - /url: /terms-of-service
+          - listitem [ref=e808]:
+            - link "Pricing Policy" [ref=e809] [cursor=pointer]:
+              - /url: /pricing-policy
+          - listitem [ref=e810]:
+            - link "Refund Policy" [ref=e811] [cursor=pointer]:
+              - /url: /Refund-policy
+      - generic [ref=e812]:
+        - generic [ref=e813]: Social
+        - list [ref=e814]:
+          - listitem [ref=e815]:
+            - link "x.com" [ref=e816] [cursor=pointer]:
+              - /url: https://x.com/ChaiCodeHQ
+          - listitem [ref=e819]:
+            - link "Discord" [ref=e820] [cursor=pointer]:
+              - /url: https://hitesh.ai/discord
+          - listitem [ref=e823]:
+            - link "GitHub" [ref=e824] [cursor=pointer]:
+              - /url: https://github.com/hiteshchoudhary
+          - listitem [ref=e827]:
+            - link "Youtube Hindi" [ref=e828] [cursor=pointer]:
+              - /url: https://www.youtube.com/@chaiaurcode
+          - listitem [ref=e831]:
+            - link "LinkedIn" [ref=e832] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/chaicodehq/
+          - listitem [ref=e835]:
+            - link "Youtube English" [ref=e836] [cursor=pointer]:
+              - /url: https://www.youtube.com/@hiteshcodelab
+          - listitem [ref=e839]:
+            - link "Instagram" [ref=e840] [cursor=pointer]:
+              - /url: https://www.instagram.com/hiteshchoudharyofficial
+          - listitem [ref=e843]:
+            - link "Chai Aur Clips" [ref=e844] [cursor=pointer]:
+              - /url: https://www.youtube.com/@ChaiCodeClips
