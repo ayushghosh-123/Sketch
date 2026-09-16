@@ -156,7 +156,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
             Project Documents & Vector Corpus
           </h2>
           <p className="text-xs text-[#a1a1aa] mt-1 font-sans">
-            Ingest PRDs, architecture RFCs, API specifications, and security policies for semantic retrieval during AI synthesis.
+            Ingest PRDs, architecture RFCs, API specifications, and visual diagrams/sketches for semantic retrieval during AI synthesis.
           </p>
         </div>
 
@@ -165,7 +165,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
             type="file"
             ref={fileInputRef}
             onChange={handleFileUpload}
-            accept=".pdf,.docx,.txt,.md,.json"
+            accept=".pdf,.docx,.txt,.md,.json,.png,.jpg,.jpeg,.webp,.svg,.gif,image/*"
             className="hidden"
           />
           <Button
@@ -181,7 +181,7 @@ export function DocumentManagerView({ projectId }: DocumentManagerViewProps) {
             ) : (
               <>
                 <Upload className="h-3.5 w-3.5 mr-1.5" />
-                Upload Specification
+                Upload File or Image
               </>
             )}
           </Button>

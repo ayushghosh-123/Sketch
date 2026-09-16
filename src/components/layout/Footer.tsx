@@ -41,45 +41,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* PRODUCTS COLUMN (2.5 cols) */}
-        <div className="lg:col-span-2 sm:col-span-1 space-y-3">
-          <h3 className="text-xs font-semibold text-white tracking-wider uppercase font-mono">
-            Products
-          </h3>
-          <ul className="space-y-2.5 text-xs text-[#a1a1aa]">
-            <li>
-              <Link href="/workspace/demo-project-e-commerce" className="hover:text-white transition-colors">
-                System Canvas
-              </Link>
-            </li>
-            <li>
-              <Link href="/projects" className="hover:text-white transition-colors">
-                Architecture Registry
-              </Link>
-            </li>
-            <li>
-              <Link href="/#workflow" className="hover:text-white transition-colors">
-                Decision Engine
-              </Link>
-            </li>
-            <li>
-              <Link href="/#how-it-works" className="hover:text-white transition-colors">
-                Autonomous Research
-              </Link>
-            </li>
-            <li>
-              <Link href="/#impact-preview" className="hover:text-white transition-colors">
-                Blast Radius Radar
-              </Link>
-            </li>
-            <li>
-              <Link href="/dashboard" className="text-[#f97316] hover:text-[#fb923c] transition-colors flex items-center gap-1">
-                Command Center →
-              </Link>
-            </li>
-          </ul>
-        </div>
-
         {/* RESOURCES COLUMN (2.5 cols) */}
         <div className="lg:col-span-2 sm:col-span-1 space-y-3">
           <h3 className="text-xs font-semibold text-white tracking-wider uppercase font-mono">

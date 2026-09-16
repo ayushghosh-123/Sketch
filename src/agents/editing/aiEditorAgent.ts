@@ -47,7 +47,7 @@ Identify:
 
 Return valid JSON conforming to:
 {
-  "command": "${input.command}",
+  "command": ${JSON.stringify(input.command)},
   "summary": string,
   "riskLevel": "low" | "medium" | "high",
   "add": [

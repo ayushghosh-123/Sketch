@@ -3,24 +3,38 @@ import { ArchitectureService } from "@/services/architectureService";
 import { ProjectService } from "@/services/projectService";
 import { runAIEditorAgent } from "@/agents/editing/aiEditorAgent";
 import { AgentLogger } from "@/lib/logger/agentLogger";
+import { rateLimit, getClientIp } from "@/lib/security/rateLimiter";
+import { sanitizePromptInput } from "@/lib/security/sanitizer";
 import type { ArchitectureGraphData, ComponentType } from "@/types/database";
 
 export async function POST(
   request: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
+  // Rate limit: 20 edit requests per minute per IP
+  const clientIp = getClientIp(request);
+  const limitResult = rateLimit(`arch_edit:${clientIp}`, { limit: 20, windowMs: 60 * 1000 });
+  if (!limitResult.success) {
+    return NextResponse.json(
+      { success: false, error: "Too many edit requests. Please wait a moment." },
+      { status: 429 }
+    );
+  }
+
   const { id: projectId } = await props.params;
 
   try {
     const body = await request.json();
-    const { command, apply = false } = body;
+    const { command: rawCommand, apply = false } = body;
 
-    if (!command || typeof command !== "string") {
+    if (!rawCommand || typeof rawCommand !== "string" || !rawCommand.trim()) {
       return NextResponse.json(
         { success: false, error: "Command is required." },
         { status: 400 }
       );
     }
+
+    const command = sanitizePromptInput(rawCommand.trim(), 1000);
 
     AgentLogger.banner("API /architecture/edit TRIGGERED", {
       projectId,

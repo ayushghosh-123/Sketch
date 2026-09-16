@@ -142,10 +142,6 @@ export function ComponentDetails({ projectId, projectName = "Software System" }:
               ))}
             </div>
           </div>
-
-          <div className="p-3 rounded-xl bg-[#18181b] border border-white/10 text-[11px] text-[#71717a] leading-relaxed">
-            💡 Click any component or connection line to inspect attributes, change colors, or test change blast radiuses.
-          </div>
         </div>
       </div>
     );

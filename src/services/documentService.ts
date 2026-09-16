@@ -1,4 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sanitizeFileName } from "@/lib/security/sanitizer";
 import { DocumentParser } from "./documentParser";
 import { ChunkingService } from "./chunkingService";
 import { EmbeddingService } from "./embeddingService";
@@ -97,7 +98,8 @@ export class DocumentService {
     fileType: string;
     fileSize: number;
   }): Promise<DocumentRecord> {
-    const filePath = `${projectId}/${Date.now()}-${fileName}`;
+    const cleanFileName = sanitizeFileName(fileName);
+    const filePath = `${projectId}/${Date.now()}-${cleanFileName}`;
 
     if (!this.isConfigured() || projectId.startsWith("demo-")) {
       // Demo processing
@@ -106,7 +108,7 @@ export class DocumentService {
         id: docId,
         project_id: projectId,
         user_id: userId,
-        file_name: fileName,
+        file_name: cleanFileName,
         file_path: filePath,
         file_type: fileType,
         file_size: fileSize,
@@ -157,7 +159,7 @@ export class DocumentService {
       .insert({
         project_id: projectId,
         user_id: userId,
-        file_name: fileName,
+        file_name: cleanFileName,
         file_path: filePath,
         file_type: fileType,
         file_size: fileSize,

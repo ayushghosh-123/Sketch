@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { DocumentService } from "@/services/documentService";
 import { createClient } from "@/lib/supabase/server";
+import { validateDocumentFile } from "@/lib/security/sanitizer";
+import { rateLimit, getClientIp } from "@/lib/security/rateLimiter";
 
 export async function GET(
   _request: NextRequest,
@@ -21,6 +23,15 @@ export async function POST(
   props: { params: Promise<{ id: string }> }
 ) {
   try {
+    const clientIp = getClientIp(request);
+    const limitResult = rateLimit(`doc_upload:${clientIp}`, { limit: 20, windowMs: 60 * 1000 });
+    if (!limitResult.success) {
+      return NextResponse.json(
+        { success: false, error: "Too many document uploads. Please wait a minute." },
+        { status: 429 }
+      );
+    }
+
     const { id: projectId } = await props.params;
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
@@ -32,6 +43,14 @@ export async function POST(
     if (!file) {
       return NextResponse.json(
         { success: false, error: "No file provided" },
+        { status: 400 }
+      );
+    }
+
+    const fileValidation = validateDocumentFile(file);
+    if (!fileValidation.valid) {
+      return NextResponse.json(
+        { success: false, error: fileValidation.error },
         { status: 400 }
       );
     }

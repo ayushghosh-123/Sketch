@@ -3,11 +3,25 @@ import { ProjectService } from "@/services/projectService";
 import { DocumentService } from "@/services/documentService";
 import { runArchitectureWorkflow } from "@/lib/langgraph/workflow";
 import { AgentLogger } from "@/lib/logger/agentLogger";
+import { rateLimit, getClientIp } from "@/lib/security/rateLimiter";
 
 export async function POST(
   request: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
+  // Rate limit: 10 generation workflows per minute per IP to protect LLM quota
+  const clientIp = getClientIp(request);
+  const limitResult = rateLimit(`arch_generate:${clientIp}`, { limit: 10, windowMs: 60 * 1000 });
+  if (!limitResult.success) {
+    return new Response(
+      JSON.stringify({ error: "Too many architecture generation requests. Please wait a minute." }),
+      {
+        status: 429,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
   const { id: projectId } = await props.params;
   const projectData = await ProjectService.getProjectById(projectId);
 

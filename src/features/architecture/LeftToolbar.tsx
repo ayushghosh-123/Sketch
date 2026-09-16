@@ -35,8 +35,6 @@ export function LeftToolbar() {
     { id: "rectangle", label: "Rectangle Box (Click canvas to place)", icon: Square },
     { id: "circle", label: "Circle Boundary (Click canvas to place)", icon: Circle },
     { id: "text", label: "Text Note (Click canvas to place)", icon: Type },
-    { id: "line", label: "Straight Line (Click 2 nodes)", icon: Minus },
-    { id: "arrow", label: "Arrow (Click 2 nodes)", icon: MoveRight },
     { id: "connector", label: "Bus Connector (Click 2 nodes)", icon: Network },
   ];
 

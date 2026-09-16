@@ -1,4 +1,4 @@
-# AGENTARCHITECT ◈
+# Sketch ◈
 
 > **Autonomous AI Software Architecture Studio & Engineering Command Center**  
 > *Build the system before the code.*
@@ -17,7 +17,7 @@
 
 ## 1. Executive Summary
 
-**AgentArchitect** (also known as **Sketch**) is a software architecture studio and developer command center. Instead of generating ungrounded, hallucinated code snippets from generic chatbots, AgentArchitect models complex software specifications step-by-step into verifiable system architectures, directed dependency graphs (DAG), failure blast radius simulations, and transparent Architecture Decision Records (ADRs).
+**Sketch** is a software architecture studio and developer command center. Instead of generating ungrounded, hallucinated code snippets from generic chatbots, Sketch models complex software specifications step-by-step into verifiable system architectures, directed dependency graphs (DAG), failure blast radius simulations, and transparent Architecture Decision Records (ADRs).
 
 ```
 ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
@@ -64,13 +64,23 @@ Multi-step architecture synthesis with formal Zod schema boundaries at every tra
   - `○ INDIRECT CASCADE (Distance ≥ 2)`: Downstream ripple failures, data pipeline breakage, or schema desynchronization.
 - **AI Mitigation Engine**: Generates zero-downtime transition playbooks (dual-schema write windows, circuit breakers, adapter layers).
 
-### 📚 4. Document Knowledge Registry & pgvector RAG
-- **5-Step Continuous Ingestion Pipeline**:
-  `Upload ──► Text Normalization ──► Semantic Chunks (500 tokens / 50 overlap) ──► 768-dim Embeddings ──► pgvector Index`
-- **Multi-Format Ingestion**: Supports `.pdf`, `.docx`, `.md`, `.txt`, and `.json`.
-- **Grounded AI Architect Workbench**: Chat assistant with source chunk citations, architectural recommendations, and direct graph mutation proposals.
+### 📸 4. Multimodal Vision RAG & Knowledge Registry
+- **6-Step Continuous Multimodal Ingestion Pipeline**:
+  `Upload / Paste ──► Vision Analysis (Gemini/Groq) ──► Text Normalization ──► Semantic Chunks (500 tokens / 50 overlap) ──► 768-dim Embeddings ──► pgvector Index`
+- **Multi-Format Technical Documents**: Supports `.pdf`, `.docx`, `.md`, `.txt`, and `.json`.
+- **Architecture Diagram & Sketch Understanding**: Native multimodal vision analysis for `.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`, and `.gif`. Vision models extract component entities, directional flows, databases, message queues, and API gateways into structured requirements.
+- **Grounded AI Architect Workbench**: Chat assistant with source chunk citations, visual blueprint references, and direct graph mutation proposals.
 
-### 🌿 5. Immutable Version History & Side-by-Side Diff Engine
+### 💬 5. ChatGPT-Style Multimodal Command Input
+- **Unified Dual Attachment Interface**: Simultaneous support for technical specifications and architecture diagrams.
+- **Direct Clipboard Screenshot Paste (`Ctrl+V`)**: Paste screenshot snippets from system snipping tools directly into the prompt box without saving to disk.
+- **Full-Surface Drag & Drop**: Drop diagrams and specifications directly into the input area.
+- **In-Box Thumbnail Previews & Lightbox**:
+  - Image thumbnails with hover removal (`X`) and click-to-zoom modal lightbox inspection.
+  - Document metadata chips with format badge and file size.
+- **Human-Centric Design & Keyboard Accelerators**: Soft ambient lighting, quiet typography, tactile surfaces, and `Ctrl + Enter` (or `Cmd + Enter`) trigger shortcut.
+
+### 🌿 6. Immutable Version History & Side-by-Side Diff Engine
 - **Git-Style Timeline**: Vertical commit history showing tagged architecture snapshots, author tags, and commit hashes.
 - **Visual Architectural Diffing**:
   - `+ ADDED`: Newly provisioned nodes highlighted in green.
@@ -79,7 +89,7 @@ Multi-step architecture synthesis with formal Zod schema boundaries at every tra
   - `= UNCHANGED`: Stable foundational nodes.
 - **One-Click Restore**: Instant rollback of the active workspace canvas to any previous snapshot.
 
-### ⚖️ 6. Architecture Decision Records (ADRs) & "Explain Simply" Mode
+### ⚖️ 7. Architecture Decision Records (ADRs) & "Explain Simply" Mode
 - **Transparent Rationale**: Every chosen technology or pattern includes architectural justification, evaluated alternatives, and trade-offs.
 - **Dual Explanation Switch**: Single-click toggle between technical engineering specifications and plain-English executive summaries.
 
@@ -114,10 +124,12 @@ The application features the unified **ChaiCode** design system across every pag
 | **Canvas Engine** | [@xyflow/react](https://reactflow.dev/) | High-performance interactive node-graph visualizer |
 | **Graph Layout** | [Dagre](https://github.com/dagrejs/dagre) | Directed graph layout engine for automatic node positioning |
 | **AI Multi-Agent** | [LangGraph.js](https://langchain-ai.github.io/langgraphjs/) | Stateful autonomous multi-actor workflow orchestration |
-| **LLM & Embeddings**| [Google Gemini](https://ai.google.dev/) | `gemini-1.5-flash`, `gemini-1.5-pro`, and `text-embedding-004` |
+| **LLM & Embeddings**| [Google Gemini](https://ai.google.dev/) & [Groq](https://groq.com/) | `gemini-1.5-flash`, `gemini-1.5-pro`, `llama-3.2-11b-vision-preview`, and `text-embedding-004` |
+| **Multimodal Vision**| Gemini 1.5 Flash & Groq Llama 3.2 Vision | Architecture diagram, whiteboard sketch, and UI mockup structural understanding |
 | **Database & Vector**| [Supabase PostgreSQL + pgvector](https://supabase.com/) | 768-dimensional cosine vector search and transactional relational data |
 | **Authentication** | [Clerk](https://clerk.com/) | Passwordless Email OTP & Secure Password authentication |
 | **Client State** | [Zustand](https://zustand-demo.pmnd.rs/) | Lightweight reactive state stores for canvas, nodes, and edges |
+| **Rate Limiter** | Sliding-Window Token Engine | Per-client IP sliding-window rate limiting on LLM and ingestion routes |
 | **Icons** | [Lucide React](https://lucide.dev/) | Clean, modern technical interface glyphs |
 
 ---
@@ -264,7 +276,7 @@ D:/Sketch/
 | `/api/projects/[id]/architecture` | `PUT` | Persist modified graph topology from React Flow canvas |
 | `/api/projects/[id]/architecture/generate` | `POST` | Execute multi-agent autonomous synthesis (SSE stream) |
 | `/api/projects/[id]/documents` | `GET` | List ingested specifications and vector status |
-| `/api/projects/[id]/documents` | `POST` | Upload and chunk PDF/DOCX/MD into 768-dim pgvector store |
+| `/api/projects/[id]/documents` | `POST` | Upload and chunk technical specs (PDF/DOCX/MD/JSON) and visual architecture diagrams (PNG/JPG/WEBP/SVG) with vision extraction into 768-dim pgvector store |
 | `/api/projects/[id]/documents/[docId]` | `DELETE` | Remove document and purge vector embeddings |
 | `/api/projects/[id]/impact-analysis` | `POST` | Execute BFS graph traversal to calculate blast radius |
 | `/api/projects/[id]/chat` | `POST` | Context-grounded RAG query against project corpus (SSE stream) |
@@ -274,7 +286,33 @@ D:/Sketch/
 
 ---
 
-## 9. Contributing & License
+## 9. Security & Hardening Controls
+
+Comprehensive security defenses and hardening layers are implemented across the stack (detailed in [`SECURITY.md`](SECURITY.md)):
+
+### 🛡️ Security Controls Implemented
+* **HTTP Security Headers** ([`next.config.ts`](next.config.ts)): Full suite of browser protections including `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy`, `X-XSS-Protection`, and `Strict-Transport-Security` (HSTS).
+* **AI API Rate Limiting & Denial-of-Wallet (DoW) Protection** ([`src/lib/security/rateLimiter.ts`](src/lib/security/rateLimiter.ts)): Sliding-window token rate limiting per IP on expensive endpoints (`/chat` capped at 30 req/min, `/architecture/generate` at 10 req/min, `/architecture/edit` at 20 req/min, and `/documents` at 20 uploads/min).
+* **File Upload & Path Traversal Defense** ([`src/lib/security/sanitizer.ts`](src/lib/security/sanitizer.ts), [`src/services/documentService.ts`](src/services/documentService.ts)):
+  * 10MB maximum file size barrier.
+  * Strict file extension and MIME whitelist for technical specifications (`.pdf`, `.docx`, `.txt`, `.md`, `.json`) and visual architecture diagrams (`.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`, `.gif`).
+  * Deep filename sanitization stripping `../` path traversal sequences, null bytes, and control characters before writing to Supabase storage.
+* **Prompt Injection Defense & Context Insulation** ([`src/app/api/projects/[id]/chat/route.ts`](src/app/api/projects/[id]/chat/route.ts), [`src/agents/editing/aiEditorAgent.ts`](src/agents/editing/aiEditorAgent.ts)):
+  * Query length capping and null-byte stripping.
+  * Retrieved document chunks wrapped in `<untrusted_retrieved_context>` tags with explicit model instructions to ignore prompt overrides inside reference text.
+  * Safe JSON encoding for AI architecture editor prompts.
+* **Open Redirect Protection** ([`src/app/auth/callback/route.ts`](src/app/auth/callback/route.ts)): Strict relative-path validation on the `next` post-authentication parameter to stop malicious redirects.
+
+### ⚠️ Constraints & Areas Kept Unmodified
+In accordance with project constraints:
+1. **Database Schema & Models**: [`supabase/schema.sql`](supabase/schema.sql) was **not modified**.
+2. **Environment Variables**: `.env` and `.env.local` files were **not modified**.
+3. **Route Structure & Route Issues**: Existing route paths and route handler structure (including `proxy.ts`) were **not modified**.
+4. **Existing Errors**: Pre-existing application logic and error flows were preserved.
+
+---
+
+## 10. Contributing & License
 
 Contributions are welcome from system architects, distributed systems engineers, and AI practitioners.
 
@@ -286,3 +324,4 @@ Contributions are welcome from system architects, distributed systems engineers,
 6. Open a Pull Request
 
 Distributed under the **MIT License**. See `LICENSE` for more information.
+
