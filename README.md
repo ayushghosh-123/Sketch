@@ -1,5 +1,7 @@
 # Sketch ◈
 
+![alt text](<Screenshot 2026-09-16 123821.png>)
+
 > **Autonomous AI Software Architecture Studio & Engineering Command Center**  
 > *Build the system before the code.*
 
@@ -17,212 +19,505 @@
 
 ## 1. Executive Summary
 
-**Sketch** is a software architecture studio and developer command center. Instead of generating ungrounded, hallucinated code snippets from generic chatbots, Sketch models complex software specifications step-by-step into verifiable system architectures, directed dependency graphs (DAG), failure blast radius simulations, and transparent Architecture Decision Records (ADRs).
+**Sketch** is an autonomous software architecture studio and engineering command center designed to solve a fundamental flaw in modern AI engineering: **the premature generation of ungrounded, hallucinated code**.
+
+Building complex distributed systems without architectural validation leads to broken integration boundaries, security vulnerabilities, single points of failure, and spiraling tech debt. Sketch flips this paradigm by modeling software specifications step-by-step into verifiable system architectures, directed dependency graphs (DAG), failure blast radius simulations, and transparent Architecture Decision Records (ADRs).
 
 ```
-┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-│   PRDs / RFCs   │ ────► │ 10-Node Agent   │ ────► │ Interactive DAG │
-│ Technical Brief │       │ Pipeline (LLM)  │       │ React Flow Map  │
-└─────────────────┘       └─────────────────┘       └─────────────────┘
-         │                         │                         │
-         ▼                         ▼                         ▼
-┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-│ pgvector Corpus │       │ Zod Validation  │       │ Directed BFS    │
-│ 768-dim RAG     │       │ Formal Schemas  │       │ Blast Radius    │
-└─────────────────┘       └─────────────────┘       └─────────────────┘
+┌─────────────────────────────────┐       ┌─────────────────────────────────┐       ┌─────────────────────────────────┐
+│       Multimodal Ingestion      │ ────► │     Autonomous Multi-Agent      │ ────► │    Interactive Living Studio    │
+│  PRDs, RFCs, Whiteboard Vision  │       │   LangGraph.js Orchestration    │       │     @xyflow/react DAG Canvas    │
+└─────────────────────────────────┘       └─────────────────────────────────┘       └─────────────────────────────────┘
+                 │                                         │                                         │
+                 ▼                                         ▼                                         ▼
+┌─────────────────────────────────┐       ┌─────────────────────────────────┐       ┌─────────────────────────────────┐
+│     PostgreSQL + pgvector       │       │    Topological Validation &     │       │     Directed Blast Radius       │
+│    768-dim Semantic Knowledge   │       │     Self-Healing Feedback       │       │    BFS Cascade Impact Radar     │
+└─────────────────────────────────┘       └─────────────────────────────────┘       └─────────────────────────────────┘
 ```
 
 ---
 
-## 2. Core Capabilities
+## 2. Website Architecture & End-to-End Workflow
 
-### ◈ 1. Interactive Architecture Studio
-- **React Flow Canvas**: Living directed acyclic graph (DAG) canvas powered by `@xyflow/react` over an infinite pitch-black workspace (`#000000`).
-- **Dagre Auto-Layout**: One-click hierarchical topological layout (Left-to-Right `LR` or Top-to-Bottom `TB`).
-- **Domain Node Primitives**: Specialized custom nodes for `Frontend`, `API Gateway`, `Backend Microservice`, `Database`, `In-Memory Cache`, `Message Queue`, and `Autonomous AI Agent`.
-- **Component Toolbox Drawer**: Drag-and-drop palette grouped by *Application*, *Data & Storage*, *AI & Orchestration*, and *External Integrations*.
-- **Deep Inspector Drawer**: Node configuration drawer with real-time parameter mutations, upstream/downstream dependency viewers, and inline blast radius simulation.
+Sketch is designed as a unified full-stack reactive system where client-side canvas manipulation seamlessly interacts with autonomous multi-agent backend runtimes and vector knowledge stores.
 
-### ◉ 2. Autonomous Multi-Agent Pipeline (LangGraph.js)
-Multi-step architecture synthesis with formal Zod schema boundaries at every transition:
-1. `InputSanitizer`: Strips prompt injection, normalizes technical constraints, and structures domain vocabulary.
-2. `RequirementAnalyzer`: Decomposes functional requirements and non-functional targets (throughput, latency, compliance).
-3. `RAGRetriever`: Queries project RFCs and API specifications stored in `pgvector` using cosine similarity search.
-4. `ArchitectDesigner`: Drafts modular microservice topologies and data flow communication protocols.
-5. `ZodValidator`: Executes strict schema validation, ensuring valid node topologies and directed edges.
-6. `SecurityAuditor`: Analyzes zero-trust perimeter, OAuth2/JWT token boundaries, and encryption in transit/rest.
-7. `ScalabilityPlanner`: Evaluates stateless auto-scaling tiers, database sharding, and caching strategies.
-8. `CostEstimator`: Approximates cloud infrastructure cost models based on IOPS and instance counts.
-9. `GraphGenerator`: Computes coordinates, handles, and edge connection anchors.
-10. `Synthesizer`: Outputs unified architecture JSON and streams real-time Server-Sent Events (SSE) telemetry.
-
-### ⚡ 3. Directed Impact Analysis & Blast Radius Radar
-- **Graph Breadth-First Search (BFS)**: Bidirectional traversal engine calculating upstream callers and downstream consumers.
-- **Topological Cascade Visualizer**:
-  - `● ROOT / ORIGIN (Distance = 0)`: Origin node of structural alteration or technology replacement.
-  - `▲ DIRECT IMPACT (Distance = 1)`: Immediate callers, ORMs, and drivers requiring contract changes.
-  - `○ INDIRECT CASCADE (Distance ≥ 2)`: Downstream ripple failures, data pipeline breakage, or schema desynchronization.
-- **AI Mitigation Engine**: Generates zero-downtime transition playbooks (dual-schema write windows, circuit breakers, adapter layers).
-
-### 📸 4. Multimodal Vision RAG & Knowledge Registry
-- **6-Step Continuous Multimodal Ingestion Pipeline**:
-  `Upload / Paste ──► Vision Analysis (Gemini/Groq) ──► Text Normalization ──► Semantic Chunks (500 tokens / 50 overlap) ──► 768-dim Embeddings ──► pgvector Index`
-- **Multi-Format Technical Documents**: Supports `.pdf`, `.docx`, `.md`, `.txt`, and `.json`.
-- **Architecture Diagram & Sketch Understanding**: Native multimodal vision analysis for `.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`, and `.gif`. Vision models extract component entities, directional flows, databases, message queues, and API gateways into structured requirements.
-- **Grounded AI Architect Workbench**: Chat assistant with source chunk citations, visual blueprint references, and direct graph mutation proposals.
-
-### 💬 5. ChatGPT-Style Multimodal Command Input
-- **Unified Dual Attachment Interface**: Simultaneous support for technical specifications and architecture diagrams.
-- **Direct Clipboard Screenshot Paste (`Ctrl+V`)**: Paste screenshot snippets from system snipping tools directly into the prompt box without saving to disk.
-- **Full-Surface Drag & Drop**: Drop diagrams and specifications directly into the input area.
-- **In-Box Thumbnail Previews & Lightbox**:
-  - Image thumbnails with hover removal (`X`) and click-to-zoom modal lightbox inspection.
-  - Document metadata chips with format badge and file size.
-- **Human-Centric Design & Keyboard Accelerators**: Soft ambient lighting, quiet typography, tactile surfaces, and `Ctrl + Enter` (or `Cmd + Enter`) trigger shortcut.
-
-### 🌿 6. Immutable Version History & Side-by-Side Diff Engine
-- **Git-Style Timeline**: Vertical commit history showing tagged architecture snapshots, author tags, and commit hashes.
-- **Visual Architectural Diffing**:
-  - `+ ADDED`: Newly provisioned nodes highlighted in green.
-  - `~ MODIFIED`: Altered nodes showing before/after technology and protocol deltas in amber.
-  - `- REMOVED`: Decommissioned components in red.
-  - `= UNCHANGED`: Stable foundational nodes.
-- **One-Click Restore**: Instant rollback of the active workspace canvas to any previous snapshot.
-
-### ⚖️ 7. Architecture Decision Records (ADRs) & "Explain Simply" Mode
-- **Transparent Rationale**: Every chosen technology or pattern includes architectural justification, evaluated alternatives, and trade-offs.
-- **Dual Explanation Switch**: Single-click toggle between technical engineering specifications and plain-English executive summaries.
-
----
-
-## 3. ChaiCode Design System
-
-The application features the unified **ChaiCode** design system across every page (landing, authentication, dashboard, project catalog, visual canvas, and sub-views):
-
-| Element | Token / Value | Description |
-| :--- | :--- | :--- |
-| **Canvas Base** | `#000000` | Pure pitch-black base canvas |
-| **Card Surfaces** | `#111111` | Primary cards, panels, and modal containers |
-| **Elevated Surfaces** | `#18181b` | Secondary sub-cards, drawers, and form inputs |
-| **Primary Accent** | `#f97316` / `#ea580c` | Warm Chai Orange replacing legacy blues |
-| **Ambient Glow** | `rgba(234, 88, 12, 0.15)` | Radial background spotlight glow (`blur-[120px]`) |
-| **Hairline Borders** | `border-white/10` | Subtle translucent borders (`hover:border-white/20`) |
-| **Typography** | `Manrope`, `font-sans` | Crisp geometric sans headings paired with `font-mono` metadata |
-| **Primary Buttons** | `chai-btn-primary` | High-contrast orange CTA with signature diagonal corners (`0px 10px 0px 10px`) |
-| **Footer** | 4-Column Layout | Comprehensive directory with inline SVG social icons |
-
----
-
-## 4. Technology Stack
-
-| Layer | Technology | Description |
-| :--- | :--- | :--- |
-| **Framework** | [Next.js 16 (App Router)](https://nextjs.org/) | Next.js with Turbopack compilation and React Server Components |
-| **Runtime & UI** | [React 19](https://react.dev/) | React 19 streaming SSR and modern hooks |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) | Strict end-to-end type safety |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) | Modern utility engine with `@theme` design tokens |
-| **Canvas Engine** | [@xyflow/react](https://reactflow.dev/) | High-performance interactive node-graph visualizer |
-| **Graph Layout** | [Dagre](https://github.com/dagrejs/dagre) | Directed graph layout engine for automatic node positioning |
-| **AI Multi-Agent** | [LangGraph.js](https://langchain-ai.github.io/langgraphjs/) | Stateful autonomous multi-actor workflow orchestration |
-| **LLM & Embeddings**| [Google Gemini](https://ai.google.dev/) & [Groq](https://groq.com/) | `gemini-1.5-flash`, `gemini-1.5-pro`, `llama-3.2-11b-vision-preview`, and `text-embedding-004` |
-| **Multimodal Vision**| Gemini 1.5 Flash & Groq Llama 3.2 Vision | Architecture diagram, whiteboard sketch, and UI mockup structural understanding |
-| **Database & Vector**| [Supabase PostgreSQL + pgvector](https://supabase.com/) | 768-dimensional cosine vector search and transactional relational data |
-| **Authentication** | [Clerk](https://clerk.com/) | Passwordless Email OTP & Secure Password authentication |
-| **Client State** | [Zustand](https://zustand-demo.pmnd.rs/) | Lightweight reactive state stores for canvas, nodes, and edges |
-| **Rate Limiter** | Sliding-Window Token Engine | Per-client IP sliding-window rate limiting on LLM and ingestion routes |
-| **Icons** | [Lucide React](https://lucide.dev/) | Clean, modern technical interface glyphs |
-
----
-
-## 5. Security & Performance Architecture
+### 2.1 System Architecture Overview
 
 ```mermaid
-flowchart LR
-    Client["Client / React Flow"] -->|"HTTPS + JWT"| Edge["Next.js Edge Middleware (Rate Limit + Auth)"]
-    Edge -->|"Validated"| API["Route Handler"]
-    API -->|"Stream (SSE)"| Client
-    API -->|"Cache Check O(1)"| Redis["Redis Cache"]
-    API -->|"HNSW Index O(log N)"| VectorDB["Supabase pgvector (Pooled)"]
-    API -->|"Async Chunks"| Gemini["Gemini 1.5"]
-```
+flowchart TD
+    subgraph ClientLayer ["Client Presentation & Studio Layer"]
+        UI["Next.js 16 App Router (React 19)"]
+        Canvas["Interactive Canvas (@xyflow/react)"]
+        Store["Zustand Reactive State Stores"]
+        VisionInput["Multimodal Command Bar (Upload & Paste)"]
+    end
 
-- **Tenant Isolation & Zero-Trust**: All `/api/projects/[id]/*` endpoints enforce strict user ownership checks (`user.id === project.user_id`) to eliminate Insecure Direct Object References (IDOR).
-- **HNSW Vector Indexing**: `pgvector` embeddings use Hierarchical Navigable Small World (HNSW) indexing, converting linear vector table scans ($O(N \cdot D)$) into sub-linear logarithmic lookups ($O(\log N)$).
-- **Relational Composite Indexing**: High-cardinality foreign keys (`project_id`, `created_at`) are indexed with B-Trees for $O(1)$ canvas loading.
-- **Server-Sent Events (SSE) Streaming**: Long-running agent reasoning and RAG chat stream intermediate tokens over `ReadableStream`, preventing serverless gateway timeouts (504s).
-- **Connection Resilience**: Database access is routed through the Supabase Transaction Pooler (PgBouncer on port `6543`) to prevent connection pool exhaustion under serverless scale.
+    subgraph EdgeSecurity ["Edge & Security Perimeter"]
+        Headers["HTTP Hardened Headers (next.config.ts)"]
+        RateLimit["Sliding-Window Token Rate Limiter"]
+        AuthShield["Clerk Identity & Tenant Isolation"]
+        Sanitizer["Prompt & File Sanitizer"]
+    end
+
+    subgraph AgentOrchestration ["Autonomous Agent Runtime (LangGraph.js)"]
+        Orchestrator["Input Orchestrator"]
+        RAG["RAG Context Agent"]
+        Researcher["Research & Trade-Off Agent"]
+        Decision["Decision & ADR Architect Agent"]
+        Validator["Topological Integrity Validator"]
+        CanvasGen["Canvas & Dagre Layout Agent"]
+        AIEditor["In-Canvas Conversational Editor Agent"]
+    end
+
+    subgraph DataAndInference ["Storage & AI Inference Foundation"]
+        Postgres["Supabase PostgreSQL (ACID Relational Core)"]
+        PgVector["pgvector (768-dim HNSW Vector Store)"]
+        Storage["Supabase Encrypted Object Storage"]
+        Gemini["Google Gemini 1.5 Flash / Pro (Multimodal Vision & LLM)"]
+        Groq["Groq LPU Inference (Llama 3.2 Vision)"]
+    end
+
+    UI --> Headers
+    Headers --> RateLimit
+    RateLimit --> AuthShield
+    AuthShield --> Sanitizer
+    Sanitizer --> AgentOrchestration
+    
+    Canvas <--> Store
+    VisionInput --> Sanitizer
+
+    Orchestrator --> RAG
+    Orchestrator --> Researcher
+    RAG <--> PgVector
+    RAG <--> Gemini
+    Researcher <--> Gemini
+    Decision <--> Gemini
+    Decision --> Validator
+    Validator -.->|Retry on Failure| Decision
+    Validator --> CanvasGen
+    CanvasGen --> Postgres
+    AIEditor <--> Gemini
+
+    Store <--> Postgres
+    Sanitizer --> Storage
+```
 
 ---
 
-## 6. Repository Structure
+### 2.2 Complete User Journey & Website Workflow
+
+The user experience in Sketch flows across distinct phases:
+
+1. **Identity & Onboarding**:
+   - Secure authentication via [Clerk](https://clerk.com/) supporting Passwordless Email OTP and OAuth.
+   - Upon authentication, users enter the unified **Command Center Dashboard** containing their architecture catalog, recent activity, system telemetry, and architectural blueprints.
+
+2. **Project Initiation & Multimodal Ingestion**:
+   - Users create a project by describing their software vision or system problem in natural language.
+   - **Dual Specification Ingestion**:
+     - *Technical Documents*: Upload `.pdf`, `.docx`, `.md`, `.txt`, or `.json` containing requirements, RFCs, and API specifications.
+     - *Architecture Blueprint & Diagram Vision*: Drag-and-drop or paste (`Ctrl+V`) whiteboard photos, system diagrams, or mockups (`.png`, `.jpg`, `.webp`, `.svg`).
+   - The ingestion pipeline extracts visual entities and converts text into 500-token semantic chunks, embedded into a 768-dimensional vector space using `text-embedding-004` and stored in `pgvector`.
+
+3. **Autonomous Architecture Generation**:
+   - The user triggers system synthesis.
+   - The **LangGraph.js Multi-Agent Pipeline** initializes, analyzing requirements, cross-referencing vector embeddings, comparing trade-offs, and constructing a validated component topology.
+   - Real-time telemetry streams the status of each agent directly to the user interface.
+
+4. **Visual Studio & Interactive Canvas Exploration**:
+   - The compiled architecture renders on the `@xyflow/react` infinite canvas.
+   - High-contrast custom node primitives represent each architectural tier (`Frontend`, `API Gateway`, `Backend Microservice`, `Database`, `In-Memory Cache`, `Message Queue`, and `Autonomous AI Agent`).
+   - **Component Toolbox**: A slide-out drawer allowing architects to drag and drop custom architectural primitives onto the canvas.
+   - **Deep Node Inspector**: Clicking any component reveals real-time configuration, assigned responsibilities, upstream callers, downstream consumers, and inline blast radius simulation.
+   - **Dagre Auto-Layout**: One-click re-indexing of nodes into clean hierarchical topological structures (Left-to-Right `LR` or Top-to-Bottom `TB`).
+
+5. **In-Canvas Conversational AI Architecture Editing**:
+   - Through the natural language command interface, architects can type commands such as:
+     > *"Add a Redis cache between the backend service and the primary database to handle hot read queries"*
+     > *"Introduce Kafka between order processing and notifications for asynchronous decoupling"*
+   - The [`runAIEditorAgent`](file:///D:/Sketch/src/agents/editing/aiEditorAgent.ts) parses the existing graph, determines additions, mutations, or deletions, evaluates risk level (`low`, `medium`, `high`), and applies the changes directly to the live canvas.
+
+6. **Directed Blast Radius & Impact Analysis**:
+   - When any component technology or contract is altered, the user can run a **Blast Radius Radar**.
+   - An asynchronous graph Breadth-First Search (BFS) traverses the directed dependency graph, isolating:
+     - `● ROOT / ORIGIN (Distance = 0)`: The origin component under modification.
+     - `▲ DIRECT IMPACT (Distance = 1)`: Immediate callers, ORMs, and drivers requiring contract adaptations.
+     - `○ INDIRECT CASCADE (Distance ≥ 2)`: Downstream consumers, asynchronous pipelines, or reporting jobs.
+   - An AI mitigation planner generates zero-downtime transition playbooks (dual-schema write windows, circuit breakers, fallback adapters).
+
+7. **Architecture Decision Records (ADRs) & "Explain Simply" Mode**:
+   - Every architectural choice is recorded in a formal ADR outlining the context, chosen technology, alternatives considered, and trade-offs.
+   - **Executive Toggle**: An instant switch transforms dense engineering jargon into plain-English summaries suitable for non-technical stakeholders.
+
+8. **Immutable Version Control & Architectural Diff Engine**:
+   - Every modification creates a tagged, immutable snapshot in Supabase.
+   - **Side-by-Side Visual Diffing**: Color-coded deltas highlight Added (`+ green`), Modified (`~ amber`), Removed (`- red`), and Unchanged (`= gray`) nodes.
+   - **One-Click Restore**: Instant rollbacks to any historical commit point.
+
+---
+
+## 3. Autonomous Multi-Agent Workflow (LangGraph.js)
+
+The core intelligence of Sketch is powered by a stateful, cyclic multi-agent graph built on [`@langchain/langgraph`](https://langchain-ai.github.io/langgraphjs/), located in [`src/lib/langgraph/workflow.ts`](file:///D:/Sketch/src/lib/langgraph/workflow.ts).
+
+Rather than relying on a single monolithic prompt, Sketch distributes cognitive responsibilities across specialized agent nodes with formal state transitions, conditional branching, and a self-healing validation loop.
+
+### 3.1 LangGraph State Machine Architecture
+
+```mermaid
+flowchart TD
+    START([START]) --> Orchestrator["1. Input Orchestrator\n(Sanitize, Route, Contextualize)"]
+    
+    Orchestrator --> HasDocsCondition{"Documents\nUploaded?"}
+    
+    HasDocsCondition -- "YES" --> RAGAgent["2. RAG Agent\n(768-dim pgvector Retrieval)"]
+    HasDocsCondition -- "NO" --> ResearchAgent["3. Research Agent\n(First-Principles Architecture Research)"]
+    
+    RAGAgent --> ResearchAgent
+    
+    ResearchAgent --> DecisionAgent["4. Decision Agent\n(Topology, Layers, Technology & ADRs)"]
+    
+    DecisionAgent --> ValidationStep["5. Validation Step\n(Topological Sanity & Contract Checks)"]
+    
+    ValidationStep --> IsValidCondition{"Topology\nValid?"}
+    
+    IsValidCondition -- "NO (Retries < 2)" --> DecisionAgentFeedback["Decision Agent\n(Self-Healing Loop with Feedback)"]
+    DecisionAgentFeedback --> ValidationStep
+    
+    IsValidCondition -- "YES or Max Retries" --> CanvasAgent["6. Canvas Agent\n(Dagre Hierarchical Graph Layout)"]
+    
+    CanvasAgent --> SaveProject["7. Save Project Node\n(Persist Graph, Components & Version Snapshot)"]
+    
+    SaveProject --> END([END])
+    
+    style START fill:#18181b,stroke:#f97316,stroke-width:2px
+    style END fill:#18181b,stroke:#10b981,stroke-width:2px
+    style Orchestrator fill:#111111,stroke:#f97316,stroke-width:1px
+    style RAGAgent fill:#111111,stroke:#38bdf8,stroke-width:1px
+    style ResearchAgent fill:#111111,stroke:#a855f7,stroke-width:1px
+    style DecisionAgent fill:#111111,stroke:#eab308,stroke-width:1px
+    style DecisionAgentFeedback fill:#18181b,stroke:#ef4444,stroke-width:1px
+    style ValidationStep fill:#111111,stroke:#f43f5e,stroke-width:1px
+    style CanvasAgent fill:#111111,stroke:#06b6d4,stroke-width:1px
+    style SaveProject fill:#111111,stroke:#10b981,stroke-width:1px
+```
+
+---
+
+### 3.2 Deep Dive into Agent Roles
+
+#### 1. Input Orchestrator Agent
+* **Implementation**: [`runInputOrchestrator`](file:///D:/Sketch/src/agents/orchestrator/inputOrchestrator.ts)
+* **Responsibility**: Sanitizes the raw user prompt, normalizes technical constraints, and assesses whether the project contains uploaded RFC documents or visual diagrams.
+* **Routing Logic**:
+  - If documents exist: Routes dynamically to `RAG_AGENT`.
+  - If no documents exist: Bypasses vector retrieval and routes directly to `RESEARCH_AGENT`.
+
+#### 2. RAG (Retrieval-Augmented Generation) Agent
+* **Implementation**: [`runRagAgent`](file:///D:/Sketch/src/agents/rag/ragAgent.ts)
+* **Responsibility**: Queries the project's vector corpus in `pgvector` using cosine similarity match functions (`match_document_chunks`).
+* **Output ([`RagProjectContext`](file:///D:/Sketch/src/agents/types.ts#L16-L24))**: Extracted target user personas, core functional requirements, technical constraints, identified legacy technologies, and compliance boundaries.
+
+#### 3. Research Agent
+* **Implementation**: [`runResearchAgent`](file:///D:/Sketch/src/agents/research/researchAgent.ts)
+* **Responsibility**: Acts as a principal cloud architect conducting first-principles technical evaluation based on user preferences (budget, security, scalability, performance).
+* **Output ([`ResearchFindings`](file:///D:/Sketch/src/agents/types.ts#L36-L56))**:
+  - Assesses system complexity (`low`, `medium`, `high`, `enterprise`).
+  - Evaluates technology options across all tiers (Frontend, Backend, Database, AI Orchestration, In-Memory Storage, Event Streaming).
+  - Selects the recommended tech stack with detailed pros/cons and trade-off matrices.
+  - Formulates key architectural patterns (e.g. CQRS, Event-Driven, Micro-frontends, Hexagonal Architecture).
+
+#### 4. Decision Agent
+* **Implementation**: [`runDecisionAgent`](file:///D:/Sketch/src/agents/decision/decisionAgent.ts)
+* **Responsibility**: Synthesizes the concrete system specification from the research findings.
+* **Output ([`ArchitectureSpecification`](file:///D:/Sketch/src/agents/types.ts#L98-L110))**:
+  - Architectural layers (`client`, `application`, `ai`, `data`, `infra`).
+  - Explicit component entities with categories, technologies, and assigned micro-responsibilities.
+  - Directed connection edges with communication protocols (`sync`, `async`, `auth`, `data_stream`).
+  - Formal Architecture Decision Records (ADRs) with both technical reasoning and executive "simple" explanations.
+
+#### 5. Validation Step (Self-Healing Loop)
+* **Implementation**: [`runValidationStep`](file:///D:/Sketch/src/agents/validation/validationStep.ts)
+* **Responsibility**: Programmatic topological integrity validation that verifies graph correctness before rendering:
+  - **Tier Sanity**: Verifies that frontend layers do not bypass application tiers to connect directly to private databases.
+  - **Orphan Detection**: Ensures every component has at least one ingress or egress connection.
+  - **Cycle & Dependency Checks**: Flags invalid circular dependencies or unresolvable contracts.
+* **Self-Healing Feedback Loop**:
+  - If validation fails (`isValid: false`) and retries < 2, the graph routes back to the **Decision Agent** with structured feedback (`missingComponents`, `brokenRelationships`).
+  - The Decision Agent ingests the feedback and regenerates a repaired specification.
+
+#### 6. Canvas Agent
+* **Implementation**: [`runCanvasAgent`](file:///D:/Sketch/src/agents/canvas/canvasAgent.ts)
+* **Responsibility**: Converts the abstract architectural specification into a visual graph structure compatible with `@xyflow/react`.
+* **Execution**: Utilizes the **Dagre** layout engine to compute 2D positions (`x`, `y`), handle anchor points, and edge routing, ensuring optimal visual spacing and eliminating node collisions.
+
+#### 7. Save Project Node
+* **Implementation**: [`ArchitectureService.saveGeneratedArchitecture`](file:///D:/Sketch/src/services/architectureService.ts)
+* **Responsibility**: Persists the generated graph nodes, components, and dependencies into PostgreSQL tables within a transactional unit and records a new version checkpoint in `project_versions`.
+
+#### 8. In-Canvas Conversational AI Editor Agent
+* **Implementation**: [`runAIEditorAgent`](file:///D:/Sketch/src/agents/editing/aiEditorAgent.ts)
+* **Responsibility**: Operates on an active workspace canvas. When a user issues natural language modification commands, it calculates graph mutations (adds, edits, removals, new connections) and provides a blast radius risk rating before updating the live canvas.
+
+---
+
+## 4. Security Architecture & Hardening Controls
+
+Sketch implements defense-in-depth security principles across application, network, data, and AI inference layers, detailed in [`SECURITY.md`](SECURITY.md).
+
+```mermaid
+flowchart TD
+    subgraph Perimeter ["1. Network & Browser Perimeter"]
+        HSTS["HTTP Security Headers\n(HSTS, X-Frame-Options, CSP-ready)"]
+        TokenBucket["Sliding-Window Token Rate Limiter\n(Per-IP DoW Protection)"]
+    end
+
+    subgraph Identity ["2. Identity & Access Control"]
+        ClerkAuth["Clerk Authenticated Session (JWT)"]
+        TenantGuard["Tenant Ownership Verification\n(Anti-IDOR: user.id == project.user_id)"]
+    end
+
+    subgraph DataIntegrity ["3. Input & Ingestion Sanitization"]
+        PromptGuard["Prompt Input Sanitizer\n(Null-byte strip, length limits)"]
+        FileGuard["File Upload Defense\n(10MB cap, MIME whitelist, path traversal strip)"]
+    end
+
+    subgraph LLMSafety ["4. AI Model Context Insulation"]
+        ContextXML["<untrusted_retrieved_context>\nPrompt Injection Barrier"]
+        SafeJSON["JSON Strict Encoding for Prompts"]
+    end
+
+    subgraph StorageSecurity ["5. Database & Storage Isolation"]
+        PgPool["Supabase PgBouncer (Port 6543)\nConnection Exhaustion Defense"]
+        RLS["PostgreSQL Row-Level Security (RLS)"]
+    end
+
+    HSTS --> TokenBucket
+    TokenBucket --> ClerkAuth
+    ClerkAuth --> TenantGuard
+    TenantGuard --> PromptGuard
+    TenantGuard --> FileGuard
+    PromptGuard --> ContextXML
+    ContextXML --> SafeJSON
+    SafeJSON --> PgPool
+    FileGuard --> StorageSecurity
+    PgPool --> RLS
+```
+
+### 4.1 Detailed Security Hardening Breakdown
+
+| Security Dimension | Vulnerability Addressed | Implementation & Defense Mechanism | Source Files |
+| :--- | :--- | :--- | :--- |
+| **HTTP Security Headers** | Clickjacking, MIME-sniffing, XSS, protocol downgrade | Enforces browser protections: `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Strict-Transport-Security: max-age=31536000`, `Permissions-Policy`. | [`next.config.ts`](file:///D:/Sketch/next.config.ts) |
+| **Denial-of-Wallet (DoW) & Rate Limiting** | AI API quota exhaustion, denial-of-service, multi-agent execution spam | In-memory sliding-window token rate limiting per client IP with automatic garbage collection to prevent memory leaks. | [`rateLimiter.ts`](file:///D:/Sketch/src/lib/security/rateLimiter.ts), [`index.ts`](file:///D:/Sketch/src/lib/security/index.ts) |
+| **Prompt Injection & Model Jailbreaks** | Indirect prompt injection via malicious uploaded documents or hijacked prompts | User queries are capped and sanitized. Retrieved vector chunks are encapsulated in strict `<untrusted_retrieved_context>` XML tags with explicit system directives instructing the model to treat content as reference data rather than instructions. | [`aiEditorAgent.ts`](file:///D:/Sketch/src/agents/editing/aiEditorAgent.ts), [`sanitizer.ts`](file:///D:/Sketch/src/lib/security/sanitizer.ts) |
+| **File Upload & Storage Traversal** | Remote code execution, arbitrary file writes, server memory exhaustion | Strict 10MB file barrier. Whitelist for specs (`.pdf`, `.docx`, `.txt`, `.md`, `.json`) and diagrams (`.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`, `.gif`). Filenames are stripped of null bytes, control codes, and directory traversal sequences (`../`). | [`sanitizer.ts`](file:///D:/Sketch/src/lib/security/sanitizer.ts), [`documentService.ts`](file:///D:/Sketch/src/services/documentService.ts) |
+| **Open Redirect Defense** | Phishing attacks via manipulated post-auth redirect targets | The post-authentication callback strictly verifies relative target paths (`/`), rejecting any target beginning with `//` or specifying external protocols (`https://`). | [`callback/route.ts`](file:///D:/Sketch/src/app/auth/callback/route.ts) |
+| **Tenant Isolation & Anti-IDOR** | Unauthorized cross-tenant data access or modification | Project operations strictly enforce authenticated user ownership checks (`user.id === project.user_id`), preventing Insecure Direct Object Reference vulnerabilities. | [`projectService.ts`](file:///D:/Sketch/src/services/projectService.ts), [`architectureService.ts`](file:///D:/Sketch/src/services/architectureService.ts) |
+| **Database Connection Resilience** | Serverless connection spikes exhausting PostgreSQL connections | All database traffic routes through Supabase's transaction pooler (PgBouncer on port `6543`), ensuring connection stability under high traffic. | [`server.ts`](file:///D:/Sketch/src/lib/supabase/server.ts), [`admin.ts`](file:///D:/Sketch/src/lib/supabase/admin.ts) |
+
+---
+
+## 5. Technology Stack & Architectural Rationale
+
+Every technology in the Sketch stack was chosen to solve specific distributed systems, visualization, or AI orchestration challenges:
+
+```
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                          SKETCH TECH STACK                                            │
+├───────────────────┬───────────────────────────────────┬───────────────────────────────────────────────┤
+│ Layer             │ Technology                        │ Primary Architectural Rationale               │
+├───────────────────┼───────────────────────────────────┼───────────────────────────────────────────────┤
+│ Application Frame │ Next.js 16 (App Router + Turbo)   │ Turbopack compilation & Server Components     │
+│ Frontend Runtime  │ React 19                          │ Streaming SSR & concurrent render primitives  │
+│ Language          │ TypeScript 5 (Strict)             │ End-to-end type safety across agent state     │
+│ Styling & Tokens  │ Tailwind CSS v4 + ChaiCode        │ Ultra-fast zero-runtime modern CSS tokens     │
+│ Interactive Canvas│ @xyflow/react (React Flow 12)     │ Declarative, performant node-graph visualizer │
+│ Auto-Layout Engine│ Dagre                             │ Deterministic hierarchical DAG positioning    │
+│ Agent Runtime     │ LangGraph.js                      │ Stateful cyclic graphs & self-healing loops   │
+│ AI Inference      │ Google Gemini 1.5 & Groq          │ Large context, native vision & fast inference │
+│ Database & Vector │ Supabase PostgreSQL + pgvector    │ ACID relational models + unified 768-dim RAG  │
+│ Authentication    │ Clerk                             │ Turnkey identity, OTP, and session management │
+│ Client State Store│ Zustand                           │ Boilerplate-free, fast canvas mutation store  │
+│ Document Parsing  │ Mammoth & PDF-Parse               │ Headless server-side text extraction          │
+└───────────────────┴───────────────────────────────────┴───────────────────────────────────────────────┘
+```
+
+### 5.1 Why Each Technology Was Chosen
+
+#### 1. Next.js 16 (App Router) & React 19
+* **Why Next.js 16?** Provides a unified full-stack architecture. Server Components stream static parts of the application instantly while Turbopack delivers near-instantaneous compilation during development. The App Router provides seamless integration for Edge middleware, server actions, and Server-Sent Events (SSE).
+* **Why React 19?** React 19 introduces optimized concurrent rendering and modern hook primitives, essential for keeping an infinite `@xyflow/react` canvas responsive even when rendering dozens of complex custom nodes and animations.
+
+#### 2. TypeScript 5 (Strict Mode)
+* **Why TypeScript?** Designing software architectures requires rigorous data contracts. TypeScript enforces compile-time schema integrity across multi-agent state definitions, graph topologies, database entities, and BFS algorithms, preventing catastrophic runtime type errors.
+
+#### 3. LangGraph.js (`@langchain/langgraph`)
+* **Why LangGraph.js instead of traditional LLM chains?** Traditional agent frameworks execute linear sequences (A → B → C). Real-world architectural synthesis requires **cyclic graphs, conditional branching, and checkpointed state**. LangGraph.js enables:
+  - Conditional branching based on whether documents exist.
+  - A self-healing validation loop where the `ValidationStep` can route failures back to the `DecisionAgent` with diagnostic feedback.
+  - Granular telemetry streaming at every node boundary.
+
+#### 4. Google Gemini 1.5 (Flash / Pro) & Groq Vision
+* **Why Gemini 1.5?**
+  - **Massive Context Window**: Allows ingesting entire multi-page system PRDs, RFCs, and API documentation in a single pass without losing context.
+  - **Native Multimodal Vision**: Enables Sketch to understand whiteboard drawings, architecture diagram screenshots, and system sketches directly.
+  - **High Token Velocity**: Gemini 1.5 Flash provides sub-second reasoning turns for interactive workflows.
+* **Why Groq?** Provides ultra-low latency LPU inference when running fast vision and real-time interactive generation turns.
+
+#### 5. Supabase PostgreSQL with `pgvector`
+* **Why Supabase + pgvector instead of a standalone vector database?**
+  - Storing relational models (projects, components, dependencies, versions) in PostgreSQL while storing vector embeddings in a separate external vector database (like Pinecone) causes data desynchronization, dual-write complexities, and doubled infrastructure cost.
+  - `pgvector` allows transactional consistency: vector chunks and relational entities live in the exact same ACID database.
+  - **HNSW Indexing**: Delivers sub-linear $O(\log N)$ approximate nearest neighbor cosine similarity search across 768-dimensional embeddings.
+
+#### 6. `@xyflow/react` (React Flow) & Dagre
+* **Why `@xyflow/react`?** It is the gold standard for web-based node diagrams, offering infinite canvas virtualization, smooth zoom/pan controls, custom node component templates, and drag-and-drop handles.
+* **Why Dagre?** Hand-placing dozens of architectural components is tedious and messy. Dagre computes optimal hierarchical layout mathematics automatically (rankdir: `LR` or `TB`), ensuring clean edge pathways with minimal crossing.
+
+#### 7. Clerk Authentication
+* **Why Clerk?** Providing enterprise-grade security requires passwordless OTP, OAuth providers, session rotation, and multi-factor authentication. Clerk offloads security maintenance while integrating cleanly with Next.js App Router middleware.
+
+#### 8. Zustand
+* **Why Zustand instead of Redux or React Context?**
+  - Visual canvases generate hundreds of high-frequency events (node dragging, panning, selection, edge connection).
+  - React Context triggers re-renders across the entire component tree on every minor coordinate shift.
+  - Zustand provides targeted selector subscriptions, updating only the specific node that moved without re-rendering the canvas.
+  - Zero boilerplate with intuitive mutable store setters.
+
+#### 9. Tailwind CSS v4 & ChaiCode Design System
+* **Why Tailwind v4?** Next-generation CSS engine that eliminates JavaScript-based build steps. It supports `@theme` design tokens natively, powering the bespoke **ChaiCode** design system featuring pitch-black canvases (`#000000`), warm Chai Orange accents (`#f97316`), and subtle translucent hairline borders (`border-white/10`).
+
+#### 10. Mammoth & PDF-Parse
+* **Why Mammoth & PDF-Parse?** Enables fast, lightweight server-side text extraction from Word documents (`.docx`) and PDFs (`.pdf`) without needing resource-heavy headless browsers or external SaaS parsing APIs.
+
+---
+
+## 6. Interactive Features & Capabilities
+
+### ◈ Living Architecture Canvas
+* Infinite dark canvas with customizable grid patterns.
+* 7 domain-specific custom node types with status indicators, technology tags, and connection ports.
+* Real-time drag-and-drop component palette.
+
+### ⚡ Directed Blast Radius & Impact Radar
+* Graph Breadth-First Search (BFS) calculation.
+* Categorizes changes into Root (Distance = 0), Direct Callers (Distance = 1), and Indirect Ripple (Distance ≥ 2).
+* Automated mitigation strategies for zero-downtime component transitions.
+
+### 📸 Multimodal Document & Vision Ingestion
+* Simultaneous support for technical specifications and visual architecture blueprints.
+* Direct clipboard screenshot paste (`Ctrl+V`) into the command interface.
+* Semantic chunking (500 tokens / 50 token overlap) with 768-dim embeddings in `pgvector`.
+
+### 🌿 Git-Style Snapshot History & Diff Engine
+* Commit timeline tracking architectural evolutions.
+* Visual side-by-side diff engine highlighting added, modified, and removed components.
+* One-click rollback to any historical system state.
+
+### ⚖️ Architecture Decision Records (ADRs)
+* Standardized decision documentation with context, chosen pattern, alternatives, and trade-offs.
+* "Explain Simply" toggle converting technical specifications into executive-friendly summaries.
+
+---
+
+## 7. ChaiCode Design System
+
+The application features the unified **ChaiCode** design system across all views:
+
+| Design Token | Value | Applied Context |
+| :--- | :--- | :--- |
+| **Canvas Base** | `#000000` | Pure pitch-black studio base |
+| **Card Surface** | `#111111` | Primary cards, panels, and modal containers |
+| **Elevated Surface** | `#18181b` | Secondary sub-cards, drawers, and form inputs |
+| **Primary Accent** | `#f97316` / `#ea580c` | Warm Chai Orange signature brand color |
+| **Ambient Glow** | `rgba(234, 88, 12, 0.15)` | Radial background spotlight glow (`blur-[120px]`) |
+| **Hairline Border** | `border-white/10` | Translucent border (`hover:border-white/20`) |
+| **Typography** | `Manrope`, `font-sans` | Geometric sans headings paired with `font-mono` metrics |
+| **Primary Buttons** | `chai-btn-primary` | High-contrast orange CTA with signature diagonal corners (`0px 10px 0px 10px`) |
+
+---
+
+## 8. Repository Structure
 
 ```
 D:/Sketch/
 ├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   └── projects/
-│   │   │       ├── [id]/
-│   │   │       │   ├── architecture/          # Graph CRUD & LangGraph generation
-│   │   │       │   ├── chat/                  # RAG AI assistant endpoint (SSE stream)
-│   │   │       │   ├── documents/             # Multi-format upload & parsing
-│   │   │       │   ├── impact-analysis/       # BFS blast radius calculation
-│   │   │       │   └── versions/              # Snapshot commit & rollback
-│   │   │       └── route.ts                   # Projects collection API
-│   │   ├── dashboard/                         # Command Center & Registry overview
-│   │   ├── docs/                              # System documentation & manual
-│   │   ├── forgot-password/                   # Password recovery flow
-│   │   ├── login/ & signup/                   # Clerk OTP & Password authentication
-│   │   ├── projects/                          # Architecture catalog & details
-│   │   ├── settings/                          # User profile & architecture preferences
-│   │   ├── tech-stack/[id]/                   # Technology selection & explanation mode
-│   │   ├── workspace/[id]/                    # React Flow studio & visual DAG canvas
-│   │   │   └── decisions/                     # Architecture Decision Records (ADR)
-│   │   ├── globals.css                        # Tailwind v4 theme, ChaiCode tokens, animations
-│   │   ├── layout.tsx                         # Root layout with ClerkProvider, Navbar & Footer
-│   │   └── page.tsx                           # Command Center product launch landing page
-│   ├── components/
-│   │   ├── home/                              # LivingTopologyGraph hero animation
+│   ├── agents/                                # Multi-agent implementation
+│   │   ├── canvas/                            # CanvasAgent (Dagre layout calculation)
+│   │   ├── decision/                          # DecisionAgent (ADRs & system layers)
+│   │   ├── editing/                           # AIEditorAgent (In-canvas conversational editing)
+│   │   ├── orchestrator/                      # InputOrchestrator (Route & input parsing)
+│   │   ├── rag/                               # RagAgent (pgvector context retrieval)
+│   │   ├── research/                          # ResearchAgent (Trade-off & stack analysis)
+│   │   ├── validation/                        # ValidationStep (Topological self-healing)
+│   │   └── types.ts                           # Agent domain types and state interfaces
+│   ├── app/                                   # Next.js App Router pages and layouts
+│   │   ├── dashboard/                         # Project Command Center
+│   │   ├── docs/                              # System documentation
+│   │   ├── login/ & signup/                   # Clerk authentication views
+│   │   ├── projects/                          # Architecture catalog
+│   │   ├── tech-stack/[id]/                   # Technology selection & comparison view
+│   │   ├── workspace/[id]/                    # Interactive React Flow studio canvas
+│   │   │   └── decisions/                     # Architecture Decision Records (ADRs)
+│   │   ├── globals.css                        # Tailwind v4 theme & ChaiCode design tokens
+│   │   └── page.tsx                           # Landing page & living hero topology
+│   ├── components/                            # Reusable React components
+│   │   ├── home/                              # LivingTopologyGraph hero canvas
 │   │   ├── layout/                            # Navbar, ChaiCode Footer, Brand glyph
-│   │   └── ui/                                # Primitives (Button, Card, Input, Tabs, Dialog)
-│   ├── features/
-│   │   ├── agents/                            # LangGraph state visualizer & telemetry
-│   │   ├── architecture/                      # Canvas, CustomNode, Toolbox, Inspector, Store
-│   │   ├── documents/                         # Knowledge base manager & 5-step RAG pipeline
-│   │   ├── impact-analysis/                   # Blast radius visual tree & mitigation strategy
-│   │   ├── projects/                          # 4-step creation wizard & project cards
-│   │   ├── rag/                               # AI Architect chat workbench
-│   │   └── versions/                          # Git-style vertical timeline & side-by-side diff
-│   ├── lib/
-│   │   ├── gemini/                            # Gemini model client & embeddings
-│   │   ├── supabase/                          # Admin client, server client & pgvector operations
-│   │   └── utils/                             # Dagre auto-layout & formatters
-│   ├── services/                              # ArchitectureService, DocumentService, ImpactService...
-│   └── types/                                 # Strict TypeScript database & graph schemas
-├── public/                                    # Static assets & brand vectors
-├── .env.example                               # Environment variable documentation
-├── next.config.ts                             # Next.js configuration
+│   │   └── ui/                                # Tactile primitives (Button, Card, Input, Tabs)
+│   ├── features/                              # Domain-specific UI features
+│   │   ├── agents/                            # Multi-agent visual telemetry
+│   │   ├── architecture/                      # Studio canvas, custom nodes, inspector, drawer
+│   │   ├── documents/                         # Document upload, chunking & vector registry
+│   │   ├── impact-analysis/                   # Blast radius tree & mitigation viewer
+│   │   ├── projects/                          # Creation wizards & project cards
+│   │   ├── rag/                               # Grounded AI architect chat workbench
+│   │   └── versions/                          # Git-style timeline & visual diff viewer
+│   ├── lib/                                   # Shared core utilities
+│   │   ├── gemini/                            # Google Gemini client & embeddings
+│   │   ├── langgraph/                         # StateGraph definitions & workflow runner
+│   │   ├── logger/                            # Structured agent telemetry logger
+│   │   ├── security/                          # Rate limiter, sanitizer, input guards
+│   │   ├── supabase/                          # Database clients & SSR cookies
+│   │   └── utils/                             # Dagre auto-layout & class merging
+│   ├── services/                              # Business service layer
+│   │   ├── architectureService.ts             # Graph CRUD, persistence & snapshots
+│   │   ├── chunkingService.ts                 # 500-token semantic chunking
+│   │   ├── documentParser.ts                  # PDF/DOCX extraction & multimodal vision
+│   │   ├── documentService.ts                 # Storage upload & vector persistence
+│   │   ├── embeddingService.ts                # 768-dim embedding generation
+│   │   ├── impactAnalysisService.ts           # Directed BFS blast radius engine
+│   │   ├── projectService.ts                  # Project lifecycle management
+│   │   └── ragService.ts                      # Vector cosine similarity search
+│   └── types/                                 # TypeScript database & graph schemas
+├── supabase/
+│   └── schema.sql                             # Database schema & pgvector definitions
+├── .env.example                               # Environment variable blueprint
+├── next.config.ts                             # Next.js security headers & compilation
 ├── package.json                               # Dependencies & scripts
+├── SECURITY.md                                # In-depth security architecture audit
 └── tsconfig.json                              # TypeScript strict configuration
 ```
 
 ---
 
-## 7. Getting Started
+## 9. Getting Started
 
 ### Prerequisites
-- **Node.js**: `v20.x` or higher
-- **Package Manager**: `npm`, `pnpm`, or `yarn`
-- **PostgreSQL**: With `pgvector` extension enabled (e.g. via Supabase)
-- **Google AI Studio**: Gemini API key
-- **Clerk**: Authentication project keys
+* **Node.js**: `v20.x` or higher
+* **Package Manager**: `npm`, `pnpm`, or `yarn`
+* **PostgreSQL**: With `pgvector` extension enabled (e.g. Supabase)
+* **Google AI Studio**: Gemini API key
+* **Clerk**: Authentication project keys
 
-### Installation & Local Setup
+### Local Setup
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-org/agentarchitect.git
-   cd agentarchitect
+   git clone https://github.com/your-org/sketch.git
+   cd sketch
    ```
 
 2. **Install dependencies**:
@@ -240,6 +535,9 @@ D:/Sketch/
    # Google Gemini AI
    GOOGLE_GENERATIVE_AI_API_KEY=AIzaSy...
 
+   # Optional: Groq for fast inference
+   GROQ_API_KEY=gsk_...
+
    # PostgreSQL / Supabase with pgvector
    NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
@@ -251,77 +549,29 @@ D:/Sketch/
    npx tsc --noEmit
    ```
 
-5. **Build for Production**:
-   ```bash
-   npm run build
-   ```
-
-6. **Start the Development Server**:
+5. **Start Development Server**:
    ```bash
    npm run dev
    ```
    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
----
-
-## 8. API Surface
-
-| Route | Method | Description |
-| :--- | :---: | :--- |
-| `/api/projects` | `GET` | List all projects for authenticated user |
-| `/api/projects` | `POST` | Initialize new architecture briefing specification |
-| `/api/projects/[id]` | `GET` | Retrieve complete project metadata and requirements |
-| `/api/projects/[id]` | `DELETE` | Permanently decommission project and all embeddings |
-| `/api/projects/[id]/architecture` | `GET` | Fetch active components and directed dependency links |
-| `/api/projects/[id]/architecture` | `PUT` | Persist modified graph topology from React Flow canvas |
-| `/api/projects/[id]/architecture/generate` | `POST` | Execute multi-agent autonomous synthesis (SSE stream) |
-| `/api/projects/[id]/documents` | `GET` | List ingested specifications and vector status |
-| `/api/projects/[id]/documents` | `POST` | Upload and chunk technical specs (PDF/DOCX/MD/JSON) and visual architecture diagrams (PNG/JPG/WEBP/SVG) with vision extraction into 768-dim pgvector store |
-| `/api/projects/[id]/documents/[docId]` | `DELETE` | Remove document and purge vector embeddings |
-| `/api/projects/[id]/impact-analysis` | `POST` | Execute BFS graph traversal to calculate blast radius |
-| `/api/projects/[id]/chat` | `POST` | Context-grounded RAG query against project corpus (SSE stream) |
-| `/api/projects/[id]/versions` | `GET` | Fetch immutable snapshot history |
-| `/api/projects/[id]/versions` | `POST` | Tag manual architecture release checkpoint |
-| `/api/projects/[id]/versions/[versionId]/restore`| `POST` | Restore studio canvas to snapshot |
+6. **Build for Production**:
+   ```bash
+   npm run build
+   npm run start
+   ```
 
 ---
 
-## 9. Security & Hardening Controls
-
-Comprehensive security defenses and hardening layers are implemented across the stack (detailed in [`SECURITY.md`](SECURITY.md)):
-
-### 🛡️ Security Controls Implemented
-* **HTTP Security Headers** ([`next.config.ts`](next.config.ts)): Full suite of browser protections including `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy`, `X-XSS-Protection`, and `Strict-Transport-Security` (HSTS).
-* **AI API Rate Limiting & Denial-of-Wallet (DoW) Protection** ([`src/lib/security/rateLimiter.ts`](src/lib/security/rateLimiter.ts)): Sliding-window token rate limiting per IP on expensive endpoints (`/chat` capped at 30 req/min, `/architecture/generate` at 10 req/min, `/architecture/edit` at 20 req/min, and `/documents` at 20 uploads/min).
-* **File Upload & Path Traversal Defense** ([`src/lib/security/sanitizer.ts`](src/lib/security/sanitizer.ts), [`src/services/documentService.ts`](src/services/documentService.ts)):
-  * 10MB maximum file size barrier.
-  * Strict file extension and MIME whitelist for technical specifications (`.pdf`, `.docx`, `.txt`, `.md`, `.json`) and visual architecture diagrams (`.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`, `.gif`).
-  * Deep filename sanitization stripping `../` path traversal sequences, null bytes, and control characters before writing to Supabase storage.
-* **Prompt Injection Defense & Context Insulation** ([`src/app/api/projects/[id]/chat/route.ts`](src/app/api/projects/[id]/chat/route.ts), [`src/agents/editing/aiEditorAgent.ts`](src/agents/editing/aiEditorAgent.ts)):
-  * Query length capping and null-byte stripping.
-  * Retrieved document chunks wrapped in `<untrusted_retrieved_context>` tags with explicit model instructions to ignore prompt overrides inside reference text.
-  * Safe JSON encoding for AI architecture editor prompts.
-* **Open Redirect Protection** ([`src/app/auth/callback/route.ts`](src/app/auth/callback/route.ts)): Strict relative-path validation on the `next` post-authentication parameter to stop malicious redirects.
-
-### ⚠️ Constraints & Areas Kept Unmodified
-In accordance with project constraints:
-1. **Database Schema & Models**: [`supabase/schema.sql`](supabase/schema.sql) was **not modified**.
-2. **Environment Variables**: `.env` and `.env.local` files were **not modified**.
-3. **Route Structure & Route Issues**: Existing route paths and route handler structure (including `proxy.ts`) were **not modified**.
-4. **Existing Errors**: Pre-existing application logic and error flows were preserved.
-
----
-
-## 10. Contributing & License
+## 10. License & Contributing
 
 Contributions are welcome from system architects, distributed systems engineers, and AI practitioners.
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/distributed-tracing-node`)
 3. Commit your changes (`git commit -m 'feat: add distributed tracing node primitive'`)
-4. Ensure `npx tsc --noEmit` and `npm run build` pass cleanly
+4. Ensure `npx tsc --noEmit` passes cleanly
 5. Push to the branch (`git push origin feature/distributed-tracing-node`)
 6. Open a Pull Request
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
-
+Distributed under the **MIT License**.
